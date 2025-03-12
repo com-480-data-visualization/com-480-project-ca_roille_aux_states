@@ -2,9 +2,9 @@
 
 | Student's name | SCIPER |
 | -------------- | ------ |
-| | |
-| | |
-| | |
+| Timo Michoud   | |
+| Luc Harrison   | |
+| Corentin Genton| 301505|
 
 [Milestone 1](#milestone-1) • [Milestone 2](#milestone-2) • [Milestone 3](#milestone-3)
 
@@ -51,9 +51,4 @@ Please, fill the following sections about your project.
 
 **80% of the final grade**
 
-
-## Late policy
-
-- < 24h: 80% of the grade for the milestone
-- < 48h: 70% of the grade for the milestone
 
