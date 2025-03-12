@@ -18,15 +18,8 @@ Please, fill the following sections about your project.
 *(max. 2000 characters per section)*
 
 ### Dataset
-
-> Find a dataset (or multiple) that you will explore. Assess the quality of the data it contains and how much preprocessing / data-cleaning it will require before tackling visualization. We recommend using a standard dataset as this course is not about scraping nor data processing.
->
-> Hint: some good pointers for finding quality publicly available datasets ([Google dataset search](https://datasetsearch.research.google.com/), [Kaggle](https://www.kaggle.com/datasets), [OpenSwissData](https://opendata.swiss/en/), [SNAP](https://snap.stanford.edu/data/) and [FiveThirtyEight](https://data.fivethirtyeight.com/)), you could use also the DataSets proposed by the ENAC (see the Announcements section on Zulip).
-
-> For this project we will use the Storm Events Database from the National Oceanic and Atmospheric Administration (NOAA).
-> The Storm Events Database contains the records used to create the official NOAA Storm Data publication, documenting:
-
-- The occurrence of storms and other significant weather phenomena having sufficient intensity to cause loss of life, injuries, significant property damage, and/or disruption to commerce;
+For this project we will use the Storm Events Database from the National Oceanic and Atmospheric Administration (NOAA). The Storm Events Database contains the records used to create the official NOAA Storm Data publication, documenting:
+> - The occurrence of storms and other significant weather phenomena having sufficient intensity to cause loss of life, injuries, significant property damage, and/or disruption to commerce;
 - Rare, unusual, weather phenomena that generate media attention, such as snow flurries in South Florida or the San Diego coastal area; and
 - Other significant meteorological events, such as record maximum or minimum temperatures or precipitation that occur in connection with another event.
 
