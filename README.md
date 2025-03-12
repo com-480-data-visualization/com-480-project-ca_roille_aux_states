@@ -19,7 +19,7 @@ Please, fill the following sections about your project.
 
 ### Dataset
 For this project we will use the Storm Events Database from the National Oceanic and Atmospheric Administration (NOAA). The Storm Events Database contains the records used to create the official NOAA Storm Data publication, documenting:
-> - The occurrence of storms and other significant weather phenomena having sufficient intensity to cause loss of life, injuries, significant property damage, and/or disruption to commerce;
+- The occurrence of storms and other significant weather phenomena having sufficient intensity to cause loss of life, injuries, significant property damage, and/or disruption to commerce;
 - Rare, unusual, weather phenomena that generate media attention, such as snow flurries in South Florida or the San Diego coastal area; and
 - Other significant meteorological events, such as record maximum or minimum temperatures or precipitation that occur in connection with another event.
 
@@ -29,6 +29,9 @@ For this project we will use the Storm Events Database from the National Oceanic
 > Frame the general topic of your visualization and the main axis that you want to develop.
 > - What am I trying to show with my visualization?
 > - Think of an overview for the project, your motivation, and the target audience.
+
+- Does climate change lead to an increase in rare weather events in the USA?
+- What are the economic and human impacts of the rising frequency of extreme weather events?
 
 ### Exploratory Data Analysis
 
@@ -43,6 +46,9 @@ For this project we will use the Storm Events Database from the National Oceanic
 > - What source of inspiration do you take? Visualizations that you found on other websites or magazines (might be unrelated to your data).
 > - In case you are using a dataset that you have already explored in another context (ML or ADA course, semester project...), you are required to share the report of that work to outline the differences with the submission for this class.
 
+
+<!---
+
 ## Milestone 2 (18th April, 5pm)
 
 **10% of the final grade**
@@ -51,5 +57,8 @@ For this project we will use the Storm Events Database from the National Oceanic
 ## Milestone 3 (30th May, 5pm)
 
 **80% of the final grade**
+
+-->
+
 
 
