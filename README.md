@@ -23,6 +23,14 @@ Please, fill the following sections about your project.
 >
 > Hint: some good pointers for finding quality publicly available datasets ([Google dataset search](https://datasetsearch.research.google.com/), [Kaggle](https://www.kaggle.com/datasets), [OpenSwissData](https://opendata.swiss/en/), [SNAP](https://snap.stanford.edu/data/) and [FiveThirtyEight](https://data.fivethirtyeight.com/)), you could use also the DataSets proposed by the ENAC (see the Announcements section on Zulip).
 
+> For this project we will use the Storm Events Database from the National Oceanic and Atmospheric Administration (NOAA).
+> The Storm Events Database contains the records used to create the official NOAA Storm Data publication, documenting:
+
+- The occurrence of storms and other significant weather phenomena having sufficient intensity to cause loss of life, injuries, significant property damage, and/or disruption to commerce;
+- Rare, unusual, weather phenomena that generate media attention, such as snow flurries in South Florida or the San Diego coastal area; and
+- Other significant meteorological events, such as record maximum or minimum temperatures or precipitation that occur in connection with another event.
+
+
 ### Problematic
 
 > Frame the general topic of your visualization and the main axis that you want to develop.
