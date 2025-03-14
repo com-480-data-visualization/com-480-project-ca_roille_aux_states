@@ -36,7 +36,7 @@ Intro sur le climate change de façon générale
 ---
 intro sur les états unis et le fait qu'ils ont des évènements météos typiques comme les tornades
 
-
+---
 1. How does climate change contribute to the increasing frequency of rare weather events in the USA?
 2. What are the economic and human consequences of the growing occurrence of extreme weather events?
 3. How can statistical analyses of past events help us understand their causes and improve forecasting?
@@ -48,15 +48,15 @@ TO DO
 ### Related work
 
 Lié à nos data 
-https://www.arcgis.com/apps/dashboards/2f0a9f25eea3410ca0443bdce936f8e5
+- https://www.arcgis.com/apps/dashboards/2f0a9f25eea3410ca0443bdce936f8e5
 
 PLus globalement de la visu d'évènements météos 
-https://global-flood-database.cloudtostreet.ai/
-https://academy.carto.com/building-interactive-maps/data-visualization/build-a-dashboard-to-understand-historic-weather-events
-https://www.meteomatics.com/en/weather-visualization/
-https://earth.nullschool.net/#current/wind/surface/level/orthographic=-97.87,29.90,371
-https://interactive.carbonbrief.org/attribution-studies/index.html
-https://www.meteoswiss.admin.ch/climate/climate-change.html
+- https://global-flood-database.cloudtostreet.ai/
+- https://academy.carto.com/building-interactive-maps/data-visualization/build-a-dashboard-to-understand-historic-weather-events
+- https://www.meteomatics.com/en/weather-visualization/
+- https://earth.nullschool.net/#current/wind/surface/level/orthographic=-97.87,29.90,371
+- https://interactive.carbonbrief.org/attribution-studies/index.html
+- https://www.meteoswiss.admin.ch/climate/climate-change.html
 
 
 <!---
