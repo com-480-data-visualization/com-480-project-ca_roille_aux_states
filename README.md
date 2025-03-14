@@ -1,4 +1,4 @@
-# Project of Data Visualization (COM-480)
+# Ca Roille aux States - A Data Disualization Project
 
 | Student's name | SCIPER |
 | -------------- | ------ |
