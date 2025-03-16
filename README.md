@@ -59,9 +59,9 @@ PLus globalement de la visu d'évènements météos
 - https://www.meteoswiss.admin.ch/climate/climate-change.html
 
 ---
-<p align="left">
-  <img src="Images/swiss_temperature.jpg" alt="screenshot" width="300" style="float:right; margin-left:10px;">
-  Here is some text next to the image. You can write anything you want here.
+<p align="right">
+  <img src="Images/swiss_temperature.jpg" alt="screenshot" width="500" style="float:right; margin-left:10px;">
+  A compelling way to illustrate the evolution of a variable like temperature, while also accounting for geographic variation, is to visualize the map across different years or time periods.
 </p>
 
 
