@@ -59,8 +59,10 @@ PLus globalement de la visu d'évènements météos
 - https://www.meteoswiss.admin.ch/climate/climate-change.html
 
 ---
-![screenshot](Images/swiss_temperature.jpg)
-
+<p align="left">
+  <img src="Images/swiss_temperature.jpg" alt="screenshot" width="300" style="float:right; margin-left:10px;">
+  Here is some text next to the image. You can write anything you want here.
+</p>
 
 
 <!---
