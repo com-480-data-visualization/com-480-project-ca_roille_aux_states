@@ -1,10 +1,14 @@
 # Ca Roille aux States - A Data Disualization Project
 
+<div align="center">
+
 | Student's name | SCIPER |
 | -------------- | ------ |
-| Timo Michoud   | 302039|
-| Luc Harrison   | 315788|
-| Corentin Genton| 301505|
+| Timo Michoud   | 302039 |
+| Luc Harrison   | 315788 |
+| Corentin Genton| 301505 |
+
+</div>
 
 [Milestone 1](#milestone-1) 
 
