@@ -65,6 +65,13 @@ PLus globalement de la visu d'évènements météos
 </p>
 
 
+<img src="Images/exposure-map.svg" alt="screenshot" width="300">
+<img src="Images/earth.png" alt="screenshot" width="300">
+<img src="Images/region_dots.png" alt="screenshot" width="300">
+<img src="Images/type_of_events.png" alt="screenshot" width="300">
+
+
+
 <!---
 > - What others have already done with the data?
 > - Why is your approach original?
