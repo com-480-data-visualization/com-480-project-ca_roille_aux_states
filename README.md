@@ -59,7 +59,7 @@ PLus globalement de la visu d'évènements météos
 - https://www.meteoswiss.admin.ch/climate/climate-change.html
 
 ---
-![screenshot](imageFolder/screenshot.png)
+![screenshot](Images/swiss_temperature.jpg)
 
 
 
