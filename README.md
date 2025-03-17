@@ -74,10 +74,12 @@ PLus globalement de la visu d'évènements météos
 - https://www.meteoswiss.admin.ch/climate/climate-change.html
 
 ---
-<p align="right">
-  <img src="Images/swiss_temperature.jpg" alt="screenshot" width="500" style="float:right; margin-left:10px;">
-  A compelling way to illustrate the evolution of a variable like temperature, while also accounting for geographic variation, is to visualize the map across different years or time periods.
-</p>
+<div style="display: flex; align-items: center;">
+  <img src="Images/swiss_temperature.jpg" alt="screenshot" width="500" style="margin-right: 10px;">
+  <p>
+    A compelling way to illustrate the evolution of a variable like temperature, while also accounting for geographic variation, is to visualize the map across different years or time periods.
+  </p>
+</div>
 
 
 <img src="Images/exposure-map.svg" alt="screenshot" width="500">
