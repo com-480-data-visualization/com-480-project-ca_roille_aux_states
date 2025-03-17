@@ -60,12 +60,24 @@ With our dataset in hand we will try to answer the following problematic.
 
 ### Exploratory Data Analysis
 
-TO DO 
+The exploratory data analysis can be found in this notebook (add link to notebook). While we won't pass over all the details, some of the numbers are:
+- 1937859 unique events
+- N unique type of events such as Tornado, Hail, Thunderstorm Wind or Flood
+-  
+
 
 ### Related work
 
-Lié à nos data 
-- https://www.arcgis.com/apps/dashboards/2f0a9f25eea3410ca0443bdce936f8e5
+We have identified a [website](https://www.arcgis.com/apps/dashboards/2f0a9f25eea3410ca0443bdce936f8e5) that features a visualization using the same dataset as ours.
+However, it does not offer a lot of possibilities in terms of visualization. Furthermore, it can quickly become unusable when selecting many events. One nice thing is that it offers some more informations about each events. 
+
+While searching for visualizations related to weather events, we came across the following ones that caught our attention:
+
+<p align="center">
+    <img src="Images/swiss_temperature.jpg" alt="screenshot" width="700">
+</p>
+A compelling way to illustrate the evolution of a variable like temperature, while also accounting for geographic variation, is to visualize the map across different years or time periods [(source)](https://www.meteoswiss.admin.ch/climate/climate-change.html).
+
 
 PLus globalement de la visu d'évènements météos 
 - https://global-flood-database.cloudtostreet.ai/
@@ -73,15 +85,12 @@ PLus globalement de la visu d'évènements météos
 - https://www.meteomatics.com/en/weather-visualization/
 - https://earth.nullschool.net/#current/wind/surface/level/orthographic=-97.87,29.90,371
 - https://interactive.carbonbrief.org/attribution-studies/index.html
-- https://www.meteoswiss.admin.ch/climate/climate-change.html
+- 
 
 ---
 
 
-<p align="center">
-    <img src="Images/swiss_temperature.jpg" alt="screenshot" width="700">
-</p>
-A compelling way to illustrate the evolution of a variable like temperature, while also accounting for geographic variation, is to visualize the map across different years or time periods.
+
 
 <p align="center">
     <img src="Images/exposure-map.svg" alt="screenshot" width="700">
