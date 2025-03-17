@@ -15,12 +15,12 @@
 [Milestone 1](#milestone-1) • [Milestone 2](#milestone-2) • [Milestone 3](#milestone-3)
 -->
 ## Milestone 1 (21st March, 5pm)
-
+<!---
 **10% of the final grade**
 
 This is a preliminary milestone to let you set up goals for your final project and assess the feasibility of your ideas.
 Please, fill the following sections about your project.
-
+-->
 
 ### Dataset
 For this project we will use the Storm Events Database from the National Oceanic and Atmospheric Administration (NOAA). The Storm Events Database contains the records used to create the official NOAA Storm Data publication, documenting:
@@ -45,6 +45,7 @@ As we can see in the image above, the following events were recorded:
 ### Problematic
 
 Intro sur le climate change de façon générale
+> Climate change refers to the long-term alteration of temperature and typical weather patterns in a place. Driven primarily by human activities, particularly the burning of fossil fuels, deforestation, and industrial processes, it leads to an increase in greenhouse gases such as carbon dioxide in the atmosphere. This traps heat and raises global temperatures, a phenomenon known as global warming. As the Earth warms, it disrupts natural weather systems, contributing to more frequent and intense extreme weather events. This includes heatwaves, hurricanes, floods, and droughts. Warmer temperatures can lead to more water vapor in the atmosphere, making storms more powerful. Sea level rise, caused by melting glaciers and thermal expansion, further exacerbates the risk of coastal flooding. The increasing frequency of these extreme events poses significant threats to ecosystems, communities, and economies worldwide.
 
 ---
 intro sur les états unis et le fait qu'ils ont des évènements météos typiques comme les tornades
@@ -52,6 +53,7 @@ intro sur les états unis et le fait qu'ils ont des évènements météos typiqu
 > Tornadoes are more typical in the USA than in any other country. The United States experiences the highest number of tornadoes annually, with around 1,200 tornadoes on average each year. This is mainly due to the geography of Tornado Alley, a region in the central U.S. that includes parts of Texas, Oklahoma, Kansas, Nebraska, South Dakota, Iowa, and Missouri. Here, warm, moist air from the Gulf of Mexico meets cool, dry air from Canada, creating the ideal conditions for powerful supercell thunderstorms that spawn tornadoes. While tornadoes do occur in other countries like Canada, Argentina, Bangladesh, and Australia, the U.S. remains the most tornado-prone nation due to its unique climate and geography.
 
 ---
+With our dataset in hand we will try to answer the following problematic.
 1. How does climate change contribute to the increasing frequency of rare weather events in the USA?
 2. What are the economic and human consequences of the growing occurrence of extreme weather events?
 3. How can statistical analyses of past events help us understand their causes and improve forecasting?
