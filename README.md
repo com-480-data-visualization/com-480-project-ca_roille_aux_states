@@ -81,7 +81,7 @@ A compelling way to illustrate the evolution of a variable like temperature, whi
 <p align="center">
     <img src="Images/exposure-map.svg" alt="screenshot" width="700">
 </p>
-([source](https://global-flood-database.cloudtostreet.ai/))
+[source](https://global-flood-database.cloudtostreet.ai/)
 ---
 <p align="center">
     <img src="Images/earth.png" alt="screenshot" width="700">
