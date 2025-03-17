@@ -76,22 +76,22 @@ While searching for visualizations related to weather events, we came across the
 <p align="center">
     <img src="Images/swiss_temperature.jpg" alt="screenshot" width="700">
 </p>
-A compelling way to illustrate the evolution of a variable like temperature, while also accounting for geographic variation, is to visualize the map across different years or time periods ([source](https://www.meteoswiss.admin.ch/climate/climate-change.html)).
+A compelling way to illustrate the evolution of a variable like temperature, while also accounting for geographic variation, is to visualize the map across different years or time periods [source](https://www.meteoswiss.admin.ch/climate/climate-change.html).
 ---
 <p align="center">
     <img src="Images/exposure-map.svg" alt="screenshot" width="700">
 </p>
-[source](https://global-flood-database.cloudtostreet.ai/)
+temp [source](https://global-flood-database.cloudtostreet.ai/). 
 ---
 <p align="center">
     <img src="Images/earth.png" alt="screenshot" width="700">
 </p>
-([source](https://earth.nullschool.net/#current/wind/surface/level/orthographic=-97.87,29.90,371))
+temp [source](https://earth.nullschool.net/#current/wind/surface/level/orthographic=-97.87,29.90,371). 
 ---
 <p align="center">
     <img src="Images/region_dots.png" alt="screenshot" width="700">
 </p>
-([source](https://interactive.carbonbrief.org/attribution-studies/index.html)
+temp [source](https://interactive.carbonbrief.org/attribution-studies/index.html). 
 ---
 
 
