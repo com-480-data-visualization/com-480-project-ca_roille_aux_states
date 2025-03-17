@@ -49,6 +49,8 @@ Intro sur le climate change de façon générale
 ---
 intro sur les états unis et le fait qu'ils ont des évènements météos typiques comme les tornades
 
+> Tornadoes are more typical in the USA than in any other country. The United States experiences the highest number of tornadoes annually, with around 1,200 tornadoes on average each year. This is mainly due to the geography of Tornado Alley, a region in the central U.S. that includes parts of Texas, Oklahoma, Kansas, Nebraska, South Dakota, Iowa, and Missouri. Here, warm, moist air from the Gulf of Mexico meets cool, dry air from Canada, creating the ideal conditions for powerful supercell thunderstorms that spawn tornadoes. While tornadoes do occur in other countries like Canada, Argentina, Bangladesh, and Australia, the U.S. remains the most tornado-prone nation due to its unique climate and geography.
+
 ---
 1. How does climate change contribute to the increasing frequency of rare weather events in the USA?
 2. What are the economic and human consequences of the growing occurrence of extreme weather events?
