@@ -75,17 +75,24 @@ PLus globalement de la visu d'évènements météos
 
 ---
 
-<div style="display: flex; align-items: center;">
-  <img src="Images/swiss_temperature.jpg" alt="screenshot" width="500" style="margin-right: 10px;">
-  <p>
-    A compelling way to illustrate the evolution of a variable like temperature, while also accounting for geographic variation, is to visualize the map across different years or time periods.
-  </p>
-</div>
+
+<p align="center">
+    <img src="Images/swiss_temperature.jpg" alt="screenshot" width="700">
+</p>
+A compelling way to illustrate the evolution of a variable like temperature, while also accounting for geographic variation, is to visualize the map across different years or time periods.
+
+<p align="center">
+    <img src="Images/exposure-map.svg" alt="screenshot" width="700">
+</p>
+<p align="center">
+    <img src="Images/earth.png" alt="screenshot" width="700">
+</p>
+<p align="center">
+    <img src="Images/region_dots.png" alt="screenshot" width="700">
+</p>
 
 
-<img src="Images/exposure-map.svg" alt="screenshot" width="500">
-<img src="Images/earth.png" alt="screenshot" width="500">
-<img src="Images/region_dots.png" alt="screenshot" width="500">
+
 
 
 
