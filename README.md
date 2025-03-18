@@ -1,4 +1,4 @@
-# Ca Roille aux States - A Data Disualization Project
+# Ca Roille aux States - A Data Disualization Project 🌪️🌀🌊
 
 <div align="center">
 
