@@ -72,25 +72,32 @@ The exploratory data analysis can be found in this notebook (add link to noteboo
 
 
 ### Related work
-
-We have identified a [website](https://www.arcgis.com/apps/dashboards/2f0a9f25eea3410ca0443bdce936f8e5) that features a visualization using the same dataset as ours.
-However, it does not offer a lot of possibilities in terms of visualization. Furthermore, it can quickly become unusable when selecting many events. One nice thing is that it offers some more informations about each events. 
-
-While searching for visualizations related to weather events, we came across the following ones that caught our attention:
+Over the last couple of years many great visualization have been developped in order to show in the most clear way the impact and the reality of the climate change to the public. While we don't directly work with climate change related data such as the increase of the temperatures or ... we can draw inspiration from these visualizations for our own project. 
 
 <p align="center">
     <img src="Images/swiss_temperature.jpg" alt="screenshot" width="700">
 </p>
 A compelling way to illustrate the evolution of a variable like temperature, while also accounting for geographic variation, is to visualize the map across different years or time periods. [Source](https://www.meteoswiss.admin.ch/climate/climate-change.html)
----
-<p align="center">
-    <img src="Images/exposure-map.svg" alt="screenshot" width="700">
-</p>
----
+
+
+ADD NASA Climate Spiral, and others ?
+
+We can also draw inspiration from more general weather visualizations such as ....
+
+While searching for visualizations related to weather events, we came across the following ones that caught our attention:
 <p align="center">
     <img src="Images/earth.png" alt="screenshot" width="700">
 </p>
----
+
+
+Concerning now vizualizations with the same dataset as ours ...
+
+We have identified a [website](https://www.arcgis.com/apps/dashboards/2f0a9f25eea3410ca0443bdce936f8e5) that features a visualization using the same dataset as ours.
+However, it does not offer a lot of possibilities in terms of visualization. Furthermore, it can quickly become unusable when selecting many events. One nice thing is that it offers some more informations about each events. 
+<p align="center">
+    <img src="Images/exposure-map.svg" alt="screenshot" width="700">
+</p>
+
 <p align="center">
     <img src="Images/region_dots.png" alt="screenshot" width="700">
 </p>
