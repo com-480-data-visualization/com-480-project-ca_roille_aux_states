@@ -23,11 +23,11 @@ Please, fill the following sections about your project.
 -->
 
 ### Problematic
-
+#### Climate Change Problem 
 Climate change is probably the biggest threat ever experience by the humankind. It refers to the long-term alteration of temperature and typical weather patterns in a place. Driven primarily by human activities, particularly the burning of fossil fuels, deforestation, and industrial processes, it leads to an increase in greenhouse gases such as carbon dioxide in the atmosphere. This traps heat and raises global temperatures, a phenomenon known as global warming. As the Earth warms, it disrupts natural weather systems, contributing to more frequent and intense extreme weather events. This includes heatwaves, hurricanes, floods, and droughts. Warmer temperatures can lead to more water vapor in the atmosphere, making storms more powerful. Sea level rise, caused by melting glaciers and thermal expansion, further exacerbates the risk of coastal flooding. The increasing frequency of these extreme events poses significant threats to ecosystems, communities, and economies worldwide. 
 
 ---
-
+#### The Special Case of the USA
 The United States is known for experiencing a high number of extreme weather events, not only due to its vast size but also because of its unique geographical and climatic conditions. Among these, tornadoes are particularly frequent, making the U.S. the most tornado-prone country in the world. On average, around 1,200 tornadoes occur annually, with most forming in Tornado Alley—a region covering parts of Texas, Oklahoma, Kansas, Nebraska, South Dakota, Iowa, and Missouri. This area is especially susceptible due to the collision of warm, moist air from the Gulf of Mexico with cool, dry air from Canada, creating the ideal conditions for powerful supercell thunderstorms that can generate tornadoes. Although tornadoes also occur in countries like Canada, Argentina, Bangladesh, and Australia, none experience them as frequently as the U.S.
 
 In addition to tornadoes, the United States is also highly susceptible to hurricanes, which are particularly common along the Atlantic and Gulf coasts. The Atlantic hurricane season runs from June to November, with states such as Florida, Texas, and Louisiana frequently bearing the brunt of these powerful storms. Hurricanes bring destructive winds, storm surges, and heavy rainfall, often leading to widespread flooding and infrastructure damage. The Gulf of Mexico’s warm waters and the Atlantic Ocean’s climatic patterns contribute to the formation of these intense cyclones.
@@ -37,10 +37,11 @@ Beyond tornadoes and hurricanes, the U.S. also faces other extreme weather pheno
 Although extreme weather events are not exclusive to the United States, few countries provide as comprehensive and long-term datasets on these phenomena. Therefore, our analysis and visualizations will primarily focus on the U.S., where reliable data allows for a more in-depth exploration of trends, patterns, and impacts of extreme weather events over time. 
 
 ---
-
+#### What we will try to answer
 1. How does climate change contribute to the increasing frequency of rare weather events in the USA?
 2. What are the economic and human consequences of the growing occurrence of extreme weather events?
 3. How can statistical analyses of past events help us understand their causes and improve forecasting?
+
 
 ### Dataset
 To answer our problematic we will need
