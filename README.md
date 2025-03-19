@@ -23,7 +23,7 @@ Please, fill the following sections about your project.
 -->
 
 ### Problematic
-
+---
 #### Climate Change Problem 
 Climate change is probably the biggest threat ever experienced by mankind. It refers to the long-term alteration of temperatures and weather patterns in a place. Due primarily to human activities, greenhouse gases such as methane and carbon dioxide are accumulating in the atmosphere and trapping the sun's heat causing the overall temperature to rise, a phenomenon known as global warming. In recent years, the effects of Climate change have become more and more visible as the average temperature of the planet went up by [1.2 °C](https://www.un.org/en/climatechange/what-is-climate-change) since the 1800s. As the Earth warms, it disrupts natural weather systems, contributing to more frequent and more intense extreme weather events such as heatwaves, hurricanes, floods, or droughts. Warmer temperatures can lead to more water vapor in the atmosphere, making storms more powerful. Even more so, it accelerates the melting of glaciers causing the sea level to rise and increasing the risk of coastal floodings. The increasing danger of this kind of events is a serious threat to our societies and to the safety of many populations. Even though it seems nearly impossible to revert the climate change as the economics and politics of our world stand now, we can at least try to understand and perdict better the changes that are happening. This will be the goal of our project as we will try to obtain a visualisation of the extreme environmental events that happened over the last years in the United States of America. 
 
@@ -46,6 +46,7 @@ Although extreme weather events are not exclusive to the United States, few coun
 
 
 ### Dataset
+---
 To answer our problematic we will need
 For this project we will use the Storm Events Database from the National Oceanic and Atmospheric Administration (NOAA). The Storm Events Database contains the records used to create the official NOAA Storm Data publication, documenting:
 - The occurrence of storms and other significant weather phenomena having sufficient intensity to cause loss of life, injuries, significant property damage, and/or disruption to commerce;
@@ -66,7 +67,7 @@ As we can see in the image above, the following events were recorded:
 3. All Event Types (48 from Directive 10-1605): From 1996 to present, 48 event types are recorded as defined in NWS Directive 10-1605.
 
 ### Exploratory Data Analysis
-
+---
 The exploratory data analysis can be found in this notebook (add link to notebook). While we won't pass over all the details, some of the numbers are:
 - 1937859 unique events
 - N unique type of events such as Tornado, Hail, Thunderstorm Wind or Flood
@@ -74,6 +75,7 @@ The exploratory data analysis can be found in this notebook (add link to noteboo
 
 
 ### Related work
+---
 Over the last couple of years many great visualization have been developped in order to show in the most clear way the impact and the reality of the climate change to the public. While we don't directly work with climate change related data such as the increase of the temperatures or ... we can draw inspiration from these visualizations for our own project. 
 
 <p align="center">
@@ -92,6 +94,7 @@ While searching for visualizations related to weather events, we came across the
 </p>
 
 
+Ths [Kaggle Notebook](https://www.kaggle.com/code/wumanandpat/exploration-of-storm-events-database) propose a pre-processing as well as some visualizations with the Storm Events Database. 
 Concerning now vizualizations with the same dataset as ours ...
 
 We have identified a [website](https://www.arcgis.com/apps/dashboards/2f0a9f25eea3410ca0443bdce936f8e5) that features a visualization using the same dataset as ours.
