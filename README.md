@@ -24,32 +24,25 @@ Beyond tornadoes and hurricanes, the U.S. also faces other extreme weather pheno
 
 Although extreme weather events are not exclusive to the United States, few countries provide as comprehensive and long-term datasets on these phenomena. Therefore, our analysis and visualizations will primarily focus on the U.S., where reliable data allows for a more in-depth exploration of trends, patterns, and impacts of extreme weather events over time. 
 
-### What we will try to answer
+### Research questions
 1. How does climate change contribute to the increasing frequency of rare weather events in the USA?
 2. What are the economic and human consequences of the growing occurrence of extreme weather events?
 3. How can statistical analyses of past events help us understand their causes and improve forecasting?
 
 
 ## Dataset
-To answer our problematic we will need some data. As explained before, one reason to focus on the USA is the availability of good data about extreme weather events. Indeed, thanks to the National Oceanic and Atmospheric Administration (NOAA), we have access to the [_Storm Events Database_](https://www.ncdc.noaa.gov/stormevents/), a database documenting:
+To address our research question, we need relevant data. As previously mentioned, one reason for focusing on the USA is the availability of high-quality data on extreme weather events. Thanks to the National Oceanic and Atmospheric Administration (NOAA), we have access to the [Storm Events Database](https://www.ncdc.noaa.gov/stormevents/), which provides information on:
+
 > - The occurrence of storms and other significant weather phenomena having sufficient intensity to cause loss of life, injuries, significant property damage, and/or disruption to commerce;
 > - Rare, unusual, weather phenomena that generate media attention, such as snow flurries in South Florida or the San Diego coastal area; and
 > - Other significant meteorological events, such as record maximum or minimum temperatures or precipitation that occur in connection with another event.
 
-
-
-
-The database currently contains data from January 1950 to November 2024, as entered by NOAA's National Weather Service (NWS). Due to changes in the data collection and processing procedures over time, there are unique periods of record available depending on the event type. NCEI has performed data reformatting and standardization of event types but has not changed any data values for locations, fatalities, injuries, damage, narratives and any other event specific information. Please refer to the Database Details page for more information.
+This database spans from January 1950 to November 2024, making it particularly valuable for analyzing the impact of climate change on the frequency of extreme weather events. However, it is important to note that "_due to changes in the data collection and processing procedures over time, there are unique periods of record available depending on the event type_." Specifically, as illustrated in the image below, only tornado events were recorded between January 1950 and January 1955. From January 1955 to January 1996, data collection expanded to include tornado, thunderstorm wind, and hail events. Since January 1996, the database has documented [48 types of events](https://www.ncdc.noaa.gov/stormevents/pd01016005curr.pdf).
 
 <p align="center">
-    <img src="Images/type_of_events.png" alt="screenshot" width="700">
+    <img src="Images/type_of_events.png" alt="screenshot" width="750">
 </p>
-As we can see in the image above, the following events were recorded:
-1. Tornado: From 1950 through 1954, only tornado events were recorded.
 
-2. Tornado, Thunderstorm Wind and Hail: From 1955 through 1992, only tornado, thunderstorm wind and hail events were keyed from the paper publications into digital data. From 1993 to 1995, only tornado, thunderstorm wind and hail events have been extracted from the Unformatted Text Files.
-
-3. All Event Types (48 from Directive 10-1605): From 1996 to present, 48 event types are recorded as defined in NWS Directive 10-1605.
 
 ## Exploratory Data Analysis
 The exploratory data analysis can be found in this notebook (add link to notebook). While we won't pass over all the details, some of the numbers are:
@@ -59,12 +52,8 @@ The exploratory data analysis can be found in this notebook (add link to noteboo
 
 
 ## Related work
-### With the same Data 
-Ths [Kaggle Notebook](https://www.kaggle.com/code/wumanandpat/exploration-of-storm-events-database) propose a pre-processing as well as some visualizations with the Storm Events Database. 
-Concerning now vizualizations with the same dataset as ours ...
-
-We have identified a [website](https://www.arcgis.com/apps/dashboards/2f0a9f25eea3410ca0443bdce936f8e5) that features a visualization using the same dataset as ours.
-However, it does not offer a lot of possibilities in terms of visualization. Furthermore, it can quickly become unusable when selecting many events. One nice thing is that it offers some more informations about each events. 
+### Using Storm Events Database
+Few studies have been conducted (or at least identified by us) to explore and visualize the Storm Events Database. We found two Kaggle Notebooks  ([first](https://www.kaggle.com/code/kerneler/starter-noaa-storm-events-database-ead6826c-e) and [second](https://www.kaggle.com/code/wumanandpat/exploration-of-storm-events-database)) that propose data pre-processing along with initial analyses and visualizations. Additionally, we identified a [website](https://www.arcgis.com/apps/dashboards/2f0a9f25eea3410ca0443bdce936f8e5) that provides a visualization based on the same dataset. However, this website offers limited customization options for visualizations and can become difficult to use when selecting multiple events. Another relevant resource is a [package](https://github.com/geanders/noaastormevents) available on GitHub, which allows for exploring the Storm Events Database with advanced visualizations using the R programming language.
 
 ### General weather visualizations
 Over the last couple of years many great visualization have been developped in order to show in the most clear way the impact and the reality of the climate change to the public. While we don't directly work with climate change related data such as the increase of the temperatures or ... we can draw inspiration from these visualizations for our own project. 
