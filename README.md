@@ -40,7 +40,7 @@ To address our research question, we need relevant data. As previously mentioned
 This database spans from January 1950 to November 2024, making it particularly valuable for analyzing the impact of climate change on the frequency of extreme weather events. However, it is important to note that "_due to changes in the data collection and processing procedures over time, there are unique periods of record available depending on the event type_." Specifically, as illustrated in the image below, only tornado events were recorded between January 1950 and January 1955. From January 1955 to January 1996, data collection expanded to include tornado, thunderstorm wind, and hail events. Since January 1996, the database has documented [48 types of events](https://www.ncdc.noaa.gov/stormevents/pd01016005curr.pdf).
 
 <p align="center">
-    <img src="Images/type_of_events.png" alt="screenshot" width="700">
+    <img src="Images/type_of_events.png" alt="screenshot" width="750">
 </p>
 
 
