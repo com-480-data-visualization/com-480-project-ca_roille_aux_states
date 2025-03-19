@@ -1,4 +1,4 @@
-# Ça roille aux states - A Data Disualization Project 🌪️🌀
+# Ça roille aux states - A data visualization project 🌪️🌀
 
 <div align="center">
 
@@ -31,12 +31,13 @@ Although extreme weather events are not exclusive to the United States, few coun
 
 
 ## Dataset
-To answer our problematic we will need
-For this project we will use the Storm Events Database from the National Oceanic and Atmospheric Administration (NOAA). The Storm Events Database contains the records used to create the official NOAA Storm Data publication, documenting:
-- The occurrence of storms and other significant weather phenomena having sufficient intensity to cause loss of life, injuries, significant property damage, and/or disruption to commerce;
+To answer our problematic we will need some data. As explained before, one reason to focus on the USA is the availability of good data about extreme weather events. Indeed, thanks to the National Oceanic and Atmospheric Administration (NOAA), we have access to the [_Storm Events Database_](https://www.ncdc.noaa.gov/stormevents/), a database documenting:
+> - The occurrence of storms and other significant weather phenomena having sufficient intensity to cause loss of life, injuries, significant property damage, and/or disruption to commerce;
 - Rare, unusual, weather phenomena that generate media attention, such as snow flurries in South Florida or the San Diego coastal area; and
 - Other significant meteorological events, such as record maximum or minimum temperatures or precipitation that occur in connection with another event.
-https://www.ncdc.noaa.gov/stormevents/
+
+
+
 
 The database currently contains data from January 1950 to November 2024, as entered by NOAA's National Weather Service (NWS). Due to changes in the data collection and processing procedures over time, there are unique periods of record available depending on the event type. NCEI has performed data reformatting and standardization of event types but has not changed any data values for locations, fatalities, injuries, damage, narratives and any other event specific information. Please refer to the Database Details page for more information.
 
