@@ -22,7 +22,7 @@ This is a preliminary milestone to let you set up goals for your final project a
 Please, fill the following sections about your project.
 -->
 
-### Problematic
+## Problematic
 ---
 - #### Climate Change Problem 
 Climate change is probably the biggest threat ever experienced by mankind. It refers to the long-term alteration of temperatures and weather patterns in a place. Due primarily to human activities, greenhouse gases such as methane and carbon dioxide are accumulating in the atmosphere and trapping the sun's heat causing the overall temperature to rise, a phenomenon known as global warming. In recent years, the effects of Climate change have become more and more visible as the average temperature of the planet went up by [1.2 °C](https://www.un.org/en/climatechange/what-is-climate-change) since the 1800s. As the Earth warms, it disrupts natural weather systems, contributing to more frequent and more intense extreme weather events such as heatwaves, hurricanes, floods, or droughts. Warmer temperatures can lead to more water vapor in the atmosphere, making storms more powerful. Even more so, it accelerates the melting of glaciers causing the sea level to rise and increasing the risk of coastal floodings. The increasing danger of this kind of events is a serious threat to our societies and to the safety of many populations. Even though it seems nearly impossible to revert the climate change as the economics and politics of our world stand now, we can at least try to understand and perdict better the changes that are happening. This will be the goal of our project as we will try to obtain a visualisation of the extreme environmental events that happened over the last years in the United States of America. 
