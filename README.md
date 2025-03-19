@@ -24,22 +24,22 @@ Beyond tornadoes and hurricanes, the U.S. also faces other extreme weather pheno
 
 Although extreme weather events are not exclusive to the United States, few countries provide as comprehensive and long-term datasets on these phenomena. Therefore, our analysis and visualizations will primarily focus on the U.S., where reliable data allows for a more in-depth exploration of trends, patterns, and impacts of extreme weather events over time. 
 
-### What we will try to answer
+### Research questions
 1. How does climate change contribute to the increasing frequency of rare weather events in the USA?
 2. What are the economic and human consequences of the growing occurrence of extreme weather events?
 3. How can statistical analyses of past events help us understand their causes and improve forecasting?
 
 
 ## Dataset
-To answer our problematic we will need some data. As explained before, one reason to focus on the USA is the availability of good data about extreme weather events. Indeed, thanks to the National Oceanic and Atmospheric Administration (NOAA), we have access to the [_Storm Events Database_](https://www.ncdc.noaa.gov/stormevents/), a database documenting:
+To address our research question, we need relevant data. As previously mentioned, one reason for focusing on the USA is the availability of high-quality data on extreme weather events. Thanks to the National Oceanic and Atmospheric Administration (NOAA), we have access to the Storm Events Database, which provides information on:
+
 > - The occurrence of storms and other significant weather phenomena having sufficient intensity to cause loss of life, injuries, significant property damage, and/or disruption to commerce;
 > - Rare, unusual, weather phenomena that generate media attention, such as snow flurries in South Florida or the San Diego coastal area; and
 > - Other significant meteorological events, such as record maximum or minimum temperatures or precipitation that occur in connection with another event.
 
+This database spans from January 1950 to November 2024, making it particularly valuable for analyzing the impact of climate change on the frequency of extreme weather events. However, it is important to note that "_due to changes in the data collection and processing procedures over time, there are unique periods of record available depending on the event type_." Specifically, as illustrated in the image below, only tornado events were recorded between January 1950 and January 1955. From January 1955 to January 1996, data collection expanded to include tornado, thunderstorm wind, and hail events. Since January 1996, the database has documented [48 types of events](https://www.ncdc.noaa.gov/stormevents/pd01016005curr.pdf).
 
 
-
-The database currently contains data from January 1950 to November 2024, as entered by NOAA's National Weather Service (NWS). Due to changes in the data collection and processing procedures over time, there are unique periods of record available depending on the event type. NCEI has performed data reformatting and standardization of event types but has not changed any data values for locations, fatalities, injuries, damage, narratives and any other event specific information. Please refer to the Database Details page for more information.
 
 <p align="center">
     <img src="Images/type_of_events.png" alt="screenshot" width="700">
