@@ -2,11 +2,11 @@
 
 <p align="center">
 
-| Student's name | SCIPER  |  
-| -------------- | ------  |  
-| Timo Michoud   | 302039  |  
-| Luc Harrison   | 315788  |  
-| Corentin Genton| 301505  |  
+    | Student's name | SCIPER  |  
+    | -------------- | ------  |  
+    | Timo Michoud   | 302039  |  
+    | Luc Harrison   | 315788  |  
+    | Corentin Genton| 301505  |  
 
 </p>
 
