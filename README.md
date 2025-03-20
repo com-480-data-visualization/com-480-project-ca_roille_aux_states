@@ -1,26 +1,11 @@
 # Ça roille aux states - A data visualization project 🌪️🌀
 
 <div align="center">
-  <h1></h1>
-  <table border="1">
-    <tr>
-      <th>Student's name</th>
-      <th>SCIPER</th>
-    </tr>
-    <tr>
-      <td>Timo Michoud</td>
-      <td>302039</td>
-    </tr>
-    <tr>
-      <td>Luc Harrison</td>
-      <td>315788</td>
-    </tr>
-    <tr>
-      <td>Corentin Genton</td>
-      <td>301505</td>
-    </tr>
-  </table>
-  <h1></h1>
+ | Student's name | SCIPER | 
+ | -------------- | ------ |
+ | Timo Michoud   | 302039 |
+ | Luc Harrison   | 315788 |
+ | Corentin Genton| 301505 |
 </div>
 
 
