@@ -85,7 +85,7 @@ Both approaches have their advantages: maps excel at showcasing spatial trends a
 </p>
 
 ### What unique contributions will we bring?
-djdjdjdjdj
+As we have observed, our dataset currently lacks comprehensive visual representations. Our objective is to create insightful and impactful visualizations that not only enhance the understanding of the data but also highlight meaningful connections with pressing global issues, such as climate change. By designing clear, engaging, and data-driven visuals, we aim to make complex information more accessible and actionable. These visualizations will help uncover trends, reveal correlations, and provide valuable insights that can contribute to informed discussions and decision-making.
 
 ### That’s all for now—looking forward to more analyses and visualizations in Milestone 2!
 
