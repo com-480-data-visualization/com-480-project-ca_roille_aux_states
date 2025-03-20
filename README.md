@@ -67,6 +67,7 @@ Weather data is frequently visualized on an interactive digital globe, enabling 
     <img src="Images/earth.png" alt="screenshot" width="700">
 </p>
 
+The following two images were nice examples 
 <p align="center">
     <img src="Images/exposure-map.svg" alt="screenshot" width="700">
 </p>
