@@ -61,12 +61,8 @@ Weather and climate change events offer opportunities for highly interactive and
     <img src="Images/swiss_temperature.jpg" alt="screenshot" width="700">
 </p>
 
+Weather data is frequently visualized on an interactive digital globe, enabling users to explore different regions, zoom in on specific locations, and analyze parameters like temperature, wind speed, and precipitation. By rotating the globe and selecting specific areas, users can easily compare weather conditions across various locations and timeframes. This approach enhances accessibility and engagement, making it especially useful for meteorologists, researchers, and the general public interested in real-time weather patterns and climate trends. Although we don’t have global data in our dataset, we could adapt this type of visualization to suit our needs ([source of image](https://earth.nullschool.net/#current/wind/surface/level/orthographic=-97.87,29.90,371)). 
 
-
-ADD NASA Climate Spiral, and others ?
-
-
-While searching for visualizations related to weather events, we came across the following ones that caught our attention:
 <p align="center">
     <img src="Images/earth.png" alt="screenshot" width="700">
 </p>
@@ -81,7 +77,6 @@ While searching for visualizations related to weather events, we came across the
 
 
 [Source](https://global-flood-database.cloudtostreet.ai/)
-[Source](https://earth.nullschool.net/#current/wind/surface/level/orthographic=-97.87,29.90,371)
 [Source](https://interactive.carbonbrief.org/attribution-studies/index.html)
 
 
