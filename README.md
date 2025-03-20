@@ -1,12 +1,14 @@
 # Ça roille aux states - A data visualization project 🌪️🌀
 
-<p align="center">
-    | Student's name | SCIPER  |  
-    | -------------- | ------  |  
-    | Timo Michoud   | 302039  |  
-    | Luc Harrison   | 315788  |  
-    | Corentin Genton| 301505  |  
-</p>
+<div align="center">
+
+| Student's name | SCIPER  |  
+| -------------- | ------  |  
+| Timo Michoud   | 302039  |  
+| Luc Harrison   | 315788  |  
+| Corentin Genton| 301505  |  
+
+</div>
 
 
 ## Problematic
