@@ -1,12 +1,10 @@
 # Ça roille aux states - A data visualization project 🌪️🌀
 
-<div align="center">  
     | Student's name | SCIPER | 
     | -------------- | ------ |
     | Timo Michoud   | 302039 |
     | Luc Harrison   | 315788 |
     | Corentin Genton| 301505 |
-</div>
 
 
 ## Problematic
@@ -55,17 +53,16 @@ The exploratory data analysis can be found in this [notebook](https://github.com
 Few studies have been conducted (or at least identified by us) to explore and visualize the Storm Events Database. We found two Kaggle Notebooks  ([first](https://www.kaggle.com/code/kerneler/starter-noaa-storm-events-database-ead6826c-e) and [second](https://www.kaggle.com/code/wumanandpat/exploration-of-storm-events-database)) that propose data pre-processing along with initial analyses and visualizations. Additionally, we identified a [website](https://www.arcgis.com/apps/dashboards/2f0a9f25eea3410ca0443bdce936f8e5) that provides a visualization based on the same dataset. However, this website offers limited customization options for visualizations and can become difficult to use when selecting multiple events. Another relevant resource is a [package](https://github.com/geanders/noaastormevents) available on GitHub, which allows for exploring the Storm Events Database with advanced visualizations using the R programming language.
 
 ### General weather visualizations
-Over the last couple of years many great visualization have been developped in order to show in the most clear way the impact and the reality of the climate change to the public. While we don't directly work with climate change related data such as the increase of the temperatures or ... we can draw inspiration from these visualizations for our own project. 
+Weather and climate change events offer opportunities for highly interactive and impactful visualizations. These visual representations can serve as inspiration for our own project. Below are some compelling examples that could be reproduced or adapted. One classic approach in climate change visualization is illustrating temperature trends over time for a specific location—Switzerland, for instance. This method effectively conveys the evolution of a variable while incorporating geographic variation by displaying maps across different years or time periods ([source of image](https://www.meteoswiss.admin.ch/climate/climate-change.html)). 
 
 <p align="center">
     <img src="Images/swiss_temperature.jpg" alt="screenshot" width="700">
 </p>
-A compelling way to illustrate the evolution of a variable like temperature, while also accounting for geographic variation, is to visualize the map across different years or time periods. [Source](https://www.meteoswiss.admin.ch/climate/climate-change.html)
+
 
 
 ADD NASA Climate Spiral, and others ?
 
-We can also draw inspiration from more general weather visualizations such as ....
 
 While searching for visualizations related to weather events, we came across the following ones that caught our attention:
 <p align="center">
