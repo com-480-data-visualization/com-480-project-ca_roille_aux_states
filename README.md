@@ -45,7 +45,7 @@ This database spans from January 1950 to November 2024, making it particularly v
 
 
 ## Exploratory Data Analysis
-The exploratory data analysis can be found in this notebook (add link to notebook). While we won't pass over all the details, some of the numbers are:
+The exploratory data analysis can be found in this [notebook](https://github.com/com-480-data-visualization/com-480-project-ca_roille_aux_states/blob/master/EDA.ipynb). While we won't pass over all the details, some of the numbers are:
 - 1937859 unique events
 - N unique type of events such as Tornado, Hail, Thunderstorm Wind or Flood
 -  
