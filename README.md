@@ -1,13 +1,11 @@
 # Ça roille aux states - A data visualization project 🌪️🌀
 
 <p align="center">
-
     | Student's name | SCIPER  |  
     | -------------- | ------  |  
     | Timo Michoud   | 302039  |  
     | Luc Harrison   | 315788  |  
     | Corentin Genton| 301505  |  
-
 </p>
 
 
@@ -71,7 +69,7 @@ Weather data is frequently visualized on an interactive digital globe, enabling 
     <img src="Images/earth.png" alt="screenshot" width="700">
 </p>
 
-These two images illustrate different approaches to visualizing geographical data, particularly related to climate and environmental events. The first image presents a global map with data points indicating the number of people affected by flooding. This map-based visualization provides a clear spatial representation of the distribution and intensity of events across different regions, making it easier to identify geographical patterns and areas of high impact.
+The following two images illustrate different approaches to visualizing geographical data, particularly related to climate and environmental events. The first image presents a global map with data points indicating the number of people affected by flooding. This map-based visualization provides a clear spatial representation of the distribution and intensity of events across different regions, making it easier to identify geographical patterns and areas of high impact.
 
 The second image, on the other hand, organizes data into a structured regional breakdown, displaying the number of recorded events by category—such as heatwaves, floods, droughts, and wildfires—using color-coded dots. This method allows for a more precise numerical comparison across regions while maintaining an intuitive visual representation.
 
