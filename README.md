@@ -1,11 +1,12 @@
 # Ça roille aux states - A data visualization project 🌪️🌀
 
+<div align='center'>
 | Student's name | SCIPER | 
 | -------------- | ------ |
 | Timo Michoud   | 302039 |
 | Luc Harrison   | 315788 |
 | Corentin Genton| 301505 |
-
+</div>
 
 ## Problematic
 ### Climate Change Problem 
@@ -67,7 +68,11 @@ Weather data is frequently visualized on an interactive digital globe, enabling 
     <img src="Images/earth.png" alt="screenshot" width="700">
 </p>
 
-The following two images were nice examples 
+These two images illustrate different approaches to visualizing geographical data, particularly related to climate and environmental events. The first image presents a global map with data points indicating the number of people affected by flooding. This map-based visualization provides a clear spatial representation of the distribution and intensity of events across different regions, making it easier to identify geographical patterns and areas of high impact.
+
+The second image, on the other hand, organizes data into a structured regional breakdown, displaying the number of recorded events by category—such as heatwaves, floods, droughts, and wildfires—using color-coded dots. This method allows for a more precise numerical comparison across regions while maintaining an intuitive visual representation.
+
+Both approaches have their advantages: maps excel at showcasing spatial trends and regional disparities, while structured breakdowns enable detailed analysis of event frequency and type distribution. Depending on the objective, we might choose a map for a broad geographical overview or a categorized display for an in-depth examination of regional variations. ([source of first image]((https://global-flood-database.cloudtostreet.ai/)), [source of second image]((https://interactive.carbonbrief.org/attribution-studies/index.html))). 
 <p align="center">
     <img src="Images/exposure-map.svg" alt="screenshot" width="700">
 </p>
@@ -76,34 +81,10 @@ The following two images were nice examples
     <img src="Images/region_dots.png" alt="screenshot" width="700">
 </p>
 
+### What unique contributions will we bring?
+djdjdjdjdj
 
-[Source](https://global-flood-database.cloudtostreet.ai/)
-[Source](https://interactive.carbonbrief.org/attribution-studies/index.html)
-
-
-
-
-
-
-<!---
-> - What others have already done with the data?
-> - Why is your approach original?
-> - What source of inspiration do you take? Visualizations that you found on other websites or magazines (might be unrelated to your data).
-> - In case you are using a dataset that you have already explored in another context (ML or ADA course, semester project...), you are required to share the report of that work to outline the differences with the submission for this class.
--->
-
-<!---
-
-## Milestone 2 (18th April, 5pm)
-
-**10% of the final grade**
-
-
-## Milestone 3 (30th May, 5pm)
-
-**80% of the final grade**
-
--->
+### That’s all for now—looking forward to more analyses and visualizations in Milestone 2!
 
 
 
