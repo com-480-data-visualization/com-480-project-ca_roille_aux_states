@@ -1,10 +1,10 @@
 # Ça roille aux states - A data visualization project 🌪️🌀
 
-    | Student's name | SCIPER | 
-    | -------------- | ------ |
-    | Timo Michoud   | 302039 |
-    | Luc Harrison   | 315788 |
-    | Corentin Genton| 301505 |
+| Student's name | SCIPER | 
+| -------------- | ------ |
+| Timo Michoud   | 302039 |
+| Luc Harrison   | 315788 |
+| Corentin Genton| 301505 |
 
 
 ## Problematic
@@ -45,7 +45,9 @@ This database spans from January 1950 to November 2024, making it particularly v
 The exploratory data analysis can be found in this [notebook](https://github.com/com-480-data-visualization/com-480-project-ca_roille_aux_states/blob/master/EDA.ipynb). While we won't pass over all the details, some of the numbers are:
 - 1937859 unique events
 - N unique type of events such as Tornado, Hail, Thunderstorm Wind or Flood
--  
+- sjsjs
+- sjsjsj
+Do not hesitate to check our first analysis of this dataset directly on the notebook. 
 
 
 ## Related work
