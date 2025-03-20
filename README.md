@@ -1,7 +1,7 @@
-# Ça roille aux states - A data visualization project 
+# Ça roille aux states - A data visualization project 🌪️🌀
 
 <div align="center">
-  <h1>🌪️</h1>
+  <h1></h1>
   <table border="1">
     <tr>
       <th>Student's name</th>
@@ -20,7 +20,7 @@
       <td>301505</td>
     </tr>
   </table>
-  <h1>🌀</h1>
+  <h1></h1>
 </div>
 
 
