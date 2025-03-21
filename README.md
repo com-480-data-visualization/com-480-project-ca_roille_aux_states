@@ -64,13 +64,13 @@ Do not hesitate to check our first analysis of this dataset directly on the note
 Few studies have been conducted to explore and visualize the Storm Events Database. We found two Kaggle Notebooks  ([first](https://www.kaggle.com/code/kerneler/starter-noaa-storm-events-database-ead6826c-e) and [second](https://www.kaggle.com/code/wumanandpat/exploration-of-storm-events-database)) that propose data pre-processing along with initial analyses and visualizations. Additionally, we identified a [website](https://www.arcgis.com/apps/dashboards/2f0a9f25eea3410ca0443bdce936f8e5) that provides a visualization based on the same dataset. Another relevant resource is a [package](https://github.com/geanders/noaastormevents), which allows for exploring the Storm Events Database with advanced visualizations.
 
 ### General weather visualizations
-Weather and climate change events offer opportunities for highly interactive and impactful visualizations. These visual representations can serve as inspiration for our own project. Below are some compelling examples that could be reproduced or adapted. One classic approach in climate change visualization is illustrating temperature trends over time for a specific location—Switzerland, for instance. This method effectively conveys the evolution of a variable while incorporating geographic variation by displaying maps across different years or time periods ([source of image](https://www.meteoswiss.admin.ch/climate/climate-change.html)). 
+Weather and climate change events offer opportunities for highly interactive and impactful visualizations. These visual representations can serve as inspiration for our own project. Below are some compelling examples that could be reproduced or adapted. One classic approach in climate change visualization is illustrating temperature trends over time for a specific location—Switzerland, for instance. This method effectively conveys the evolution of a variable while incorporating geographic variation by displaying maps across different years or time periods ([image](https://www.meteoswiss.admin.ch/climate/climate-change.html)). 
 
 <p align="center">
     <img src="Images/swiss_temperature.jpg" alt="screenshot" width="700">
 </p>
 
-Weather data is frequently visualized on an interactive digital globe, enabling users to explore different regions, zoom in on specific locations, and analyze parameters like temperature, wind speed, and precipitation. By rotating the globe and selecting specific areas, users can easily compare weather conditions across various locations and timeframes. This approach enhances accessibility and engagement, making it especially useful for meteorologists, researchers, and the general public interested in real-time weather patterns and climate trends. Although we don’t have global data in our dataset, we could adapt this type of visualization to suit our needs ([source of image](https://earth.nullschool.net/#current/wind/surface/level/orthographic=-97.87,29.90,371)). 
+Weather data is frequently visualized on an interactive digital globe, enabling users to explore different regions, zoom in on specific locations, and analyze parameters like temperature, wind speed, and precipitation. Users can easily compare weather conditions across various locations and timeframes. This approach enhances accessibility and engagement, making it especially useful for the general public. Although we don’t have global data in our dataset, we could adapt this type of visualization to suit our needs ([image](https://earth.nullschool.net/#current/wind/surface/level/orthographic=-97.87,29.90,371)). 
 
 <p align="center">
     <img src="Images/earth.png" alt="screenshot" width="700">
@@ -78,9 +78,7 @@ Weather data is frequently visualized on an interactive digital globe, enabling 
 
 The following two images illustrate different approaches to visualizing geographical data, particularly related to climate and environmental events. The first image presents a global map with data points indicating the number of people affected by flooding. This map-based visualization provides a clear spatial representation of the distribution and intensity of events across different regions, making it easier to identify geographical patterns and areas of high impact.
 
-The second image, on the other hand, organizes data into a structured regional breakdown, displaying the number of recorded events by category—such as heatwaves, floods, droughts, and wildfires—using color-coded dots. This method allows for a more precise numerical comparison across regions while maintaining an intuitive visual representation.
-
-Both approaches have their advantages: maps excel at showcasing spatial trends and regional disparities, while structured breakdowns enable detailed analysis of event frequency and type distribution. Depending on the objective, we might choose a map for a broad geographical overview or a categorized display for an in-depth examination of regional variations. ([source of first image]((https://global-flood-database.cloudtostreet.ai/)), [source of second image]((https://interactive.carbonbrief.org/attribution-studies/index.html))). 
+The second image, on the other hand, organizes data into a structured regional breakdown, displaying the number of recorded events by category—such as heatwaves, floods, droughts, and wildfires—using color-coded dots. This method allows for a more precise numerical comparison across regions while maintaining an intuitive visual representation. ([first image]((https://global-flood-database.cloudtostreet.ai/)), [second image]((https://interactive.carbonbrief.org/attribution-studies/index.html))). 
 <p align="center">
     <img src="Images/exposure-map.svg" alt="screenshot" width="700">
 </p>
@@ -90,7 +88,7 @@ Both approaches have their advantages: maps excel at showcasing spatial trends a
 </p>
 
 ### What unique contributions will we bring?
-As we have observed, our dataset currently lacks comprehensive visual representations. Our objective is to create insightful and impactful visualizations that not only enhance the understanding of the data but also highlight meaningful connections with pressing global issues, such as climate change. By designing clear, engaging, and data-driven visuals, we aim to make complex information more accessible and actionable. These visualizations will help uncover trends, reveal correlations, and provide valuable insights that can contribute to informed discussions and decision-making.
+As we have observed, our dataset currently lacks comprehensive visual representations. Our objective is to create insightful and impactful visualizations that not only enhance the understanding of the data but also highlight meaningful connections with pressing global issues, such as climate change. By designing clear, engaging, and data-driven visuals, we aim to make complex information more accessible and actionable. 
 
 ### That’s all for now—looking forward to more analysis and visualizations in Milestone 2!
 
