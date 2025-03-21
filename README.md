@@ -49,7 +49,7 @@ The exploratory data analysis can be found in this [notebook](https://github.com
   
 ### Historical Data Collection Evolution
 
-It is important to note that "_due to changes in the data collection and processing procedures over time, there are unique periods of record available depending on the event type_." Specifically, as illustrated in the image below, we have the following three distinct phases:
+It is important to note that "_due to changes in the data collection and processing procedures over time_" from the NAOO, "_there are unique periods of record available depending on the event type_" in our dataset. Specifically, as illustrated in the image below, we have the following three distinct phases:
 
 1. **1950-1954:** Only tornado events were recorded
 2. **1955-1995:** Expanded to include tornados, thunderstorm wind, and hail
