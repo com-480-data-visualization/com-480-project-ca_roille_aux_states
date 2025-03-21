@@ -60,10 +60,10 @@ Do not hesitate to check our first analysis of this dataset directly on the note
 
 ## Related work
 ### Using Storm Events Database
-Few studies have been conducted to explore and visualize our dataset. Two Kaggle Notebooks ([1](https://www.kaggle.com/code/kerneler/starter-noaa-storm-events-database-ead6826c-e), [2](https://www.kaggle.com/code/wumanandpat/exploration-of-storm-events-database)) propose data processing, initial analyses and visualizations. Additionally, this [website](https://www.arcgis.com/apps/dashboards/2f0a9f25eea3410ca0443bdce936f8e5) provides some visualizations and this [package](https://github.com/geanders/noaastormevents) allows for exploring the Storm Events Database with advanced visualizations.
+Few studies have been conducted to explore and visualize our dataset. Two Kaggle Notebooks ([1](https://www.kaggle.com/code/kerneler/starter-noaa-storm-events-database-ead6826c-e), [2](https://www.kaggle.com/code/wumanandpat/exploration-of-storm-events-database)) propose initial analyses and visualizations. Additionally, this [website](https://www.arcgis.com/apps/dashboards/2f0a9f25eea3410ca0443bdce936f8e5) provides some visualizations and this [package](https://github.com/geanders/noaastormevents) allows for exploring the Storm Events Database with advanced visualizations.
 
 ### General weather visualizations
-Weather events offer opportunities for interactive and impactful visualizations that can serve as inspiration for our own project. Below are some examples that could be reproduced or adapted. One approach in climate change visualization is illustrating temperature trends over time for a specific location. This method effectively conveys the evolution of a variable while incorporating geographic variation by displaying maps across different time periods ([3](https://www.meteoswiss.admin.ch/climate/climate-change.html)). 
+Weather events offer opportunities for interactive and impactful visualizations that can serve as inspiration for our own project. Below are some examples that could be reproduced or adapted. One approach in climate change visualization is illustrating temperature trends over time for a specific location. This method effectively conveys the evolution of a variable while incorporating geographic variation ([3](https://www.meteoswiss.admin.ch/climate/climate-change.html)). 
 
 <p align="center">
     <img src="Images/swiss_temperature.jpg" alt="screenshot" width="700">
@@ -75,7 +75,7 @@ Weather data can be visualized on an interactive globe, enabling users to explor
     <img src="Images/earth.png" alt="screenshot" width="700">
 </p>
 
-The following images illustrate approaches to visualizing geographical data. The first one presents a global map with data indicating the number of people affected by flooding. This map-based visualization provides a clear spatial representation of the distribution and intensity of events across different regions, making it easier to identify geographical patterns and areas of impact. The second one organizes data into a structured regional breakdown, displaying the number of recorded events by category using color-coded dots. This method allows for a more precise numerical comparison across regions. ([5]((https://global-flood-database.cloudtostreet.ai/)), [6]((https://interactive.carbonbrief.org/attribution-studies/index.html))). 
+The following images illustrate approaches to visualizing geographical data. The first one presents a global map showing the number of people affected by flooding. This map-based visualization provides a clear spatial representation of the distribution and intensity of events across different regions. The second one organizes data into a structured regional breakdown, displaying the number of recorded events by category using color-coded dots. This method allows for a more precise numerical comparison across regions. ([5]((https://global-flood-database.cloudtostreet.ai/)), [6]((https://interactive.carbonbrief.org/attribution-studies/index.html))). 
 <p align="center">
     <img src="Images/exposure-map.svg" alt="screenshot" width="700">
 </p>
