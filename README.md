@@ -18,9 +18,7 @@ Climate change is probably the biggest threat ever experienced by mankind. It re
 ### The Special Case of the USA
 The United States experiences a high number of extreme weather events due to its vast size and diverse geographical and climatic conditions. From hurricanes and tornadoes to wildfires and blizzards, these events cause significant human and economic losses. Some, like Hurricane Katrina in 2005 or the recent California wildfires intensified by  [high winds](https://www.worldweatherattribution.org/climate-change-increased-the-likelihood-of-wildfire-disaster-in-highly-exposed-los-angeles-area/), leave lasting impacts on communities. However, beyond these widely known disasters, many smaller-scale events occur frequently, each bringing its own casualties and damages.
 
-Among these, tornadoes are particularly frequent, making the U.S. the most tornado-prone country in the world with around 1,200 tornadoes occuring annually. The central area consisting a line between Texas and South Dakota is especially susceptible to tornadoes due to the collision of warm, moist air from the Gulf of Mexico with cool, dry air from Canada, creating the ideal conditions for powerful thunderstorms that can generate tornadoes. Although tornadoes also occur in other countries, none experience them as frequently as the U.S.
-
-Among these, tornadoes are particularly frequent, making the U.S. the most tornado-prone country in the world, with thousands occurring annually. Their formation is driven by specific atmospheric conditions, particularly where warm, moist air collides with cooler, drier air, creating powerful thunderstorms capable of generating tornadoes. While tornadoes occur in other parts of the world, no country experiences them as frequently as the U.S.
+Among these, tornadoes are particularly frequent, making the U.S. the $\textbf{most}$ tornado-prone country in the world with around 1,200 tornadoes occuring annually. The central area consisting a line between Texas and South Dakota is especially susceptible to tornadoes due to the collision of warm, moist air from the Gulf of Mexico with cool, dry air from Canada, creating the ideal conditions for powerful thunderstorms that can generate tornadoes. Although tornadoes also occur in other countries, none experience them as frequently as the U.S.
 
 Hurricanes are another major threat, forming over warm ocean waters and often making landfall with destructive winds, storm surges, and heavy rainfall. These storms frequently lead to severe flooding and widespread infrastructure damage. Their occurrence and intensity are influenced by oceanic and atmospheric patterns, which will be part of our investigation.
 
@@ -50,10 +48,22 @@ This database spans from January 1950 to November 2024, making it particularly v
 
 ## Exploratory Data Analysis
 The exploratory data analysis can be found in this [notebook](https://github.com/com-480-data-visualization/com-480-project-ca_roille_aux_states/blob/master/EDA.ipynb). While we won't pass over all the details, some of the numbers are:
-- 1937859 unique events
-- N unique type of events such as Tornado, Hail, Thunderstorm Wind or Flood
-- sjsjs
-- sjsjsj
+- 1'941'100 unique events
+- 55 unique type of events such as Tornado, Hail, Thunderstorm Wind or Flood
+### Historical Data Collection Evolution
+
+The data collection has evolved through three distinct phases:
+
+1. **1950-1954:** Only tornado events were recorded
+2. **1955-1995:** Expanded to include tornados, thunderstorm wind, and hail
+3. **1996-present:** Further expanded to include 48 different event types
+
+This explains the dramatic increase in recorded events after 1995, which reflects changes in data collection rather than necessarily an increase in severe weather.
+
+### Seasonal Patterns
+
+Our analysis reveals clear seasonal patterns, where we observe how certain event types vary throughout the year. For instance, thunderstorm-related events predominantly occur during summer months, while winter storms are concentrated in December through February. These temporal patterns provide critical insights into the seasonal vulnerability of different regions to specific hazards.
+
 Do not hesitate to check our first analysis of this dataset directly on the notebook. 
 
 
@@ -90,7 +100,7 @@ Both approaches have their advantages: maps excel at showcasing spatial trends a
 ### What unique contributions will we bring?
 As we have observed, our dataset currently lacks comprehensive visual representations. Our objective is to create insightful and impactful visualizations that not only enhance the understanding of the data but also highlight meaningful connections with pressing global issues, such as climate change. By designing clear, engaging, and data-driven visuals, we aim to make complex information more accessible and actionable. These visualizations will help uncover trends, reveal correlations, and provide valuable insights that can contribute to informed discussions and decision-making.
 
-### That’s all for now—looking forward to more analyses and visualizations in Milestone 2!
+### That’s all for now—looking forward to more analysis and visualizations in Milestone 2!
 
 
 
