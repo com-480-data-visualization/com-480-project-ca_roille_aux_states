@@ -75,7 +75,7 @@ Weather data can be visualized on an interactive globe, enabling users to explor
     <img src="Images/earth.png" alt="screenshot" width="700">
 </p>
 
-The following images illustrate approaches to visualizing geographical data. The first one presents a global map showing the number of people affected by flooding. This map-based visualization provides a clear spatial representation of the distribution and intensity of events across different regions. The second one organizes data into a structured regional breakdown, displaying the number of recorded events by category using color-coded dots. This method allows for a more precise numerical comparison across regions. ([5]((https://global-flood-database.cloudtostreet.ai/)), [6]((https://interactive.carbonbrief.org/attribution-studies/index.html))). 
+The following images illustrate approaches to visualizing geographical data. The first one presents a global map showing the number of people affected by flooding. This map-based visualization provides a clear spatial representation of the distribution and intensity of events across different regions. The second one organizes data into a structured regional breakdown, displaying the number of recorded events by category using color-coded dots. This method allows for a more precise numerical comparison across regions. ([5](https://global-flood-database.cloudtostreet.ai/), [6](https://interactive.carbonbrief.org/attribution-studies/index.html)). 
 <p align="center">
     <img src="Images/exposure-map.svg" alt="screenshot" width="700">
 </p>
