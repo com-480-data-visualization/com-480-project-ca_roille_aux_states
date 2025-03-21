@@ -84,7 +84,7 @@ The following images illustrate approaches to visualizing geographical data. The
     <img src="Images/region_dots.png" alt="screenshot" width="700">
 </p>
 
-### What unique contributions will we bring?
+### Our unique contributions
 Our dataset currently lacks comprehensive visual representations. Our objective is to create insightful and impactful visualizations that not only enhance the understanding of the data but also highlight meaningful connections with pressing global issues, such as climate change.
 
 ### That’s all for now—looking forward to more analysis and visualizations in Milestone 2!
