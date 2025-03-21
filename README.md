@@ -39,24 +39,25 @@ To address our research question, we need relevant data. As previously mentioned
 > - Rare, unusual, weather phenomena that generate media attention, such as snow flurries in South Florida or the San Diego coastal area; and
 > - Other significant meteorological events, such as record maximum or minimum temperatures or precipitation that occur in connection with another event.
 
-This database spans from January 1950 to November 2024, making it particularly valuable for analyzing the impact of climate change on the frequency of extreme weather events. However, it is important to note that "_due to changes in the data collection and processing procedures over time, there are unique periods of record available depending on the event type_." Specifically, as illustrated in the image below, only tornado events were recorded between January 1950 and January 1955. From January 1955 to January 1996, data collection expanded to include tornado, thunderstorm wind, and hail events. Since January 1996, the database has documented [48 types of events](https://www.ncdc.noaa.gov/stormevents/pd01016005curr.pdf).
-
-<p align="center">
-    <img src="Images/type_of_events.png" alt="screenshot" width="750">
-</p>
+This database spans from January 1950 to November 2024, making it particularly valuable for analyzing the impact of climate change on the frequency of extreme weather events. 
 
 
 ## Exploratory Data Analysis
 The exploratory data analysis can be found in this [notebook](https://github.com/com-480-data-visualization/com-480-project-ca_roille_aux_states/blob/master/EDA.ipynb). While we won't pass over all the details, some of the numbers are:
 - 1'941'100 unique events
-- 55 unique type of events such as Tornado, Hail, Thunderstorm Wind or Flood
+- 48 unique type of events such as Tornado, Hail, Thunderstorm Wind or Flood
+  
 ### Historical Data Collection Evolution
 
-The data collection has evolved through three distinct phases:
+It is important to note that "_due to changes in the data collection and processing procedures over time, there are unique periods of record available depending on the event type_." Specifically, as illustrated in the image below, we have the following three distinct phases:
 
 1. **1950-1954:** Only tornado events were recorded
 2. **1955-1995:** Expanded to include tornados, thunderstorm wind, and hail
-3. **1996-present:** Further expanded to include 48 different event types
+3. **1996-present:** Further expanded to include [48 different types of events](https://www.ncdc.noaa.gov/stormevents/pd01016005curr.pdf).
+
+<p align="center">
+    <img src="Images/type_of_events.png" alt="screenshot" width="750">
+</p>
 
 This explains the dramatic increase in recorded events after 1995, which reflects changes in data collection rather than necessarily an increase in severe weather.
 
