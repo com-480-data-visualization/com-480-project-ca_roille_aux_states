@@ -20,17 +20,19 @@ The United States experiences a high number of extreme weather events due to its
 
 Among these, tornadoes are particularly frequent, making the U.S. the most tornado-prone country in the world with around 1,200 tornadoes occuring annually. The central area consisting a line between Texas and South Dakota is especially susceptible to tornadoes due to the collision of warm, moist air from the Gulf of Mexico with cool, dry air from Canada, creating the ideal conditions for powerful thunderstorms that can generate tornadoes. Although tornadoes also occur in other countries, none experience them as frequently as the U.S.
 
-In addition to tornadoes, the United States is also highly susceptible to hurricanes, which are particularly common along the East coast. The Atlantic hurricane season runs from June to November, with states such as Florida, Texas, and Louisiana frequently bearing the brunt of these powerful storms. Hurricanes bring destructive winds, storm surges, and heavy rainfall, often leading to widespread flooding and infrastructure damage. The Gulf of Mexico’s warm waters and the Atlantic Ocean’s climatic patterns contribute to the formation of these intense cyclones.
+Among these, tornadoes are particularly frequent, making the U.S. the most tornado-prone country in the world, with thousands occurring annually. Their formation is driven by specific atmospheric conditions, particularly where warm, moist air collides with cooler, drier air, creating powerful thunderstorms capable of generating tornadoes. While tornadoes occur in other parts of the world, no country experiences them as frequently as the U.S.
 
-Beyond tornadoes and hurricanes, the U.S. also faces other extreme weather phenomena, including blizzards, wildfires, droughts, and heatwaves. The northern and northeastern states, as well as the Midwest, regularly experience severe winter storms, which can cause heavy snowfall, icy conditions, and dangerously low temperatures. Meanwhile, the western states, especially California, are frequently impacted by wildfires, which are exacerbated by prolonged droughts and high temperatures. Heatwaves, particularly in the Southwest, pose significant risks, with states like Arizona and Nevada experiencing dangerously high temperatures during the summer months.
+Hurricanes are another major threat, forming over warm ocean waters and often making landfall with destructive winds, storm surges, and heavy rainfall. These storms frequently lead to severe flooding and widespread infrastructure damage. Their occurrence and intensity are influenced by oceanic and atmospheric patterns, which will be part of our investigation.
 
-Although extreme weather events are not exclusive to the United States, few countries provide as comprehensive and long-term datasets on these phenomena. Therefore, our analysis and visualizations will primarily focus on the U.S., where reliable data allows for a more in-depth exploration of trends, patterns, and impacts of extreme weather events over time. 
+Beyond tornadoes and hurricanes, the U.S. is also impacted by blizzards, wildfires, droughts, and heatwaves. Severe winter storms bring heavy snowfall, icy conditions, and dangerously low temperatures, while wildfires are fueled by prolonged droughts and rising temperatures. Heatwaves pose serious health risks, particularly in regions prone to extreme summer temperatures. Understanding where these events occur most frequently and the underlying climatic conditions that contribute to them will be a key part of our analysis.
+
+Although extreme weather events happen worldwide, the U.S. provides some of the most comprehensive and long-term datasets on these phenomena. This allows us to explore trends, patterns, and impacts in depth, identifying where extreme weather is most prevalent and uncovering the factors that drive these events.
+
 
 ### Research questions
-1. How does climate change contribute to the increasing frequency of rare weather events in the USA?
+1. How does climate change contribute to the increasing frequency of extreme weather events in the USA?
 2. What are the economic and human consequences of the growing occurrence of extreme weather events?
-3. How can statistical analyses of past events help us understand their causes and improve forecasting?
-
+3. How can statistical analyses of past extreme weather events help predict future occurrences and improve preparedness measures?
 
 ## Dataset
 To address our research question, we need relevant data. As previously mentioned, one reason for focusing on the USA is the availability of high-quality data on extreme weather events. Thanks to the National Oceanic and Atmospheric Administration (NOAA), we have access to the [Storm Events Database](https://www.ncdc.noaa.gov/stormevents/), which provides information on:
