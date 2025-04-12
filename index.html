@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>US States Map</title>
     <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://unpkg.com/topojson-client@3"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -19,39 +20,19 @@
             padding: 20px;
             text-align: center;
         }
-        #map {
-            width: 100%;
-            height: 100vh;
-            position: relative;
+        main {
+            padding: 20px;
+            text-align: center;
         }
-        .state {
-            fill: #ccc;
-            stroke: #333;
-            stroke-width: 1;
-            transition: fill 0.3s;
+        svg {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            background-color: #f9f9f9;
         }
-        .state:hover {
-            fill: #aaa;
-            cursor: pointer;
-        }
-        .state.active {
-            fill: #4CAF50;
-        }
-        .reset-button {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            padding: 10px 15px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            z-index: 100;
-            display: none;
-        }
-        .reset-button:hover {
-            background-color: #3e8e41;
+        path {
+            transition: fill 0.3s ease;
         }
         .state-info {
             position: absolute;
@@ -61,6 +42,7 @@
             background-color: rgba(255, 255, 255, 0.8);
             border-radius: 4px;
             z-index: 100;
+            display: none;
         }
     </style>
 </head>
@@ -69,218 +51,105 @@
         <h1>Interactive US States Map</h1>
     </header>
     <main>
-        <div id="map">
-            <button class="reset-button">Reset View</button>
-            <div class="state-info"></div>
-        </div>
+        <div id="map-container"></div>
+        <div class="state-info"></div>
     </main>
     <script>
-        // Create a us-states.js file with this content and include it before this script
-        // For now, we'll fetch from a more reliable CDN source
-        const width = window.innerWidth;
-        const height = window.innerHeight - 100; // Account for header
-        let activeState = null;
-
-        // Set up the map projection
-        const projection = d3.geoAlbersUsa()
-            .translate([width / 2, height / 2])
-            .scale([width]);
-
-        // Set up the path generator
-        const path = d3.geoPath().projection(projection);
-
-        // Create an SVG element to contain the map
-        const svg = d3.select("#map")
-            .append("svg")
-            .attr("width", width)
-            .attr("height", height);
-
-        // Create a group for the states
-        const g = svg.append("g");
-
-        // Get the state info div
-        const stateInfo = d3.select(".state-info");
-
-        // Set up zoom behavior
-        const zoom = d3.zoom()
-            .scaleExtent([1, 8])
-            .on("zoom", (event) => {
-                g.attr("transform", event.transform);
+        // Wait for both D3 and TopoJSON to load
+        document.addEventListener('DOMContentLoaded', function() {
+            const width = 975;
+            const height = 610;
+            
+            // Load the US states TopoJSON data
+            d3.json("us-states-10m.json").then(us => {
+                createMap(us);
+            }).catch(error => {
+                console.error("Error loading local data:", error);
+                // Fallback to CDN source if local file fails
+                d3.json("https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json").then(us => {
+                    createMap(us);
+                }).catch(error => {
+                    console.error("Error loading CDN data:", error);
+                    document.getElementById("map-container").innerHTML = 
+                        "<p>Error loading map data. Please try again later.</p>";
+                });
             });
-
-        svg.call(zoom);
-
-        // Function to reset the view
-        function resetView() {
-            svg.transition()
-                .duration(750)
-                .call(zoom.transform, d3.zoomIdentity);
             
-            if (activeState) {
-                d3.select(activeState).classed("active", false);
-                activeState = null;
-            }
-            
-            d3.select(".reset-button").style("display", "none");
-            stateInfo.html("").style("display", "none");
-        }
-
-        // Add event listener to reset button
-        d3.select(".reset-button").on("click", resetView);
-
-        // Try a different GeoJSON source
-        d3.json("https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json")
-            .then(us => {
-                // Convert TopoJSON to GeoJSON
-                const states = topojson.feature(us, us.objects.states).features;
+            function createMap(us) {
+                const zoom = d3.zoom()
+                    .scaleExtent([1, 8])
+                    .on("zoom", zoomed);
                 
-                // Draw the states
-                g.selectAll("path")
-                    .data(states)
+                const svg = d3.select("#map-container")
+                    .append("svg")
+                    .attr("viewBox", [0, 0, width, height])
+                    .attr("width", width)
+                    .attr("height", height)
+                    .attr("style", "max-width: 100%; height: auto;")
+                    .on("click", reset);
+                
+                const path = d3.geoPath();
+                const g = svg.append("g");
+                
+                const states = g.append("g")
+                    .attr("fill", "#444")
+                    .attr("cursor", "pointer")
+                    .selectAll("path")
+                    .data(topojson.feature(us, us.objects.states).features)
                     .join("path")
-                    .attr("class", "state")
-                    .attr("d", path)
-                    .attr("id", d => `state-${d.properties.name}`)
-                    .on("mouseover", (event, d) => {
-                        const stateName = d.properties.name || "State";
-                        stateInfo.html(`<strong>${stateName}</strong>`).style("display", "block");
-                    })
-                    .on("mouseout", () => {
-                        if (!activeState) {
-                            stateInfo.style("display", "none");
-                        }
-                    })
-                    .on("click", function(event, d) {
-                        event.stopPropagation();
-                        
-                        // Reset previous active state
-                        if (activeState) {
-                            d3.select(activeState).classed("active", false);
-                        }
-                        
-                        // Set new active state
-                        activeState = this;
-                        d3.select(this).classed("active", true);
-                        
-                        // Show state info
-                        const stateName = d.properties.name || "State";
-                        stateInfo.html(`<strong>${stateName}</strong>`).style("display", "block");
-                        
-                        // Show reset button
-                        d3.select(".reset-button").style("display", "block");
-                        
-                        // Get the bounding box of the clicked state
-                        const bounds = path.bounds(d);
-                        const dx = bounds[1][0] - bounds[0][0];
-                        const dy = bounds[1][1] - bounds[0][1];
-                        const x = (bounds[0][0] + bounds[1][0]) / 2;
-                        const y = (bounds[0][1] + bounds[1][1]) / 2;
-                        
-                        // Calculate the scale and translate parameters
-                        const scale = Math.max(1, Math.min(8, 0.9 / Math.max(dx / width, dy / height)));
-                        const translate = [width / 2 - scale * x, height / 2 - scale * y];
-                        
-                        // Apply the zoom transformation
-                        svg.transition()
-                            .duration(750)
-                            .call(
-                                zoom.transform,
-                                d3.zoomIdentity
-                                    .translate(translate[0], translate[1])
-                                    .scale(scale)
-                            );
-                    });
-
-                // Click on svg background to reset
-                svg.on("click", function(event) {
-                    if (event.target === this) {
-                        resetView();
-                    }
-                });
-            })
-            .catch(error => {
-                console.error("Error loading the GeoJSON:", error);
+                    .on("click", clicked)
+                    .attr("d", path);
                 
-                // Fallback to using a simpler approach without external dependencies
-                renderFallbackMap();
-            });
-
-        // Fallback function to render a simpler map if both sources fail
-        function renderFallbackMap() {
-            // Create a very basic map with rectangles representing states
-            d3.select("#map").html("<p>Using simplified map due to data loading issues.</p>");
-            
-            const statesData = [
-                {name: "Alabama", x: 650, y: 350, width: 50, height: 80},
-                {name: "Alaska", x: 100, y: 450, width: 100, height: 80},
-                {name: "Arizona", x: 200, y: 300, width: 60, height: 80},
-                {name: "California", x: 100, y: 250, width: 60, height: 100},
-                {name: "Colorado", x: 300, y: 250, width: 70, height: 60},
-                {name: "Florida", x: 700, y: 400, width: 100, height: 50},
-                {name: "New York", x: 700, y: 200, width: 70, height: 40},
-                {name: "Texas", x: 400, y: 350, width: 100, height: 100}
-                // Add more states as needed
-            ];
-
-            const simpleSvg = d3.select("#map")
-                .append("svg")
-                .attr("width", width)
-                .attr("height", height);
-
-            const simpleG = simpleSvg.append("g");
-
-            simpleG.selectAll("rect")
-                .data(statesData)
-                .enter()
-                .append("rect")
-                .attr("x", d => d.x)
-                .attr("y", d => d.y)
-                .attr("width", d => d.width)
-                .attr("height", d => d.height)
-                .attr("fill", "#ccc")
-                .attr("stroke", "#333")
-                .attr("class", "state")
-                .on("click", function(event, d) {
-                    d3.select(this).attr("fill", "#4CAF50");
-                    stateInfo.html(`<strong>${d.name}</strong>`).style("display", "block");
-                });
-
-            simpleG.selectAll("text")
-                .data(statesData)
-                .enter()
-                .append("text")
-                .attr("x", d => d.x + d.width/2)
-                .attr("y", d => d.y + d.height/2)
-                .attr("text-anchor", "middle")
-                .attr("dominant-baseline", "middle")
-                .attr("font-size", "10px")
-                .text(d => d.name);
+                states.append("title")
+                    .text(d => d.properties.name);
                 
-            // Add zoom functionality
-            const simpleZoom = d3.zoom()
-                .scaleExtent([1, 8])
-                .on("zoom", (event) => {
-                    simpleG.attr("transform", event.transform);
-                });
-
-            simpleSvg.call(simpleZoom);
-        }
-
-        // Make map responsive
-        window.addEventListener("resize", function() {
-            const width = window.innerWidth;
-            const height = window.innerHeight - 100;
-            
-            svg.attr("width", width)
-               .attr("height", height);
-            
-            projection.translate([width / 2, height / 2])
-                     .scale([width]);
-            
-            g.selectAll("path").attr("d", path);
+                g.append("path")
+                    .attr("fill", "none")
+                    .attr("stroke", "white")
+                    .attr("stroke-linejoin", "round")
+                    .attr("d", path(topojson.mesh(us, us.objects.states, (a, b) => a !== b)));
+                
+                svg.call(zoom);
+                
+                function reset() {
+                    states.transition().style("fill", null);
+                    svg.transition().duration(750).call(
+                        zoom.transform,
+                        d3.zoomIdentity,
+                        d3.zoomTransform(svg.node()).invert([width / 2, height / 2])
+                    );
+                    d3.select(".state-info").style("display", "none");
+                }
+                
+                function clicked(event, d) {
+                    const [[x0, y0], [x1, y1]] = path.bounds(d);
+                    event.stopPropagation();
+                    states.transition().style("fill", null);
+                    d3.select(this).transition().style("fill", "#4CAF50");
+                    
+                    svg.transition().duration(750).call(
+                        zoom.transform,
+                        d3.zoomIdentity
+                            .translate(width / 2, height / 2)
+                            .scale(Math.min(8, 0.9 / Math.max((x1 - x0) / width, (y1 - y0) / height)))
+                            .translate(-(x0 + x1) / 2, -(y0 + y1) / 2),
+                        d3.pointer(event, svg.node())
+                    );
+                    
+                    // Show state info
+                    const stateName = d.properties.name;
+                    d3.select(".state-info")
+                        .html(`<strong>${stateName}</strong>`)
+                        .style("display", "block");
+                }
+                
+                function zoomed(event) {
+                    const {transform} = event;
+                    g.attr("transform", transform);
+                    g.attr("stroke-width", 1 / transform.k);
+                }
+            }
         });
     </script>
-    <!-- Include TopoJSON for conversion -->
-    <script src="https://unpkg.com/topojson-client@3"></script>
 </body>
 </html>
