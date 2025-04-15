@@ -57,11 +57,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // state data per year
     let eventDataByState = {}; // Global to hold the event counts per state
+    let globalMax = 0;
 
     d3.json("milestone2/state_event_counts.json").then(data => {
         eventDataByState = data;
         console.log("Event data loaded:", eventDataByState);
+        
+        for (const state in eventDataByState) {
+            const maxForState = d3.max(eventDataByState[state], d => d.count);
+            if (maxForState > globalMax) globalMax = maxForState;
+        }
     });
+
 
     // Create the SVG element
     const width = 960;
@@ -176,13 +183,14 @@ document.addEventListener('DOMContentLoaded', function() {
             .attr("height", height);
 
         const x = d3.scaleBand()
-            .domain(chartData.map(d => d.year))
+            .domain(d3.range(1950,2025,1))//chartData.map(d => d.year))
             .range([margin.left, width - margin.right])
             .padding(0.1);
 
         const y = d3.scaleLinear()
-            .domain([0, d3.max(chartData, d => d.count)]).nice()
-            .range([height - margin.bottom, margin.top]);
+            .domain([0, globalMax])
+            .range([height - margin.bottom, margin.top])
+            .nice();
 
         svg.append("g")
             .selectAll("rect")
@@ -197,7 +205,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         svg.append("g")
             .attr("transform", `translate(0,${height - margin.bottom})`)
-            .call(d3.axisBottom(x).tickValues(chartData.map(d => d.year).filter(year => year % 5 === 0)));
+            .call(d3.axisBottom(x).tickValues(d3.range(1950,2025,5)));
 
         svg.append("g")
             .attr("transform", `translate(${margin.left},0)`)
