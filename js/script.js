@@ -1,5 +1,6 @@
 // Main map visualization script
 document.addEventListener('DOMContentLoaded', function() {
+    console.log("Script loaded");
     // Sample state data with capitals and populations
     const stateDetails = {
         "Alabama": { capital: "Montgomery", population: "4.9 million" },
@@ -54,6 +55,14 @@ document.addEventListener('DOMContentLoaded', function() {
         "Wyoming": { capital: "Cheyenne", population: "0.6 million" }
     };
 
+    // state data per year
+    let eventDataByState = {}; // Global to hold the event counts per state
+
+    d3.json("milestone2/state_event_counts.json").then(data => {
+        eventDataByState = data;
+        console.log("Event data loaded:", eventDataByState);
+    });
+
     // Create the SVG element
     const width = 960;
     const height = 600;
@@ -77,7 +86,7 @@ document.addEventListener('DOMContentLoaded', function() {
         .projection(projection);
     
     // Load the TopoJSON data
-    d3.json("../us-states-10m.json")
+    d3.json("us-states-10m.json")
         .then(function(us) {
             console.log("Data loaded successfully:", us);
             
@@ -103,6 +112,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     
                     // Update info panel
                     updateInfoPanel(stateName);
+                    updateStateChart(stateName.toUpperCase());
+                    
                 });
             
             // Add state borders
@@ -140,6 +151,71 @@ document.addEventListener('DOMContentLoaded', function() {
         // Show the info panel
         infoPanel.style.display = "block";
     }
+
+    function updateStateChart(stateName) {
+        const chartData = eventDataByState[stateName];
+
+        // Clear existing chart
+        d3.select("#state-chart-container").html("");
+        d3.select("#chart-title").text("");
+
+        if (!chartData) {
+            d3.select("#chart-title").text("No storm data available for " + stateName);
+            return;
+        }
+
+        d3.select("#chart-title").text("Storm Events in " + stateName);
+
+        const width = 800;
+        const height = 300;
+        const margin = { top: 20, right: 30, bottom: 40, left: 50 };
+
+        const svg = d3.select("#state-chart-container")
+            .append("svg")
+            .attr("width", width)
+            .attr("height", height);
+
+        const x = d3.scaleBand()
+            .domain(chartData.map(d => d.year))
+            .range([margin.left, width - margin.right])
+            .padding(0.1);
+
+        const y = d3.scaleLinear()
+            .domain([0, d3.max(chartData, d => d.count)]).nice()
+            .range([height - margin.bottom, margin.top]);
+
+        svg.append("g")
+            .selectAll("rect")
+            .data(chartData)
+            .enter()
+            .append("rect")
+            .attr("x", d => x(d.year))
+            .attr("y", d => y(d.count))
+            .attr("height", d => y(0) - y(d.count))
+            .attr("width", x.bandwidth())
+            .attr("fill", "#2196F3");
+
+        svg.append("g")
+            .attr("transform", `translate(0,${height - margin.bottom})`)
+            .call(d3.axisBottom(x).tickValues(chartData.map(d => d.year).filter(year => year % 5 === 0)));
+
+        svg.append("g")
+            .attr("transform", `translate(${margin.left},0)`)
+            .call(d3.axisLeft(y));
+
+        svg.append("text")
+            .attr("x", width / 2)
+            .attr("y", height - 5)
+            .attr("text-anchor", "middle")
+            .text("Year");
+
+        svg.append("text")
+            .attr("transform", "rotate(-90)")
+            .attr("x", -height / 2)
+            .attr("y", 15)
+            .attr("text-anchor", "middle")
+            .text("Storm Count");
+    }    
     
     // Click on map background to hide info panel
     svg.on("click", function(event) {
@@ -156,7 +232,8 @@ document.addEventListener('DOMContentLoaded', function() {
             .attr("width", width)
             .attr("height", height)
             .attr("fill", "white")
-            .attr("opacity", 0);
+            .attr("opacity", 0)
+            .style("pointer-events", "none");
         
         // Function to create a lightning flash
         function createLightningFlash() {

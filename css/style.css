@@ -52,6 +52,7 @@ h1 {
     left: 20px;
     padding: 10px 15px;
     background-color: white;
+    color: black;
     border: 1px solid #ddd;
     border-radius: 4px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
