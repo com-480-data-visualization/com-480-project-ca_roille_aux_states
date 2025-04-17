@@ -256,24 +256,39 @@ document.addEventListener('DOMContentLoaded', function() {
             .attr("cx", d => x(d.year))
             .attr("cy", d => y(d.value))
             .attr("r", 3.5) // Slightly larger radius
-            .attr("fill", "#FF5722")
+            .attr("fill", "#d6112f")
             .attr("opacity", 0.8); // Slight transparency
 
         // --- 8. Smoothed Trend Line ---
+        /*
         const trendLine = d3.line()
             .x(d => x(d.year))
             .y(d => y(d.value))
             .curve(d3.curveNatural); // Natural smooth interpolation
 
+        
+        */
+        const loess = d3.regressionLoess()
+            .x(d => d.year)
+            .y(d => d.value)
+            .bandwidth(0.3); // Optional: adjust for smoothing
+
+        const loessData = loess(tempData); // Compute regression
+        console.log("LOESS function:", d3.regressionLoess);
+
         svg.append("path")
-            .datum(tempData) // Bind the whole dataset
-            .attr("class", "trend-line") // Add class
+            .datum(loessData) // loessData is array of [x, y]
             .attr("fill", "none")
             .attr("stroke", "#2196F3")
             .attr("stroke-width", 2)
             .attr("stroke-linejoin", "round")
             .attr("stroke-linecap", "round")
-            .attr("d", trendLine);
+            .attr("class", "trend-line") // Optional class for CSS
+            .attr("d", d3.line()
+                .x(d => x(d[0])) // x = year
+                .y(d => y(d[1])) // y = predicted value
+            );
+
 
         // --- 9. Labels ---
         // X-axis Label
@@ -337,7 +352,7 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        d3.select("#chart-title").text("Storm Events in " + stateName);
+        d3.select("#chart-title").text("Informations about " + stateName);
 
         const width = 800;
         const height = 300;
