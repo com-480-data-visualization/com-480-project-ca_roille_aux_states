@@ -2,58 +2,12 @@
 document.addEventListener('DOMContentLoaded', function() {
     console.log("Script loaded");
     // Sample state data with capitals and populations
-    const stateDetails = {
-        "Alabama": { capital: "Montgomery", population: "4.9 million" },
-        "Alaska": { capital: "Juneau", population: "0.7 million" },
-        "Arizona": { capital: "Phoenix", population: "7.3 million" },
-        "Arkansas": { capital: "Little Rock", population: "3.0 million" },
-        "California": { capital: "Sacramento", population: "39.5 million" },
-        "Colorado": { capital: "Denver", population: "5.8 million" },
-        "Connecticut": { capital: "Hartford", population: "3.6 million" },
-        "Delaware": { capital: "Dover", population: "1.0 million" },
-        "Florida": { capital: "Tallahassee", population: "21.5 million" },
-        "Georgia": { capital: "Atlanta", population: "10.6 million" },
-        "Hawaii": { capital: "Honolulu", population: "1.4 million" },
-        "Idaho": { capital: "Boise", population: "1.8 million" },
-        "Illinois": { capital: "Springfield", population: "12.7 million" },
-        "Indiana": { capital: "Indianapolis", population: "6.7 million" },
-        "Iowa": { capital: "Des Moines", population: "3.2 million" },
-        "Kansas": { capital: "Topeka", population: "2.9 million" },
-        "Kentucky": { capital: "Frankfort", population: "4.5 million" },
-        "Louisiana": { capital: "Baton Rouge", population: "4.6 million" },
-        "Maine": { capital: "Augusta", population: "1.3 million" },
-        "Maryland": { capital: "Annapolis", population: "6.0 million" },
-        "Massachusetts": { capital: "Boston", population: "6.9 million" },
-        "Michigan": { capital: "Lansing", population: "10.0 million" },
-        "Minnesota": { capital: "St. Paul", population: "5.6 million" },
-        "Mississippi": { capital: "Jackson", population: "3.0 million" },
-        "Missouri": { capital: "Jefferson City", population: "6.1 million" },
-        "Montana": { capital: "Helena", population: "1.1 million" },
-        "Nebraska": { capital: "Lincoln", population: "1.9 million" },
-        "Nevada": { capital: "Carson City", population: "3.1 million" },
-        "New Hampshire": { capital: "Concord", population: "1.4 million" },
-        "New Jersey": { capital: "Trenton", population: "8.9 million" },
-        "New Mexico": { capital: "Santa Fe", population: "2.1 million" },
-        "New York": { capital: "Albany", population: "19.5 million" },
-        "North Carolina": { capital: "Raleigh", population: "10.5 million" },
-        "North Dakota": { capital: "Bismarck", population: "0.8 million" },
-        "Ohio": { capital: "Columbus", population: "11.7 million" },
-        "Oklahoma": { capital: "Oklahoma City", population: "4.0 million" },
-        "Oregon": { capital: "Salem", population: "4.2 million" },
-        "Pennsylvania": { capital: "Harrisburg", population: "12.8 million" },
-        "Rhode Island": { capital: "Providence", population: "1.1 million" },
-        "South Carolina": { capital: "Columbia", population: "5.1 million" },
-        "South Dakota": { capital: "Pierre", population: "0.9 million" },
-        "Tennessee": { capital: "Nashville", population: "6.9 million" },
-        "Texas": { capital: "Austin", population: "29.0 million" },
-        "Utah": { capital: "Salt Lake City", population: "3.2 million" },
-        "Vermont": { capital: "Montpelier", population: "0.6 million" },
-        "Virginia": { capital: "Richmond", population: "8.5 million" },
-        "Washington": { capital: "Olympia", population: "7.6 million" },
-        "West Virginia": { capital: "Charleston", population: "1.8 million" },
-        "Wisconsin": { capital: "Madison", population: "5.8 million" },
-        "Wyoming": { capital: "Cheyenne", population: "0.6 million" }
-    };
+    let stateDetails = {};
+    d3.json("milestone2/state_data.json")
+        .then(data => {
+            stateDetails = data;
+            console.log("State data loaded:", tempDataByState);
+    });
 
     // state data per year
     let eventDataByState = {}; // Global to hold the event counts per state
@@ -175,7 +129,7 @@ document.addEventListener('DOMContentLoaded', function() {
         infoPanel.style.display = "block";
     }
 
-    function drawStateTempChart(stateName, tempDataByState) {
+    function drawStateTempChart(stateName, tempDataByState, unit = "F") {
         // --- 1. Data Preparation ---
         const rawData = tempDataByState[stateName];
         const containerSelector = "#state-temp-chart-container";
@@ -194,10 +148,12 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         // Ensure data is properly formatted with numbers
-        const tempData = rawData.map(d => ({
-            year: typeof d.year === 'number' ? d.year : +d.year,
-            value: typeof d.value === 'number' ? d.value : +d.value
-        })).sort((a, b) => a.year - b.year); // Sort by year
+        const tempData = rawData.map(d => {
+            const year = typeof d.year === 'number' ? d.year : +d.year;
+            const valueF = typeof d.value === 'number' ? d.value : +d.value;
+            const value = unit === "C" ? (valueF - 32) * 5 / 9 : valueF;
+            return { year, value };
+        }).sort((a, b) => a.year - b.year);
 
         // --- 4. Chart Setup ---
         const width = 800;
@@ -240,7 +196,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 .attr("y", margin.top - 10)
                 .attr("fill", "currentColor")
                 .attr("text-anchor", "start")
-                .text("↑ Average Temperature (°F)")); // Add label directly
+                //.text("↑ Average Temperature (°F)")); // Add label directly
+                .text(unit === "C" ? "↑ Average Temperature (°C)" : "↑ Average Temperature (°F)"));
+
 
         svg.append("g").call(xAxis);
         svg.append("g").call(yAxis);
@@ -324,10 +282,13 @@ document.addEventListener('DOMContentLoaded', function() {
         .style("border-radius", "4px")
         .style("font-size", "12px");
 
+        
+
+
         svg.selectAll(".dot")
         .on("mouseover", (event, d) => {
             tooltip.style("visibility", "visible")
-                    .html(`Year: ${d.year}<br/>Temp: ${d.value.toFixed(1)}°F`);
+                    .html(`Year: ${d.year}<br/>Temp: ${d.value.toFixed(1)}°${unit}`);
             d3.select(event.currentTarget).attr("r", 5).attr("opacity", 1); // Highlight point
         })
         .on("mousemove", (event) => {
@@ -510,5 +471,11 @@ document.getElementById("btn-country").addEventListener("click", function () {
     document.getElementById("state-temp-chart-container").style.display = "none"; 
     document.getElementById("chart-title").style.display = "none";
     document.getElementById("country-view").style.display = "block";
+});
+
+document.getElementById("unit-toggle").addEventListener("change", function () {
+    const selectedUnit = this.value;
+    const stateName = getCurrentStateName(); // however you're currently tracking the state
+    drawStateTempChart(stateName, tempDataByState, selectedUnit);
 });
 

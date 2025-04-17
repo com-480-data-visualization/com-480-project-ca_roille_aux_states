@@ -24,13 +24,13 @@ h1 {
 }
 
 #map-container {
-    width: 100%;
-    height: 800px; /* Increased from 600px */
+    width: 70%;
+    height: 600px; /* Increased from 600px */
     margin: 0 auto;
     position: relative;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: left;
+    align-items: left;
 }
 
 .state {
@@ -184,4 +184,10 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+#unit-toggle {
+    margin-left: 8px;
+    padding: 4px 6px;
+    font-size: 14px;
 }

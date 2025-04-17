@@ -30,6 +30,7 @@
                 Feel free to see how each state is changing by clicking on the map below.</p>
             </p>
         </div>
+
         <div id="view-toggle" class="toggle-bar">
             <button id="btn-states" class="toggle-button active">States</button>
             <button id="btn-country" class="toggle-button">Country</button>
@@ -50,7 +51,16 @@
             </div>
         </div>
         <div id="chart-title" style="text-align: center; margin-top: 30px; font-weight: bold;"></div>
-        <div id="state-temp-chart-container" style="width: 100%; height: 300px; margin-bottom: 30px; display: flex; justify-content: center;"></div>
+        <div id="state-temp-chart-container" style="width: 100%; height: 300px; margin-bottom: 30px; display: flex; justify-content: center;">
+            <!-- Dropdown for temperature unit selection -->
+            <div id="unit-selector" style="text-align: center; margin-bottom: 20px;">
+                <label for="unit-toggle">Temperature unit:</label>
+                <select id="unit-toggle">
+                    <option value="F">°F</option>
+                    <option value="C">°C</option>
+                </select>
+            </div>
+        </div>
         <div id="state-chart-container" style="width: 100%; height: 300px; display: flex; justify-content: center;"></div>
         
         <!-- Scroll sections moved here for better content flow -->
@@ -69,158 +79,6 @@
             <p class="reveal-text">Scientists predict storm patterns will continue to change as global warming progresses. Understanding historical trends helps communities prepare for future weather challenges.</p>
         </div>
     </div>
-
-
-<!--     <script>
-        // Sample state data with capitals and populations
-        const stateDetails = {
-            "Alabama": { capital: "Montgomery", population: "4.9 million" },
-            "Alaska": { capital: "Juneau", population: "0.7 million" },
-            "Arizona": { capital: "Phoenix", population: "7.3 million" },
-            "Arkansas": { capital: "Little Rock", population: "3.0 million" },
-            "California": { capital: "Sacramento", population: "39.5 million" },
-            "Colorado": { capital: "Denver", population: "5.8 million" },
-            "Connecticut": { capital: "Hartford", population: "3.6 million" },
-            "Delaware": { capital: "Dover", population: "1.0 million" },
-            "Florida": { capital: "Tallahassee", population: "21.5 million" },
-            "Georgia": { capital: "Atlanta", population: "10.6 million" },
-            "Hawaii": { capital: "Honolulu", population: "1.4 million" },
-            "Idaho": { capital: "Boise", population: "1.8 million" },
-            "Illinois": { capital: "Springfield", population: "12.7 million" },
-            "Indiana": { capital: "Indianapolis", population: "6.7 million" },
-            "Iowa": { capital: "Des Moines", population: "3.2 million" },
-            "Kansas": { capital: "Topeka", population: "2.9 million" },
-            "Kentucky": { capital: "Frankfort", population: "4.5 million" },
-            "Louisiana": { capital: "Baton Rouge", population: "4.6 million" },
-            "Maine": { capital: "Augusta", population: "1.3 million" },
-            "Maryland": { capital: "Annapolis", population: "6.0 million" },
-            "Massachusetts": { capital: "Boston", population: "6.9 million" },
-            "Michigan": { capital: "Lansing", population: "10.0 million" },
-            "Minnesota": { capital: "St. Paul", population: "5.6 million" },
-            "Mississippi": { capital: "Jackson", population: "3.0 million" },
-            "Missouri": { capital: "Jefferson City", population: "6.1 million" },
-            "Montana": { capital: "Helena", population: "1.1 million" },
-            "Nebraska": { capital: "Lincoln", population: "1.9 million" },
-            "Nevada": { capital: "Carson City", population: "3.1 million" },
-            "New Hampshire": { capital: "Concord", population: "1.4 million" },
-            "New Jersey": { capital: "Trenton", population: "8.9 million" },
-            "New Mexico": { capital: "Santa Fe", population: "2.1 million" },
-            "New York": { capital: "Albany", population: "19.5 million" },
-            "North Carolina": { capital: "Raleigh", population: "10.5 million" },
-            "North Dakota": { capital: "Bismarck", population: "0.8 million" },
-            "Ohio": { capital: "Columbus", population: "11.7 million" },
-            "Oklahoma": { capital: "Oklahoma City", population: "4.0 million" },
-            "Oregon": { capital: "Salem", population: "4.2 million" },
-            "Pennsylvania": { capital: "Harrisburg", population: "12.8 million" },
-            "Rhode Island": { capital: "Providence", population: "1.1 million" },
-            "South Carolina": { capital: "Columbia", population: "5.1 million" },
-            "South Dakota": { capital: "Pierre", population: "0.9 million" },
-            "Tennessee": { capital: "Nashville", population: "6.9 million" },
-            "Texas": { capital: "Austin", population: "29.0 million" },
-            "Utah": { capital: "Salt Lake City", population: "3.2 million" },
-            "Vermont": { capital: "Montpelier", population: "0.6 million" },
-            "Virginia": { capital: "Richmond", population: "8.5 million" },
-            "Washington": { capital: "Olympia", population: "7.6 million" },
-            "West Virginia": { capital: "Charleston", population: "1.8 million" },
-            "Wisconsin": { capital: "Madison", population: "5.8 million" },
-            "Wyoming": { capital: "Cheyenne", population: "0.6 million" }
-        };
-
-        // Wait for the page to load
-        document.addEventListener('DOMContentLoaded', function() {
-            // Create the SVG element
-            const width = 960;
-            const height = 600;
-            const svg = d3.select("#map-container")
-                .append("svg")
-                .attr("width", width)
-                .attr("height", height)
-                .attr("viewBox", [0, 0, width, height])
-                .style("max-width", "100%")
-                .style("height", "auto");
-            
-            // Add a group element for the map
-            const g = svg.append("g");
-            
-            // Define projection and path generator
-            const projection = d3.geoAlbersUsa()
-                .translate([width / 2, height / 2])
-                .scale(1000);
-            
-            const path = d3.geoPath()
-                .projection(projection);
-            
-            // Load the TopoJSON data
-            d3.json("us-states-10m.json")
-                .then(function(us) {
-                    console.log("Data loaded successfully:", us);
-                    
-                    // Extract the states features
-                    const states = topojson.feature(us, us.objects.states).features;
-                    
-                    // Draw the states
-                    g.selectAll("path")
-                        .data(states)
-                        .enter()
-                        .append("path")
-                        .attr("class", "state")
-                        .attr("d", path)
-                        .on("click", function(event, d) {
-                            // Remove active class from all states
-                            d3.selectAll(".state").classed("active", false);
-                            
-                            // Add active class to clicked state
-                            d3.select(this).classed("active", true);
-                            
-                            // Get state name
-                            const stateName = d.properties.name || "Unknown State";
-                            
-                            // Update info panel
-                            updateInfoPanel(stateName);
-                        });
-                    
-                    // Add state borders
-                    g.append("path")
-                        .datum(topojson.mesh(us, us.objects.states, (a, b) => a !== b))
-                        .attr("fill", "none")
-                        .attr("stroke", "#fff")
-                        .attr("stroke-width", "0.5")
-                        .attr("d", path);
-                })
-                .catch(function(error) {
-                    console.error("Error loading the map data:", error);
-                    document.getElementById("map-container").innerHTML = 
-                        "<p>Error loading map data. Please check console for details.</p>";
-                });
-                
-            // Function to update the info panel
-            function updateInfoPanel(stateName) {
-                const infoPanel = document.getElementById("state-info");
-                const stateNameElement = document.getElementById("state-name");
-                const stateCapitalElement = document.getElementById("state-capital");
-                const statePopulationElement = document.getElementById("state-population");
-                
-                // Get state details (capital and population)
-                const details = stateDetails[stateName] || { capital: "Unknown", population: "Unknown" };
-                
-                // Update the info panel
-                stateNameElement.textContent = stateName;
-                stateCapitalElement.textContent = "Capital: " + details.capital;
-                statePopulationElement.textContent = "Population: " + details.population;
-                
-                // Show the info panel
-                infoPanel.style.display = "block";
-            }
-            
-            // Click on map background to hide info panel
-            svg.on("click", function(event) {
-                if (event.target === this) {
-                    document.getElementById("state-info").style.display = "none";
-                    d3.selectAll(".state").classed("active", false);
-                }
-            });
-        });
-    </script> -->
 
     <script src="js/script.js"></script>
 </body>
