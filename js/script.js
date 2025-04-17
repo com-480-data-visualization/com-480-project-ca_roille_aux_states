@@ -308,3 +308,25 @@ document.addEventListener('DOMContentLoaded', function() {
     setTimeout(checkScroll, 500);
 });
 
+
+document.getElementById("btn-states").addEventListener("click", function () {
+    this.classList.add("active");
+    document.getElementById("btn-country").classList.remove("active");
+
+    document.getElementById("map-container").style.display = "block";
+    document.getElementById("state-info").style.display = "none";
+    document.getElementById("state-chart-container").style.display = "block";
+    document.getElementById("chart-title").style.display = "block";
+    document.getElementById("country-view").style.display = "none";
+});
+
+document.getElementById("btn-country").addEventListener("click", function () {
+    this.classList.add("active");
+    document.getElementById("btn-states").classList.remove("active");
+
+    document.getElementById("map-container").style.display = "none";
+    document.getElementById("state-chart-container").style.display = "none";
+    document.getElementById("chart-title").style.display = "none";
+    document.getElementById("country-view").style.display = "block";
+});
+
