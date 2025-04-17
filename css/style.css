@@ -2,7 +2,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 20px;
-    background-color: #000;
+    background-color: #ffffff;
     color: #333;
 }
 
@@ -19,15 +19,18 @@ main {
 }
 
 h1 {
-    color: #4CAF50;
+    color: #000000;
     text-align: center;
 }
 
 #map-container {
     width: 100%;
-    height: 600px;
+    height: 800px; /* Increased from 600px */
     margin: 0 auto;
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .state {
@@ -92,13 +95,47 @@ h1 {
     transform: translate(-50%, -50%);
 }
 
+/* Change the text color for better visibility against white background */
 .content {
     position: relative;
     z-index: 1;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: transparent;
     padding: 20px;
     border-radius: 10px;
     margin-top: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    color: white;
+    box-shadow: none;
+    color: #333; /* Change to dark color since background is transparent/white */
+}
+
+/* Make scroll sections more visible */
+.scroll-section {
+    margin: 100px 0;
+    padding: 20px;
+    text-align: center;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgba(0, 0, 0, 0.05); /* Light background for better visibility */
+    border-radius: 8px;
+}
+
+/* Adjust reveal animation to be more noticeable */
+.reveal-text {
+    opacity: 0;
+    transform: translateY(50px); /* Increased distance */
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.reveal-text.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Improve overall page scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 150vh; /* Ensure there's room to scroll */
 }

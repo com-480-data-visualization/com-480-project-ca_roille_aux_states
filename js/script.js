@@ -70,24 +70,26 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
 
-    // Create the SVG element
-    const width = 960;
-    const height = 600;
+    // Create the SVG element - increase these values for a bigger map
+    const width = 1200; // Increased from 960
+    const height = 800; // Increased from 600
     const svg = d3.select("#map-container")
-        .append("svg")
-        .attr("width", width)
-        .attr("height", height)
-        .attr("viewBox", [0, 0, width, height])
-        .style("max-width", "100%")
-        .style("height", "auto");
+    .append("svg")
+    .attr("width", width)
+    .attr("height", height)
+    .attr("viewBox", [0, 0, width, height])
+    .style("max-width", "100%")
+    .style("height", "auto")
+    .style("margin", "0 auto"); // Center the SVG horizontally
     
     // Add a group element for the map
     const g = svg.append("g");
     
     // Define projection and path generator
+    // Define projection and path generator
     const projection = d3.geoAlbersUsa()
-        .translate([width / 2, height / 2])
-        .scale(1000);
+    .translate([width / 2, height / 2])
+    .scale(1250); // Increased from 1000 to make states bigger
     
     const path = d3.geoPath()
         .projection(projection);
@@ -274,4 +276,35 @@ document.addEventListener('DOMContentLoaded', function() {
         // Start the lightning effect
         createLightningFlash();
     }
+
+    // Scroll reveal functionality
+    const revealElements = document.querySelectorAll('.reveal-text');
+    
+    // Function to check if element is in viewport
+    function checkScroll() {
+        console.log("Checking scroll, found " + revealElements.length + " elements");
+        revealElements.forEach(element => {
+            // Get element position relative to viewport
+            const elementTop = element.getBoundingClientRect().top;
+            const elementVisible = 150; // How many pixels of the element should be visible
+            
+            // If element is in viewport
+            if (elementTop < window.innerHeight - elementVisible) {
+                element.classList.add('active');
+                console.log("Element revealed", element);
+            } else {
+                element.classList.remove('active');
+            }
+        });
+    }
+    
+    // Add event listener for scroll
+    window.addEventListener('scroll', checkScroll);
+    
+    // Check once on load (for elements that are already visible)
+    checkScroll();
+    
+    // Force a check after a short delay (helps with initial rendering)
+    setTimeout(checkScroll, 500);
 });
+
