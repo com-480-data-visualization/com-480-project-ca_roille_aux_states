@@ -1,11 +1,103 @@
 body {
     font-family: Arial, sans-serif;
     margin: 0;
-    padding: 20px;
+    padding: 0;
     background-color: #ffffff;
     color: #333;
+    overflow-x: hidden;
 }
 
+/* Hero section - full screen title page */
+.hero-section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+}
+
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.placeholder-background {
+    width: 100%;
+    height: 100%;
+    background-image: url('https://images.unsplash.com/photo-1605727216801-e27ce1d0cc28?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=1200');
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.6);
+}
+
+/* When you have the video, replace the above with this:
+.hero-background video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    filter: brightness(0.6);
+}
+*/
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    padding: 2rem;
+    max-width: 1000px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+}
+
+.hero-section h1 {
+    color: white;
+    font-size: 3.5rem;
+    margin-bottom: 2rem;
+    line-height: 1.2;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.scroll-indicator {
+    color: white;
+    margin-top: 3rem;
+    font-size: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.scroll-arrow {
+    font-size: 2rem;
+    animation: bounce 2s infinite;
+    margin-top: 1rem;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-20px);
+    }
+    60% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Original styles */
 header {
     background-color: #4CAF50;
     color: white;
@@ -18,6 +110,17 @@ main {
     text-align: center;
 }
 
+.content {
+    position: relative;
+    z-index: 1;
+    background-color: transparent;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+    box-shadow: none;
+    color: #333;
+}
+
 h1 {
     color: #000000;
     text-align: center;
@@ -25,7 +128,7 @@ h1 {
 
 #map-container {
     width: 70%;
-    height: 600px; /* Increased from 600px */
+    height: 600px;
     margin: 0 auto;
     position: relative;
     display: flex;
@@ -95,18 +198,6 @@ h1 {
     transform: translate(-50%, -50%);
 }
 
-/* Change the text color for better visibility against white background */
-.content {
-    position: relative;
-    z-index: 1;
-    background-color: transparent;
-    padding: 0px;
-    border-radius: 10px;
-    margin-top: 20px;
-    box-shadow: none;
-    color: #333; /* Change to dark color since background is transparent/white */
-}
-
 /* Make scroll sections more visible */
 .scroll-section {
     margin: 100px 0;
@@ -115,14 +206,14 @@ h1 {
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
-    background-color: rgba(0, 0, 0, 0.05); /* Light background for better visibility */
+    background-color: rgba(0, 0, 0, 0.05);
     border-radius: 8px;
 }
 
 /* Adjust reveal animation to be more noticeable */
 .reveal-text {
     opacity: 0;
-    transform: translateY(50px); /* Increased distance */
+    transform: translateY(50px);
     transition: opacity 1s ease, transform 1s ease;
 }
 
@@ -137,9 +228,8 @@ html {
 }
 
 body {
-    min-height: 150vh; /* Ensure there's room to scroll */
+    min-height: 150vh;
 }
-
 
 .toggle-bar {
     display: flex;

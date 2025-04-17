@@ -1,6 +1,15 @@
 // Main map visualization script
 document.addEventListener('DOMContentLoaded', function() {
     console.log("Script loaded");
+    
+    // Handle smooth scrolling from hero section
+    document.querySelector('.scroll-indicator').addEventListener('click', function() {
+        window.scrollTo({
+            top: window.innerHeight,
+            behavior: 'smooth'
+        });
+    });
+    
     // Sample state data with capitals and populations
     let stateDetails = {};
     d3.json("milestone2/state_data.json")
@@ -441,11 +450,29 @@ document.addEventListener('DOMContentLoaded', function() {
     // Add event listener for scroll
     window.addEventListener('scroll', checkScroll);
     
+    // Check once on load (for elements that are
     // Check once on load (for elements that are already visible)
     checkScroll();
     
     // Force a check after a short delay (helps with initial rendering)
     setTimeout(checkScroll, 500);
+    
+    // Add parallax effect to hero section
+    window.addEventListener('scroll', function() {
+        const scrollPosition = window.scrollY;
+        const heroSection = document.querySelector('.hero-section');
+        const heroContent = document.querySelector('.hero-content');
+        
+        // Only apply effects if we're near the hero section
+        if (scrollPosition < window.innerHeight) {
+            // Move background slightly slower than scroll for parallax
+            document.querySelector('.hero-background').style.transform = 
+                `translateY(${scrollPosition * 0.3}px)`;
+            
+            // Fade out content as user scrolls down
+            heroContent.style.opacity = 1 - (scrollPosition / (window.innerHeight * 0.7));
+        }
+    });
 });
 
 
@@ -473,9 +500,22 @@ document.getElementById("btn-country").addEventListener("click", function () {
     document.getElementById("country-view").style.display = "block";
 });
 
+// Global function to get the currently selected state name
+function getCurrentStateName() {
+    const activeState = document.querySelector('.state.active');
+    if (activeState) {
+        // This assumes you have state data accessible
+        // You may need to adapt this based on how state data is stored
+        return activeState.__data__.properties.name.toUpperCase();
+    }
+    return null;
+}
+
+// Temperature unit toggle handler
 document.getElementById("unit-toggle").addEventListener("change", function () {
     const selectedUnit = this.value;
-    const stateName = getCurrentStateName(); // however you're currently tracking the state
-    drawStateTempChart(stateName, tempDataByState, selectedUnit);
+    const stateName = getCurrentStateName();
+    if (stateName && window.tempDataByState) {
+        drawStateTempChart(stateName, window.tempDataByState, selectedUnit);
+    }
 });
-
