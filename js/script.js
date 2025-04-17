@@ -67,6 +67,18 @@ document.addEventListener('DOMContentLoaded', function() {
             const maxForState = d3.max(eventDataByState[state], d => d.count);
             if (maxForState > globalMax) globalMax = maxForState;
         }
+    }).catch(error => {
+        console.error("Error loading event data:", error);
+        // Create fallback event data if needed
+    });
+
+    let tempDataByState = {}; // temperature data per state
+    
+    // Try to load temperature data, with fallback
+    d3.json("milestone2/annual_avg_by_state.json")
+        .then(data => {
+            tempDataByState = data;
+            console.log("Temperature data loaded:", tempDataByState);
     });
 
 
@@ -121,7 +133,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     
                     // Update info panel
                     updateInfoPanel(stateName);
+                    drawStateTempChart(stateName.toUpperCase(), tempDataByState);
                     updateStateChart(stateName.toUpperCase());
+
                     
                 });
             
@@ -161,6 +175,156 @@ document.addEventListener('DOMContentLoaded', function() {
         infoPanel.style.display = "block";
     }
 
+    function drawStateTempChart(stateName, tempDataByState) {
+        // --- 1. Data Preparation ---
+        const rawData = tempDataByState[stateName];
+        const containerSelector = "#state-temp-chart-container";
+        const container = d3.select(containerSelector);
+
+        // --- 2. Clear Previous Chart ---
+        container.html(""); // Clear previous SVG content
+
+        // --- 3. Check for Valid Data ---
+        if (!rawData || rawData.length === 0) {
+            console.warn(`No temperature data found for state: ${stateName}`);
+            container.append("p")
+                .attr("class", "no-data-message")
+                .text(`No temperature data available for ${stateName}.`);
+            return; // Stop execution if no data
+        }
+        
+        // Ensure data is properly formatted with numbers
+        const tempData = rawData.map(d => ({
+            year: typeof d.year === 'number' ? d.year : +d.year,
+            value: typeof d.value === 'number' ? d.value : +d.value
+        })).sort((a, b) => a.year - b.year); // Sort by year
+
+        // --- 4. Chart Setup ---
+        const width = 800;
+        const height = 300;
+        const margin = { top: 20, right: 30, bottom: 50, left: 60 }; // Increased bottom/left margin for labels
+
+        const svg = container
+            .append("svg")
+            .attr("width", width)
+            .attr("height", height)
+            .attr("viewBox", `0 0 ${width} ${height}`) // Make it responsive (optional but good)
+            .attr("style", "max-width: 100%; height: auto; margin: 0 auto; display: block;"); // Better responsive style
+
+        // --- 5. Scales ---
+        const x = d3.scaleLinear()
+            // Use d3.extent which returns [min, max]
+            .domain(d3.extent(tempData, d => d.year))
+            .range([margin.left, width - margin.right]);
+
+        const y = d3.scaleLinear()
+            // Pad the domain slightly based on data range
+            .domain(d3.extent(tempData, d => d.value))
+            .nice() // Adjust domain to nice round values
+            .range([height - margin.bottom, margin.top]); // Y-axis is inverted in SVG
+
+        // --- 6. Axes ---
+        const xAxis = g => g
+            .attr("transform", `translate(0,${height - margin.bottom})`)
+            .call(d3.axisBottom(x).tickFormat(d3.format("d")).ticks(Math.min(tempData.length, 10))) // Format as integer, limit ticks
+            .call(g => g.select(".domain").remove()) // Optional: remove axis line
+            .call(g => g.selectAll(".tick line").attr("stroke-opacity", 0.2)); // Optional: lighter ticks
+
+        const yAxis = g => g
+            .attr("transform", `translate(${margin.left},0)`)
+            .call(d3.axisLeft(y))
+            .call(g => g.select(".domain").remove()) // Optional: remove axis line
+            .call(g => g.selectAll(".tick line").attr("stroke-opacity", 0.2)) // Optional: lighter ticks
+            .call(g => g.append("text") // Y-axis label (moved here)
+                .attr("x", -margin.left)
+                .attr("y", margin.top - 10)
+                .attr("fill", "currentColor")
+                .attr("text-anchor", "start")
+                .text("↑ Average Temperature (°F)")); // Add label directly
+
+        svg.append("g").call(xAxis);
+        svg.append("g").call(yAxis);
+
+        // --- 7. Scatter Points ---
+        svg.append("g") // Group for points
+            .attr("class", "scatter-points")
+            .selectAll(".dot") // Use class selector
+            .data(tempData)
+            .enter()
+            .append("circle")
+            .attr("class", "dot") // Assign class
+            .attr("cx", d => x(d.year))
+            .attr("cy", d => y(d.value))
+            .attr("r", 3.5) // Slightly larger radius
+            .attr("fill", "#FF5722")
+            .attr("opacity", 0.8); // Slight transparency
+
+        // --- 8. Smoothed Trend Line ---
+        const trendLine = d3.line()
+            .x(d => x(d.year))
+            .y(d => y(d.value))
+            .curve(d3.curveNatural); // Natural smooth interpolation
+
+        svg.append("path")
+            .datum(tempData) // Bind the whole dataset
+            .attr("class", "trend-line") // Add class
+            .attr("fill", "none")
+            .attr("stroke", "#2196F3")
+            .attr("stroke-width", 2)
+            .attr("stroke-linejoin", "round")
+            .attr("stroke-linecap", "round")
+            .attr("d", trendLine);
+
+        // --- 9. Labels ---
+        // X-axis Label
+        svg.append("text")
+            .attr("class", "x-axis-label")
+            .attr("x", width / 2)
+            .attr("y", height - margin.bottom / 3) // Adjust position
+            .attr("text-anchor", "middle")
+            .attr("fill", "currentColor")
+            .style("font-size", "12px")
+            .text("Year");
+
+        // Chart Title (Optional)
+        svg.append("text")
+        .attr("class", "chart-title")
+        .attr("x", width / 2)
+        .attr("y", margin.top)
+        .attr("text-anchor", "middle")
+        .attr("fill", "currentColor")
+        .style("font-size", "14px")
+        .style("font-weight", "bold")
+        .text(`Average Temperature Trend for ${stateName}`);
+
+
+        // --- Optional: Add Tooltips ---
+        const tooltip = d3.select("body").append("div")
+        .attr("class", "tooltip")
+        .style("position", "absolute")
+        .style("visibility", "hidden")
+        .style("background-color", "rgba(0, 0, 0, 0.7)")
+        .style("color", "white")
+        .style("padding", "5px 10px")
+        .style("border-radius", "4px")
+        .style("font-size", "12px");
+
+        svg.selectAll(".dot")
+        .on("mouseover", (event, d) => {
+            tooltip.style("visibility", "visible")
+                    .html(`Year: ${d.year}<br/>Temp: ${d.value.toFixed(1)}°F`);
+            d3.select(event.currentTarget).attr("r", 5).attr("opacity", 1); // Highlight point
+        })
+        .on("mousemove", (event) => {
+            tooltip.style("top", (event.pageY - 10) + "px") // Position tooltip near cursor
+                    .style("left", (event.pageX + 10) + "px");
+        })
+        .on("mouseout", (event) => {
+            tooltip.style("visibility", "hidden");
+            d3.select(event.currentTarget).attr("r", 3.5).attr("opacity", 0.8); // Restore point
+        });
+    }
+    
     function updateStateChart(stateName) {
         const chartData = eventDataByState[stateName];
 
@@ -313,9 +477,11 @@ document.getElementById("btn-states").addEventListener("click", function () {
     this.classList.add("active");
     document.getElementById("btn-country").classList.remove("active");
 
-    document.getElementById("map-container").style.display = "block";
+    // Show state view elements with proper display properties
+    document.getElementById("map-container").style.display = "flex";  // Change to flex
     document.getElementById("state-info").style.display = "none";
-    document.getElementById("state-chart-container").style.display = "block";
+    document.getElementById("state-chart-container").style.display = "flex";  // Change to flex
+    document.getElementById("state-temp-chart-container").style.display = "flex"; 
     document.getElementById("chart-title").style.display = "block";
     document.getElementById("country-view").style.display = "none";
 });
@@ -326,6 +492,7 @@ document.getElementById("btn-country").addEventListener("click", function () {
 
     document.getElementById("map-container").style.display = "none";
     document.getElementById("state-chart-container").style.display = "none";
+    document.getElementById("state-temp-chart-container").style.display = "none"; 
     document.getElementById("chart-title").style.display = "none";
     document.getElementById("country-view").style.display = "block";
 });
