@@ -31,27 +31,42 @@
     </section>
 
     <div class="content">
-        <h1>Storm Events in the United States - Impact of Climate Change</h1>
-        <div class="scroll-section">
-            <h2 class="reveal-text">Climate Change in the United Sates</h2>
-            <p class="reveal-text">To better understand how climate change is affecting storm events in the United States,
-                we first need to examine how climate patterns—particularly temperature—have evolved over time across the country.
-                We provide historical data on the average annual temperature for each state from 1895 to 2020.
-                Explore the interactive map below to see how temperatures have changed in each state.</p>
-            </p>
+        <!-- <h1>Storm Events in the United States - Impact of Climate Change</h1> -->
+            <!-- Original section with map -->
+        <div class="flex-wrapper">
+            <div class="scroll-section">
+                <h2 class="reveal-text">Climate Change in the United Sates</h2>
+                <p class="reveal-text">To better understand how climate change is affecting storm events in the United States,
+                    we first need to examine how climate patterns—particularly temperature—have evolved over time across the country.
+                    We provide historical data on the average annual temperature for each state from 1895 to 2020.
+                    Explore the interactive map below to see how temperatures have changed in each state.</p>
+                </p>
+            </div>
+            <div id="anomaly-map-container"></div>
+            <!--
+            <div id="map-container">
+                <div id="state-info">
+                    <div id="state-name"></div>
+                    <div id="state-capital"></div>
+                    <div id="state-population"></div>
+                </div>
+            </div>
+            -->
         </div>
 
+        <div class="scroll-section">
+            <h2 class="reveal-text">Research Questions</h2>
+            <p class="reveal-text">1. How does climate change contribute to the increasing frequency of extreme weather events in the USA? <br/><br/>
+                2. What are the economic and human consequences of the growing occurrence of extreme weather events? <br/><br/>
+                3. How can statistical analyses of past extreme weather events help predict future occurrences ?</p>
+            </p>
+        </div>
+        <!--
         <div id="view-toggle" class="toggle-bar">
             <button id="btn-states" class="toggle-button active">States</button>
             <button id="btn-country" class="toggle-button">Country</button>
         </div>
-        <div id="map-container">
-            <div id="state-info">
-                <div id="state-name"></div>
-                <div id="state-capital"></div>
-                <div id="state-population"></div>
-            </div>
-        </div>
+        
         <div id="country-view" style="display: none; margin-top: 20px;">
             <div class="country-grid">
                 <div class="plot">Plot 1</div>
@@ -60,9 +75,10 @@
                 <div class="plot">Plot 4</div>
             </div>
         </div>
+        -->
+        <!--
         <div id="chart-title" style="text-align: center; margin-top: 30px; font-weight: bold;"></div>
         <div id="state-temp-chart-container" style="width: 100%; height: 300px; margin-bottom: 30px; display: flex; justify-content: center;">
-            <!-- Dropdown for temperature unit selection -->
             <div id="unit-selector" style="text-align: center; margin-bottom: 20px;">
                 <label for="unit-toggle">Temperature unit:</label>
                 <select id="unit-toggle">
@@ -72,20 +88,28 @@
             </div>
         </div>
         <div id="state-chart-container" style="width: 100%; height: 300px; display: flex; justify-content: center;"></div>
-        
+        -->
         <!-- Scroll sections moved here for better content flow -->
+        
+        <!-- Statistical Analysis section with spike map -->
+        <div class="flex-wrapper reverse">
+            <div class="scroll-section">
+                <h2 class="reveal-text">Statistical Analysis of Historical Storm Events</h2>
+                <p class="reveal-text">As we analyze the patterns of extreme weather across the United States, population data helps us understand the potential impact of these events on communities. The spike map shows the population distribution across the country, highlighting areas where storm events may affect larger numbers of people.</p>
+            </div>
+            <div id="spike-map-container" class="map-container">
+                <!-- Spike map will be rendered here -->
+            </div>
+        </div>
+        
+        
         <div class="scroll-section">
-            <h2 class="reveal-text">Climate Change Impact on Storm Frequency</h2>
+            <h2 class="reveal-text">Impact of Climate Change on Storm Frequency</h2>
             <p class="reveal-text">Climate change has led to increased frequency and intensity of severe weather events across the United States. Rising global temperatures create conditions favorable for more powerful storms.</p>
         </div>
         
         <div class="scroll-section">
-            <h2 class="reveal-text">Regional Variations</h2>
-            <p class="reveal-text">The Southeast and Gulf Coast have seen increased hurricane activity, while the Midwest experiences more intense thunderstorms and tornadoes. Western states face growing wildfire risks accompanied by severe storms when rain finally arrives.</p>
-        </div>
-        
-        <div class="scroll-section">
-            <h2 class="reveal-text">Looking Forward</h2>
+            <h2 class="reveal-text">Conclusion</h2>
             <p class="reveal-text">Scientists predict storm patterns will continue to change as global warming progresses. Understanding historical trends helps communities prepare for future weather challenges.</p>
         </div>
     </div>
