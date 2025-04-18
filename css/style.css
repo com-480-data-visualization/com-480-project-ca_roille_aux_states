@@ -79,22 +79,33 @@ body {
     align-items: center;
 }
 
-.scroll-arrow {
-    font-size: 2rem;
+.scroll-arrows {
+    display: flex;
+    justify-content: center;
+    margin: -20px auto 0 auto;  /* Adjust this to move arrow closer/further from the title */
+    width: fit-content;
+    padding-top: 1rem; /* Optional: adds space above if needed */
+}
+
+.scroll-arrows:hover .arrows path {
+    stroke: #ccc;
+}
+
+.arrows {
+    width: 60px;
+    height: 92px;
+    fill: none;
+    stroke: white;
+    stroke-width: 5px;
+}
+
+.arrows path {
     animation: bounce 2s infinite;
-    margin-top: 1rem;
 }
 
 @keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
-        transform: translateY(0);
-    }
-    40% {
-        transform: translateY(-20px);
-    }
-    60% {
-        transform: translateY(-10px);
-    }
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(10px); }
 }
 
 /* Original styles */
