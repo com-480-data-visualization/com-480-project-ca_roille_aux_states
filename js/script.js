@@ -262,7 +262,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const colorHexes = rgbColors.map(([r, g, b]) => d3.rgb(r, g, b).formatHex());
 
-
     // Create the SVG element - increase these values for a bigger map
     const width = 1200; // Increased from 960
     const height = 800; // Increased from 600
