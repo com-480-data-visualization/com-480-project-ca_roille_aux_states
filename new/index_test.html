@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Climate Change Visualization</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.min.js"></script>
+    <link rel="stylesheet" href="css/style_copy copy.css">
+</head>
+
+<body>
+    <!-- First part --------------------------------------------------------------------------------------->
+    <div class="chapter-title">Climate Change in the United States</div>
+    <div class="carousel-section">
+        <!-- All texts -->
+        <div class="text-content-panel">
+            <!-- Text about global climate change in the US -->
+            <div id="text-content-1" class="text-content active">
+                <h2 class="panel-title">Temperature Anomaly in the US</h2>
+                <p class="panel-description">
+                    To better understand how climate change is affecting the United States, 
+                    this map shows temperature anomalies across different states over time.
+                    Redder areas indicate regions experiencing the most significant warming
+                    compared to the historical baseline.
+                </p>
+            </div>
+            <!-- Text about global climate change in the US -->
+            <div id="text-content-2" class="text-content">
+                <h2 class="panel-title">Temperature Anomaly by State</h2>
+                <p class="panel-description">
+                    As temperatures rise, extreme weather events become more frequent and intense.
+                    This map displays storm event frequency by county, with taller spikes 
+                    representing areas experiencing higher numbers of severe weather events.
+                    The pattern of weather events reveals how climate change impacts different 
+                    regions in various ways.
+                </p>
+            </div>
+            <!-- Text about global climate change in the US -->
+            <div id="text-content-2" class="text-content">
+                <h2 class="panel-title">Temperature Anomaly in 2050 in the US</h2>
+                <p class="panel-description">
+                    As temperatures rise, extreme weather events become more frequent and intense.
+                    This map displays storm event frequency by county, with taller spikes 
+                    representing areas experiencing higher numbers of severe weather events.
+                    The pattern of weather events reveals how climate change impacts different 
+                    regions in various ways.
+                </p>
+            </div>
+        </div>
+
+        <!-- Map visualization panel -->
+        <div class="map-panel">
+            <div id="map-content-1" class="map-content active">
+                <div id="histo-map-container"></div>
+            </div>
+            
+            <div id="map-content-2" class="map-content">
+                <div id="anomaly-map-container"></div>
+            </div>
+
+            <div id="map-content-3" class="map-content">
+                <div id=""></div>
+            </div>
+            
+            <!-- Carousel navigation controls -->
+            <div class="carousel-controls">
+                <button class="carousel-arrow prev-arrow">&lt;</button>
+                <div class="carousel-dots">
+                    <div class="carousel-dot active" data-index="0"></div>
+                    <div class="carousel-dot" data-index="1"></div>
+                    <div class="carousel-dot" data-index="2"></div>
+                </div>
+                <button class="carousel-arrow next-arrow">&gt;</button>
+            </div>
+        </div>
+    </div>
+    <!-- End of first part --------------------------------------------------------------------------------------->
+
+    <!-- Second part ---------------------------------------------------------------------------------------
+    <div class="chapter-title">Statistical Analysis of Historical Storm Events</div>
+     <div class="grid-section">
+        <div class="grid-item">
+            <div class="text-section">
+                <h2 class="plot-title">Total number of events over the years</h2>
+                <p class="plot-description">
+                    We can clearly see a peak in 19.. This is actually due to the fact that more events were 
+                    taken into account
+                </p>
+            </div>
+            <div id="plot1" class="plot-container">
+                <img src="/milestone2/temp.png" alt="Events over time plot placeholder" style="width: 100%; height: 100%; object-fit: contain;">
+            </div>
+        </div>
+        
+        <div class="grid-item">
+            <div class="text-section">
+                <h2 class="plot-title">Storm Events by County</h2>
+                <p class="plot-description">
+                    This map displays storm event frequency by county, with taller spikes 
+                    representing areas experiencing higher numbers of severe weather events.
+                </p>
+            </div>
+            <div id="plot2" class="plot-container">
+                <img src="/milestone2/temp1.png" alt="Events over time plot placeholder" style="width: 100%; height: 100%; object-fit: contain;">
+            </div>
+        </div>
+        
+        <div class="grid-item">
+            <div class="text-section">
+                <h2 class="plot-title">Annual Temperature Trends</h2>
+                <p class="plot-description">
+                    This chart shows how temperatures have changed over time across different regions
+                    of the United States, highlighting the warming trend.
+                </p>
+            </div>
+            <div id="plot3" class="plot-container">
+                <img src="/milestone2/temp2.png" alt="Events over time plot placeholder" style="width: 100%; height: 100%; object-fit: contain;">
+            </div>
+        </div>
+        
+        <div class="grid-item">
+            <div class="text-section">
+                <h2 class="plot-title">Projected Temperature Changes by 2050</h2>
+                <p class="plot-description">
+                    Climate models project continued warming across the United States,
+                    with some regions expected to see more dramatic changes than others.
+                </p>
+            </div>
+            <div id="plot4" class="plot-container">
+                <img src="/milestone2/temp3.png" alt="Events over time plot placeholder" style="width: 100%; height: 100%; object-fit: contain;">
+            </div>
+        </div>
+
+    <div class="chapter-title">Impact of Climate Change on Storm Frequency</div>
+    
+    <div class="storm-frequency-section">
+        <div class="storm-boxes-container">
+            <div class="storm-box">
+                <h3 class="storm-box-title">Historical Storm Patterns (1950-2000)</h3>
+                <p class="storm-box-description">
+                    Analysis of historical storm data reveals baseline patterns of severe weather events
+                    across the United States before significant climate change acceleration.
+                </p>
+            </div>
+            
+            <div class="storm-box">
+                <h3 class="storm-box-title">Recent Trends (2000-2020)</h3>
+                <p class="storm-box-description">
+                    The past two decades show a marked increase in storm frequency and intensity,
+                    particularly in tornado activity and severe thunderstorms.
+                </p>
+            </div>
+            
+            <div class="storm-box">
+                <h3 class="storm-box-title">Regional Impact Variations</h3>
+                <p class="storm-box-description">
+                    Different regions experience varying impacts: Southeast sees increased hurricanes,
+                    Midwest faces more tornadoes, West Coast has longer wildfire seasons.
+                </p>
+            </div>
+            
+            <div class="storm-box">
+                <h3 class="storm-box-title">Future Projections (2020-2050)</h3>
+                <p class="storm-box-description">
+                    Climate models project continued increases in extreme weather events,
+                    with emphasis on heat waves, intense precipitation, and stronger hurricanes.
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="chapter-title">Conclusion</div>
+    <svg id="chart"></svg>
+-->
+
+
+    <script src="js/script copy.js"></script>
+</body>
