@@ -185,8 +185,8 @@ function createStateAnomalyMap() {
     const svg = d3.select("#anomaly-map-container")
         .append("svg")
         .attr("width", width)
-        .attr("height", height)
-        .attr("viewBox", [0, 0, width, height])
+        .attr("height", height+100)
+        .attr("viewBox", [0, 0, width, height+300])
         .attr("style", "width: 100%; height: auto;");
 
     const projection = d3.geoAlbersUsa()
@@ -221,7 +221,7 @@ function createStateAnomalyMap() {
 
 
     const colorScale = d3.scaleDiverging()
-        .domain([4, 0])
+        .domain([5.5, 0, -5.5])
         .interpolator(d3.interpolateRdBu);
 
     /*
@@ -288,29 +288,45 @@ function createStateAnomalyMap() {
     // Legend
     const legendWidth = 300;
     const legendHeight = 10;
+    
+    const legendDomain = d3.range(-5.5, 5.6, 0.1);
 
     const legendSvg = svg.append("g")
-        .attr("transform", `translate(${width - legendWidth - 50}, ${height - 15})`);
+        .attr("transform", `translate(${width - legendWidth - 50}, ${height-5})`);
+    
 
     const legendScale = d3.scaleLinear()
-        .domain(colorScale.domain())
+        .domain([-5.5, 5.5])
         .range([0, legendWidth]);
 
+
+
+
+/*     const legendScale = d3.scaleLinear()
+        .domain([4, 0])
+        .range([0, legendWidth]); */
+
     const axis = d3.axisBottom(legendScale)
-        .ticks(5)
+        .tickValues([-5.5, 0, 5.5])
         .tickFormat(d => `${d.toFixed(1)}°`);
 
     // Gradient
     const defs = svg.append("defs");
     const linearGradient = defs.append("linearGradient")
         .attr("id", "legend-gradient");
-
+    
     linearGradient.selectAll("stop")
+        .data(legendDomain)
+        .join("stop")
+        .attr("offset", d => `${legendScale(d) / legendWidth * 100}%`)
+        .attr("stop-color", d => colorScale(d));
+
+    /* linearGradient.selectAll("stop")
         .data(d3.ticks(0, 1, 10))
         .join("stop")
         .attr("offset", d => `${d * 100}%`)
         .attr("stop-color", d => colorScale(colorScale.domain()[0] + d * (colorScale.domain()[1] - colorScale.domain()[0])));
-
+ */
     legendSvg.append("rect")
         .attr("width", legendWidth)
         .attr("height", legendHeight)
@@ -343,7 +359,7 @@ function toy_histo() {
     d3.json("../data/data.json").then(raw => {
         // Transform the nested object into a flat array
         const fullData = Object.entries(raw.data).map(([year, d]) => ({
-            year: +year,
+            year: +String(year).slice(0, 4),
             anomaly: +d.anomaly
         }));
 
@@ -388,6 +404,7 @@ function toy_histo() {
             .domain([2, 0, -2])  // Adjusted domain for histogram data
             .interpolator(d3.interpolateRdBu);
 
+        console.log(colorScale(-2));
         // Add horizontal grid lines with consistent styling
         const yTicks = yScale.ticks(5);
         svg.selectAll(".grid-line")
@@ -402,7 +419,7 @@ function toy_histo() {
             .style("stroke", "#ddd")  // Lighter grid lines
             .style("stroke-width", "0.5")
             .style("stroke-dasharray", "2,2");
-
+        
         // Add baseline at y = 0 with consistent styling
         svg.append("line")
             .attr("class", "baseline")
@@ -453,8 +470,9 @@ function toy_histo() {
 
         // Add axes with consistent styling
         const xAxis = d3.axisBottom(xScale)
-            .tickValues([1895, 1950, 2000])
-            .tickFormat(d3.format("d"));
+            .ticks(10)
+            //.tickValues([1895, 1950, 2000])
+            .tickFormat(d => String(d).slice(0, 4));
             
         const yAxis = d3.axisLeft(yScale)
             .ticks(5)
@@ -502,8 +520,8 @@ function toy_histo() {
         // Add note about baseline with consistent styling, positioned above legend
         svg.append("text")
             .attr("class", "note")
-            .attr("x", width)
-            .attr("y", height + 25)
+            .attr("x", width - 20)
+            .attr("y", height - 50)
             .style("fill", "#777")  // Consistent with legend text
             .style("font-size", "12px")
             .style("text-anchor", "end")
@@ -516,22 +534,30 @@ function toy_histo() {
 
         // Position legend below the chart, similar to anomaly map
         const legendSvg = svg.append("g")
-            .attr("transform", `translate(${width - legendWidth - 20}, ${height + 35})`);  // Position at top right
+            .attr("transform", `translate(${width - legendWidth - 20}, ${height - 33})`);  // Position at top right
 
         const legendScale = d3.scaleLinear()
             .domain(colorScale.domain())
             .range([0, legendWidth]);
 
-        const axis = d3.axisBottom(legendScale)  // Use bottom axis like anomaly map
-            .ticks(5)
+        const legendAxisScale = d3.scaleLinear()
+            .domain([-2, 2])  // left → right
+            .range([0, legendWidth]);
+
+        const axis = d3.axisBottom(legendAxisScale)
+            .ticks(2)
             .tickFormat(d => `${d.toFixed(1)}°F`);
 
+        /* const axis = d3.axisBottom(legendScale)  // Use bottom axis like anomaly map
+            .ticks(3)
+            .tickFormat(d => `${(d).toFixed(1)}°F`);
+ */
         // Gradient for legend
         const defs = svg.append("defs");
         const linearGradient = defs.append("linearGradient")
             .attr("id", "histo-legend-gradient")
-            .attr("x1", "0%")
-            .attr("x2", "100%")
+            .attr("x1", "100%")
+            .attr("x2", "0%")
             .attr("y1", "0%")
             .attr("y2", "0%");
 
@@ -543,7 +569,7 @@ function toy_histo() {
             .append("stop")
             .attr("offset", d => `${d * 100}%`)
             .attr("stop-color", d => {
-                const value = colorScale.domain()[0] + d * (colorScale.domain()[2] - colorScale.domain()[0]);
+                const value = colorScale.domain()[0] + (d) * (colorScale.domain()[2] - colorScale.domain()[0]);
                 return colorScale(value);
             });
 
@@ -555,6 +581,7 @@ function toy_histo() {
             .style("stroke-width", 0.5);
 
         legendSvg.append("g")
+            .attr("class", "axis")
             .attr("transform", `translate(0, ${legendHeight})`)  // Position below legend bar
             .call(axis)
             .selectAll("text")
