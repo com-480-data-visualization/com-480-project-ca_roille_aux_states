@@ -3,15 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Climate Change Visualization</title>
+    <title>Storm Events in the United States</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3-regression@1"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://unpkg.com/topojson-client@3"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <link rel="stylesheet" href="css/style_copy copy.css">
 </head>
 
 <body>
+    <!-- Hero section - full screen title page -->
+    <section class="hero-section">
+        <div class="hero-background">
+            <!-- Placeholder for video - will be replaced with your video -->
+             <video autoplay muted loop>
+            <source src="../3433955-uhd_4096_2160_24fps.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+            </video>
+            <div class="placeholder-background"></div>
+        </div>
+        <div class="hero-content">
+            <h1>Storm Events in the United States <br/> Measuring the Influence of a Warming Planet</h1>
+            <div class="scroll-indicator">
+                <a href="#carousel-section" class="scroll-arrows">
+                    <svg class="arrows">
+                        <path class="a1" d="M0 0 L30 32 L60 0"></path>
+                        <path class="a2" d="M0 20 L30 52 L60 20"></path>
+                        <path class="a3" d="M0 40 L30 72 L60 40"></path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+
     <!-- First part --------------------------------------------------------------------------------------->
-    <div class="chapter-title">Climate Change in the United States</div>
+    <div class="chapter-title">Climate Change in the United States</div> 
     <div class="carousel-section">
         <!-- All texts -->
         <div class="text-content-panel">
@@ -77,7 +107,6 @@
     </div>
     <!-- End of first part --------------------------------------------------------------------------------------->
 
-    <!-- Second part ---------------------------------------------------------------------------------------
     <div class="chapter-title">Statistical Analysis of Historical Storm Events</div>
      <div class="grid-section">
         <div class="grid-item">
@@ -88,8 +117,10 @@
                     taken into account
                 </p>
             </div>
-            <div id="plot1" class="plot-container">
-                <img src="/milestone2/temp.png" alt="Events over time plot placeholder" style="width: 100%; height: 100%; object-fit: contain;">
+            <div id="plot1" class="plot-container" style="width: 100%; height: 100%; object-fit: contain;">
+                
+<!--                 <img src="../milestone2/Events_over_time.png" alt="Events over time plot placeholder" style="width: 100%; height: 100%; object-fit: contain;">
+ -->            
             </div>
         </div>
         
@@ -98,37 +129,37 @@
                 <h2 class="plot-title">Storm Events by County</h2>
                 <p class="plot-description">
                     This map displays storm event frequency by county, with taller spikes 
-                    representing areas experiencing higher numbers of severe weather events.
+                    representing areas experiencing higher numbers of severe weather events. 
+                    As we can see, such events are more frequent in the eastern part of the country.
                 </p>
             </div>
             <div id="plot2" class="plot-container">
-                <img src="/milestone2/temp1.png" alt="Events over time plot placeholder" style="width: 100%; height: 100%; object-fit: contain;">
             </div>
         </div>
         
         <div class="grid-item">
             <div class="text-section">
-                <h2 class="plot-title">Annual Temperature Trends</h2>
+                <h2 class="plot-title">Seasonal Patterns of Most Occuring Events</h2>
                 <p class="plot-description">
                     This chart shows how temperatures have changed over time across different regions
                     of the United States, highlighting the warming trend.
                 </p>
             </div>
             <div id="plot3" class="plot-container">
-                <img src="/milestone2/temp2.png" alt="Events over time plot placeholder" style="width: 100%; height: 100%; object-fit: contain;">
+                <img src="/data/seasonal patterns.png" alt="Seasonal Patterns of Most Occuring Events" style="width: 100%; height: 100%; object-fit: contain;">
             </div>
         </div>
         
         <div class="grid-item">
             <div class="text-section">
-                <h2 class="plot-title">Projected Temperature Changes by 2050</h2>
+                <h2 class="plot-title">Proportional Distribution of Event Types Over Time</h2>
                 <p class="plot-description">
                     Climate models project continued warming across the United States,
                     with some regions expected to see more dramatic changes than others.
                 </p>
             </div>
             <div id="plot4" class="plot-container">
-                <img src="/milestone2/temp3.png" alt="Events over time plot placeholder" style="width: 100%; height: 100%; object-fit: contain;">
+                <!-- <img src="/milestone2/temp3.png" alt="Events over time plot placeholder" style="width: 100%; height: 100%; object-fit: contain;"> -->
             </div>
         </div>
 
@@ -172,7 +203,7 @@
     
     <div class="chapter-title">Conclusion</div>
     <svg id="chart"></svg>
--->
+
 
 
     <script src="js/script copy.js"></script>

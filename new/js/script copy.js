@@ -32,6 +32,14 @@ function initApp() {
 
 // ========== UI Events ==========
 function bindUIEvents() {
+    // Handle smooth scrolling from hero section
+    document.querySelector('.scroll-indicator').addEventListener('click', function() {
+        window.scrollTo({
+            top: window.innerHeight,
+            behavior: 'smooth'
+        });
+    });
+
     // Add carousel navigation events
     document.querySelector('.prev-arrow').addEventListener('click', () => navigateCarousel(-1));
     document.querySelector('.next-arrow').addEventListener('click', () => navigateCarousel(1));
@@ -404,7 +412,6 @@ function toy_histo() {
             .domain([2, 0, -2])  // Adjusted domain for histogram data
             .interpolator(d3.interpolateRdBu);
 
-        console.log(colorScale(-2));
         // Add horizontal grid lines with consistent styling
         const yTicks = yScale.ticks(5);
         svg.selectAll(".grid-line")
@@ -606,7 +613,7 @@ function createCountySpikeMap() {
     const height = 610;
     
     // Create SVG container
-    const svg = d3.select("#spike-map-container")
+    const svg = d3.select("#plot2")
         .append("svg")
         .attr("width", width)
         .attr("height", height)
@@ -707,7 +714,154 @@ Events: ${format(d.count)}`);
     return svg.node();
 }
 
+// ========== Count yearly Events plot =========
+fetch('../milestone2/events_by_year.json')
+  .then(response => response.json())
+  .then(data => {
+    const years = Object.keys(data).sort();
+    const eventCounts  = years.map(year => data[year]);
+    const yearsNum = years.map(y => +y);
 
+    // Prepare traces for Plotly inside the fetch callback
+    const trace = {
+      x: yearsNum,
+      y: eventCounts,
+      mode: 'lines',
+      type: 'scatter',
+      name: 'Storm Events',
+      line: { color: 'steelblue', width: 2 }
+    };
+
+    const layout = {
+      xaxis: {
+        title: 'Year',
+        dtick: 5,
+        tickangle: -45
+      },
+      yaxis: {
+        title: 'Number of Events'
+      },
+      shapes: [
+        {
+          type: 'line',
+          x0: 1955,
+          x1: 1955,
+          y0: 0,
+          y1: Math.max(...eventCounts),
+          line: {
+            color: 'red',
+            dash: 'dash'
+          }
+        },
+        {
+          type: 'line',
+          x0: 1996,
+          x1: 1996,
+          y0: 0,
+          y1: Math.max(...eventCounts),
+          line: {
+            color: 'red',
+            dash: 'dash'
+          }
+        }
+      ],
+      annotations: [
+        {
+            x: 1952,
+            y: Math.max(...eventCounts)*1.1,
+            text: 'Phase 1:<br>Tornadoes only',
+            showarrow: false,
+            arrowhead: 1,     // Arrow style
+            ax: 0,            // Horizontal offset from text to arrow base
+            ay: -30           // Vertical offset: negative is arrow pointing down
+        },
+        {
+            x: 1977,
+            y: Math.max(...eventCounts)*1.1,
+            text: 'Phase 2:<br>Thunderstorms, Wind & Hail',
+            showarrow: false,
+            arrowhead: 1,     // Arrow style
+            ax: 0,            // Horizontal offset from text to arrow base
+            ay: -30           // Vertical offset: negative is arrow pointing down
+        },
+        {
+            x: 2010,
+            y: Math.max(...eventCounts)*1.1,
+            text: 'Phase 3:<br>48 event types',
+            showarrow: false,
+            arrowhead: 1,     // Arrow style
+            ax: 0,            // Horizontal offset from text to arrow base
+            ay: -30           // Vertical offset: negative is arrow pointing down
+        }
+      ],
+      margin: { t: 50, b: 80, l: 60, r: 30 },
+      width: 600,
+      height: 400
+    };
+    
+
+    // Render the plot inside div#plot1
+    Plotly.newPlot('plot1', [trace], layout);
+  })
+  .catch(error => console.error('Error loading or plotting data:', error));
+
+
+
+// ========== Event types bar plot =========
+
+fetch('../milestone2/proportion_pivot.json')
+  .then(response => response.json())
+  .then(data => {
+    const years = Object.keys(data).sort();
+    const eventTypes = Object.keys(data[years[0]]);
+    const proportions = {};
+    eventTypes.forEach(type => {
+      proportions[type] = years.map(year => data[year][type]);
+    });
+
+    const yearsNum = years.map(y => +y);
+
+    /* const customColors = [
+    '#1f77b4', '#ff7f0e', '#2ca02c', '#d62728',
+    '#9467bd', '#8c564b', '#e377c2', '#7f7f7f',
+    '#bcbd22', '#17becf', '#393b79'  // Add more if needed
+    ]; 
+    */
+
+    const customColors = [
+    '#ffff99', '#1f78b4', '#a6cee3', '#e31a1c',
+    '#fb9a99', '#b2df8a', '#33a02c', '#6a3d9a',
+    '#cab2d6', '#ff7f00', '#fdbf6f'
+    ];
+    // Prepare traces for Plotly inside the fetch callback
+    const traces = eventTypes.map((eventType,i) => ({
+      x: yearsNum,
+      y: proportions[eventType],
+      name: eventType,
+      type: 'bar',
+      marker: { color: customColors[i % customColors.length] }
+    }));
+
+    const layout = {
+      barmode: 'stack',
+      xaxis: { 
+        title: 'Year', 
+        tickangle: -45,
+        dtick: 5,               // Ticks every 5 years
+        //tickvals: yearsNum,     // Ensure ticks correspond to the years
+        tickformat: 'd'         // Format ticks as integer
+      },
+      yaxis: { title: 'Proportion of Total Events', tickformat: ',.0%' },
+      legend: { title: { text: 'Event Type' } },
+      margin: { t: 50, b: 100, l: 50, r: 50 },
+      width: 600,
+      height: 400
+    };
+
+    // Render the plot inside div#plot4
+    Plotly.newPlot('plot4', traces, layout);
+  })
+  .catch(error => console.error('Error loading or plotting data:', error));
 
 // ========== Initialize Map =========
 
