@@ -16,7 +16,7 @@
 
 <body>
     <!-- Hero section - full screen title page -->
-    <section class="hero-section">
+    <section  id="section-hero" class="hero-section">
         <div class="hero-background">
             <!-- Placeholder for video - will be replaced with your video -->
              <video autoplay muted loop>
@@ -39,9 +39,17 @@
         </div>
     </section>
 
+    <div class="dot-navigation">
+        <a href="#section-climate" class="dot" title="Climate"></a>
+        <a href="#section-stats" class="dot" title="Statistics"></a>
+        <a href="#section-impact" class="dot" title="Impact"></a>
+        <a href="#section-conclusion" class="dot" title="Conclusion"></a>
+        <a href="#Team" class="dot" title="Team"></a>
+    </div>
+
 
     <!-- First part --------------------------------------------------------------------------------------->
-    <div class="chapter-title">Climate Change in the United States</div> 
+    <div id="section-climate" class="chapter-title">Climate Change in the United States</div> 
     <div class="carousel-section">
         <!-- All texts -->
         <div class="text-content-panel">
@@ -49,32 +57,35 @@
             <div id="text-content-1" class="text-content active">
                 <h2 class="panel-title">Temperature Anomaly in the US</h2>
                 <p class="panel-description">
-                    To better understand how climate change is affecting the United States, 
-                    this map shows temperature anomalies across different states over time.
-                    Redder areas indicate regions experiencing the most significant warming
-                    compared to the historical baseline.
+                    To understand how the climate change is affecting the extreme weather events we first 
+                    need to understand what is the current climate situation in the United States. For that 
+                    we start by showing an historical histogram of the average temperature anomalies for the 
+                    whole country campared to the 1961-1990 mean average as this is considered, in the scientific
+                    litterature, as a good baseline for assessing long term changes  [ref WMO]. It is obvious 
+                    from this histogram that the situation is deteriorating and that all recent years are above the 
+                    average.
                 </p>
             </div>
             <!-- Text about global climate change in the US -->
             <div id="text-content-2" class="text-content">
                 <h2 class="panel-title">Temperature Anomaly by State</h2>
                 <p class="panel-description">
-                    As temperatures rise, extreme weather events become more frequent and intense.
-                    This map displays storm event frequency by county, with taller spikes 
-                    representing areas experiencing higher numbers of severe weather events.
-                    The pattern of weather events reveals how climate change impacts different 
-                    regions in various ways.
+                    Some legitimate question that can come to mind when looking at the first histogram is 
+                    whether or not the situation is the same over all the country or if some regions, some states 
+                    are more spared by the effect of climate change. To asnwer that question we plot the same temperature 
+                    anomalies for the year 2024 but for different region of the United States. These regions corresponds to ¨
+                    Climate Divisions regions. It is clear that the climate change problem is affecting more intensly some 
+                    state. However, none is spared and everyone should be concerned by the problem. 
                 </p>
             </div>
             <!-- Text about global climate change in the US -->
             <div id="text-content-2" class="text-content">
                 <h2 class="panel-title">Temperature Anomaly in 2050 in the US</h2>
                 <p class="panel-description">
-                    As temperatures rise, extreme weather events become more frequent and intense.
-                    This map displays storm event frequency by county, with taller spikes 
-                    representing areas experiencing higher numbers of severe weather events.
-                    The pattern of weather events reveals how climate change impacts different 
-                    regions in various ways.
+                    Another question that comes to mind when looking at these different data is to know how it would 
+                    be in the future. For that we answer with some strip lines plot showing how the temperature anomaly 
+                    is increasing or not depending on different scenarios, typically ranging from concrete actions to mitigate 
+                    climate change to none. It is evident that if we want to mitigate climate change some ....
                 </p>
             </div>
         </div>
@@ -107,8 +118,8 @@
     </div>
     <!-- End of first part --------------------------------------------------------------------------------------->
 
-    <div class="chapter-title">Statistical Analysis of Historical Storm Events</div>
-     <div class="grid-section">
+    <div id="section-stats" class="chapter-title">Statistical Analysis of Historical Storm Events</div>
+    <div class="grid-section">
         <div class="grid-item">
             <div class="text-section">
                 <h2 class="plot-title">Total number of events over the years</h2>
@@ -162,13 +173,17 @@
                 <!-- <img src="/milestone2/temp3.png" alt="Events over time plot placeholder" style="width: 100%; height: 100%; object-fit: contain;"> -->
             </div>
         </div>
+    </div>
 
-    <div class="chapter-title">Impact of Climate Change on Storm Frequency</div>
+
+    <div id="section-impact" class="chapter-title">Impact of Climate Change on Storm Frequency</div>
+
+    <!-- <h3>Other factors that influence the number of events</h3> --> 
     
     <div class="storm-frequency-section">
         <div class="storm-boxes-container">
             <div class="storm-box">
-                <h3 class="storm-box-title">Historical Storm Patterns (1950-2000)</h3>
+                <h3 class="storm-box-title">Citation 1</h3>
                 <p class="storm-box-description">
                     Analysis of historical storm data reveals baseline patterns of severe weather events
                     across the United States before significant climate change acceleration.
@@ -176,7 +191,7 @@
             </div>
             
             <div class="storm-box">
-                <h3 class="storm-box-title">Recent Trends (2000-2020)</h3>
+                <h3 class="storm-box-title">Citation 2</h3>
                 <p class="storm-box-description">
                     The past two decades show a marked increase in storm frequency and intensity,
                     particularly in tornado activity and severe thunderstorms.
@@ -184,7 +199,7 @@
             </div>
             
             <div class="storm-box">
-                <h3 class="storm-box-title">Regional Impact Variations</h3>
+                <h3 class="storm-box-title">Citation 3</h3>
                 <p class="storm-box-description">
                     Different regions experience varying impacts: Southeast sees increased hurricanes,
                     Midwest faces more tornadoes, West Coast has longer wildfire seasons.
@@ -192,7 +207,7 @@
             </div>
             
             <div class="storm-box">
-                <h3 class="storm-box-title">Future Projections (2020-2050)</h3>
+                <h3 class="storm-box-title">Citation 4</h3>
                 <p class="storm-box-description">
                     Climate models project continued increases in extreme weather events,
                     with emphasis on heat waves, intense precipitation, and stronger hurricanes.
@@ -201,8 +216,47 @@
         </div>
     </div>
     
-    <div class="chapter-title">Conclusion</div>
-    <svg id="chart"></svg>
+    <div id="section-conclusion" class="chapter-title">Conclusion</div>
+    <div class="grey-text-box">
+        As we have seen with these data and visualizations, it is clear that climate change has a role in 
+        the increasing number of events even though it is not the only factors. However, climate change 
+        has other consequences and since it is increasily costly both economicaly and in terms of deaths and
+        casulties, it is necessary to take quick and impactful actions to both mitigate its consequences as well 
+        as reducing emissions to diminish the future anomalies. 
+    </div>
+
+
+    <div id="Team" class="chapter-title">Meet the team</div>
+    <div class="storm-frequency-section">
+        <div class="storm-boxes-container">
+            <div class="storm-box">
+                <h3 class="storm-box-title">Luc</h3>
+                <p class="storm-box-description">
+                    Master in Data Science 
+                </p>
+            </div>
+            
+            <div class="storm-box">
+                <h3 class="storm-box-title">Timo</h3>
+                <p class="storm-box-description">
+                    Master in Life Sciences Engineering with a minor in Data Science
+                </p>
+            </div>
+            
+            <div class="storm-box">
+                <h3 class="storm-box-title">Corentin</h3>
+                <p class="storm-box-description">
+                    Master in Computational Science and engineering
+                    <a href="https://github.com/corentingenton" target="_blank" rel="noopener noreferrer">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" width="32">
+                    </a>
+                    <a href="https://www.linkedin.com/in/corentin-genton" target="_blank" rel="noopener noreferrer">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="LinkedIn" width="32">
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
 
 
 

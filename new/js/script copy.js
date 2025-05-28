@@ -15,6 +15,24 @@ const totalSlides = 3;
 // ========== DOM Ready ==========
 document.addEventListener('DOMContentLoaded', function () {
     initApp();
+    const dotNav = document.querySelector('.dot-navigation');
+    const heroSection = document.getElementById('section-hero');
+
+    if (dotNav && heroSection) {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        dotNav.classList.add('hidden');
+                    } else {
+                        dotNav.classList.remove('hidden');
+                    }
+                });
+            },
+            { threshold: 0.6 }
+        );
+        observer.observe(heroSection);
+    }
 });
 
 // ========== Init ==========
@@ -128,6 +146,7 @@ d3.json("https://cdn.jsdelivr.net/npm/us-atlas@3/counties-10m.json").then(us => 
      .attr("fill", d => colorScale(yourData[d.id] || 0));
 });
 */
+
 
 // ========== Create Counties Map ==========
 function createCountiesMap(){
