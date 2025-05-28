@@ -115,26 +115,42 @@ body {
 /* FIRST SECTION -------------------------------------------------------------------------------------- */
 
 
-
-
-
-
-
-
 /* Fix for chapter titles - ensure full width centering */
 .chapter-title {
     font-size: 3em;
     text-align: center;
-    /*color: #007bff;*/
-    margin: 20px 0;
-    width: 100vw; /* Full viewport width */
     position: relative;
-    left: 50%;
-    right: 50%;
-    margin-left: -50vw;
-    margin-right: -50vw;
-    padding: 0; /* Remove any padding */
+    margin: 40px 0;
 }
+
+.chapter-title span {
+    background: white; /* match page background */
+    padding: 0 20px; /* space between text and bars */
+    position: relative;
+    z-index: 1;
+}
+
+.chapter-title::before,
+.chapter-title::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 100vw;
+    height: 2px;
+    background-color: black;
+    z-index: 0;
+}
+
+.chapter-title::before {
+    left: 0;
+    transform: translateY(-50%);
+}
+
+.chapter-title::after {
+    right: 0;
+    transform: translateY(-50%);
+}
+
 
 
 /* Carousel section layout */
