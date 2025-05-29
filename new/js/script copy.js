@@ -11,6 +11,9 @@ let activeStateName = "";
 let countyEventCounts = [];
 let currentSlideIndex = 0;
 const totalSlides = 3;
+let typesByYearStates = {};
+let statesFilter = [];
+let eventsFilter = [];
 
 // ========== DOM Ready ==========
 document.addEventListener('DOMContentLoaded', function () {
@@ -145,7 +148,7 @@ function goToSlide(index) {
 async function loadAllData() {
     try {
         [stateTopo, countyTopo, stateDetails, stateAnomaly, eventDataByState, tempDataByState,
-            countyEventCounts
+            countyEventCounts, typesByYearStates 
         ] = await Promise.all([
             d3.json("../data/us-states-10m.json"),
             d3.json("../data/us-counties-10m.json"),
@@ -157,8 +160,27 @@ async function loadAllData() {
                 return data;
             }),
             d3.json("../milestone2/annual_avg_by_state.json"),
-            d3.json("../data/county_counts.json")
+            d3.json("../data/county_counts.json"),
+            d3.json("../milestone2/types_by_year_states.json")
         ]);
+
+        const years = [...new Set(typesByYearStates.map(d => d.Year))];
+        statesFilter = [...new Set(typesByYearStates.map(d => d.State))];
+        eventsFilter = [...new Set(typesByYearStates.map(d => d.Event_Category))];
+
+        // Extract states and event types from the weatherData
+        const firstYear = Math.min(...years);
+        /* const firstState = Object.keys(types_by_year_states[firstYear])[0]; */
+
+        // Define these globally or pass them where needed
+        // statesFilters = Object.keys(types_by_year_states[firstYear]);
+        // eventsFilters = Object.keys(types_by_year_states[firstYear][firstState]);
+        console.log('statesFilters:', statesFilters);
+        console.log('eventsFilters:', eventsFilters);
+
+        // Now initialize the filters
+        initializeFilters();
+
         console.log("All data loaded");
     } catch (error) {
         console.error("Error loading data:", error);
@@ -541,7 +563,7 @@ function toy_histo() {
             .attr("transform", `translate(0,${height})`)
             .call(xAxis)
             .selectAll("text")
-            .style("fill", "#333")  // Consistent with other maps
+            .style("fill", "black")  // Consistent with other maps
             .style("font-size", "14px")
             .style("font-family", "sans-serif");
 
@@ -549,13 +571,13 @@ function toy_histo() {
             .attr("class", "axis")
             .call(yAxis)
             .selectAll("text")
-            .style("fill", "#333")
+            .style("fill", "black")
             .style("font-size", "14px")
             .style("font-family", "sans-serif");
 
         // Style axis lines consistently
         svg.selectAll(".axis path, .axis line")
-            .style("stroke", "#333")
+            .style("stroke", "black")
             .style("stroke-width", "1");
 
         // Add right y-axis with Celsius (consistent with other maps)
@@ -571,7 +593,7 @@ function toy_histo() {
             .attr("transform", `translate(${width},0)`)
             .call(yAxisRight)
             .selectAll("text")
-            .style("fill", "#333")
+            .style("fill", "black")
             .style("font-size", "14px")
             .style("font-family", "sans-serif");
 
@@ -580,7 +602,7 @@ function toy_histo() {
             .attr("class", "note")
             .attr("x", width - 20)
             .attr("y", height - 50)
-            .style("fill", "#777")  // Consistent with legend text
+            .style("fill", "black")  // Consistent with legend text
             .style("font-size", "12px")
             .style("text-anchor", "end")
             .style("font-family", "sans-serif")
@@ -635,7 +657,7 @@ function toy_histo() {
             .attr("width", legendWidth)
             .attr("height", legendHeight)
             .style("fill", "url(#histo-legend-gradient)")
-            .style("stroke", "#333")
+            .style("stroke", "black")
             .style("stroke-width", 0.5);
 
         legendSvg.append("g")
@@ -643,13 +665,13 @@ function toy_histo() {
             .attr("transform", `translate(0, ${legendHeight})`)  // Position below legend bar
             .call(axis)
             .selectAll("text")
-            .style("fill", "#333")
+            .style("fill", "black")
             .style("font-size", "12px")
             .style("font-family", "sans-serif");
 
         // Style legend axis
         legendSvg.selectAll(".axis path, .axis line")
-            .style("stroke", "#333")
+            .style("stroke", "black")
             .style("stroke-width", "1");
 
     });
@@ -1322,7 +1344,10 @@ function resetMap() {
 
 //////////////////////////////////////////////////////////
 
-// US States data
+
+//const { states, weatherEvents } = extractStatesAndEvents(weatherData);
+
+/* // US States data
 const states = [
     'Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 
     'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 
@@ -1336,20 +1361,23 @@ const states = [
 
 // Weather events data
 const weatherEvents = [
-    'Hurricanes', 'Tornadoes', 'Thunderstorms', 'Blizzards', 'Heat Waves', 
-    'Droughts', 'Floods', 'Hail Storms', 'Ice Storms', 'Wildfires',
-    'Fog', 'High Winds', 'Lightning', 'Freezing Rain', 'Dust Storms'
-];
+    'Drought', 'Flash Flood', 'Flood',
+    'Others','Thunderstorm Wind', 'High Wind', 'Tornado',
+    'Winter Storm', 'Winter Weather', 'Heavy Snow', 'Hail'
+]; */
 
 // Initialize filters
 function initializeFilters() {
     // Populate states filter
     const statesContainer = document.getElementById('statesFilter');
-    states.forEach((state, index) => {
+    // Clear old filters if any
+    statesContainer.innerHTML = '';
+    
+    statesFilter.forEach((state, index) => {
         const checkboxItem = document.createElement('div');
         checkboxItem.className = 'checkbox-item';
         checkboxItem.innerHTML = `
-            <input type="checkbox" id="state_${index}" value="${state}" ${index < 5 ? 'checked' : ''}>
+            <input type="checkbox" id="state_${index}" value="${state}" checked>
             <label for="state_${index}">${state}</label>
         `;
         statesContainer.appendChild(checkboxItem);
@@ -1357,11 +1385,12 @@ function initializeFilters() {
 
     // Populate weather events filter
     const eventsContainer = document.getElementById('eventsFilter');
-    weatherEvents.forEach((event, index) => {
+    eventsContainer.innerHTML = '';
+    eventsFilter.forEach((event, index) => {
         const checkboxItem = document.createElement('div');
         checkboxItem.className = 'checkbox-item';
         checkboxItem.innerHTML = `
-            <input type="checkbox" id="event_${index}" value="${event}" ${index < 3 ? 'checked' : ''}>
+            <input type="checkbox" id="event_${index}" value="${event}" checked>
             <label for="event_${index}">${event}</label>
         `;
         eventsContainer.appendChild(checkboxItem);
@@ -1373,12 +1402,11 @@ function getSelectedFilters() {
     const selectedStates = [];
     const selectedEvents = [];
 
-    // Get selected states
+    // Use singular container IDs in querySelectorAll
     document.querySelectorAll('#statesFilter input[type="checkbox"]:checked').forEach(cb => {
         selectedStates.push(cb.value);
     });
 
-    // Get selected events
     document.querySelectorAll('#eventsFilter input[type="checkbox"]:checked').forEach(cb => {
         selectedEvents.push(cb.value);
     });
@@ -1392,32 +1420,72 @@ function getSelectedFilters() {
     };
 }
 
-// Update plot based on filters
-function updateFilters() {
-    const filters = getSelectedFilters();
-    
-    // Update plot info
-    const plotInfo = document.getElementById('plotInfo');
-    plotInfo.textContent = `${filters.plotType.charAt(0).toUpperCase() + filters.plotType.slice(1)} | ${filters.states.length} States | ${filters.events.length} Events | ${filters.startYear}-${filters.endYear}`;
-    
-    // Update placeholder (this is where you'll integrate your plotting code)
-    const placeholder = document.getElementById('plotPlaceholder');
-    placeholder.innerHTML = `
-        <div style="text-align: center;">
-            <h3 style="color: #4a5568; margin-bottom: 15px;">Weather Events Analysis</h3>
-            <p style="color: #718096; margin-bottom: 10px;"><strong>States:</strong> ${filters.states.slice(0, 3).join(', ')}${filters.states.length > 3 ? ` +${filters.states.length - 3} more` : ''}</p>
-            <p style="color: #718096; margin-bottom: 10px;"><strong>Events:</strong> ${filters.events.join(', ')}</p>
-            <p style="color: #718096; margin-bottom: 10px;"><strong>Period:</strong> ${filters.startYear} - ${filters.endYear}</p>
-            <p style="color: #718096;"><strong>Plot Type:</strong> ${filters.plotType.charAt(0).toUpperCase() + filters.plotType.slice(1)}</p>
-            <div style="margin-top: 20px; padding: 15px; background: rgba(102, 126, 234, 0.1); border-radius: 8px; color: #667eea;">
-                Your plotting code will replace this placeholder
-            </div>
-        </div>
-    `;
+/* let weatherData = {}; // Will store the full JSON
 
-    // Here you can call your existing JavaScript plotting functions
-    // For example: generatePlot(filters);
-    console.log('Filters updated:', filters);
+fetch('path/to/your_data.json')
+  .then(res => res.json())
+  .then(json => {
+    weatherData = json;
+    initializeFilters(); // Once data is loaded
+  }); */
+
+function updateFilters() {
+  const filters = getSelectedFilters();
+
+  const start = parseInt(filters.startYear);
+  const end = parseInt(filters.endYear);
+  const selectedYears = [];
+  for(let y = start; y <= end; y++) selectedYears.push(y);
+  
+  const selectedStates = filters.states;
+  const selectedEvents = filters.events;
+
+  // Assuming typesByYearStates is globally accessible
+  // If not, pass it as a parameter or get it from closure
+
+  const traces = selectedEvents.map(event => {
+    const x = [];
+    const y = [];
+
+    selectedYears.forEach(year => {
+      // Filter all matching entries for year, event, and selected states
+      const filteredData = typesByYearStates.filter(d =>
+        d.Year === year &&
+        d.Event_Category === event &&
+        selectedStates.includes(d.State)
+      );
+
+      // Aggregate the counts
+      const totalCount = filteredData.reduce((sum, d) => sum + d.Count, 0);
+
+      x.push(year);
+      y.push(totalCount);
+    });
+
+    return {
+      x,
+      y,
+      name: event,
+      type: 'scatter',
+      mode: 'lines+markers'
+    };
+  });
+
+  Plotly.newPlot('plotPlaceholder', traces, {
+    title: 'Weather Events Over Time',
+    width: 800,
+    height: 500,
+    xaxis: { title: 'Year' },
+    yaxis: {
+      title: filters.plotType === 'count' ? 'Event Count' : 'Number of Events',
+      tickformat: filters.plotType === 'proportion' ? ',.0%' : ''
+    },
+    legend: { title: { text: 'Event Type' } }
+  });
+
+  // Update info box
+  const plotInfo = document.getElementById('plotInfo');
+  plotInfo.textContent = `${filters.plotType.charAt(0).toUpperCase() + filters.plotType.slice(1)} | ${filters.states.length} States | ${filters.events.length} Events | ${filters.startYear}-${filters.endYear}`;
 }
 
 
