@@ -1,0 +1,3452 @@
+{
+  "1950": {
+    "Drought": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flash Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Others": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Thunderstorm Wind": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "High Wind": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Tornado": {
+      "count": 223,
+      "proportion": 1.0
+    },
+    "Winter Storm": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Winter Weather": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Heavy Snow": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Hail": {
+      "count": 0,
+      "proportion": 0.0
+    }
+  },
+  "1951": {
+    "Drought": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flash Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Others": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Thunderstorm Wind": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "High Wind": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Tornado": {
+      "count": 269,
+      "proportion": 1.0
+    },
+    "Winter Storm": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Winter Weather": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Heavy Snow": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Hail": {
+      "count": 0,
+      "proportion": 0.0
+    }
+  },
+  "1952": {
+    "Drought": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flash Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Others": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Thunderstorm Wind": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "High Wind": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Tornado": {
+      "count": 272,
+      "proportion": 1.0
+    },
+    "Winter Storm": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Winter Weather": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Heavy Snow": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Hail": {
+      "count": 0,
+      "proportion": 0.0
+    }
+  },
+  "1953": {
+    "Drought": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flash Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Others": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Thunderstorm Wind": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "High Wind": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Tornado": {
+      "count": 492,
+      "proportion": 1.0
+    },
+    "Winter Storm": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Winter Weather": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Heavy Snow": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Hail": {
+      "count": 0,
+      "proportion": 0.0
+    }
+  },
+  "1954": {
+    "Drought": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flash Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Others": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Thunderstorm Wind": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "High Wind": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Tornado": {
+      "count": 609,
+      "proportion": 1.0
+    },
+    "Winter Storm": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Winter Weather": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Heavy Snow": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Hail": {
+      "count": 0,
+      "proportion": 0.0
+    }
+  },
+  "1955": {
+    "Drought": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flash Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Others": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Thunderstorm Wind": {
+      "count": 421,
+      "proportion": 0.297948
+    },
+    "High Wind": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Tornado": {
+      "count": 632,
+      "proportion": 0.447275
+    },
+    "Winter Storm": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Winter Weather": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Heavy Snow": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Hail": {
+      "count": 360,
+      "proportion": 0.254777
+    }
+  },
+  "1956": {
+    "Drought": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flash Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Others": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Thunderstorm Wind": {
+      "count": 735,
+      "proportion": 0.431591
+    },
+    "High Wind": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Tornado": {
+      "count": 567,
+      "proportion": 0.332942
+    },
+    "Winter Storm": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Winter Weather": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Heavy Snow": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Hail": {
+      "count": 401,
+      "proportion": 0.235467
+    }
+  },
+  "1957": {
+    "Drought": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flash Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Others": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Thunderstorm Wind": {
+      "count": 775,
+      "proportion": 0.354853
+    },
+    "High Wind": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Tornado": {
+      "count": 930,
+      "proportion": 0.425824
+    },
+    "Winter Storm": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Winter Weather": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Heavy Snow": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Hail": {
+      "count": 479,
+      "proportion": 0.219322
+    }
+  },
+  "1958": {
+    "Drought": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flash Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Others": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Thunderstorm Wind": {
+      "count": 899,
+      "proportion": 0.406236
+    },
+    "High Wind": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Tornado": {
+      "count": 608,
+      "proportion": 0.27474
+    },
+    "Winter Storm": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Winter Weather": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Heavy Snow": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Hail": {
+      "count": 706,
+      "proportion": 0.319024
+    }
+  },
+  "1959": {
+    "Drought": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flash Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Others": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Thunderstorm Wind": {
+      "count": 652,
+      "proportion": 0.359625
+    },
+    "High Wind": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Tornado": {
+      "count": 630,
+      "proportion": 0.34749
+    },
+    "Winter Storm": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Winter Weather": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Heavy Snow": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Hail": {
+      "count": 531,
+      "proportion": 0.292885
+    }
+  },
+  "1960": {
+    "Drought": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flash Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Others": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Thunderstorm Wind": {
+      "count": 719,
+      "proportion": 0.369666
+    },
+    "High Wind": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Tornado": {
+      "count": 645,
+      "proportion": 0.33162
+    },
+    "Winter Storm": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Winter Weather": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Heavy Snow": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Hail": {
+      "count": 581,
+      "proportion": 0.298715
+    }
+  },
+  "1961": {
+    "Drought": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flash Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Others": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Thunderstorm Wind": {
+      "count": 752,
+      "proportion": 0.334817
+    },
+    "High Wind": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Tornado": {
+      "count": 772,
+      "proportion": 0.343722
+    },
+    "Winter Storm": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Winter Weather": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Heavy Snow": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Hail": {
+      "count": 722,
+      "proportion": 0.32146
+    }
+  },
+  "1962": {
+    "Drought": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flash Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Others": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Thunderstorm Wind": {
+      "count": 830,
+      "proportion": 0.347426
+    },
+    "High Wind": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Tornado": {
+      "count": 673,
+      "proportion": 0.281708
+    },
+    "Winter Storm": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Winter Weather": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Heavy Snow": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Hail": {
+      "count": 886,
+      "proportion": 0.370866
+    }
+  },
+  "1963": {
+    "Drought": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flash Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Others": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Thunderstorm Wind": {
+      "count": 823,
+      "proportion": 0.418191
+    },
+    "High Wind": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Tornado": {
+      "count": 493,
+      "proportion": 0.250508
+    },
+    "Winter Storm": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Winter Weather": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Heavy Snow": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Hail": {
+      "count": 652,
+      "proportion": 0.331301
+    }
+  },
+  "1964": {
+    "Drought": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flash Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Others": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Thunderstorm Wind": {
+      "count": 909,
+      "proportion": 0.387138
+    },
+    "High Wind": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Tornado": {
+      "count": 760,
+      "proportion": 0.32368
+    },
+    "Winter Storm": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Winter Weather": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Heavy Snow": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Hail": {
+      "count": 679,
+      "proportion": 0.289182
+    }
+  },
+  "1965": {
+    "Drought": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flash Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Others": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Thunderstorm Wind": {
+      "count": 1044,
+      "proportion": 0.368254
+    },
+    "High Wind": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Tornado": {
+      "count": 990,
+      "proportion": 0.349206
+    },
+    "Winter Storm": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Winter Weather": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Heavy Snow": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Hail": {
+      "count": 801,
+      "proportion": 0.28254
+    }
+  },
+  "1966": {
+    "Drought": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flash Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Others": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Thunderstorm Wind": {
+      "count": 1050,
+      "proportion": 0.439698
+    },
+    "High Wind": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Tornado": {
+      "count": 606,
+      "proportion": 0.253769
+    },
+    "Winter Storm": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Winter Weather": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Heavy Snow": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Hail": {
+      "count": 732,
+      "proportion": 0.306533
+    }
+  },
+  "1967": {
+    "Drought": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flash Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Others": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Thunderstorm Wind": {
+      "count": 958,
+      "proportion": 0.356399
+    },
+    "High Wind": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Tornado": {
+      "count": 966,
+      "proportion": 0.359375
+    },
+    "Winter Storm": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Winter Weather": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Heavy Snow": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Hail": {
+      "count": 764,
+      "proportion": 0.284226
+    }
+  },
+  "1968": {
+    "Drought": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flash Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Others": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Thunderstorm Wind": {
+      "count": 1529,
+      "proportion": 0.461655
+    },
+    "High Wind": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Tornado": {
+      "count": 715,
+      "proportion": 0.215882
+    },
+    "Winter Storm": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Winter Weather": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Heavy Snow": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Hail": {
+      "count": 1068,
+      "proportion": 0.322464
+    }
+  },
+  "1969": {
+    "Drought": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flash Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Others": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Thunderstorm Wind": {
+      "count": 1510,
+      "proportion": 0.516063
+    },
+    "High Wind": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Tornado": {
+      "count": 650,
+      "proportion": 0.222146
+    },
+    "Winter Storm": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Winter Weather": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Heavy Snow": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Hail": {
+      "count": 766,
+      "proportion": 0.261791
+    }
+  },
+  "1970": {
+    "Drought": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flash Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Others": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Thunderstorm Wind": {
+      "count": 1794,
+      "proportion": 0.558009
+    },
+    "High Wind": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Tornado": {
+      "count": 700,
+      "proportion": 0.217729
+    },
+    "Winter Storm": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Winter Weather": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Heavy Snow": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Hail": {
+      "count": 721,
+      "proportion": 0.224261
+    }
+  },
+  "1971": {
+    "Drought": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flash Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Others": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Thunderstorm Wind": {
+      "count": 1544,
+      "proportion": 0.444829
+    },
+    "High Wind": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Tornado": {
+      "count": 963,
+      "proportion": 0.277442
+    },
+    "Winter Storm": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Winter Weather": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Heavy Snow": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Hail": {
+      "count": 964,
+      "proportion": 0.27773
+    }
+  },
+  "1972": {
+    "Drought": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flash Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Others": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Thunderstorm Wind": {
+      "count": 712,
+      "proportion": 0.327959
+    },
+    "High Wind": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Tornado": {
+      "count": 778,
+      "proportion": 0.35836
+    },
+    "Winter Storm": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Winter Weather": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Heavy Snow": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Hail": {
+      "count": 681,
+      "proportion": 0.31368
+    }
+  },
+  "1973": {
+    "Drought": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flash Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Others": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Thunderstorm Wind": {
+      "count": 2157,
+      "proportion": 0.484393
+    },
+    "High Wind": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Tornado": {
+      "count": 1198,
+      "proportion": 0.269032
+    },
+    "Winter Storm": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Winter Weather": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Heavy Snow": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Hail": {
+      "count": 1098,
+      "proportion": 0.246575
+    }
+  },
+  "1974": {
+    "Drought": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flash Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Others": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Thunderstorm Wind": {
+      "count": 2599,
+      "proportion": 0.483535
+    },
+    "High Wind": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Tornado": {
+      "count": 1120,
+      "proportion": 0.208372
+    },
+    "Winter Storm": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Winter Weather": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Heavy Snow": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Hail": {
+      "count": 1656,
+      "proportion": 0.308093
+    }
+  },
+  "1975": {
+    "Drought": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flash Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Others": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Thunderstorm Wind": {
+      "count": 2639,
+      "proportion": 0.530452
+    },
+    "High Wind": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Tornado": {
+      "count": 962,
+      "proportion": 0.193367
+    },
+    "Winter Storm": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Winter Weather": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Heavy Snow": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Hail": {
+      "count": 1374,
+      "proportion": 0.276181
+    }
+  },
+  "1976": {
+    "Drought": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flash Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Others": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Thunderstorm Wind": {
+      "count": 1742,
+      "proportion": 0.462314
+    },
+    "High Wind": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Tornado": {
+      "count": 935,
+      "proportion": 0.248142
+    },
+    "Winter Storm": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Winter Weather": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Heavy Snow": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Hail": {
+      "count": 1091,
+      "proportion": 0.289544
+    }
+  },
+  "1977": {
+    "Drought": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flash Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Others": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Thunderstorm Wind": {
+      "count": 1723,
+      "proportion": 0.462178
+    },
+    "High Wind": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Tornado": {
+      "count": 922,
+      "proportion": 0.247318
+    },
+    "Winter Storm": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Winter Weather": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Heavy Snow": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Hail": {
+      "count": 1083,
+      "proportion": 0.290504
+    }
+  },
+  "1978": {
+    "Drought": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flash Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Others": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Thunderstorm Wind": {
+      "count": 1758,
+      "proportion": 0.480722
+    },
+    "High Wind": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Tornado": {
+      "count": 875,
+      "proportion": 0.239267
+    },
+    "Winter Storm": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Winter Weather": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Heavy Snow": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Hail": {
+      "count": 1024,
+      "proportion": 0.280011
+    }
+  },
+  "1979": {
+    "Drought": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flash Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Others": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Thunderstorm Wind": {
+      "count": 2046,
+      "proportion": 0.478149
+    },
+    "High Wind": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Tornado": {
+      "count": 918,
+      "proportion": 0.214536
+    },
+    "Winter Storm": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Winter Weather": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Heavy Snow": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Hail": {
+      "count": 1315,
+      "proportion": 0.307315
+    }
+  },
+  "1980": {
+    "Drought": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flash Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Others": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Thunderstorm Wind": {
+      "count": 3179,
+      "proportion": 0.51809
+    },
+    "High Wind": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Tornado": {
+      "count": 972,
+      "proportion": 0.158409
+    },
+    "Winter Storm": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Winter Weather": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Heavy Snow": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Hail": {
+      "count": 1985,
+      "proportion": 0.323501
+    }
+  },
+  "1981": {
+    "Drought": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flash Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Others": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Thunderstorm Wind": {
+      "count": 2193,
+      "proportion": 0.485499
+    },
+    "High Wind": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Tornado": {
+      "count": 830,
+      "proportion": 0.18375
+    },
+    "Winter Storm": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Winter Weather": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Heavy Snow": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Hail": {
+      "count": 1494,
+      "proportion": 0.33075
+    }
+  },
+  "1982": {
+    "Drought": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flash Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Others": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Thunderstorm Wind": {
+      "count": 3570,
+      "proportion": 0.500982
+    },
+    "High Wind": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Tornado": {
+      "count": 1180,
+      "proportion": 0.165591
+    },
+    "Winter Storm": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Winter Weather": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Heavy Snow": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Hail": {
+      "count": 2376,
+      "proportion": 0.333427
+    }
+  },
+  "1983": {
+    "Drought": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flash Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Others": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Thunderstorm Wind": {
+      "count": 4993,
+      "proportion": 0.599976
+    },
+    "High Wind": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Tornado": {
+      "count": 995,
+      "proportion": 0.119563
+    },
+    "Winter Storm": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Winter Weather": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Heavy Snow": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Hail": {
+      "count": 2334,
+      "proportion": 0.280461
+    }
+  },
+  "1984": {
+    "Drought": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flash Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Others": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Thunderstorm Wind": {
+      "count": 3566,
+      "proportion": 0.486162
+    },
+    "High Wind": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Tornado": {
+      "count": 1020,
+      "proportion": 0.139059
+    },
+    "Winter Storm": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Winter Weather": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Heavy Snow": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Hail": {
+      "count": 2749,
+      "proportion": 0.374778
+    }
+  },
+  "1985": {
+    "Drought": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flash Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Others": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Thunderstorm Wind": {
+      "count": 3827,
+      "proportion": 0.479634
+    },
+    "High Wind": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Tornado": {
+      "count": 773,
+      "proportion": 0.096879
+    },
+    "Winter Storm": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Winter Weather": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Heavy Snow": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Hail": {
+      "count": 3379,
+      "proportion": 0.423487
+    }
+  },
+  "1986": {
+    "Drought": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flash Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Others": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Thunderstorm Wind": {
+      "count": 4365,
+      "proportion": 0.500287
+    },
+    "High Wind": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Tornado": {
+      "count": 849,
+      "proportion": 0.097307
+    },
+    "Winter Storm": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Winter Weather": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Heavy Snow": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Hail": {
+      "count": 3511,
+      "proportion": 0.402407
+    }
+  },
+  "1987": {
+    "Drought": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flash Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Others": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Thunderstorm Wind": {
+      "count": 4255,
+      "proportion": 0.577889
+    },
+    "High Wind": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Tornado": {
+      "count": 695,
+      "proportion": 0.094391
+    },
+    "Winter Storm": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Winter Weather": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Heavy Snow": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Hail": {
+      "count": 2413,
+      "proportion": 0.32772
+    }
+  },
+  "1988": {
+    "Drought": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flash Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Others": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Thunderstorm Wind": {
+      "count": 3947,
+      "proportion": 0.543889
+    },
+    "High Wind": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Tornado": {
+      "count": 773,
+      "proportion": 0.106518
+    },
+    "Winter Storm": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Winter Weather": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Heavy Snow": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Hail": {
+      "count": 2537,
+      "proportion": 0.349593
+    }
+  },
+  "1989": {
+    "Drought": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flash Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Others": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Thunderstorm Wind": {
+      "count": 5709,
+      "proportion": 0.548573
+    },
+    "High Wind": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Tornado": {
+      "count": 921,
+      "proportion": 0.088498
+    },
+    "Winter Storm": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Winter Weather": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Heavy Snow": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Hail": {
+      "count": 3777,
+      "proportion": 0.362929
+    }
+  },
+  "1990": {
+    "Drought": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flash Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Others": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Thunderstorm Wind": {
+      "count": 6063,
+      "proportion": 0.553952
+    },
+    "High Wind": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Tornado": {
+      "count": 1264,
+      "proportion": 0.115487
+    },
+    "Winter Storm": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Winter Weather": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Heavy Snow": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Hail": {
+      "count": 3618,
+      "proportion": 0.330562
+    }
+  },
+  "1991": {
+    "Drought": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flash Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Others": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Thunderstorm Wind": {
+      "count": 6497,
+      "proportion": 0.519096
+    },
+    "High Wind": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Tornado": {
+      "count": 1208,
+      "proportion": 0.096516
+    },
+    "Winter Storm": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Winter Weather": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Heavy Snow": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Hail": {
+      "count": 4811,
+      "proportion": 0.384388
+    }
+  },
+  "1992": {
+    "Drought": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flash Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Others": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Thunderstorm Wind": {
+      "count": 6443,
+      "proportion": 0.47606
+    },
+    "High Wind": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Tornado": {
+      "count": 1404,
+      "proportion": 0.103739
+    },
+    "Winter Storm": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Winter Weather": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Heavy Snow": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Hail": {
+      "count": 5687,
+      "proportion": 0.420201
+    }
+  },
+  "1993": {
+    "Drought": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flash Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Others": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Thunderstorm Wind": {
+      "count": 3832,
+      "proportion": 0.44229
+    },
+    "High Wind": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Tornado": {
+      "count": 617,
+      "proportion": 0.071214
+    },
+    "Winter Storm": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Winter Weather": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Heavy Snow": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Hail": {
+      "count": 4215,
+      "proportion": 0.486496
+    }
+  },
+  "1994": {
+    "Drought": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flash Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Others": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Thunderstorm Wind": {
+      "count": 7946,
+      "proportion": 0.508479
+    },
+    "High Wind": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Tornado": {
+      "count": 947,
+      "proportion": 0.0606
+    },
+    "Winter Storm": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Winter Weather": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Heavy Snow": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Hail": {
+      "count": 6734,
+      "proportion": 0.430921
+    }
+  },
+  "1995": {
+    "Drought": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flash Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Flood": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Others": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Thunderstorm Wind": {
+      "count": 10871,
+      "proportion": 0.5312
+    },
+    "High Wind": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Tornado": {
+      "count": 1223,
+      "proportion": 0.059761
+    },
+    "Winter Storm": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Winter Weather": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Heavy Snow": {
+      "count": 0,
+      "proportion": 0.0
+    },
+    "Hail": {
+      "count": 8371,
+      "proportion": 0.40904
+    }
+  },
+  "1996": {
+    "Drought": {
+      "count": 772,
+      "proportion": 0.015895
+    },
+    "Flash Flood": {
+      "count": 3325,
+      "proportion": 0.068459
+    },
+    "Flood": {
+      "count": 2223,
+      "proportion": 0.04577
+    },
+    "Others": {
+      "count": 8282,
+      "proportion": 0.17052
+    },
+    "Thunderstorm Wind": {
+      "count": 10084,
+      "proportion": 0.207622
+    },
+    "High Wind": {
+      "count": 3818,
+      "proportion": 0.07861
+    },
+    "Tornado": {
+      "count": 1267,
+      "proportion": 0.026087
+    },
+    "Winter Storm": {
+      "count": 3028,
+      "proportion": 0.062344
+    },
+    "Winter Weather": {
+      "count": 643,
+      "proportion": 0.013239
+    },
+    "Heavy Snow": {
+      "count": 4301,
+      "proportion": 0.088554
+    },
+    "Hail": {
+      "count": 10826,
+      "proportion": 0.222899
+    }
+  },
+  "1997": {
+    "Drought": {
+      "count": 392,
+      "proportion": 0.009337
+    },
+    "Flash Flood": {
+      "count": 3027,
+      "proportion": 0.072101
+    },
+    "Flood": {
+      "count": 1941,
+      "proportion": 0.046233
+    },
+    "Others": {
+      "count": 7542,
+      "proportion": 0.179644
+    },
+    "Thunderstorm Wind": {
+      "count": 9868,
+      "proportion": 0.235048
+    },
+    "High Wind": {
+      "count": 2415,
+      "proportion": 0.057523
+    },
+    "Tornado": {
+      "count": 1180,
+      "proportion": 0.028107
+    },
+    "Winter Storm": {
+      "count": 3008,
+      "proportion": 0.071648
+    },
+    "Winter Weather": {
+      "count": 1004,
+      "proportion": 0.023914
+    },
+    "Heavy Snow": {
+      "count": 2994,
+      "proportion": 0.071315
+    },
+    "Hail": {
+      "count": 8612,
+      "proportion": 0.205131
+    }
+  },
+  "1998": {
+    "Drought": {
+      "count": 1774,
+      "proportion": 0.034803
+    },
+    "Flash Flood": {
+      "count": 3582,
+      "proportion": 0.070272
+    },
+    "Flood": {
+      "count": 2318,
+      "proportion": 0.045475
+    },
+    "Others": {
+      "count": 8386,
+      "proportion": 0.164518
+    },
+    "Thunderstorm Wind": {
+      "count": 13603,
+      "proportion": 0.266867
+    },
+    "High Wind": {
+      "count": 2165,
+      "proportion": 0.042473
+    },
+    "Tornado": {
+      "count": 1529,
+      "proportion": 0.029996
+    },
+    "Winter Storm": {
+      "count": 2025,
+      "proportion": 0.039727
+    },
+    "Winter Weather": {
+      "count": 833,
+      "proportion": 0.016342
+    },
+    "Heavy Snow": {
+      "count": 2197,
+      "proportion": 0.043101
+    },
+    "Hail": {
+      "count": 12561,
+      "proportion": 0.246425
+    }
+  },
+  "1999": {
+    "Drought": {
+      "count": 2662,
+      "proportion": 0.057392
+    },
+    "Flash Flood": {
+      "count": 2495,
+      "proportion": 0.053791
+    },
+    "Flood": {
+      "count": 1601,
+      "proportion": 0.034517
+    },
+    "Others": {
+      "count": 7975,
+      "proportion": 0.171938
+    },
+    "Thunderstorm Wind": {
+      "count": 10347,
+      "proportion": 0.223077
+    },
+    "High Wind": {
+      "count": 3025,
+      "proportion": 0.065218
+    },
+    "Tornado": {
+      "count": 1520,
+      "proportion": 0.032771
+    },
+    "Winter Storm": {
+      "count": 3035,
+      "proportion": 0.065433
+    },
+    "Winter Weather": {
+      "count": 1110,
+      "proportion": 0.023931
+    },
+    "Heavy Snow": {
+      "count": 2467,
+      "proportion": 0.053188
+    },
+    "Hail": {
+      "count": 10146,
+      "proportion": 0.218744
+    }
+  },
+  "2000": {
+    "Drought": {
+      "count": 2332,
+      "proportion": 0.04484
+    },
+    "Flash Flood": {
+      "count": 2757,
+      "proportion": 0.053012
+    },
+    "Flood": {
+      "count": 1135,
+      "proportion": 0.021824
+    },
+    "Others": {
+      "count": 9069,
+      "proportion": 0.17438
+    },
+    "Thunderstorm Wind": {
+      "count": 12408,
+      "proportion": 0.238583
+    },
+    "High Wind": {
+      "count": 3114,
+      "proportion": 0.059877
+    },
+    "Tornado": {
+      "count": 1169,
+      "proportion": 0.022478
+    },
+    "Winter Storm": {
+      "count": 4070,
+      "proportion": 0.078259
+    },
+    "Winter Weather": {
+      "count": 571,
+      "proportion": 0.010979
+    },
+    "Heavy Snow": {
+      "count": 4086,
+      "proportion": 0.078566
+    },
+    "Hail": {
+      "count": 11296,
+      "proportion": 0.217202
+    }
+  },
+  "2001": {
+    "Drought": {
+      "count": 1602,
+      "proportion": 0.032777
+    },
+    "Flash Flood": {
+      "count": 2917,
+      "proportion": 0.059683
+    },
+    "Flood": {
+      "count": 1872,
+      "proportion": 0.038302
+    },
+    "Others": {
+      "count": 7867,
+      "proportion": 0.160962
+    },
+    "Thunderstorm Wind": {
+      "count": 11971,
+      "proportion": 0.244931
+    },
+    "High Wind": {
+      "count": 2926,
+      "proportion": 0.059867
+    },
+    "Tornado": {
+      "count": 1351,
+      "proportion": 0.027642
+    },
+    "Winter Storm": {
+      "count": 2569,
+      "proportion": 0.052563
+    },
+    "Winter Weather": {
+      "count": 748,
+      "proportion": 0.015304
+    },
+    "Heavy Snow": {
+      "count": 2828,
+      "proportion": 0.057862
+    },
+    "Hail": {
+      "count": 12224,
+      "proportion": 0.250107
+    }
+  },
+  "2002": {
+    "Drought": {
+      "count": 1978,
+      "proportion": 0.038833
+    },
+    "Flash Flood": {
+      "count": 3234,
+      "proportion": 0.063491
+    },
+    "Flood": {
+      "count": 1773,
+      "proportion": 0.034808
+    },
+    "Others": {
+      "count": 8197,
+      "proportion": 0.160927
+    },
+    "Thunderstorm Wind": {
+      "count": 12004,
+      "proportion": 0.235668
+    },
+    "High Wind": {
+      "count": 3229,
+      "proportion": 0.063393
+    },
+    "Tornado": {
+      "count": 1040,
+      "proportion": 0.020418
+    },
+    "Winter Storm": {
+      "count": 3376,
+      "proportion": 0.066279
+    },
+    "Winter Weather": {
+      "count": 439,
+      "proportion": 0.008619
+    },
+    "Heavy Snow": {
+      "count": 3126,
+      "proportion": 0.061371
+    },
+    "Hail": {
+      "count": 12540,
+      "proportion": 0.246191
+    }
+  },
+  "2003": {
+    "Drought": {
+      "count": 974,
+      "proportion": 0.018393
+    },
+    "Flash Flood": {
+      "count": 3936,
+      "proportion": 0.074326
+    },
+    "Flood": {
+      "count": 2259,
+      "proportion": 0.042658
+    },
+    "Others": {
+      "count": 7993,
+      "proportion": 0.150937
+    },
+    "Thunderstorm Wind": {
+      "count": 11996,
+      "proportion": 0.226528
+    },
+    "High Wind": {
+      "count": 2305,
+      "proportion": 0.043527
+    },
+    "Tornado": {
+      "count": 1535,
+      "proportion": 0.028986
+    },
+    "Winter Storm": {
+      "count": 3569,
+      "proportion": 0.067396
+    },
+    "Winter Weather": {
+      "count": 1623,
+      "proportion": 0.030648
+    },
+    "Heavy Snow": {
+      "count": 2851,
+      "proportion": 0.053837
+    },
+    "Hail": {
+      "count": 13915,
+      "proportion": 0.262765
+    }
+  },
+  "2004": {
+    "Drought": {
+      "count": 545,
+      "proportion": 0.010399
+    },
+    "Flash Flood": {
+      "count": 4375,
+      "proportion": 0.083478
+    },
+    "Flood": {
+      "count": 2566,
+      "proportion": 0.048961
+    },
+    "Others": {
+      "count": 8548,
+      "proportion": 0.163102
+    },
+    "Thunderstorm Wind": {
+      "count": 11892,
+      "proportion": 0.226908
+    },
+    "High Wind": {
+      "count": 2385,
+      "proportion": 0.045507
+    },
+    "Tornado": {
+      "count": 1947,
+      "proportion": 0.03715
+    },
+    "Winter Storm": {
+      "count": 3081,
+      "proportion": 0.058788
+    },
+    "Winter Weather": {
+      "count": 1703,
+      "proportion": 0.032494
+    },
+    "Heavy Snow": {
+      "count": 2203,
+      "proportion": 0.042035
+    },
+    "Hail": {
+      "count": 13164,
+      "proportion": 0.251178
+    }
+  },
+  "2005": {
+    "Drought": {
+      "count": 1538,
+      "proportion": 0.028494
+    },
+    "Flash Flood": {
+      "count": 2981,
+      "proportion": 0.055228
+    },
+    "Flood": {
+      "count": 2595,
+      "proportion": 0.048077
+    },
+    "Others": {
+      "count": 9711,
+      "proportion": 0.179913
+    },
+    "Thunderstorm Wind": {
+      "count": 12274,
+      "proportion": 0.227397
+    },
+    "High Wind": {
+      "count": 2255,
+      "proportion": 0.041778
+    },
+    "Tornado": {
+      "count": 1343,
+      "proportion": 0.024881
+    },
+    "Winter Storm": {
+      "count": 2760,
+      "proportion": 0.051134
+    },
+    "Winter Weather": {
+      "count": 2057,
+      "proportion": 0.03811
+    },
+    "Heavy Snow": {
+      "count": 2654,
+      "proportion": 0.04917
+    },
+    "Hail": {
+      "count": 13808,
+      "proportion": 0.255817
+    }
+  },
+  "2006": {
+    "Drought": {
+      "count": 2835,
+      "proportion": 0.050266
+    },
+    "Flash Flood": {
+      "count": 2641,
+      "proportion": 0.046826
+    },
+    "Flood": {
+      "count": 1227,
+      "proportion": 0.021755
+    },
+    "Others": {
+      "count": 9794,
+      "proportion": 0.173652
+    },
+    "Thunderstorm Wind": {
+      "count": 13888,
+      "proportion": 0.246241
+    },
+    "High Wind": {
+      "count": 3026,
+      "proportion": 0.053652
+    },
+    "Tornado": {
+      "count": 1263,
+      "proportion": 0.022394
+    },
+    "Winter Storm": {
+      "count": 1903,
+      "proportion": 0.033741
+    },
+    "Winter Weather": {
+      "count": 1562,
+      "proportion": 0.027695
+    },
+    "Heavy Snow": {
+      "count": 1605,
+      "proportion": 0.028457
+    },
+    "Hail": {
+      "count": 16656,
+      "proportion": 0.295319
+    }
+  },
+  "2007": {
+    "Drought": {
+      "count": 3616,
+      "proportion": 0.061277
+    },
+    "Flash Flood": {
+      "count": 3688,
+      "proportion": 0.062497
+    },
+    "Flood": {
+      "count": 1805,
+      "proportion": 0.030588
+    },
+    "Others": {
+      "count": 11815,
+      "proportion": 0.200217
+    },
+    "Thunderstorm Wind": {
+      "count": 13017,
+      "proportion": 0.220586
+    },
+    "High Wind": {
+      "count": 2168,
+      "proportion": 0.036739
+    },
+    "Tornado": {
+      "count": 1242,
+      "proportion": 0.021047
+    },
+    "Winter Storm": {
+      "count": 3032,
+      "proportion": 0.05138
+    },
+    "Winter Weather": {
+      "count": 3383,
+      "proportion": 0.057328
+    },
+    "Heavy Snow": {
+      "count": 2533,
+      "proportion": 0.042924
+    },
+    "Hail": {
+      "count": 12712,
+      "proportion": 0.215417
+    }
+  },
+  "2008": {
+    "Drought": {
+      "count": 1909,
+      "proportion": 0.026816
+    },
+    "Flash Flood": {
+      "count": 3832,
+      "proportion": 0.053828
+    },
+    "Flood": {
+      "count": 2496,
+      "proportion": 0.035061
+    },
+    "Others": {
+      "count": 11846,
+      "proportion": 0.1664
+    },
+    "Thunderstorm Wind": {
+      "count": 17161,
+      "proportion": 0.241059
+    },
+    "High Wind": {
+      "count": 3565,
+      "proportion": 0.050077
+    },
+    "Tornado": {
+      "count": 1954,
+      "proportion": 0.027448
+    },
+    "Winter Storm": {
+      "count": 4033,
+      "proportion": 0.056651
+    },
+    "Winter Weather": {
+      "count": 3858,
+      "proportion": 0.054193
+    },
+    "Heavy Snow": {
+      "count": 2768,
+      "proportion": 0.038882
+    },
+    "Hail": {
+      "count": 17768,
+      "proportion": 0.249586
+    }
+  },
+  "2009": {
+    "Drought": {
+      "count": 1242,
+      "proportion": 0.021638
+    },
+    "Flash Flood": {
+      "count": 4091,
+      "proportion": 0.071274
+    },
+    "Flood": {
+      "count": 1978,
+      "proportion": 0.034461
+    },
+    "Others": {
+      "count": 10553,
+      "proportion": 0.183857
+    },
+    "Thunderstorm Wind": {
+      "count": 13379,
+      "proportion": 0.233092
+    },
+    "High Wind": {
+      "count": 2968,
+      "proportion": 0.051709
+    },
+    "Tornado": {
+      "count": 1273,
+      "proportion": 0.022178
+    },
+    "Winter Storm": {
+      "count": 3341,
+      "proportion": 0.058208
+    },
+    "Winter Weather": {
+      "count": 2954,
+      "proportion": 0.051465
+    },
+    "Heavy Snow": {
+      "count": 2306,
+      "proportion": 0.040176
+    },
+    "Hail": {
+      "count": 13313,
+      "proportion": 0.231942
+    }
+  },
+  "2010": {
+    "Drought": {
+      "count": 1518,
+      "proportion": 0.024169
+    },
+    "Flash Flood": {
+      "count": 4024,
+      "proportion": 0.064069
+    },
+    "Flood": {
+      "count": 2640,
+      "proportion": 0.042034
+    },
+    "Others": {
+      "count": 12193,
+      "proportion": 0.194134
+    },
+    "Thunderstorm Wind": {
+      "count": 15812,
+      "proportion": 0.251755
+    },
+    "High Wind": {
+      "count": 2753,
+      "proportion": 0.043833
+    },
+    "Tornado": {
+      "count": 1449,
+      "proportion": 0.023071
+    },
+    "Winter Storm": {
+      "count": 3763,
+      "proportion": 0.059914
+    },
+    "Winter Weather": {
+      "count": 4206,
+      "proportion": 0.066967
+    },
+    "Heavy Snow": {
+      "count": 3531,
+      "proportion": 0.05622
+    },
+    "Hail": {
+      "count": 10918,
+      "proportion": 0.173834
+    }
+  },
+  "2011": {
+    "Drought": {
+      "count": 5160,
+      "proportion": 0.065241
+    },
+    "Flash Flood": {
+      "count": 3423,
+      "proportion": 0.043279
+    },
+    "Flood": {
+      "count": 3729,
+      "proportion": 0.047148
+    },
+    "Others": {
+      "count": 13508,
+      "proportion": 0.170791
+    },
+    "Thunderstorm Wind": {
+      "count": 21282,
+      "proportion": 0.269082
+    },
+    "High Wind": {
+      "count": 3191,
+      "proportion": 0.040346
+    },
+    "Tornado": {
+      "count": 2074,
+      "proportion": 0.026223
+    },
+    "Winter Storm": {
+      "count": 3182,
+      "proportion": 0.040232
+    },
+    "Winter Weather": {
+      "count": 3670,
+      "proportion": 0.046402
+    },
+    "Heavy Snow": {
+      "count": 2541,
+      "proportion": 0.032128
+    },
+    "Hail": {
+      "count": 17331,
+      "proportion": 0.219127
+    }
+  },
+  "2012": {
+    "Drought": {
+      "count": 7903,
+      "proportion": 0.122521
+    },
+    "Flash Flood": {
+      "count": 2304,
+      "proportion": 0.035719
+    },
+    "Flood": {
+      "count": 993,
+      "proportion": 0.015395
+    },
+    "Others": {
+      "count": 12771,
+      "proportion": 0.197991
+    },
+    "Thunderstorm Wind": {
+      "count": 16235,
+      "proportion": 0.251694
+    },
+    "High Wind": {
+      "count": 3765,
+      "proportion": 0.058369
+    },
+    "Tornado": {
+      "count": 1058,
+      "proportion": 0.016402
+    },
+    "Winter Storm": {
+      "count": 1809,
+      "proportion": 0.028045
+    },
+    "Winter Weather": {
+      "count": 2802,
+      "proportion": 0.04344
+    },
+    "Heavy Snow": {
+      "count": 1478,
+      "proportion": 0.022914
+    },
+    "Hail": {
+      "count": 13385,
+      "proportion": 0.20751
+    }
+  },
+  "2013": {
+    "Drought": {
+      "count": 5539,
+      "proportion": 0.092338
+    },
+    "Flash Flood": {
+      "count": 4484,
+      "proportion": 0.074751
+    },
+    "Flood": {
+      "count": 2176,
+      "proportion": 0.036275
+    },
+    "Others": {
+      "count": 10107,
+      "proportion": 0.168489
+    },
+    "Thunderstorm Wind": {
+      "count": 14355,
+      "proportion": 0.239306
+    },
+    "High Wind": {
+      "count": 2307,
+      "proportion": 0.038459
+    },
+    "Tornado": {
+      "count": 1053,
+      "proportion": 0.017554
+    },
+    "Winter Storm": {
+      "count": 3446,
+      "proportion": 0.057447
+    },
+    "Winter Weather": {
+      "count": 4669,
+      "proportion": 0.077835
+    },
+    "Heavy Snow": {
+      "count": 2225,
+      "proportion": 0.037092
+    },
+    "Hail": {
+      "count": 9625,
+      "proportion": 0.160454
+    }
+  },
+  "2014": {
+    "Drought": {
+      "count": 3009,
+      "proportion": 0.050593
+    },
+    "Flash Flood": {
+      "count": 3234,
+      "proportion": 0.054376
+    },
+    "Flood": {
+      "count": 1904,
+      "proportion": 0.032013
+    },
+    "Others": {
+      "count": 12012,
+      "proportion": 0.201967
+    },
+    "Thunderstorm Wind": {
+      "count": 13831,
+      "proportion": 0.232551
+    },
+    "High Wind": {
+      "count": 3253,
+      "proportion": 0.054695
+    },
+    "Tornado": {
+      "count": 1064,
+      "proportion": 0.01789
+    },
+    "Winter Storm": {
+      "count": 3952,
+      "proportion": 0.066448
+    },
+    "Winter Weather": {
+      "count": 4615,
+      "proportion": 0.077596
+    },
+    "Heavy Snow": {
+      "count": 2637,
+      "proportion": 0.044338
+    },
+    "Hail": {
+      "count": 9964,
+      "proportion": 0.167533
+    }
+  },
+  "2015": {
+    "Drought": {
+      "count": 1397,
+      "proportion": 0.024125
+    },
+    "Flash Flood": {
+      "count": 5063,
+      "proportion": 0.087433
+    },
+    "Flood": {
+      "count": 2587,
+      "proportion": 0.044675
+    },
+    "Others": {
+      "count": 11146,
+      "proportion": 0.192481
+    },
+    "Thunderstorm Wind": {
+      "count": 14400,
+      "proportion": 0.248675
+    },
+    "High Wind": {
+      "count": 2192,
+      "proportion": 0.037854
+    },
+    "Tornado": {
+      "count": 1320,
+      "proportion": 0.022795
+    },
+    "Winter Storm": {
+      "count": 3605,
+      "proportion": 0.062255
+    },
+    "Winter Weather": {
+      "count": 4242,
+      "proportion": 0.073255
+    },
+    "Heavy Snow": {
+      "count": 2557,
+      "proportion": 0.044157
+    },
+    "Hail": {
+      "count": 9398,
+      "proportion": 0.162295
+    }
+  },
+  "2016": {
+    "Drought": {
+      "count": 2271,
+      "proportion": 0.04055
+    },
+    "Flash Flood": {
+      "count": 3586,
+      "proportion": 0.06403
+    },
+    "Flood": {
+      "count": 1703,
+      "proportion": 0.030408
+    },
+    "Others": {
+      "count": 12377,
+      "proportion": 0.220998
+    },
+    "Thunderstorm Wind": {
+      "count": 15659,
+      "proportion": 0.2796
+    },
+    "High Wind": {
+      "count": 3120,
+      "proportion": 0.055709
+    },
+    "Tornado": {
+      "count": 1081,
+      "proportion": 0.019302
+    },
+    "Winter Storm": {
+      "count": 2367,
+      "proportion": 0.042264
+    },
+    "Winter Weather": {
+      "count": 2916,
+      "proportion": 0.052067
+    },
+    "Heavy Snow": {
+      "count": 1518,
+      "proportion": 0.027105
+    },
+    "Hail": {
+      "count": 9407,
+      "proportion": 0.167967
+    }
+  },
+  "2017": {
+    "Drought": {
+      "count": 1220,
+      "proportion": 0.021393
+    },
+    "Flash Flood": {
+      "count": 3662,
+      "proportion": 0.064213
+    },
+    "Flood": {
+      "count": 2472,
+      "proportion": 0.043346
+    },
+    "Others": {
+      "count": 10862,
+      "proportion": 0.190465
+    },
+    "Thunderstorm Wind": {
+      "count": 16472,
+      "proportion": 0.288836
+    },
+    "High Wind": {
+      "count": 3536,
+      "proportion": 0.062004
+    },
+    "Tornado": {
+      "count": 1651,
+      "proportion": 0.02895
+    },
+    "Winter Storm": {
+      "count": 2245,
+      "proportion": 0.039366
+    },
+    "Winter Weather": {
+      "count": 2806,
+      "proportion": 0.049203
+    },
+    "Heavy Snow": {
+      "count": 1705,
+      "proportion": 0.029897
+    },
+    "Hail": {
+      "count": 10398,
+      "proportion": 0.182328
+    }
+  },
+  "2018": {
+    "Drought": {
+      "count": 2417,
+      "proportion": 0.03855
+    },
+    "Flash Flood": {
+      "count": 4378,
+      "proportion": 0.069828
+    },
+    "Flood": {
+      "count": 4824,
+      "proportion": 0.076941
+    },
+    "Others": {
+      "count": 14032,
+      "proportion": 0.223807
+    },
+    "Thunderstorm Wind": {
+      "count": 14620,
+      "proportion": 0.233185
+    },
+    "High Wind": {
+      "count": 2977,
+      "proportion": 0.047482
+    },
+    "Tornado": {
+      "count": 1254,
+      "proportion": 0.020001
+    },
+    "Winter Storm": {
+      "count": 3468,
+      "proportion": 0.055314
+    },
+    "Winter Weather": {
+      "count": 4570,
+      "proportion": 0.07289
+    },
+    "Heavy Snow": {
+      "count": 2294,
+      "proportion": 0.036589
+    },
+    "Hail": {
+      "count": 7863,
+      "proportion": 0.125413
+    }
+  },
+  "2019": {
+    "Drought": {
+      "count": 1007,
+      "proportion": 0.014839
+    },
+    "Flash Flood": {
+      "count": 4084,
+      "proportion": 0.060182
+    },
+    "Flood": {
+      "count": 4949,
+      "proportion": 0.072928
+    },
+    "Others": {
+      "count": 14645,
+      "proportion": 0.215809
+    },
+    "Thunderstorm Wind": {
+      "count": 18620,
+      "proportion": 0.274384
+    },
+    "High Wind": {
+      "count": 3787,
+      "proportion": 0.055805
+    },
+    "Tornado": {
+      "count": 1734,
+      "proportion": 0.025552
+    },
+    "Winter Storm": {
+      "count": 3354,
+      "proportion": 0.049425
+    },
+    "Winter Weather": {
+      "count": 3808,
+      "proportion": 0.056115
+    },
+    "Heavy Snow": {
+      "count": 2881,
+      "proportion": 0.042454
+    },
+    "Hail": {
+      "count": 8992,
+      "proportion": 0.132506
+    }
+  },
+  "2020": {
+    "Drought": {
+      "count": 2244,
+      "proportion": 0.036619
+    },
+    "Flash Flood": {
+      "count": 3569,
+      "proportion": 0.058242
+    },
+    "Flood": {
+      "count": 2704,
+      "proportion": 0.044126
+    },
+    "Others": {
+      "count": 14033,
+      "proportion": 0.229002
+    },
+    "Thunderstorm Wind": {
+      "count": 19315,
+      "proportion": 0.315198
+    },
+    "High Wind": {
+      "count": 3682,
+      "proportion": 0.060086
+    },
+    "Tornado": {
+      "count": 1251,
+      "proportion": 0.020415
+    },
+    "Winter Storm": {
+      "count": 2102,
+      "proportion": 0.034302
+    },
+    "Winter Weather": {
+      "count": 2910,
+      "proportion": 0.047488
+    },
+    "Heavy Snow": {
+      "count": 1792,
+      "proportion": 0.029243
+    },
+    "Hail": {
+      "count": 7677,
+      "proportion": 0.125279
+    }
+  },
+  "2021": {
+    "Drought": {
+      "count": 4083,
+      "proportion": 0.06651
+    },
+    "Flash Flood": {
+      "count": 4797,
+      "proportion": 0.078141
+    },
+    "Flood": {
+      "count": 2031,
+      "proportion": 0.033084
+    },
+    "Others": {
+      "count": 13434,
+      "proportion": 0.218834
+    },
+    "Thunderstorm Wind": {
+      "count": 15533,
+      "proportion": 0.253026
+    },
+    "High Wind": {
+      "count": 4599,
+      "proportion": 0.074916
+    },
+    "Tornado": {
+      "count": 1545,
+      "proportion": 0.025167
+    },
+    "Winter Storm": {
+      "count": 2945,
+      "proportion": 0.047973
+    },
+    "Winter Weather": {
+      "count": 3914,
+      "proportion": 0.063757
+    },
+    "Heavy Snow": {
+      "count": 2236,
+      "proportion": 0.036423
+    },
+    "Hail": {
+      "count": 6272,
+      "proportion": 0.102168
+    }
+  },
+  "2022": {
+    "Drought": {
+      "count": 6873,
+      "proportion": 0.098346
+    },
+    "Flash Flood": {
+      "count": 3097,
+      "proportion": 0.044315
+    },
+    "Flood": {
+      "count": 1961,
+      "proportion": 0.02806
+    },
+    "Others": {
+      "count": 15894,
+      "proportion": 0.227428
+    },
+    "Thunderstorm Wind": {
+      "count": 17595,
+      "proportion": 0.251767
+    },
+    "High Wind": {
+      "count": 5179,
+      "proportion": 0.074106
+    },
+    "Tornado": {
+      "count": 1383,
+      "proportion": 0.019789
+    },
+    "Winter Storm": {
+      "count": 3644,
+      "proportion": 0.052142
+    },
+    "Winter Weather": {
+      "count": 4762,
+      "proportion": 0.06814
+    },
+    "Heavy Snow": {
+      "count": 2318,
+      "proportion": 0.033168
+    },
+    "Hail": {
+      "count": 7180,
+      "proportion": 0.102739
+    }
+  },
+  "2023": {
+    "Drought": {
+      "count": 5860,
+      "proportion": 0.077434
+    },
+    "Flash Flood": {
+      "count": 3642,
+      "proportion": 0.048126
+    },
+    "Flood": {
+      "count": 2852,
+      "proportion": 0.037686
+    },
+    "Others": {
+      "count": 17516,
+      "proportion": 0.231457
+    },
+    "Thunderstorm Wind": {
+      "count": 21248,
+      "proportion": 0.280772
+    },
+    "High Wind": {
+      "count": 3491,
+      "proportion": 0.04613
+    },
+    "Tornado": {
+      "count": 1523,
+      "proportion": 0.020125
+    },
+    "Winter Storm": {
+      "count": 2348,
+      "proportion": 0.031027
+    },
+    "Winter Weather": {
+      "count": 2890,
+      "proportion": 0.038189
+    },
+    "Heavy Snow": {
+      "count": 2540,
+      "proportion": 0.033564
+    },
+    "Hail": {
+      "count": 11767,
+      "proportion": 0.15549
+    }
+  },
+  "2024": {
+    "Drought": {
+      "count": 3570,
+      "proportion": 0.050858
+    },
+    "Flash Flood": {
+      "count": 4748,
+      "proportion": 0.067639
+    },
+    "Flood": {
+      "count": 2490,
+      "proportion": 0.035472
+    },
+    "Others": {
+      "count": 16279,
+      "proportion": 0.231908
+    },
+    "Thunderstorm Wind": {
+      "count": 20064,
+      "proportion": 0.285828
+    },
+    "High Wind": {
+      "count": 3993,
+      "proportion": 0.056884
+    },
+    "Tornado": {
+      "count": 2141,
+      "proportion": 0.0305
+    },
+    "Winter Storm": {
+      "count": 2145,
+      "proportion": 0.030557
+    },
+    "Winter Weather": {
+      "count": 3561,
+      "proportion": 0.050729
+    },
+    "Heavy Snow": {
+      "count": 2213,
+      "proportion": 0.031526
+    },
+    "Hail": {
+      "count": 8992,
+      "proportion": 0.128098
+    }
+  }
+}
