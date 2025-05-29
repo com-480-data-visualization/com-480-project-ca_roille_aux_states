@@ -664,7 +664,7 @@ function createCountySpikeMap() {
     const height = 610;
     
     // Create SVG container
-    const svg = d3.select("#plot2")
+    const svg = d3.select("#plot4")
         .append("svg")
         .attr("width", width)
         .attr("height", height)
@@ -860,41 +860,44 @@ fetch('../milestone2/events_by_year.json')
 
 // ========== Event types bar plot =========
 
-fetch('../milestone2/proportion_pivot.json')
+fetch('../milestone2/combined_proportion_count.json')
   .then(response => response.json())
   .then(data => {
     const years = Object.keys(data).sort();
     const eventTypes = Object.keys(data[years[0]]);
+    const counts = {};
     const proportions = {};
     eventTypes.forEach(type => {
-      proportions[type] = years.map(year => data[year][type]);
+      proportions[type] = years.map(year => data[year][type].proportion);
+      counts[type] = years.map(year => data[year][type].count);
     });
 
     const yearsNum = years.map(y => +y);
 
-    /* const customColors = [
-    '#1f77b4', '#ff7f0e', '#2ca02c', '#d62728',
-    '#9467bd', '#8c564b', '#e377c2', '#7f7f7f',
-    '#bcbd22', '#17becf', '#393b79'  // Add more if needed
-    ]; 
-    */
-
     const customColors = [
-    '#ffff99', '#1f78b4', '#a6cee3', '#e31a1c',
-    '#fb9a99', '#b2df8a', '#33a02c', '#6a3d9a',
-    '#cab2d6', '#ff7f00', '#fdbf6f'
+    '#ffff99', '#1f78b4', '#a6cee3', '#b2df8a', 
+    '#33a02c', '#cab2d6', '#6a3d9a', '#ff7f00',
+    '#fdbf6f', '#fb9a99', '#e31a1c'
     ];
+
     // Prepare traces for Plotly inside the fetch callback
     const traces = eventTypes.map((eventType,i) => ({
       x: yearsNum,
       y: proportions[eventType],
       name: eventType,
       type: 'bar',
-      marker: { color: customColors[i % customColors.length] }
+      marker: { color: customColors[i % customColors.length] },
+      hovertemplate:
+        `<b>${eventType}</b><br>` +
+        'Year: %{x}<br>' +
+        'Count: %{customdata}<br>' +
+        'Proportion: %{y:.2%}<extra></extra>',
+      customdata: counts[eventType]
     }));
 
     const layout = {
       barmode: 'stack',
+      hovermode: 'closest',
       xaxis: { 
         title: 'Year', 
         tickangle: -45,
@@ -910,7 +913,7 @@ fetch('../milestone2/proportion_pivot.json')
     };
 
     // Render the plot inside div#plot4
-    Plotly.newPlot('plot4', traces, layout);
+    Plotly.newPlot('plot2', traces, layout);
   })
   .catch(error => console.error('Error loading or plotting data:', error));
 
