@@ -31,7 +31,7 @@
             <h3>Measuring the Influence of a Warming Planet</h3>
             <div class="scroll-indicator">
                 <a href="#carousel-section" class="scroll-arrows">
-                    <svg class="arrows">
+                    <svg class="arrows" viewBox="0 0 60 92">
                         <path class="a1" d="M0 0 L30 32 L60 0"></path>
                         <path class="a2" d="M0 20 L30 52 L60 20"></path>
                         <path class="a3" d="M0 40 L30 72 L60 40"></path>
@@ -122,6 +122,16 @@
     <!-- End of first part --------------------------------------------------------------------------------------->
 
     <div id="section-stats" class="chapter-title"><span>Analysis of Historical Storm Events</span></div>
+    <div class="grey-text-box">
+        We continue our exploration by looking at the historical data of extreme weather events. This is 
+        essential to understand the situation in the United States. We start by presenting some plots with general
+        statistics that aim to give you a broad overview of which type of events can happen in the United States, 
+        at which frequency, and with which impact. However, as our dataset is quite extensive, covering many years,
+        many type of events with details concerning economic loss and number of deaths, we are forced to be selective 
+        on what we show. However, to give you the posisbility to explore more the data by yourself, you have the 
+        possibility, to filter the data by state, range of years, type of events and then choose which information 
+        you want to plot and on which type of plot.
+    </div>
     <div class="grid-section">
         <div class="grid-item">
             <div class="text-section">
@@ -157,7 +167,6 @@
                 </p>
             </div>
             <div id="plot3" class="plot-container">
-                <img src="/data/seasonal patterns.png" alt="Seasonal Patterns of Most Occuring Events" style="width: 100%; height: 100%; object-fit: contain;">
             </div>
         </div>
         
@@ -174,65 +183,107 @@
         </div>
     </div>
     
-    <!--
-    <div class="grey-text-box">
-        Bla bla bla  
-    </div>
-    -->
+
     <div class="weather-dashboard-container">
         <div class="weather-plot-text" id="plottext">
             Configure your filters and click "Update Plot" to display weather data visualization
         </div>
+        
         <div class="weather-filters-container">
-            
             <!-- States Filter -->
             <div class="weather-filter-box">
-                <div class="weather-filter-label">Select States</div>
-                <div class="weather-multi-select" id="statesFilter">
-                    <!-- States will be populated by JavaScript -->
+                <div class="weather-filter-header" onclick="toggleFilter('states')">
+                    <div class="weather-filter-label">Select States</div>
+                    <div class="weather-filter-toggle collapsed" id="statesToggle">▼</div>
                 </div>
-                <button class="weather-update-button" onclick="updateFilters()">Update Plot</button>
+                <div class="weather-filter-content collapsed" id="statesContent">
+                    <button class="weather-select-all-btn" onclick="toggleSelectAll('states')">Select All</button>
+                    <div class="weather-multi-select" id="statesFilter">
+                        <!-- States will be populated by JavaScript -->
+                    </div>
+                </div>
             </div>
 
             <!-- Weather Events Filter -->
             <div class="weather-filter-box">
-                <div class="weather-filter-label">Weather Events</div>
-                <div class="weather-multi-select" id="eventsFilter">
-                    <!-- Events will be populated by JavaScript -->
+                <div class="weather-filter-header" onclick="toggleFilter('events')">
+                    <div class="weather-filter-label">Weather Events</div>
+                    <div class="weather-filter-toggle collapsed" id="eventsToggle">▼</div>
+                </div>
+                <div class="weather-filter-content collapsed" id="eventsContent">
+                    <button class="weather-select-all-btn" onclick="toggleSelectAll('events')">Select All</button>
+                    <div class="weather-multi-select" id="eventsFilter">
+                        <!-- Events will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Metrics Filter -->
+            <div class="weather-filter-box">
+                <div class="weather-filter-header" onclick="toggleFilter('metrics')">
+                    <div class="weather-filter-label">What to Plot</div>
+                    <div class="weather-filter-toggle" id="metricsToggle">▼</div>
+                </div>
+                <div class="weather-filter-content collapsed" id="metricsContent">
+                    <div class="weather-multi-select" style="max-height: none; overflow-y: visible; padding: 0; border: none; background: transparent;">
+                        <select class="weather-metric-type-select" id="metricType">
+                            <option value="count">Event counts</option>
+                            <option value="death">Number of deaths</option>
+                            <option value="economic">Economic Loss</option>
+                        </select>
+                    </div>
                 </div>
             </div>
 
             <!-- Year Range Filter -->
             <div class="weather-filter-box">
-                <div class="weather-filter-label">Year Range</div>
-                <div class="weather-year-inputs">
-                    <div class="weather-year-input">
-                        <label for="startYear">Start Year</label>
-                        <input type="number" id="startYear" min="1950" max="2024" value="2010">
-                    </div>
-                    <div class="weather-year-input">
-                        <label for="endYear">End Year</label>
-                        <input type="number" id="endYear" min="1950" max="2024" value="2024">
+                <div class="weather-filter-header" onclick="toggleFilter('years')">
+                    <div class="weather-filter-label">Year Range</div>
+                    <div class="weather-filter-toggle collapsed" id="yearsToggle">▼</div>
+                </div>
+                <div class="weather-filter-content collapsed" id="yearsContent">
+                    <div class="weather-year-inputs">
+                        <div class="weather-year-input">
+                            <label for="startYear">Start Year</label>
+                            <input type="number" id="startYear" min="1950" max="2024" value="1950">
+                        </div>
+                        <div class="weather-year-input">
+                            <label for="endYear">End Year</label>
+                            <input type="number" id="endYear" min="1950" max="2024" value="2024">
+                        </div>
                     </div>
                 </div>
             </div>
 
             <!-- Plot Type Filter -->
             <div class="weather-filter-box">
-                <div class="weather-filter-label">Plot Type</div>
-                <select class="weather-plot-type-select" id="plotType">
-                    <option value="line">Line Plot</option>
-                    <option value="histogram">Histogram</option>
-                    <option value="bar">Bar Chart</option>
-                    <option value="scatter">Scatter Plot</option>
-                </select>
+                <div class="weather-filter-header" onclick="toggleFilter('plotType')">
+                    <div class="weather-filter-label">Plot Type</div>
+                    <div class="weather-filter-toggle collapsed" id="plotTypeToggle">▼</div>
+                </div>
+                <div class="weather-filter-content collapsed" id="plotTypeContent">
+                    <div class="weather-multi-select" style="max-height: none; overflow-y: visible; padding: 0; border: none; background: transparent;">
+                        <select class="weather-plot-type-select" id="plotType">
+                            <option value="line">Line Plot</option>
+                            <option value="histogram">Histogram</option>
+                            <option value="bar">Bar Chart</option>
+                            <option value="scatter">Scatter Plot</option>
+                        </select>
+                    </div>
+                </div>
             </div>
+        </div>
+
+        <!-- Control Buttons -->
+        <div class="weather-control-buttons">
+            <button class="weather-update-button" onclick="updateFilters()">Update Plot</button>
+            <button class="weather-reset-button" onclick="resetToDefaults()">Reset to Defaults</button>
         </div>
 
         <!-- Plot Container -->
         <div class="weather-plot-container" id="plotContainer">
             <div class="weather-plot-placeholder" id="plotPlaceholder">
-                <!-- Configure your filters and click "Update Plot" to display weather data visualization -->
+                Configure your filters and click "Update Plot" to display weather data visualization
             </div>
         </div>
     </div>
@@ -240,16 +291,21 @@
 
     <div id="section-impact" class="chapter-title"><span>Impact of Climate Change on Storm Frequency</span></div>
     <div class="grey-text-box">
-        Before trying to find whether climate change is impacting the number or the severity of extreme weather
-        events, we can ask ourselves why the United States are subject to so many events, typically much more than
-        other countries. One factor is the topography of the country 
+        As you have maybe found out already above by exploring the data with different kind of plots, 
+        the number of extreme weather events is increasing each year. This results in more crop damage,
+        deaths and .... This has a huge impact on society in general. To better anticipate future extreme 
+        events and mitigate their impact, a better understanding of the factors facilitating the apparition of 
+        weather events is essential. This is also necessary to assess what are the consequences of the climate 
+        change on the extreme weather freqeuncy. In this part of our exploration we detail other knwon factors 
+        influencing the number and the scale of weather events in the United States before actually trying to 
+        answer scientifically to whether or not climate change has also an impact and in at what scale. 
     </div>
     
 
     <div class="static-section">
         <div class="map-panel2">
             <img class="topographic-map" 
-                 src="Made with insMind-df70imz3x4d61.png" 
+                 src="../erasebg-transformed.png" 
                  alt="Topographic Map"
                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
             <div class="map-placeholder" style="display: none;">
@@ -274,7 +330,16 @@
     </div>
 
     <!-- <h3>Other factors that influence the number of events</h3> --> 
-    
+    <div class="grey-text-box">
+        As you have maybe found out already above by exploring the data with different kind of plots, 
+        the number of extreme weather events is increasing each year. This results in more crop damage,
+        deaths and .... This has a huge impact on society in general. To better anticipate future extreme 
+        events and mitigate their impact, a better understanding of the factors facilitating the apparition of 
+        weather events is essential. This is also necessary to assess what are the consequences of the climate 
+        change on the extreme weather freqeuncy. In this part of our exploration we detail other knwon factors 
+        influencing the number and the scale of weather events in the United States before actually trying to 
+        answer scientifically to whether or not climate change has also an impact and in at what scale. 
+    </div>
     <div class="storm-frequency-section">
         <div class="storm-boxes-container">
             <div class="storm-box">
@@ -336,26 +401,42 @@
             <div class="storm-box">
                 <h3 class="storm-box-title">Luc</h3>
                 <p class="storm-box-description">
-                    Master in Data Science 
-                    <a href="https://github.com/lharriso" target="_blank" rel="noopener noreferrer">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" width="32">
-                    </a>
-                    <a href="https://www.linkedin.com/in/luc-harrison/" target="_blank" rel="noopener noreferrer">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="LinkedIn" width="32">
-                    </a>
+                    <div class="left-icons">
+                        <a href="https://github.com/lharriso" target="_blank" rel="noopener noreferrer">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" width="32">
+                        </a>
+                        <a href="https://www.linkedin.com/in/luc-harrison/" target="_blank" rel="noopener noreferrer">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="LinkedIn" width="32">
+                        </a>
+                    </div>
+                    <div class="center-text">
+                        Master in Data Science
+                    </div>
+                    <div class="right-photo">
+                        <!-- Add your image here -->
+                        <img src="../photos/1742664932756.jpg" alt="Your Photo" width="100">
+                    </div>
                 </p>
             </div>
             
             <div class="storm-box">
                 <h3 class="storm-box-title">Timo</h3>
                 <p class="storm-box-description">
-                    Master in Life Sciences Engineering with a minor in Data Science
-                    <a href="https://github.com/timomichoud" target="_blank" rel="noopener noreferrer">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" width="32">
-                    </a>
-                    <a href="https://www.linkedin.com/in/timo-michoud/" target="_blank" rel="noopener noreferrer">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="LinkedIn" width="32">
-                    </a>
+                    <div class="left-icons">
+                        <a href="https://github.com/timomichoud" target="_blank" rel="noopener noreferrer">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" width="32">
+                        </a>
+                        <a href="https://www.linkedin.com/in/timo-michoud/" target="_blank" rel="noopener noreferrer">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="LinkedIn" width="32">
+                        </a>
+                    </div>
+                    <div class="center-text">
+                        Master in Life Sciences Engineering with a minor in Data Science
+                    </div>
+                    <div class="right-photo">
+                        <!-- Add your image here -->
+                        <img src="../photos/WhatsApp Image 2025-05-29 at 14.28.01.jpeg" alt="Your Photo" width="100">
+                    </div>
                 </p>
             </div>
             
@@ -375,7 +456,7 @@
                     </div>
                     <div class="right-photo">
                         <!-- Add your image here -->
-                        <img src="path/to/photo.jpg" alt="Your Photo" width="64">
+                        <img src="../photos/1689499529343.jpg" alt="Your Photo" width="100">
                     </div>
                 </div>
             </div>

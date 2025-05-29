@@ -1,0 +1,42 @@
+[
+  {
+    "event_type": "Tornado",
+    "cost": 13313917971.75
+  },
+  {
+    "event_type": "Flash Flood",
+    "cost": 6417439790.0
+  },
+  {
+    "event_type": "Flood",
+    "cost": 6087490800.0
+  },
+  {
+    "event_type": "Thunderstorm Wind",
+    "cost": 5763384348.25
+  },
+  {
+    "event_type": "Hail",
+    "cost": 4992038691.7
+  },
+  {
+    "event_type": "Drought",
+    "cost": 3365143350.0
+  },
+  {
+    "event_type": "High Wind",
+    "cost": 1988352090.0
+  },
+  {
+    "event_type": "Frost/Freeze",
+    "cost": 1181549450.0
+  },
+  {
+    "event_type": "Tropical Storm",
+    "cost": 1163919100.0
+  },
+  {
+    "event_type": "Wildfire",
+    "cost": 1082347990.0
+  }
+]

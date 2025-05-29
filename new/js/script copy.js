@@ -73,12 +73,11 @@ function initApp() {
     bindUIEvents();
     loadAllData().then(() => {
         createStateAnomalyMap();
-        createCountiesMap();
-        createCountySpikeMap();
+        //createCountySpikeMap();
         toy_histo();
         setupCarousel();
-        initializeFilters();
-        updateFilters(); // Initial plot update
+        //initializeFilters();
+        //updateFilters(); // Initial plot update
     });
 
 }
@@ -161,7 +160,7 @@ async function loadAllData() {
             }),
             d3.json("../milestone2/annual_avg_by_state.json"),
             d3.json("../data/county_counts.json"),
-            d3.json("../milestone2/types_by_year_states.json")
+            d3.json("../milestone2/types_by_year_states_with_totals.json")
         ]);
 
         const years = [...new Set(typesByYearStates.map(d => d.Year))];
@@ -175,8 +174,8 @@ async function loadAllData() {
         // Define these globally or pass them where needed
         // statesFilters = Object.keys(types_by_year_states[firstYear]);
         // eventsFilters = Object.keys(types_by_year_states[firstYear][firstState]);
-        console.log('statesFilters:', statesFilters);
-        console.log('eventsFilters:', eventsFilters);
+        console.log('statesFilters:', statesFilter);
+        console.log('eventsFilters:', eventsFilter);
 
         // Now initialize the filters
         initializeFilters();
@@ -200,47 +199,6 @@ d3.json("https://cdn.jsdelivr.net/npm/us-atlas@3/counties-10m.json").then(us => 
      .attr("fill", d => colorScale(yourData[d.id] || 0));
 });
 */
-
-
-// ========== Create Counties Map ==========
-function createCountiesMap(){
-    console.log("Creating simple state map");
-
-    const width = 975;
-    const height = 610;
-
-    const svg = d3.select("#counties-container")
-        .append("svg")
-        .attr("width", width)
-        .attr("height", height)
-        .attr("viewBox", [0, 0, width, height])
-        .attr("style", "width: 100%; height: auto;");
-
-    const projection = d3.geoAlbersUsa()
-        .translate([width / 2, height / 2])
-        .scale(1250);
-
-    const path = d3.geoPath().projection(projection);
-
-    // Assuming you have the TopoJSON data for counties
-    const counties = topojson.feature(countyTopo, countyTopo.objects.counties).features;
-
-    svg.append("g")
-        .selectAll("path")
-        .data(counties)
-        .join("path")
-        .attr("fill", "none")  // No fill, only borders
-        .attr("stroke", "#000000") // Black stroke color for county boundaries
-        .attr("d", path);
-
-    // State boundaries (Optional, you can remove this if you don't need state boundaries)
-    svg.append("path")
-        .datum(topojson.mesh(countyTopo, countyTopo.objects.states, (a, b) => a !== b))
-        .attr("fill", "none")
-        .attr("stroke", "#000000") // Black stroke color for state boundaries
-        .attr("stroke-linejoin", "round")
-        .attr("d", path);
-}
 
 // ========== Create Anomaly Map ==========
 function createStateAnomalyMap() {
@@ -302,7 +260,7 @@ function createStateAnomalyMap() {
 
 
     const colorScale = d3.scaleDiverging()
-        .domain([5.5, 0, -5.5])
+        .domain([4, 0, -4])
         .interpolator(d3.interpolateRdBu);
 
     /*
@@ -939,86 +897,120 @@ fetch('../milestone2/combined_proportion_count.json')
   })
   .catch(error => console.error('Error loading or plotting data:', error));
 
-// ========== Initialize Map =========
 
+fetch('../milestone2/event_deaths_top_10.json') // Adjust path if needed
+  .then(response => response.json())
+  .then(data => {
+    // Sort data descending by cost and take top 10
+    const top10 = data
+      .filter(d => d.cost > 0)
+      .sort((a, b) => b.cost - a.cost)
+      .slice(0, 10);
 
-function initMap() {
-    const width = 975;
-    const height = 610;
-    
-    console.log("Initializing map with dimensions:", width, "x", height);
-    
-    // Create SVG element
-    svg = d3.select("#map-container")
-        .append("svg")
-        .attr("width", width)
-        .attr("height", height)
-        .attr("viewBox", [0, 0, width, height])
-        .attr("style", "width: 100%; height: auto;");
-    
-    // Add a "Back to US" button (hidden initially)
-    d3.select("#map-container")
-        .append("button")
-        .attr("id", "back-button")
-        .text("↩ Back to US Map")
-        .style("position", "absolute")
-        .style("top", "10px")
-        .style("left", "10px")
-        .style("display", "none")
-        .style("padding", "8px 12px")
-        .style("background-color", "#f8f9fa")
-        .style("border", "1px solid #ced4da")
-        .style("border-radius", "4px")
-        .style("cursor", "pointer")
-        .style("font-family", "sans-serif")
-        .style("font-size", "14px")
-        .style("z-index", "100")
-        .on("click", resetMap)
-        .on("mouseover", function() {
-            d3.select(this).style("background-color", "#e9ecef");
-        })
-        .on("mouseout", function() {
-            d3.select(this).style("background-color", "#f8f9fa");
-        });
-    
-    // Set up projection and path generator
-    projection = d3.geoAlbersUsa()
-        .translate([width / 2, height / 2])
-        .scale(1250);
-    
-    path = d3.geoPath().projection(projection);
-    
-    // Create main group for map elements
-    g = svg.append("g");
-    
-    console.log("Loading TopoJSON data");
-    
-    // Load all necessary data
-    Promise.all([
-        d3.json("https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json"),
-        d3.json("us-counties-10m.json"),
-        d3.json("county_counts.json")
-    ]).then(([states, counties, eventCounts]) => {
-        console.log("Data loaded successfully");
-        
-        usStatesData = states;
-        usCountiesData = counties;
-        countyEventCounts = eventCounts;
-        
-        // Draw the US states map with spikes
-        drawStatesMap();
-        addStateSpikes();
-    }).catch(error => {
-        console.error("Error loading map data:", error);
-        d3.select("#map-container")
-            .append("div")
-            .style("color", "red")
-            .style("text-align", "center")
-            .style("padding", "20px")
-            .html("<h3>Error loading map data</h3><p>" + error.message + "</p>" +
-                  "<p>Make sure your TopoJSON files are accessible.</p>");
-    });
-}
+    const eventTypes = top10.map(d => d.event_type);
+    const deaths = top10.map(d => d.cost); // Convert to billions
+
+    // Create a plasma-like gradient using Plotly colors
+    const plasmaColors = [
+      '#0d0887', '#46039f', '#7201a8', '#9c179e',
+      '#bd3786', '#d8576b', '#ed7953', '#fb9f3a',
+      '#fdca26', '#f0f921'
+    ];
+
+    const trace = {
+      x: eventTypes,
+      y: deaths,
+      type: 'bar',
+      marker: { color: plasmaColors },
+      text: deaths.map(v => `${v.toFixed(1)}`),
+      textposition: 'outside',
+      hovertemplate:
+        '<b>%{x}</b><br>' +
+        'Death: %{y:.1f}<extra></extra>',
+      cliponaxis: false,  // <-- prevents clipping at the top
+    };
+
+    const layout = {
+      //title: 'Top 10 Most Damaging Storm Event Types (1950–2020)',
+      xaxis: {
+        title: 'Event Type',
+        tickangle: -25,
+        tickfont: {
+            size: 10   // <-- reduce this number to make labels smaller
+        }
+      },
+      yaxis: {
+        title: 'Total Number of Death',
+        gridcolor: 'rgba(0,0,0,0.1)',
+        zeroline: false
+      },
+      margin: { t: 50, b: 100, l: 50, r: 50 },
+      width: 540,
+      height: 360,
+      showlegend: false,
+      bargap: 0.2
+    };
+
+    Plotly.newPlot('plot3', [trace], layout);
+  })
+  .catch(error => console.error('Error loading or plotting damage data:', error));
+
+  fetch('../milestone2/event_costs_top_10.json') // Adjust path if needed
+  .then(response => response.json())
+  .then(data => {
+    // Sort data descending by cost and take top 10
+    const top10 = data
+      .filter(d => d.cost > 0)
+      .sort((a, b) => b.cost - a.cost)
+      .slice(0, 10);
+
+    const eventTypes = top10.map(d => d.event_type);
+    const costsBillions = top10.map(d => d.cost / 1e9); // Convert to billions
+
+    // Create a plasma-like gradient using Plotly colors
+    const plasmaColors = [
+      '#0d0887', '#46039f', '#7201a8', '#9c179e',
+      '#bd3786', '#d8576b', '#ed7953', '#fb9f3a',
+      '#fdca26', '#f0f921'
+    ];
+
+    const trace = {
+      x: eventTypes,
+      y: costsBillions,
+      type: 'bar',
+      marker: { color: plasmaColors },
+      text: costsBillions.map(v => `$${v.toFixed(1)}B`),
+      textposition: 'outside',
+      hovertemplate:
+        '<b>%{x}</b><br>' +
+        'Damage: $%{y:.1f}B<extra></extra>',
+      cliponaxis: false,  // <-- prevents clipping at the top
+    };
+
+    const layout = {
+      //title: 'Top 10 Most Damaging Storm Event Types (1950–2020)',
+      xaxis: {
+        title: 'Event Type',
+        tickangle: -25,
+        tickfont: {
+            size: 10   // <-- reduce this number to make labels smaller
+        }
+      },
+      yaxis: {
+        title: 'Total Damage',
+        gridcolor: 'rgba(0,0,0,0.1)',
+        zeroline: false
+      },
+      margin: { t: 50, b: 100, l: 50, r: 50 },
+      width: 540,
+      height: 360,
+      showlegend: false,
+      bargap: 0.2
+    };
+
+    Plotly.newPlot('plot4', [trace], layout);
+  })
+  .catch(error => console.error('Error loading or plotting damage data:', error));
 
 // ========== Draw States Map ==========
 function drawStatesMap() {
@@ -1345,9 +1337,7 @@ function resetMap() {
 //////////////////////////////////////////////////////////
 
 
-//const { states, weatherEvents } = extractStatesAndEvents(weatherData);
-
-/* // US States data
+// Sample data - replace with your actual data
 const states = [
     'Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 
     'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 
@@ -1359,12 +1349,15 @@ const states = [
     'Wisconsin', 'Wyoming'
 ];
 
-// Weather events data
 const weatherEvents = [
-    'Drought', 'Flash Flood', 'Flood',
-    'Others','Thunderstorm Wind', 'High Wind', 'Tornado',
-    'Winter Storm', 'Winter Weather', 'Heavy Snow', 'Hail'
-]; */
+    'Tornado', 'Thunderstorm Wind', 'Hail', 'Flash Flood', 'Flood', 'Winter Storm', 
+    'Ice Storm', 'Blizzard', 'Heavy Snow', 'Heat', 'Drought', 'Wildfire', 'Hurricane', 
+    'Lightning', 'High Wind', 'Extreme Cold', 'Avalanche', 'Dust Storm'
+];
+
+const metrics = [
+    'Event Count', 'Total Deaths', 'Total Damage ($)'
+];
 
 // Initialize filters
 function initializeFilters() {
@@ -1402,7 +1395,6 @@ function getSelectedFilters() {
     const selectedStates = [];
     const selectedEvents = [];
 
-    // Use singular container IDs in querySelectorAll
     document.querySelectorAll('#statesFilter input[type="checkbox"]:checked').forEach(cb => {
         selectedStates.push(cb.value);
     });
@@ -1411,12 +1403,15 @@ function getSelectedFilters() {
         selectedEvents.push(cb.value);
     });
 
+    const metricType = document.getElementById('metricType').value;
+
     return {
         states: selectedStates,
         events: selectedEvents,
         startYear: document.getElementById('startYear').value,
         endYear: document.getElementById('endYear').value,
-        plotType: document.getElementById('plotType').value
+        plotType: document.getElementById('plotType').value,
+        metric: metricType // 👈 new addition
     };
 }
 
@@ -1456,10 +1451,23 @@ function updateFilters() {
       );
 
       // Aggregate the counts
-      const totalCount = filteredData.reduce((sum, d) => sum + d.Count, 0);
+      let valueKey;
+      switch (filters.metric) {
+        case 'death':
+            valueKey = 'Total_death';
+        break;
+        case 'economic':
+            valueKey = 'Total_damage';
+        break;
+        default:
+            valueKey = 'Count';
+        break;
+        }
 
-      x.push(year);
-      y.push(totalCount);
+        const totalValue = filteredData.reduce((sum, d) => sum + (d[valueKey] || 0), 0);
+
+        x.push(year);
+        y.push(totalValue);
     });
 
     return {
@@ -1472,13 +1480,17 @@ function updateFilters() {
   });
 
   Plotly.newPlot('plotPlaceholder', traces, {
-    title: 'Weather Events Over Time',
+    /*title: 'Weather Events Over Time',*/
     width: 800,
     height: 500,
     xaxis: { title: 'Year' },
     yaxis: {
-      title: filters.plotType === 'count' ? 'Event Count' : 'Number of Events',
-      tickformat: filters.plotType === 'proportion' ? ',.0%' : ''
+        title: {
+            count: 'Event Count',
+            death: 'Total Deaths',
+            economic: 'Economic Loss ($)'
+        }[filters.metric],
+        tickformat: filters.plotType === 'proportion' ? ',.0%' : ''
     },
     legend: { title: { text: 'Event Type' } }
   });
@@ -1488,13 +1500,72 @@ function updateFilters() {
   plotInfo.textContent = `${filters.plotType.charAt(0).toUpperCase() + filters.plotType.slice(1)} | ${filters.states.length} States | ${filters.events.length} Events | ${filters.startYear}-${filters.endYear}`;
 }
 
+function setDefaultSelections() {
+    // Select all states by default
+    const stateCheckboxes = document.querySelectorAll('#statesFilter input[type="checkbox"]');
+    stateCheckboxes.forEach(cb => cb.checked = true);
+    
+    // Select only Tornado by default
+    const eventCheckboxes = document.querySelectorAll('#eventsFilter input[type="checkbox"]');
+    eventCheckboxes.forEach(cb => {
+        cb.checked = cb.value === 'Tornado';
+    });
+    
+    // Select Event Count by default
+    const metricCheckboxes = document.querySelectorAll('#metricsFilter input[type="checkbox"]');
+    metricCheckboxes.forEach(cb => {
+        cb.checked = cb.value === 'Event Count';
+    });
+}
 
-// ========== Handle Temperature Unit Toggle ==========
-function handleUnitToggle() {
-    const selectedUnit = this.value;
-    const activeState = document.querySelector(".state.active");
-    if (activeState) {
-        const stateName = activeState.__data__.properties.name.toUpperCase();
-        drawStateTempChart(stateName, tempDataByState, selectedUnit);
+function toggleFilter(filterName) {
+    const content = document.getElementById(filterName + 'Content');
+    const toggle = document.getElementById(filterName + 'Toggle');
+    
+    if (content.classList.contains('expanded')) {
+        content.classList.remove('expanded');
+        content.classList.add('collapsed');
+        toggle.classList.add('collapsed');
+    } else {
+        content.classList.remove('collapsed');
+        content.classList.add('expanded');
+        toggle.classList.remove('collapsed');
     }
+}
+
+function toggleSelectAll(filterType) {
+    const button = event.target;
+    const container = document.getElementById(filterType + 'Filter');
+    const checkboxes = container.querySelectorAll('input[type="checkbox"]');
+    
+    // Check if all are currently selected
+    const allSelected = Array.from(checkboxes).every(cb => cb.checked);
+    
+    // Toggle all checkboxes
+    checkboxes.forEach(cb => {
+        cb.checked = !allSelected;
+    });
+    
+    // Update button text
+    button.textContent = allSelected ? 'Select All' : 'Select None';
+}
+
+function resetToDefaults() {
+    // Reset year range
+    document.getElementById('startYear').value = '1950';
+    document.getElementById('endYear').value = '2024';
+    
+    // Reset plot type
+    document.getElementById('plotType').value = 'line';
+    
+    // Reset selections
+    setDefaultSelections();
+    
+    // Update select all buttons
+    document.querySelectorAll('.weather-select-all-btn').forEach(btn => {
+        btn.textContent = 'Select All';
+    });
+    
+    // Clear plot
+    document.getElementById('plotPlaceholder').innerHTML = 'Filters reset to defaults. Click "Update Plot" to display visualization.';
 }

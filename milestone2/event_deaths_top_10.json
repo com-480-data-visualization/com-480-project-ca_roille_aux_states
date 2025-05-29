@@ -1,0 +1,42 @@
+[
+  {
+    "event_type": "Tornado",
+    "cost": 4320.0
+  },
+  {
+    "event_type": "Heat",
+    "cost": 3155.0
+  },
+  {
+    "event_type": "Flash Flood",
+    "cost": 1871.0
+  },
+  {
+    "event_type": "Excessive Heat",
+    "cost": 1479.0
+  },
+  {
+    "event_type": "Rip Current",
+    "cost": 1364.0
+  },
+  {
+    "event_type": "Thunderstorm Wind",
+    "cost": 1219.0
+  },
+  {
+    "event_type": "Winter Weather",
+    "cost": 1045.0
+  },
+  {
+    "event_type": "Lightning",
+    "cost": 983.0
+  },
+  {
+    "event_type": "Flood",
+    "cost": 748.0
+  },
+  {
+    "event_type": "Cold/Wind Chill",
+    "cost": 677.0
+  }
+]
