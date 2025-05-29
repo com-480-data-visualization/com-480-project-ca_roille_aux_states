@@ -53,7 +53,6 @@
 
 
     <!-- First part --------------------------------------------------------------------------------------->
-    <section class="full-height">
     <div id="section-climate" class="chapter-title">Climate Change in the United States</div> 
     <div class="carousel-section">
         <!-- All texts -->
@@ -78,8 +77,7 @@
                     Some legitimate question that can come to mind when looking at the first histogram is 
                     whether or not the situation is the same over all the country or if some regions, some states 
                     are more spared by the effect of climate change. To asnwer that question we plot the same temperature 
-                    anomalies for the year 2024 but for different region of the United States. These regions corresponds to ¨
-                    Climate Divisions regions. It is clear that the climate change problem is affecting more intensly some 
+                    anomalies for the year 2024 but for different state of the United States. It is clear that the climate change problem is affecting more intensly some 
                     state. However, none is spared and everyone should be concerned by the problem. 
                 </p>
             </div>
@@ -121,7 +119,6 @@
             </div>
         </div>
     </div>
-    </section>
     <!-- End of first part --------------------------------------------------------------------------------------->
 
     <div id="section-stats" class="chapter-title"><span>Analysis of Historical Storm Events</span></div>
@@ -134,10 +131,7 @@
                     taken into account
                 </p>
             </div>
-            <div id="plot1" class="plot-container" style="width: 100%; height: 100%; object-fit: contain;">
-                
-<!--                 <img src="../milestone2/Events_over_time.png" alt="Events over time plot placeholder" style="width: 100%; height: 100%; object-fit: contain;">
- -->            
+            <div id="plot1" class="plot-container">          
             </div>
         </div>
         
@@ -176,14 +170,15 @@
                 </p>
             </div>
             <div id="plot4" class="plot-container">
-                <!-- <img src="/milestone2/temp3.png" alt="Events over time plot placeholder" style="width: 100%; height: 100%; object-fit: contain;"> -->
             </div>
         </div>
     </div>
-
+    
+    <!--
     <div class="grey-text-box">
         Bla bla bla  
     </div>
+    -->
     <div class="weather-dashboard-container">
         <div class="weather-plot-text" id="plottext">
             Configure your filters and click "Update Plot" to display weather data visualization
@@ -236,9 +231,6 @@
 
         <!-- Plot Container -->
         <div class="weather-plot-container" id="plotContainer">
-            <div class="weather-plot-info" id="plotInfo">
-                Ready to display plot
-            </div>
             <div class="weather-plot-placeholder" id="plotPlaceholder">
                 <!-- Configure your filters and click "Update Plot" to display weather data visualization -->
             </div>
@@ -252,9 +244,35 @@
         events, we can ask ourselves why the United States are subject to so many events, typically much more than
         other countries. One factor is the topography of the country 
     </div>
-    <div style="text-align: center;">
-        <img src="Made with insMind-df70imz3x4d61.png" onerror="this.src = 'nopicture.gif';" style="max-width: 600px; height: auto;" />
+    
+
+    <div class="static-section">
+        <div class="map-panel2">
+            <img class="topographic-map" 
+                 src="Made with insMind-df70imz3x4d61.png" 
+                 alt="Topographic Map"
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+            <div class="map-placeholder" style="display: none;">
+                Topographic Map Placeholder
+                <br>
+                <small>(Image not available)</small>
+            </div>
+        </div>
+        <div class="text-panel2">
+            <h3>The role of the geography of the country</h3>
+            <p>
+                This topographic map displays detailed elevation data and terrain features of the selected region. 
+                The contour lines indicate changes in elevation, with closer lines representing steeper terrain 
+                and wider spacing indicating gentler slopes.
+            </p>
+            <p>
+                Key features visible on this map include mountain peaks, valleys, ridges, and water bodies. 
+                The color gradients and shading help visualize the three-dimensional landscape on a 
+                two-dimensional surface, making it easier to understand the terrain's characteristics.
+            </p>
+        </div>
     </div>
+
     <!-- <h3>Other factors that influence the number of events</h3> --> 
     
     <div class="storm-frequency-section">

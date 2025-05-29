@@ -154,7 +154,7 @@ async function loadAllData() {
             d3.json("../data/us-counties-10m.json"),
             // d3.json("https://cdn.jsdelivr.net/npm/us-atlas@3/counties-10m.json"), 
             d3.json("../milestone2/state_data.json"),
-            d3.json("../milestone2/anomaly_by_state.json"),
+            d3.json("../data/state_anomalies.json"),
             d3.json("../milestone2/state_event_counts.json").then(data => {
                 globalMax = Math.max(...Object.values(data).map(arr => d3.max(arr, d => d.count)));
                 return data;
@@ -868,8 +868,8 @@ fetch('../milestone2/events_by_year.json')
         }
       ],
       margin: { t: 50, b: 80, l: 60, r: 30 },
-      width: 600,
-      height: 400
+      width: 540,
+      height: 360
     };
     
 
@@ -930,8 +930,8 @@ fetch('../milestone2/combined_proportion_count.json')
       yaxis: { title: 'Proportion of Total Events', tickformat: ',.0%' },
       legend: { title: { text: 'Event Type' } },
       margin: { t: 50, b: 100, l: 50, r: 50 },
-      width: 600,
-      height: 400
+      width: 540,
+      height: 360
     };
 
     // Render the plot inside div#plot4

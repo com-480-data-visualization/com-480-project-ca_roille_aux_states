@@ -3,8 +3,6 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
-    padding: 20;
-    /* background-color: #ffffff; */
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: #333;
     overflow-x: hidden;
@@ -55,7 +53,7 @@ body {
   color: white;
   font-size: 3.5rem;
   line-height: 1.2;
-  text-shadow: 2px 2px 4px white;
+  text-shadow: 2px 2px 4px #333;
   margin-bottom: 1rem;
 }
 
@@ -64,6 +62,7 @@ body {
   height: 8px;
   background-color: white;
   margin: 0 auto 0.5rem auto; /* center and add spacing below */
+  border-radius: 4px; /* make it rounded */
 }
 
 .hero-content h3 {
@@ -71,10 +70,9 @@ body {
   font-size: 2rem;
   font-weight: 400;
   line-height: 1.2;
-  text-shadow: 2px 2px 4px white;
+  text-shadow: 2px 2px 4px #333;
   margin-top: 1rem;
 }
-
 
 .scroll-indicator {
     color: white;
@@ -113,20 +111,21 @@ body {
 .arrows path {
     animation: bounce 2s infinite;
 }
+
 /* ---------------------------------------------------------------------------------------------------- */
-/* FIRST SECTION -------------------------------------------------------------------------------------- */
+/* CONSISTENT CHAPTER TITLE SPACING ------------------------------------------------------------------ */
 
-
-/* Fix for chapter titles - ensure full width centering */
 .chapter-title {
     font-size: 3em;
     text-align: left;
     position: relative;
     padding-left: 20px;
-    margin: 20px 0;
+    margin: 4rem 0 1rem 0; /* Increased top margin for better separation */
+ /* Reduced spacing - top, right, bottom, left */
     color: white;
-    z-index: 1;
+    z-index: 100;
     display: inline-block;
+    clear: both;
 }
 
 .chapter-title:after {
@@ -135,24 +134,33 @@ body {
     top: 55%;
     left: 103%; /* place after the text */
     height: 6px;
-    width: 1000px;
+    width: 100vw; /* Fixed shorter width */
     background: white;
-    z-index: 1; /* make sure it's on top */
+    z-index: 100;
 }
 
-/* Carousel section layout */
+/* ---------------------------------------------------------------------------------------------------- */
+/* CAROUSEL SECTION WITH 95VH HEIGHT ----------------------------------------------------------------- */
+
 .carousel-section {
     display: flex;
     flex-direction: row;
     padding: 2rem;
     gap: 2rem;
+    margin-bottom: 5rem;
     align-items: stretch;
+    height: 95vh; /* Consistent height */
+    box-sizing: border-box;
+    max-width: 100vw; /* Prevent overflow */
+    position: relative;
+    z-index: 1;
 }
 
 /* Text panel styling */
 .text-content-panel {
     flex: 30;
     position: relative;
+    height: 100%;
 }
 
 .text-content {
@@ -161,6 +169,7 @@ body {
     padding: 20px;
     display: none;
     height: 100%;
+    box-sizing: border-box;
 }
 
 .text-content.active {
@@ -185,23 +194,24 @@ body {
 .map-panel {
     flex: 70;
     position: relative;
-    /*
     background-color: white;
     border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    */
-    min-height: 500px;
+    padding: 20px;
+    height: 100%;
+    box-sizing: border-box;
 }
 
 .map-content {
     display: none;
     width: 100%;
     height: 100%;
+    justify-content: center;
+    align-items: center;
 }
 
 .map-content.active {
-    display: block;
     animation: fadeIn 0.5s;
+    display: flex;
 }
 
 /* Carousel controls */
@@ -218,7 +228,7 @@ body {
 }
 
 .carousel-arrow {
-    /*background-color: #007bff;*/
+    background-color: #a3a5a8;
     color: white;
     border: none;
     border-radius: 50%;
@@ -233,7 +243,7 @@ body {
 }
 
 .carousel-arrow:hover {
-    background-color: white;
+    background-color: #333;
 }
 
 .carousel-dots {
@@ -245,24 +255,189 @@ body {
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    background-color: #dee2e6;
+    background-color: #a3a5a8;
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
 .carousel-dot.active {
-    background-color: white;
+    background-color: #333;
 }
 
-/* Map containers */
 #anomaly-map-container,
-#spike-map-container {
+#spike-map-container,
+#histo-map-container {
     width: 100%;
     height: 100%;
-    padding: 20px;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-/* Animation */
+/* ---------------------------------------------------------------------------------------------------- */
+/* GRID SECTION WITH 95VH HEIGHT AND CONSISTENT SPACING -------------------------------------------- */
+
+.grid-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 2rem;
+    padding: 2rem;
+    height: 95vh; /* Consistent height */
+    box-sizing: border-box;
+    margin: 0; /* Remove all margins */
+    max-width: 100vw; /* Prevent overflow */
+    width: 100%; /* Ensure full width usage */
+    position: relative;
+    z-index: 1;
+    clear: both; /* Clear any floating elements */
+}
+
+.grid-item {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    gap: 1rem;
+    box-sizing: border-box;
+    min-width: 0; /* Prevent flex items from overflowing */
+}
+
+.text-section {
+    background-color: white;
+    border-radius: 8px;
+    padding: 15px;
+    box-sizing: border-box;
+    height: 150px;
+}
+
+.grid-item {
+    display: flex;
+    flex-direction: column;
+    /* ... */
+}
+
+.plot-container { /* e.g., #plot1 */
+    background-color: white;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    padding: 15px;
+    flex: 1; /* Takes available vertical space in .grid-item */
+    box-sizing: border-box;
+    display: flex;
+    /* flex-direction: column; /* Only needed if plot-container has multiple children to stack */
+    justify-content: center; /* Centers child horizontally if child is narrower */
+    align-items: center; /* Centers child vertically if child is shorter */
+    position: relative;
+    height: 600px;
+}
+
+.plot-container > * { /* Targets the div Plotly creates inside .plot-container */
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* Mostly for img/video, but harmless here */
+    width: 100%; /* Makes Plotly div fill width of .plot-container's content box */
+    height: 100%; /* Makes Plotly div fill height of .plot-container's content box */
+    box-sizing: border-box;
+}
+
+
+.plot-title {
+    text-align: center;
+    font-size: 20px;
+    margin-top: 0;
+    margin-bottom: 10px;
+    position: static; /* Changed from absolute positioning */
+}
+
+.plot-description {
+    font-size: 14px;
+    line-height: 1.4;
+    margin-bottom: 10px;
+}
+
+/* ---------------------------------------------------------------------------------------------------- */
+/* STATIC SECTION WITH 95VH HEIGHT ------------------------------------------------------------------- */
+
+.static-section {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    align-items: stretch;
+    max-width: none; /* Remove max-width restriction */
+    margin: 0;
+    padding: 2rem;
+    height: 95vh; /* Consistent height */
+    box-sizing: border-box;
+    position: relative;
+    z-index: 1;
+}
+
+/* Text panel styling - on the left */
+.text-panel2 {
+    flex: 40;
+    position: relative;
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+.text-panel2 h3 {
+    font-size: 1.5rem;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.text-panel2 p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #555;
+    text-align: justify;
+}
+
+/* Map panel styling - on the right */
+.map-panel2 {
+    flex: 60;
+    position: relative;
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.topographic-map {
+    max-width: 100%;
+    max-height: 100%;
+    height: auto;
+    border-radius: 6px;
+    /*box-shadow: 0 4px 8px rgba(0,0,0,0.1);*/
+    object-fit: contain;
+}
+
+/* Placeholder for when image doesn't load */
+.map-placeholder {
+    width: 100%;
+    height: 100%;
+    background-color: #f0f0f0;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #888;
+    font-size: 1.1rem;
+    border: 2px dashed #ccc;
+    text-align: center;
+}
+
+/* ---------------------------------------------------------------------------------------------------- */
+/* ANIMATION */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -277,87 +452,14 @@ body {
     box-sizing: border-box;
 }
 
-/* Grid layout for plots */
-.grid-section {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    gap: 20px;
-    padding: 2rem;
-    height: 800px; /* Adjust the height as needed */
-    margin-bottom: 500px;  
-}
-/*
-.grid-item {
-    background-color: white;
-    border-radius: 8px;
-    padding: 15px;
-    display: flex;
-    flex-direction: column;
-}
-*/
-
-
-
-.grid-item {
-    display: flex;
-    flex-direction: column;
-    padding: 0;
-    margin-bottom: 20px;
-    gap: 8px; /* Creates a small gap between text section and plot */
-}
-
-.text-section {
-    background-color: white;
-    border-radius: 8px; /* Fully rounded corners */
-    padding: 15px;
-}
-
-.plot-container {
-    background-color: white;
-    border-radius: 8px; /* Slightly rounded corners for the plot container */
-    border: 1px solid #e0e0e0;
-    padding: 15px;
-    flex: 1;
-}
-
-.plot-title {
-    text-align: center;
-    font-size: 20px;
-    margin-top: 0;
-    margin-bottom: 10px;
-}
-
-.plot-description {
-    font-size: 14px;
-    line-height: 1.4;
-    margin-bottom: 10px;
-}
-/*
-.plot-container {
-    flex: 1;
-    width: 100%;
-    height: 100%;
-    min-height: 250px;
-}
-
-.plot-container {
-    background-color: white;
-    border-radius: 6px;
-    padding: 10px;
-    border: 1px solid #ddd;
-}
-*/
-
-/* ----------------- */
-
 /* Storm Frequency Section Styling */
-/* Fix for storm frequency section - remove side padding for full width */
 .storm-frequency-section {
-    padding: 2rem 0; /* Remove left/right padding, keep top/bottom */
+    padding: 2rem 0;
     margin-bottom: 60px;
     width: 100%;
     display: block;
+    position: relative;
+    z-index: 1;
 }
 
 .storm-boxes-container {
@@ -366,7 +468,7 @@ body {
     gap: 20px;
     justify-content: space-between;
     width: 100%;
-    padding: 0 2rem; /* Add padding only to the container, not the section */
+    padding: 0 2rem;
     box-sizing: border-box;
 }
 
@@ -410,7 +512,6 @@ body {
     object-fit: cover;
 }
 
-
 .storm-quote {
     font-style: italic;
     display: block;
@@ -423,83 +524,22 @@ body {
     color: #555;
 }
 
-
 .grey-text-box {
-    background-color: white; /* white; /* same as other boxes */
-    border-radius: 8px; /* same rounding */
+    background-color: white;
+    border-radius: 8px;
     padding: 20px;
     margin: 2rem;
     box-sizing: border-box;
     text-align: justify;
     font-size: 1em;
     line-height: 1.5;
+    position: relative;
+    z-index: 1;
+    max-width: 95vw;
+    
 }
-
-
-
 
 /* Dot navigation styling */
-.dot-navigation {
-    position: fixed;
-    top: 50%;
-    right: 20px;
-    transform: translateY(-50%);
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    z-index: 1000;
-}
-
-/*
-.dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background-color: #007bff;
-    display: block;
-    transition: background-color 0.3s;
-}
-*/
-/* Hover effect (optional tooltip support) */
-.dot:hover {
-    background-color: #333;
-}
-
-/* Optional tooltip using 'title' attribute — remove or comment this block to disable */
-.dot[title]::after {
-    content: attr(title);
-    position: absolute;
-    right: 140%;
-    background: white; /*rgba(0, 0, 0, 0.75);*/
-    color: #333;
-    padding: 5px 8px;
-    border-radius: 4px;
-    font-size: 0.75em;
-    white-space: nowrap;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s;
-}
-.dot:hover::after {
-    opacity: 1;
-}
-
-.dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background-color: white;
-    display: block;
-    opacity: 1;
-    pointer-events: auto;
-    transition: opacity 0.5s ease;
-}
-
-.dot-navigation.fade-out .dot {
-    opacity: 0;
-    pointer-events: none;
-}
-
 .dot-navigation {
     position: fixed;
     top: 50%;
@@ -522,11 +562,51 @@ body {
     top: 50%;
     right: 0;
     transform: translateY(-50%);
-    width: 50px; /* wider invisible hover area */
+    width: 50px;
     height: 200px;
     z-index: 1000;
 }
+
 .dot-hover-zone:hover .dot-navigation {
+    opacity: 1;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #a3a5a8;
+    display: block;
+    opacity: 1;
+    pointer-events: auto;
+    transition: opacity 0.5s ease;
+}
+
+.dot-navigation.fade-out .dot {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.dot:hover {
+    background-color: #333;
+}
+
+.dot[title]::after {
+    content: attr(title);
+    position: absolute;
+    right: 140%;
+    background: #333;
+    color: white;
+    padding: 5px 8px;
+    border-radius: 4px;
+    font-size: 0.75em;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+}
+
+.dot:hover::after {
     opacity: 1;
 }
 
@@ -535,10 +615,8 @@ html {
 }
 
 .full-height {
-    height: 200vh;
+    height: 100vh;
 }
-
-
 
 /* LOGO */
 img {
@@ -546,20 +624,25 @@ img {
   vertical-align: middle;
   transition: transform 0.2s;
 }
-img:hover {
+
+.logo img:hover {
   transform: scale(1.1);
 }
 
 /* FILTER BOX -------------------------------------------------------------------------------------------- */
 
 .weather-dashboard-container {
-    max-width: 1200px;
-    margin: 2rem auto;
+    max-width: calc(100vw - 4rem); /* Prevent overflow, account for padding */
+    margin: 40rem 2rem 2rem 2rem; /* Increased top margin to push it down */
     background: rgba(255, 255, 255, 0.95);
     border-radius: 20px;
     padding: 30px;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(10px);
+    box-sizing: border-box;
+    position: relative;
+    z-index: 50; /* High z-index but below titles */
+    clear: both;
 }
 
 .weather-plot-text {
@@ -766,17 +849,11 @@ img:hover {
     transform: translateY(0);
 }
 
-@media (max-width: 768px) {
-    .weather-filters-container {
-        flex-direction: column;
-    }
-    
-    .weather-year-inputs {
-        flex-direction: column;
-        gap: 10px;
-    }
-    
-    .weather-dashboard-container {
-        padding: 20px;
-    }
+.tooltip {
+  display: none !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important;
 }
