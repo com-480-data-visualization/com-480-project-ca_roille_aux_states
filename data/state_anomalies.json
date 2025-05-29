@@ -1,0 +1,146 @@
+{
+  "Alabama": {
+    "anomaly": "3.103262"
+  },
+  "Arizona": {
+    "anomaly": "2.995543"
+  },
+  "Arkansas": {
+    "anomaly": "3.382289"
+  },
+  "California": {
+    "anomaly": "2.801843"
+  },
+  "Colorado": {
+    "anomaly": "3.017220"
+  },
+  "Connecticut": {
+    "anomaly": "3.937800"
+  },
+  "Delaware": {
+    "anomaly": "3.223350"
+  },
+  "Florida": {
+    "anomaly": "2.852257"
+  },
+  "Georgia": {
+    "anomaly": "3.064444"
+  },
+  "Idaho": {
+    "anomaly": "2.838490"
+  },
+  "Illinois": {
+    "anomaly": "4.079478"
+  },
+  "Indiana": {
+    "anomaly": "4.176244"
+  },
+  "Iowa": {
+    "anomaly": "4.111222"
+  },
+  "Kansas": {
+    "anomaly": "3.440367"
+  },
+  "Kentucky": {
+    "anomaly": "3.925750"
+  },
+  "Louisiana": {
+    "anomaly": "3.351222"
+  },
+  "Maine": {
+    "anomaly": "4.456200"
+  },
+  "Maryland": {
+    "anomaly": "3.788513"
+  },
+  "Massachusetts": {
+    "anomaly": "4.039833"
+  },
+  "Michigan": {
+    "anomaly": "5.039560"
+  },
+  "Minnesota": {
+    "anomaly": "5.117556"
+  },
+  "Mississippi": {
+    "anomaly": "3.454130"
+  },
+  "Missouri": {
+    "anomaly": "3.659817"
+  },
+  "Montana": {
+    "anomaly": "3.135529"
+  },
+  "Nebraska": {
+    "anomaly": "3.509412"
+  },
+  "Nevada": {
+    "anomaly": "3.082900"
+  },
+  "New Hampshire": {
+    "anomaly": "4.523450"
+  },
+  "New Jersey": {
+    "anomaly": "3.998800"
+  },
+  "New Mexico": {
+    "anomaly": "3.587225"
+  },
+  "New York": {
+    "anomaly": "4.555040"
+  },
+  "North Carolina": {
+    "anomaly": "3.035062"
+  },
+  "North Dakota": {
+    "anomaly": "3.640989"
+  },
+  "Ohio": {
+    "anomaly": "4.743650"
+  },
+  "Oklahoma": {
+    "anomaly": "3.891500"
+  },
+  "Oregon": {
+    "anomaly": "2.162533"
+  },
+  "Pennsylvania": {
+    "anomaly": "4.063800"
+  },
+  "Rhode Island": {
+    "anomaly": "3.372800"
+  },
+  "South Carolina": {
+    "anomaly": "2.778200"
+  },
+  "South Dakota": {
+    "anomaly": "3.460589"
+  },
+  "Tennessee": {
+    "anomaly": "3.404525"
+  },
+  "Texas": {
+    "anomaly": "4.214630"
+  },
+  "Utah": {
+    "anomaly": "3.467900"
+  },
+  "Vermont": {
+    "anomaly": "4.784733"
+  },
+  "Virginia": {
+    "anomaly": "3.670833"
+  },
+  "Washington": {
+    "anomaly": "2.078630"
+  },
+  "West Virginia": {
+    "anomaly": "4.048817"
+  },
+  "Wisconsin": {
+    "anomaly": "5.163933"
+  },
+  "Wyoming": {
+    "anomaly": "3.483370"
+  }
+}
