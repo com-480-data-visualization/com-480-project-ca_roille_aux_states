@@ -1,10 +1,11 @@
 /* BODY ----------------------------------------------------------------------------------------------- */
 /* Ensure body has no unexpected margins */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
-    padding: 0;
-    background-color: #ffffff;
+    padding: 20;
+    /* background-color: #ffffff; */
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: #333;
     overflow-x: hidden;
 }
@@ -45,7 +46,7 @@ body {
     z-index: 1;
     padding: 2rem;
     max-width: 1000px;
-    /* background-color: rgba(0, 0, 0, 0.5); */
+    /* background-color: white */
     border-radius: 10px;
     backdrop-filter: blur(5px);
 }
@@ -54,13 +55,13 @@ body {
   color: white;
   font-size: 3.5rem;
   line-height: 1.2;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  text-shadow: 2px 2px 4px white
   margin-bottom: 1rem;
 }
 
 .hero-content .dash-separator {
   width: 30px;
-  height: 10px;
+  height: 8px;
   background-color: white;
   margin: 0 auto 0.5rem auto; /* center and add spacing below */
 }
@@ -70,7 +71,7 @@ body {
   font-size: 2rem;
   font-weight: 400;
   line-height: 1.2;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  text-shadow: 2px 2px 4px white
   margin-top: 1rem;
 }
 
@@ -121,38 +122,23 @@ body {
     font-size: 3em;
     text-align: left;
     position: relative;
+    padding-left: 20px;
     margin: 20px 0;
-}
-
-.chapter-title span {
-    background: white; /* match page background */
-    padding: 0 20px; /* space between text and bars */
-    position: relative;
+    color: white;
     z-index: 1;
+    display: inline-block;
 }
 
-.chapter-title::before,
-.chapter-title::after {
+.chapter-title:after {
     content: "";
     position: absolute;
-    top: 50%;
-    width: 100vw;
-    height: 5px;
-    background-color: black;
-    z-index: 0;
+    top: 55%;
+    left: 103%; /* place after the text */
+    height: 6px;
+    width: 1000px;
+    background: white;
+    z-index: 1; /* make sure it's on top */
 }
-
-.chapter-title::before {
-    left: 0;
-    transform: translateY(-50%);
-}
-
-.chapter-title::after {
-    right: 0;
-    transform: translateY(-50%);
-}
-
-
 
 /* Carousel section layout */
 .carousel-section {
@@ -170,7 +156,7 @@ body {
 }
 
 .text-content {
-    background-color: rgba(0, 0, 0, 0.05);
+    background-color: white;
     border-radius: 8px;
     padding: 20px;
     display: none;
@@ -247,7 +233,7 @@ body {
 }
 
 .carousel-arrow:hover {
-    background-color: #333;
+    background-color: white;
 }
 
 .carousel-dots {
@@ -265,7 +251,7 @@ body {
 }
 
 .carousel-dot.active {
-    background-color: #333;
+    background-color: white;
 }
 
 /* Map containers */
@@ -303,7 +289,7 @@ body {
 }
 /*
 .grid-item {
-    background-color: rgba(0, 0, 0, 0.05);
+    background-color: white;
     border-radius: 8px;
     padding: 15px;
     display: flex;
@@ -322,7 +308,7 @@ body {
 }
 
 .text-section {
-    background-color: rgba(0, 0, 0, 0.05);
+    background-color: white;
     border-radius: 8px; /* Fully rounded corners */
     padding: 15px;
 }
@@ -385,7 +371,7 @@ body {
 }
 
 .storm-box {
-    background-color: rgba(0, 0, 0, 0.05);
+    background-color: white;
     border-radius: 8px;
     padding: 20px;
     flex: 1;
@@ -394,26 +380,36 @@ body {
     flex-direction: column;
 }
 
-.storm-box-title {
+.storm-box h3 {
+    font-size: 1.4rem;
     text-align: center;
-    font-size: 18px;
-    margin-top: 0;
-    margin-bottom: 15px;
-    color: #333;
-    font-weight: bold;
 }
 
 .storm-box-description {
-    text-align: justify;
-    text-justify: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     font-size: 0.95em;
     line-height: 1.4;
     margin: 0;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    padding: 8px 12px;
 }
+
+.left-icons a {
+    margin-right: 8px;
+}
+
+.center-text {
+    flex-grow: 1;
+    text-align: center;
+    font-weight: 500;
+}
+
+.right-photo img {
+    border-radius: 8px;
+    object-fit: cover;
+}
+
 
 .storm-quote {
     font-style: italic;
@@ -429,7 +425,7 @@ body {
 
 
 .grey-text-box {
-    background-color: rgba(0, 0, 0, 0.05); /* same as other boxes */
+    background-color: white; /* white; /* same as other boxes */
     border-radius: 8px; /* same rounding */
     padding: 20px;
     margin: 2rem;
@@ -474,8 +470,8 @@ body {
     content: attr(title);
     position: absolute;
     right: 140%;
-    background: rgba(0, 0, 0, 0.75);
-    color: white;
+    background: white; /*rgba(0, 0, 0, 0.75);*/
+    color: #333;
     padding: 5px 8px;
     border-radius: 4px;
     font-size: 0.75em;
@@ -492,7 +488,7 @@ body {
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    background-color: #333;
+    background-color: white;
     display: block;
     opacity: 1;
     pointer-events: auto;
@@ -534,26 +530,9 @@ body {
     opacity: 1;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 html {
     scroll-behavior: smooth;
 }
-
-
-
 
 .full-height {
     height: 200vh;
@@ -571,58 +550,223 @@ img:hover {
   transform: scale(1.1);
 }
 
+/* FILTER BOX -------------------------------------------------------------------------------------------- */
 
-
-
-/* RESPONSIVE DESIGN (NOT MANDATORY) ---------------------------------------------------------------------- */
-
-/* Responsive design for storm boxes 
-@media (max-width: 992px) {
-    .storm-boxes-container {
-        flex-direction: column;
-        gap: 15px;
-    }
-    
-    .storm-box {
-        min-height: 120px;
-    }
+.weather-dashboard-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
 }
-*/
-/* Responsive design for storm boxes 
+
+.weather-filters-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 30px;
+    align-items: flex-start;
+}
+
+.weather-filter-box {
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    flex: 1;
+    min-width: 200px;
+}
+
+.weather-filter-box:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
+}
+
+.weather-filter-label {
+    font-weight: 600;
+    color: #4a5568;
+    margin-bottom: 12px;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.weather-multi-select {
+    width: 100%;
+    max-height: 120px;
+    overflow-y: auto;
+    border: 2px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 10px;
+    background: white;
+    scrollbar-width: thin;
+    scrollbar-color: #cbd5e0 #f7fafc;
+}
+
+.weather-multi-select::-webkit-scrollbar {
+    width: 6px;
+}
+
+.weather-multi-select::-webkit-scrollbar-track {
+    background: #f7fafc;
+    border-radius: 3px;
+}
+
+.weather-multi-select::-webkit-scrollbar-thumb {
+    background: #cbd5e0;
+    border-radius: 3px;
+}
+
+.weather-multi-select::-webkit-scrollbar-thumb:hover {
+    background: #a0aec0;
+}
+
+.weather-checkbox-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    padding: 5px;
+    border-radius: 6px;
+    transition: background-color 0.2s ease;
+}
+
+.weather-checkbox-item:hover {
+    background-color: #f7fafc;
+}
+
+.weather-checkbox-item input[type="checkbox"] {
+    margin-right: 10px;
+    transform: scale(1.1);
+    accent-color: #667eea;
+}
+
+.weather-checkbox-item label {
+    cursor: pointer;
+    font-size: 14px;
+    color: #2d3748;
+    flex: 1;
+}
+
+.weather-year-inputs {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.weather-year-input {
+    flex: 1;
+}
+
+.weather-year-input input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.weather-year-input input:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.weather-year-input label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 12px;
+    color: #718096;
+    font-weight: 500;
+}
+
+.weather-plot-type-select {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 14px;
+    background: white;
+    cursor: pointer;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.weather-plot-type-select:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.weather-plot-container {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.weather-plot-placeholder {
+    text-align: center;
+    color: #718096;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.weather-plot-info {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: rgba(102, 126, 234, 0.1);
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-size: 12px;
+    color: #4a5568;
+    font-weight: 500;
+}
+
+.weather-update-button {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+    margin-top: 15px;
+    width: 100%;
+}
+
+.weather-update-button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+}
+
+.weather-update-button:active {
+    transform: translateY(0);
+}
+
 @media (max-width: 768px) {
-    .storm-frequency-section {
-        padding: 1rem;
-        gap: 15px;
-    }
-    
-    .storm-box {
-        padding: 15px;
-    }
-    
-    .storm-box-title {
-        font-size: 20px;
-    }
-    
-    .storm-box-description {
-        font-size: 1em;
-    }
-}
-*/
-
-/* Responsive design 
-@media (max-width: 992px) {
-    .carousel-section {
+    .weather-filters-container {
         flex-direction: column;
     }
     
-    .text-content-panel,
-    .map-panel {
-        flex: none;
-        width: 100%;
+    .weather-year-inputs {
+        flex-direction: column;
+        gap: 10px;
     }
     
-    .map-panel {
-        min-height: 500px;
+    .weather-dashboard-container {
+        padding: 20px;
     }
 }
-*/

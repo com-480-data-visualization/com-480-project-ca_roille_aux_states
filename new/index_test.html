@@ -54,7 +54,7 @@
 
     <!-- First part --------------------------------------------------------------------------------------->
     <section class="full-height">
-    <div id="section-climate" class="chapter-title"><span>Climate Change in the United States</span></div> 
+    <div id="section-climate" class="chapter-title">Climate Change in the United States</div> 
     <div class="carousel-section">
         <!-- All texts -->
         <div class="text-content-panel">
@@ -184,6 +184,63 @@
     <div class="grey-text-box">
         Bla bla bla  
     </div>
+    <div class="weather-dashboard-container">
+        <div class="weather-filters-container">
+            <!-- States Filter -->
+            <div class="weather-filter-box">
+                <div class="weather-filter-label">Select States</div>
+                <div class="weather-multi-select" id="statesFilter">
+                    <!-- States will be populated by JavaScript -->
+                </div>
+                <button class="weather-update-button" onclick="updateFilters()">Update Plot</button>
+            </div>
+
+            <!-- Weather Events Filter -->
+            <div class="weather-filter-box">
+                <div class="weather-filter-label">Weather Events</div>
+                <div class="weather-multi-select" id="eventsFilter">
+                    <!-- Events will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Year Range Filter -->
+            <div class="weather-filter-box">
+                <div class="weather-filter-label">Year Range</div>
+                <div class="weather-year-inputs">
+                    <div class="weather-year-input">
+                        <label for="startYear">Start Year</label>
+                        <input type="number" id="startYear" min="1950" max="2024" value="2010">
+                    </div>
+                    <div class="weather-year-input">
+                        <label for="endYear">End Year</label>
+                        <input type="number" id="endYear" min="1950" max="2024" value="2024">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Plot Type Filter -->
+            <div class="weather-filter-box">
+                <div class="weather-filter-label">Plot Type</div>
+                <select class="weather-plot-type-select" id="plotType">
+                    <option value="line">Line Plot</option>
+                    <option value="histogram">Histogram</option>
+                    <option value="bar">Bar Chart</option>
+                    <option value="scatter">Scatter Plot</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Plot Container -->
+        <div class="weather-plot-container" id="plotContainer">
+            <div class="weather-plot-info" id="plotInfo">
+                Ready to display plot
+            </div>
+            <div class="weather-plot-placeholder" id="plotPlaceholder">
+                Configure your filters and click "Update Plot" to display weather data visualization
+            </div>
+        </div>
+    </div>
+
 
     <div id="section-impact" class="chapter-title"><span>Impact of Climate Change on Storm Frequency</span></div>
     <div class="grey-text-box">
@@ -282,17 +339,35 @@
             
             <div class="storm-box">
                 <h3 class="storm-box-title">Corentin</h3>
-                <p class="storm-box-description">
-                    Master in Computational Science and engineering
-                    <a href="https://github.com/corentingenton" target="_blank" rel="noopener noreferrer">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" width="32">
-                    </a>
-                    <a href="https://www.linkedin.com/in/corentin-genton" target="_blank" rel="noopener noreferrer">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="LinkedIn" width="32">
-                    </a>
-                </p>
+                <div class="storm-box-description">
+                    <div class="left-icons">
+                        <a href="https://github.com/corentingenton" target="_blank" rel="noopener noreferrer">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" width="32">
+                        </a>
+                        <a href="https://www.linkedin.com/in/corentin-genton" target="_blank" rel="noopener noreferrer">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="LinkedIn" width="32">
+                        </a>
+                    </div>
+                    <div class="center-text">
+                        Master in Computational Science and Engineering
+                    </div>
+                    <div class="right-photo">
+                        <!-- Add your image here -->
+                        <img src="path/to/photo.jpg" alt="Your Photo" width="64">
+                    </div>
+                </div>
             </div>
         </div>
+    </div>
+
+    <div id="Team" class="chapter-title"><span>References</span></div>
+    <div class="grey-text-box">
+        [1] shshshshhshsh <br>
+        [2] shshshshhshsh <br>
+        [3] shshshshhshsh <br>
+        [4] shshshshhshsh <br>
+        [5] shshshshhshsh <br>
+        [6] shshshshhshsh <br>
     </div>
 
 

@@ -74,6 +74,8 @@ function initApp() {
         createCountySpikeMap();
         toy_histo();
         setupCarousel();
+        initializeFilters();
+        updateFilters(); // Initial plot update
     });
 
 }
@@ -582,7 +584,7 @@ function toy_histo() {
             .style("font-size", "12px")
             .style("text-anchor", "end")
             .style("font-family", "sans-serif")
-            .text("(relative to 1971-2000 average)");
+            .text("(relative to 1961-1990 average)");
 
         // Add a legend positioned outside the chart area
         const legendWidth = 300;
@@ -1316,6 +1318,104 @@ function resetMap() {
 }
 
 //////////////////////////////////////////////////////////
+
+// US States data
+const states = [
+    'Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 
+    'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 
+    'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan', 
+    'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 
+    'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota', 'Ohio', 
+    'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina', 'South Dakota', 
+    'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington', 'West Virginia', 
+    'Wisconsin', 'Wyoming'
+];
+
+// Weather events data
+const weatherEvents = [
+    'Hurricanes', 'Tornadoes', 'Thunderstorms', 'Blizzards', 'Heat Waves', 
+    'Droughts', 'Floods', 'Hail Storms', 'Ice Storms', 'Wildfires',
+    'Fog', 'High Winds', 'Lightning', 'Freezing Rain', 'Dust Storms'
+];
+
+// Initialize filters
+function initializeFilters() {
+    // Populate states filter
+    const statesContainer = document.getElementById('statesFilter');
+    states.forEach((state, index) => {
+        const checkboxItem = document.createElement('div');
+        checkboxItem.className = 'checkbox-item';
+        checkboxItem.innerHTML = `
+            <input type="checkbox" id="state_${index}" value="${state}" ${index < 5 ? 'checked' : ''}>
+            <label for="state_${index}">${state}</label>
+        `;
+        statesContainer.appendChild(checkboxItem);
+    });
+
+    // Populate weather events filter
+    const eventsContainer = document.getElementById('eventsFilter');
+    weatherEvents.forEach((event, index) => {
+        const checkboxItem = document.createElement('div');
+        checkboxItem.className = 'checkbox-item';
+        checkboxItem.innerHTML = `
+            <input type="checkbox" id="event_${index}" value="${event}" ${index < 3 ? 'checked' : ''}>
+            <label for="event_${index}">${event}</label>
+        `;
+        eventsContainer.appendChild(checkboxItem);
+    });
+}
+
+// Get selected filters
+function getSelectedFilters() {
+    const selectedStates = [];
+    const selectedEvents = [];
+
+    // Get selected states
+    document.querySelectorAll('#statesFilter input[type="checkbox"]:checked').forEach(cb => {
+        selectedStates.push(cb.value);
+    });
+
+    // Get selected events
+    document.querySelectorAll('#eventsFilter input[type="checkbox"]:checked').forEach(cb => {
+        selectedEvents.push(cb.value);
+    });
+
+    return {
+        states: selectedStates,
+        events: selectedEvents,
+        startYear: document.getElementById('startYear').value,
+        endYear: document.getElementById('endYear').value,
+        plotType: document.getElementById('plotType').value
+    };
+}
+
+// Update plot based on filters
+function updateFilters() {
+    const filters = getSelectedFilters();
+    
+    // Update plot info
+    const plotInfo = document.getElementById('plotInfo');
+    plotInfo.textContent = `${filters.plotType.charAt(0).toUpperCase() + filters.plotType.slice(1)} | ${filters.states.length} States | ${filters.events.length} Events | ${filters.startYear}-${filters.endYear}`;
+    
+    // Update placeholder (this is where you'll integrate your plotting code)
+    const placeholder = document.getElementById('plotPlaceholder');
+    placeholder.innerHTML = `
+        <div style="text-align: center;">
+            <h3 style="color: #4a5568; margin-bottom: 15px;">Weather Events Analysis</h3>
+            <p style="color: #718096; margin-bottom: 10px;"><strong>States:</strong> ${filters.states.slice(0, 3).join(', ')}${filters.states.length > 3 ? ` +${filters.states.length - 3} more` : ''}</p>
+            <p style="color: #718096; margin-bottom: 10px;"><strong>Events:</strong> ${filters.events.join(', ')}</p>
+            <p style="color: #718096; margin-bottom: 10px;"><strong>Period:</strong> ${filters.startYear} - ${filters.endYear}</p>
+            <p style="color: #718096;"><strong>Plot Type:</strong> ${filters.plotType.charAt(0).toUpperCase() + filters.plotType.slice(1)}</p>
+            <div style="margin-top: 20px; padding: 15px; background: rgba(102, 126, 234, 0.1); border-radius: 8px; color: #667eea;">
+                Your plotting code will replace this placeholder
+            </div>
+        </div>
+    `;
+
+    // Here you can call your existing JavaScript plotting functions
+    // For example: generatePlot(filters);
+    console.log('Filters updated:', filters);
+}
 
 
 // ========== Handle Temperature Unit Toggle ==========
