@@ -17,20 +17,50 @@ document.addEventListener('DOMContentLoaded', function () {
     initApp();
     const dotNav = document.querySelector('.dot-navigation');
     const heroSection = document.getElementById('section-hero');
+    const dots = document.querySelectorAll('.dot');
 
-    if (dotNav && heroSection) {
+    if (dotNav && heroSection && dots.length > 0) {
+        let lastScrollY = window.scrollY;
+        let currentState = 'out'; // Track current fade state to prevent flicker
+
+        const setTransitionDelays = (direction, action) => {
+            const count = dots.length;
+            dots.forEach((dot, i) => {
+                let delay;
+                if (direction === 'down') {
+                    delay = action === 'in' ? i : (count - 1 - i);
+                } else {
+                    delay = action === 'in' ? (count - 1 - i) : i;
+                }
+                dot.style.transitionDelay = `${delay * 100}ms`;
+            });
+        };
+
         const observer = new IntersectionObserver(
             (entries) => {
                 entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        dotNav.classList.add('hidden');
-                    } else {
-                        dotNav.classList.remove('hidden');
+                    const scrollY = window.scrollY;
+                    const direction = scrollY > lastScrollY ? 'down' : 'up';
+                    lastScrollY = scrollY;
+
+                    const isVisible = entry.isIntersecting;
+
+                    if (isVisible && currentState !== 'out') {
+                        setTransitionDelays(direction, 'out');
+                        dotNav.classList.add('fade-out');
+                        dotNav.classList.remove('fade-in');
+                        currentState = 'out';
+                    } else if (!isVisible && currentState !== 'in') {
+                        setTransitionDelays(direction, 'in');
+                        dotNav.classList.add('fade-in');
+                        dotNav.classList.remove('fade-out');
+                        currentState = 'in';
                     }
                 });
             },
             { threshold: 0.6 }
         );
+
         observer.observe(heroSection);
     }
 });
