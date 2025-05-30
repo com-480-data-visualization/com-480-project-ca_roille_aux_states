@@ -1069,12 +1069,15 @@ function getSelectedFilters() {
         selectedEvents.push(cb.value);
     });
 
+    const startYear = document.getElementById('startYear').value;
+    const endYear = document.getElementById('endYear').value;
+    
 
     return {
         states: selectedStates,
         events: selectedEvents,
-        startYear: document.getElementById('startYear').value,
-        endYear: document.getElementById('endYear').value,
+        startYear: startYear,
+        endYear: endYear,
         plotType: document.getElementById('plotType').value,
         metric: document.getElementById('metricType').value 
     };
@@ -1097,6 +1100,14 @@ function updateFilters() {
 
     const start = parseInt(filters.startYear);
     const end = parseInt(filters.endYear);
+    if (start < 1950 || end > 2024) {
+        alert('Data available only during the 1950 to 2024 period. Please Change your variables.')
+        throw new Error('invalid year selection')
+    }
+    else if (start > end) {
+        alert('Start year cannot be greater than end year. Please Change your variables.');
+        throw new Error('Invalid year range');
+    }
     const selectedYears = [];
     for(let y = start; y <= end; y++) selectedYears.push(y);
     
@@ -1108,72 +1119,113 @@ function updateFilters() {
 
     const plotType = filters.plotType;
     let traces = [];
-    traces = selectedEvents.map(event => {
-        const x = [];
-        const y = [];
 
-        selectedYears.forEach(year => {
-        // Filter all matching entries for year, event, and selected states
-        const filteredData = weatherEventsFullData.filter(d =>
-            d.Year === year &&
-            d.Event_Category === event &&
-            selectedStates.includes(d.State)
-        );
+    if (plotType === 'pie') {
+        // Aggregate total counts for each selected event
+        const eventCounts = selectedEvents.map(event => {
+            let total = 0;
 
-        // Aggregate the counts
-        let valueKey;
-        switch (filters.metric) {
-            case 'death':
-                valueKey = 'Total_death';
-            break;
-            case 'economic':
-                valueKey = 'Total_damage';
-            break;
-            default:
-                valueKey = 'count';
-            break;
+            selectedYears.forEach(year => {
+                const filteredData = weatherEventsFullData.filter(d =>
+                    d.Year === year &&
+                    d.Event_Category === event &&
+                    selectedStates.includes(d.State)
+                );
+
+                let valueKey = 'count';
+                if (filters.metric === 'death') valueKey = 'Total_death';
+                else if (filters.metric === 'economic') valueKey = 'Total_damage';
+
+                total += filteredData.reduce((sum, d) => sum + (d[valueKey] || 0), 0);
+            });
+
+            return { event, total };
+        }).filter(d => d.total > 0); // Remove any with zero count
+
+        traces.push({
+            type: 'pie',
+            labels: eventCounts.map(d => d.event),
+            values: eventCounts.map(d => d.total),
+            textinfo: 'label+percent',
+            hoverinfo: 'label+value',
+            name: 'Event Proportions'
+        });
+        console.log('Pie eventCounts:', eventCounts);
+    } else {
+        traces = selectedEvents.map(event => {
+            const x = [];
+            const y = [];
+
+            selectedYears.forEach(year => {
+            // Filter all matching entries for year, event, and selected states
+            const filteredData = weatherEventsFullData.filter(d =>
+                d.Year === year &&
+                d.Event_Category === event &&
+                selectedStates.includes(d.State)
+            );
+
+            // Aggregate the counts
+            let valueKey;
+            switch (filters.metric) {
+                case 'death':
+                    valueKey = 'Total_death';
+                break;
+                case 'economic':
+                    valueKey = 'Total_damage';
+                break;
+                default:
+                    valueKey = 'count';
+                break;
+                }
+
+                const totalValue = filteredData.reduce((sum, d) => sum + (d[valueKey] || 0), 0);
+
+                x.push(year);
+                y.push(totalValue);
+            });
+
+            const trace = {
+                x,
+                y,
+                name: event
+            };
+
+            switch (plotType) {
+                case 'line':
+                    trace.type = 'scatter';
+                    trace.mode = 'lines+markers';
+                    break;
+                case 'bar':
+                    trace.type = 'bar';
+                    break;
             }
 
-            const totalValue = filteredData.reduce((sum, d) => sum + (d[valueKey] || 0), 0);
-
-            x.push(year);
-            y.push(totalValue);
+            return trace;
         });
+    }
+    const layout = {
+        width: 800,
+        height: 500,
+        legend: { title: { text: 'Event Type' } }
+    };
 
-        const trace = {
-            x,
-            y,
-            name: event
+    if (plotType !== 'pie') {
+        layout.xaxis = { title: 'Year' };
+        layout.yaxis = {
+            title: {
+                count: 'Event Count',
+                death: 'Total Deaths',
+                economic: 'Total Damage ($)'
+            }[filters.metric],
+            tickformat: filters.plotType === 'proportion' ? ',.0%' : ''
         };
+        if (plotType === 'bar') layout.barmode = 'stack';
+    }
 
-        switch (plotType) {
-            case 'line':
-                trace.type = 'scatter';
-                trace.mode = 'lines+markers';
-                break;
-            case 'bar':
-                trace.type = 'bar';
-                break;
-        }
+    Plotly.newPlot('plotPlaceholder', traces, layout);
 
-        return trace;
-    });
-
-        /* return {
-        x,
-        y,
-        name: event,
-        type: 'scatter',
-        mode: 'lines+markers'
-        };
-    });
-    if (filters.plotType === 'bar') {
-        createBarPlot(filters);
-        return;
-    } */
-
-    Plotly.newPlot('plotPlaceholder', traces, {
-        /*title: 'Weather Events Over Time',*/
+    /* Plotly.newPlot('plotPlaceholder', traces, {
+        title: 'Weather Events Over Time',
         width: 800,
         height: 500,
         xaxis: { title: 'Year' },
@@ -1187,7 +1239,7 @@ function updateFilters() {
         },
         barmode: plotType === 'bar' ? 'stack' : undefined,
         legend: { title: { text: 'Event Type' } }
-    });
+    }); */
     console.log('Filters:', filters);
 
   /* // Update info box
