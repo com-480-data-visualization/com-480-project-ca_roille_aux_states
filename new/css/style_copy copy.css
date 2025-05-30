@@ -284,7 +284,7 @@ body {
     grid-template-rows: 1fr 1fr;
     gap: 2rem;
     padding: 2rem;
-    height: 95vh; /* Consistent height */
+    /* height: 195vh; /* Consistent height */
     box-sizing: border-box;
     margin: 0; /* Remove all margins */
     max-width: 100vw; /* Prevent overflow */
@@ -697,7 +697,7 @@ img {
 
 .weather-dashboard-container {
     max-width: calc(100vw - 4rem); /* Prevent overflow, account for padding */
-    margin: 30rem 2rem 2rem 2rem; /* Increased top margin to push it down */
+    margin: 2rem 2rem 2rem 2rem; /* Increased top margin to push it down */
     background: rgba(255, 255, 255, 0.95);
     border-radius: 20px;
     padding: 30px;
