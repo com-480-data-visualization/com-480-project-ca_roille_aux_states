@@ -1,0 +1,146 @@
+{
+  "Alabama": {
+    "anomaly": "2.5"
+  },
+  "Arizona": {
+    "anomaly": "3.1"
+  },
+  "Arkansas": {
+    "anomaly": "2.9"
+  },
+  "California": {
+    "anomaly": "3.1"
+  },
+  "Colorado": {
+    "anomaly": "3.1"
+  },
+  "Connecticut": {
+    "anomaly": "4.0"
+  },
+  "Delaware": {
+    "anomaly": "3.1"
+  },
+  "Florida": {
+    "anomaly": "2.8"
+  },
+  "Georgia": {
+    "anomaly": "2.5"
+  },
+  "Idaho": {
+    "anomaly": "2.9"
+  },
+  "Illinois": {
+    "anomaly": "3.9"
+  },
+  "Indiana": {
+    "anomaly": "3.9"
+  },
+  "Iowa": {
+    "anomaly": "4.0"
+  },
+  "Kansas": {
+    "anomaly": "3.4"
+  },
+  "Kentucky": {
+    "anomaly": "3.3"
+  },
+  "Louisiana": {
+    "anomaly": "2.8"
+  },
+  "Maine": {
+    "anomaly": "4.9"
+  },
+  "Maryland": {
+    "anomaly": "3.7"
+  },
+  "Massachusetts": {
+    "anomaly": "4.2"
+  },
+  "Michigan": {
+    "anomaly": "5.3"
+  },
+  "Minnesota": {
+    "anomaly": "5.5"
+  },
+  "Mississippi": {
+    "anomaly": "3.0"
+  },
+  "Missouri": {
+    "anomaly": "3.5"
+  },
+  "Montana": {
+    "anomaly": "3.3"
+  },
+  "Nebraska": {
+    "anomaly": "3.6"
+  },
+  "Nevada": {
+    "anomaly": "3.2"
+  },
+  "New Hampshire": {
+    "anomaly": "4.7"
+  },
+  "New Jersey": {
+    "anomaly": "4.2"
+  },
+  "New Mexico": {
+    "anomaly": "3.5"
+  },
+  "New York": {
+    "anomaly": "4.4"
+  },
+  "North Carolina": {
+    "anomaly": "2.6"
+  },
+  "North Dakota": {
+    "anomaly": "4.0"
+  },
+  "Ohio": {
+    "anomaly": "4.5"
+  },
+  "Oklahoma": {
+    "anomaly": "3.5"
+  },
+  "Oregon": {
+    "anomaly": "2.6"
+  },
+  "Pennsylvania": {
+    "anomaly": "3.9"
+  },
+  "Rhode Island": {
+    "anomaly": "3.7"
+  },
+  "South Carolina": {
+    "anomaly": "2.4"
+  },
+  "South Dakota": {
+    "anomaly": "3.7"
+  },
+  "Tennessee": {
+    "anomaly": "2.9"
+  },
+  "Texas": {
+    "anomaly": "4.0"
+  },
+  "Utah": {
+    "anomaly": "3.6"
+  },
+  "Vermont": {
+    "anomaly": "5.0"
+  },
+  "Virginia": {
+    "anomaly": "3.3"
+  },
+  "Washington": {
+    "anomaly": "2.3"
+  },
+  "West Virginia": {
+    "anomaly": "3.6"
+  },
+  "Wisconsin": {
+    "anomaly": "5.2"
+  },
+  "Wyoming": {
+    "anomaly": "3.5"
+  }
+}
