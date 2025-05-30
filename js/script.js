@@ -77,7 +77,6 @@ function initApp() {
         setupCarousel();
         initializeFilters();
         updateFilters(); 
-        initializeYearSlider();
     });
 
 }
