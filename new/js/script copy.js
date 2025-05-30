@@ -76,8 +76,10 @@ function initApp() {
         //createCountySpikeMap();
         toy_histo();
         setupCarousel();
-        //initializeFilters();
-        //updateFilters(); // Initial plot update
+        initializeFilters();
+        updateFilters(); // Initial plot update
+        initializeYearSlider();
+        bindAdditionalUIEvents();
     });
 
 }
@@ -102,6 +104,8 @@ function bindUIEvents() {
             goToSlide(parseInt(this.getAttribute('data-index')));
         });
     });
+
+    bindAdditionalUIEvents()
 }
 
 // ========== Carousel Navigation ==========
@@ -169,11 +173,8 @@ async function loadAllData() {
 
         // Extract states and event types from the weatherData
         const firstYear = Math.min(...years);
-        /* const firstState = Object.keys(types_by_year_states[firstYear])[0]; */
 
         // Define these globally or pass them where needed
-        // statesFilters = Object.keys(types_by_year_states[firstYear]);
-        // eventsFilters = Object.keys(types_by_year_states[firstYear][firstState]);
         console.log('statesFilters:', statesFilter);
         console.log('eventsFilters:', eventsFilter);
 
@@ -185,20 +186,6 @@ async function loadAllData() {
         console.error("Error loading data:", error);
     }
 }
-
-/*
-
-d3.json("https://cdn.jsdelivr.net/npm/us-atlas@3/counties-10m.json").then(us => {
-  const counties = topojson.feature(us, us.objects.counties).features;
-
-  svg.selectAll("path")
-     .data(counties)
-     .enter()
-     .append("path")
-     .attr("d", path)
-     .attr("fill", d => colorScale(yourData[d.id] || 0));
-});
-*/
 
 // ========== Create Anomaly Map ==========
 function createStateAnomalyMap() {
@@ -1012,327 +999,6 @@ fetch('../milestone2/event_deaths_top_10.json') // Adjust path if needed
   })
   .catch(error => console.error('Error loading or plotting damage data:', error));
 
-// ========== Draw States Map ==========
-function drawStatesMap() {
-    console.log("Drawing states map");
-    
-    // Extract states features
-    const states = topojson.feature(usStatesData, usStatesData.objects.states).features;
-    
-    // Create a tooltip
-    const tooltip = d3.select("body").append("div")
-        .attr("class", "tooltip")
-        .style("opacity", 0)
-        .style("position", "absolute")
-        .style("background-color", "white")
-        .style("border", "1px solid #ddd")
-        .style("border-radius", "5px")
-        .style("padding", "6px 10px")
-        .style("pointer-events", "none")
-        .style("font-family", "sans-serif")
-        .style("font-size", "12px")
-        .style("box-shadow", "0 0 5px rgba(0,0,0,0.1)");
-    
-    // Draw states
-    g.selectAll("path.state")
-        .data(states)
-        .enter()
-        .append("path")
-        .attr("class", "state")
-        .attr("d", path)
-        .attr("fill", "#ddd")
-        .attr("stroke", "white")
-        .attr("stroke-width", 0.5)
-        .style("cursor", "pointer")
-        .on("mouseover", function(event, d) {
-            // Highlight state on hover
-            d3.select(this)
-                .attr("fill", "#aaa");
-            
-            // Show tooltip
-            tooltip.transition()
-                .duration(200)
-                .style("opacity", 0.9);
-            
-            tooltip.html(d.properties.name)
-                .style("left", (event.pageX + 10) + "px")
-                .style("top", (event.pageY - 28) + "px");
-        })
-        .on("mouseout", function() {
-            // Remove highlight if not the active state
-            if (this !== activeState) {
-                d3.select(this)
-                    .attr("fill", "#ddd");
-            }
-            
-            // Hide tooltip
-            tooltip.transition()
-                .duration(500)
-                .style("opacity", 0);
-        })
-        .on("click", function(event, d) {
-            console.log("State clicked:", d);
-            // Zoom to the clicked state
-            zoomToState(d, this);
-        });
-        
-    console.log("States map drawn successfully");
-}
-
-// ========== Add State Spikes ==========
-function addStateSpikes() {
-    console.log("Adding spikes to map");
-    
-    // Helper function to create spike shape
-    function spike(length) {
-        const width = 5;
-        //(length, width = 7) => 
-        return `M${-width / 2},0L0,${-length}L${width / 2},0`
-        //return `M0,0L0,${-length}L${length/10},0Z`; // Simple triangular spike
-    }
-    
-    // Helper function to get centroid
-    function centroid(feature) {
-        const [x, y] = path.centroid(feature);
-        return isNaN(x) || isNaN(y) ? [0, 0] : [x, y];
-    }
-    
-    // Extract county features and create a map for lookup
-    const counties = topojson.feature(usCountiesData, usCountiesData.objects.counties).features;
-    const countyMap = new Map(counties.map(county => [county.id, county]));
-    
-    // Process the data to include geometry
-    const data = countyEventCounts
-        .filter(d => d.fips && d.count) // Ensure valid data
-        .map(d => ({
-            ...d,
-            county: countyMap.get(d.fips)
-        }))
-        .filter(d => d.county) // Remove entries without matching geometry
-        .sort((a, b) => d3.descending(a.count, b.count));
-    
-    // Construct the length scale
-    const maxCount = d3.max(data, d => d.count);
-    const length = d3.scaleLinear([0, maxCount], [0, 60]); // Adjust max spike height as needed
-    
-    // Create the legend
-    const legend = svg.append("g")
-        .attr("class", "legend")
-        .attr("fill", "#777")
-        .attr("transform", `translate(${svg.attr("width") - 120}, ${svg.attr("height") - 20})`)
-        .attr("text-anchor", "middle")
-        .style("font", "10px sans-serif");
-    
-    legend.selectAll("g")
-        .data(length.ticks(4).slice(1))
-        .join("g")
-        .attr("transform", (d, i) => `translate(${20 * i},0)`)
-        .call(g => {
-            g.append("path")
-                .attr("fill", "red")
-                .attr("fill-opacity", 0.5)
-                .attr("stroke", "red")
-                .attr("stroke-width", 0.5)
-                .attr("d", d => spike(length(d)));
-                
-            g.append("text")
-                .attr("dy", "1em")
-                .text(length.tickFormat(4, "s"));
-        });
-    
-    // Add a spike for each county
-    const format = d3.format(",.0f");
-    g.append("g")
-        .attr("class", "spikes")
-        .attr("fill", "red")
-        .attr("fill-opacity", 0.5)
-        .attr("stroke", "red")
-        .attr("stroke-width", 0.5)
-        .selectAll("path")
-        .data(data)
-        .join("path")
-        .attr("transform", d => `translate(${centroid(d.county)})`)
-        .attr("d", d => spike(length(d.count)))
-        .append("title")
-        .text(d => {
-            const countyName = d.county.properties.name || "Unknown County";
-            const state = usStatesData.objects.states.geometries.find(s => s.id === d.fips.substring(0, 2));
-            const stateName = state ? state.properties.name : "Unknown State";
-            return `${countyName}, ${stateName}\nEvents: ${format(d.count)}`;
-        });
-        
-    console.log("Spikes added successfully");
-}
-
-// ========== Zoom to State ==========
-function zoomToState(state, element) {
-    console.log("Zooming to state:", state.properties.name, "ID:", state.id);
-    
-    // Hide all spikes before zoom
-    g.select(".spikes").style("visibility", "hidden");
-    
-    // Clean up any existing county elements from previous state
-    g.selectAll(".county").remove();
-    g.selectAll(".county-spike").remove();
-    
-    // Set this state as active
-    activeState = element;
-    activeStateName = state.properties.name;
-    
-    // Get the bounding box of the state
-    const bounds = path.bounds(state);
-    const dx = bounds[1][0] - bounds[0][0];
-    const dy = bounds[1][1] - bounds[0][1];
-    const x = (bounds[0][0] + bounds[1][0]) / 2;
-    const y = (bounds[0][1] + bounds[1][1]) / 2;
-    
-    // Calculate appropriate zoom scale with some padding
-    const scale = 0.8 / Math.max(dx / svg.attr("width"), dy / svg.attr("height"));
-    const translate = [svg.attr("width") / 2 - scale * x, svg.attr("height") / 2 - scale * y];
-    
-    // Apply the zoom transition
-    g.transition()
-        .duration(750)
-        .attr("transform", `translate(${translate}) scale(${scale})`)
-        .on("end", function() {
-            // Draw counties and county-level spikes after zoom completes
-            drawCountiesWithSpikes(state.id);
-        });
-    
-    // Show the back button
-    d3.select("#back-button")
-        .style("display", "block");
-    
-    // Highlight the active state
-    d3.selectAll(".state")
-        .attr("fill", "#ddd");
-    
-    d3.select(activeState)
-        .attr("fill", "#aaa");
-}
-
-// ========== Draw Counties With Spikes ==========
-function drawCountiesWithSpikes(stateId) {
-    console.log("Drawing counties with spikes for state ID:", stateId);
-
-    // Clean up before drawing new counties
-    g.selectAll(".county").remove();
-    g.selectAll(".county-spike").remove();
-    
-    // Helper function for spike
-    function spike(length) {
-        const width = 3;
-        //(length, width = 7) => 
-        return `M${-width / 2},0L0,${-length}L${width / 2},0`
-        //return `M0,0L0,${-length}L${length/10},0Z`; // Simple triangular spike
-    }
-    
-    // Helper function to get centroid
-    function centroid(feature) {
-        const [x, y] = path.centroid(feature);
-        return isNaN(x) || isNaN(y) ? [0, 0] : [x, y];
-    }
-
-    const countiesObject = usCountiesData.objects.counties;
-    if (!countiesObject) return;
-
-    const allCounties = topojson.feature(usCountiesData, countiesObject).features;
-    const stateFIPS = String(stateId).padStart(2, '0');
-
-    const counties = allCounties.filter(county => county.id?.startsWith(stateFIPS));
-    console.log(`Found ${counties.length} counties for ${activeStateName}`);
-
-    // Draw county boundaries
-    g.selectAll(".county")
-        .data(counties)
-        .enter()
-        .append("path")
-        .attr("class", "county")
-        .attr("d", path)
-        .attr("fill", "transparent")
-        .attr("stroke", "#555")
-        .attr("stroke-width", 0.3);
-    
-    // Filter event counts for this state
-    const stateEventData = countyEventCounts
-        .filter(d => d.fips && d.fips.startsWith(stateFIPS))
-        .map(d => {
-            const county = counties.find(c => c.id === d.fips);
-            return {
-                ...d,
-                county: county
-            };
-        })
-        .filter(d => d.county);
-    
-    console.log(`Found ${stateEventData.length} counties with event data for ${activeStateName}`);
-    
-    // Scale for spike height
-    const maxCount = d3.max(stateEventData, d => d.count) || 0;
-    const length = d3.scaleLinear([0, maxCount], [0, 40]); // Smaller spikes at zoomed level
-    
-    // Add spikes for counties
-    const format = d3.format(",.0f");
-    g.selectAll(".county-spike")
-        .data(stateEventData)
-        .enter()
-        .append("path")
-        .attr("class", "county-spike")
-        .attr("transform", d => `translate(${centroid(d.county)})`)
-        .attr("d", d => spike(length(d.count)))
-        .attr("fill", "red")
-        .attr("fill-opacity", 0.5)
-        .attr("stroke", "red")
-        .attr("stroke-width", 0.5)
-        .append("title")
-        .text(d => `${d.county.properties.name}, ${activeStateName}\nEvents: ${format(d.count)}`);
-
-    legend.selectAll("g")
-        .data(length.ticks(4).slice(1))
-        .join("g")
-        .attr("transform", (d, i) => `translate(${20 * i},0)`)
-        .call(g => {
-            g.append("path")
-                .attr("fill", "red")
-                .attr("fill-opacity", 0.5)
-                .attr("stroke", "red")
-                .attr("stroke-width", 0.5)
-                .attr("d", d => spike(length(d)));
-                
-            g.append("text")
-                .attr("dy", "1em")
-                .text(length.tickFormat(4, "s"));
-        });
-}
-
-// ========== Reset Map ==========
-function resetMap() {
-    console.log("Resetting map view");
-    
-    // Reset the transform
-    g.transition()
-        .duration(750)
-        .attr("transform", "translate(0,0) scale(1)")
-        .on("end", function() {
-            // Show all spikes after zoom out completes
-            g.select(".spikes").style("visibility", "visible");
-        });
-    
-    // Reset active state
-    activeState = null;
-    
-    // Hide back button
-    d3.select("#back-button")
-        .style("display", "none");
-    
-    // Reset state colors
-    d3.selectAll(".state")
-        .attr("fill", "#ddd");
-    
-    // Remove counties and county-level spikes
-    g.selectAll(".county").remove();
-    g.selectAll(".county-spike").remove();
-}
 
 //////////////////////////////////////////////////////////
 
@@ -1403,7 +1069,6 @@ function getSelectedFilters() {
         selectedEvents.push(cb.value);
     });
 
-    const metricType = document.getElementById('metricType').value;
 
     return {
         states: selectedStates,
@@ -1411,20 +1076,23 @@ function getSelectedFilters() {
         startYear: document.getElementById('startYear').value,
         endYear: document.getElementById('endYear').value,
         plotType: document.getElementById('plotType').value,
-        metric: metricType // 👈 new addition
+        metric: document.getElementById('metricType').value 
     };
 }
 
-/* let weatherData = {}; // Will store the full JSON
-
-fetch('path/to/your_data.json')
-  .then(res => res.json())
-  .then(json => {
-    weatherData = json;
-    initializeFilters(); // Once data is loaded
-  }); */
 
 function updateFilters() {
+    // Add this at the beginning of updateFilters() function
+    const yearSliderGroup = document.getElementById('yearSliderGroup');
+    const mapStyleGroup = document.getElementById('mapStyleGroup');
+
+    if (filters.plotType.includes('map')) {
+        if (yearSliderGroup) yearSliderGroup.style.display = 'block';
+        if (mapStyleGroup && filters.plotType === 'map_county') mapStyleGroup.style.display = 'block';
+    } else {
+        if (yearSliderGroup) yearSliderGroup.style.display = 'none';
+        if (mapStyleGroup) mapStyleGroup.style.display = 'none';
+    }
   const filters = getSelectedFilters();
 
   const start = parseInt(filters.startYear);
@@ -1488,7 +1156,7 @@ function updateFilters() {
         title: {
             count: 'Event Count',
             death: 'Total Deaths',
-            economic: 'Economic Loss ($)'
+            economic: 'Total Damage ($)'
         }[filters.metric],
         tickformat: filters.plotType === 'proportion' ? ',.0%' : ''
     },
@@ -1556,7 +1224,7 @@ function resetToDefaults() {
     document.getElementById('endYear').value = '2024';
     
     // Reset plot type
-    document.getElementById('plotType').value = 'line';
+    document.getElementById('plotType').value = 'map_county';
     
     // Reset selections
     setDefaultSelections();
@@ -1568,4 +1236,327 @@ function resetToDefaults() {
     
     // Clear plot
     document.getElementById('plotPlaceholder').innerHTML = 'Filters reset to defaults. Click "Update Plot" to display visualization.';
+}
+
+// ========== Additional Functions to Add to Your Existing Code ==========
+
+// Add this function to initialize year slider for maps
+function initializeYearSlider() {
+    const yearSlider = document.getElementById('mapYearSlider');
+    const yearDisplay = document.getElementById('mapYearDisplay');
+    
+    if (yearSlider && weatherEventsFullData.length > 0) {
+        const years = [...new Set(weatherEventsFullData.map(d => d.Year))].sort();
+        yearSlider.min = years[0];
+        yearSlider.max = years[years.length - 1];
+        yearSlider.value = years[years.length - 1]; // Default to latest year
+        
+        if (yearDisplay) {
+            yearDisplay.textContent = yearSlider.value;
+        }
+        
+        yearSlider.addEventListener('input', function() {
+            if (yearDisplay) {
+                yearDisplay.textContent = this.value;
+            }
+            updateFilters(); // Update the plot when year changes
+        });
+    }
+}
+
+// Modified loadAllData function - add this call after loading data
+// Add this line in your existing loadAllData function after all data is loaded:
+// initializeYearSlider();
+
+// Enhanced createCountyMap function with spike/choropleth toggle
+function createCountyMap(filters) {
+    const data = processWeatherData(filters);
+    const countyAggregated = aggregateByCounty(data, filters.metric);
+    const useSpikes = document.getElementById('mapStyle')?.value === 'spikes';
+    
+    // Clear existing plot
+    document.getElementById('plotPlaceholder').innerHTML = '';
+    
+    const width = 975;
+    const height = 610;
+    
+    const svg = d3.select("#plotPlaceholder")
+        .append("svg")
+        .attr("width", width)
+        .attr("height", height)
+        .attr("viewBox", [0, 0, width, height])
+        .attr("style", "width: 100%; height: auto;");
+    
+    const projection = d3.geoAlbersUsa()
+        .translate([width / 2, height / 2])
+        .scale(1250);
+    
+    const path = d3.geoPath().projection(projection);
+    
+    const counties = topojson.feature(countyTopo, countyTopo.objects.counties).features;
+    const states = topojson.feature(countyTopo, countyTopo.objects.states).features;
+    
+    // Create tooltip
+    const tooltip = d3.select("body").append("div")
+        .attr("class", "tooltip")
+        .style("opacity", 0)
+        .style("position", "absolute")
+        .style("background-color", "white")
+        .style("border", "1px solid #ddd")
+        .style("border-radius", "5px")
+        .style("padding", "10px")
+        .style("box-shadow", "0 0 10px rgba(0,0,0,0.15)")
+        .style("pointer-events", "none")
+        .style("font-family", "sans-serif")
+        .style("font-size", "14px");
+    
+    // Create base map
+    svg.append("path")
+        .datum(topojson.feature(countyTopo, countyTopo.objects.nation))
+        .attr("fill", "#f0f0f0")
+        .attr("d", path);
+    
+    if (useSpikes) {
+        // Create spike map
+        const values = Array.from(countyAggregated.values()).map(d => d.value);
+        const maxValue = d3.max(values) || 1;
+        const lengthScale = d3.scaleLinear([0, maxValue], [0, 50]);
+        
+        function spike(length) {
+            const width = 3;
+            return `M${-width / 2},0L0,${-length}L${width / 2},0`;
+        }
+        
+        function centroid(feature) {
+            const [x, y] = path.centroid(feature);
+            return isNaN(x) || isNaN(y) ? [0, 0] : [x, y];
+        }
+        
+        // Add spikes
+        svg.append("g")
+            .attr("fill", "red")
+            .attr("fill-opacity", 0.7)
+            .attr("stroke", "red")
+            .attr("stroke-width", 0.5)
+            .selectAll("path")
+            .data(Array.from(countyAggregated.values()).filter(d => d.value > 0))
+            .join("path")
+            .attr("transform", d => {
+                const county = counties.find(c => c.id === d.fips);
+                return county ? `translate(${centroid(county)})` : `translate(0,0)`;
+            })
+            .attr("d", d => spike(lengthScale(d.value)))
+            .on("mouseover", function(event, d) {
+                tooltip.transition().duration(200).style("opacity", 0.9);
+                tooltip.html(`<strong>${d.county}, ${d.state}</strong><br>${getMetricTitle(filters.metric)}: ${formatValue(d.value, filters.metric)}`)
+                    .style("left", (event.pageX + 10) + "px")
+                    .style("top", (event.pageY - 28) + "px");
+            })
+            .on("mouseout", function() {
+                tooltip.transition().duration(500).style("opacity", 0);
+            });
+            
+    } else {
+        // Create choropleth map
+        const values = Array.from(countyAggregated.values()).map(d => d.value);
+        const colorScale = d3.scaleSequential()
+            .domain([0, d3.max(values)])
+            .interpolator(d3.interpolateBlues);
+        
+        svg.append("g")
+            .selectAll("path")
+            .data(counties)
+            .join("path")
+            .attr("fill", d => {
+                const countyData = countyAggregated.get(d.id);
+                return countyData && countyData.value > 0 ? colorScale(countyData.value) : "#f0f0f0";
+            })
+            .attr("d", path)
+            .on("mouseover", function(event, d) {
+                const countyData = countyAggregated.get(d.id);
+                if (countyData) {
+                    tooltip.transition().duration(200).style("opacity", 0.9);
+                    tooltip.html(`<strong>${countyData.county}, ${countyData.state}</strong><br>${getMetricTitle(filters.metric)}: ${formatValue(countyData.value, filters.metric)}`)
+                        .style("left", (event.pageX + 10) + "px")
+                        .style("top", (event.pageY - 28) + "px");
+                    
+                    d3.select(this).attr("stroke", "#000").attr("stroke-width", 2);
+                }
+            })
+            .on("mouseout", function() {
+                tooltip.transition().duration(500).style("opacity", 0);
+                d3.select(this).attr("stroke", null).attr("stroke-width", 0);
+            });
+    }
+    
+    // Add state boundaries
+    svg.append("path")
+        .datum(topojson.mesh(countyTopo, countyTopo.objects.states, (a, b) => a !== b))
+        .attr("fill", "none")
+        .attr("stroke", "#333")
+        .attr("stroke-width", 0.5)
+        .attr("stroke-linejoin", "round")
+        .attr("d", path);
+}
+
+// Enhanced aggregateByCounty function to handle FIPS correctly
+function aggregateByCounty(data, metric) {
+    const countyMap = new Map();
+    
+    data.forEach(d => {
+        // Ensure FIPS codes are properly formatted (5 digits total)
+        const stateFips = d.State_FIPS.toString().padStart(2, '0');
+        const countyFips = d.County_FIPS.toString().padStart(5, '0');
+        const countyKey = countyFips; // Use full 5-digit FIPS
+        const value = getMetricValue(d, metric);
+        
+        if (!countyMap.has(countyKey)) {
+            countyMap.set(countyKey, {
+                fips: countyKey,
+                state: d.State,
+                county: d.County,
+                value: 0
+            });
+        }
+        const existing = countyMap.get(countyKey);
+        existing.value += value;
+        countyMap.set(countyKey, existing);
+    });
+    
+    return countyMap;
+}
+
+// Enhanced processWeatherData function
+function processWeatherData(filters) {
+    const { states, events, startYear, endYear, metric, cumulative, mapYear } = filters;
+    
+    // Filter the data
+    let filteredData = weatherEventsFullData.filter(d => 
+        states.includes(d.State) &&
+        events.includes(d.Event_Category) &&
+        d.Year >= parseInt(startYear) &&
+        d.Year <= parseInt(endYear)
+    );
+
+    // For maps with year slider, filter to specific year or cumulative to that year
+    if (mapYear !== undefined) {
+        if (cumulative) {
+            filteredData = filteredData.filter(d => d.Year <= parseInt(mapYear));
+        } else {
+            filteredData = filteredData.filter(d => d.Year === parseInt(mapYear));
+        }
+    }
+
+    return filteredData;
+}
+
+// Enhanced getSelectedFilters function
+function getSelectedFilters() {
+    const selectedStates = [];
+    const selectedEvents = [];
+
+    document.querySelectorAll('#statesFilter input[type="checkbox"]:checked').forEach(cb => {
+        selectedStates.push(cb.value);
+    });
+
+    document.querySelectorAll('#eventsFilter input[type="checkbox"]:checked').forEach(cb => {
+        selectedEvents.push(cb.value);
+    });
+
+    const filters = {
+        states: selectedStates,
+        events: selectedEvents,
+        startYear: document.getElementById('startYear')?.value || '1950',
+        endYear: document.getElementById('endYear')?.value || '2024',
+        plotType: document.getElementById('plotType')?.value || 'line',
+        metric: document.getElementById('metricType')?.value || 'count',
+        cumulative: document.getElementById('cumulativeFilter')?.checked || false
+    };
+    
+    // Add map year for maps with year slider
+    if (filters.plotType.includes('map')) {
+        filters.mapYear = document.getElementById('mapYearSlider')?.value;
+    }
+    
+    return filters;
+}
+
+// Enhanced createHistogram function for stacked bars by event type
+function createHistogram(filters) {
+    const data = processWeatherData(filters);
+    const { events, startYear, endYear, metric, cumulative } = filters;
+    
+    // Group by year and event
+    const yearEventMap = new Map();
+    
+    data.forEach(d => {
+        const key = `${d.Year}_${d.Event_Category}`;
+        const value = getMetricValue(d, metric);
+        
+        if (!yearEventMap.has(key)) {
+            yearEventMap.set(key, 0);
+        }
+        yearEventMap.set(key, yearEventMap.get(key) + value);
+    });
+    
+    // Create traces for each event type
+    const traces = events.map(event => {
+        const x = [];
+        const y = [];
+        let cumulativeSum = 0;
+        
+        for (let year = parseInt(startYear); year <= parseInt(endYear); year++) {
+            const key = `${year}_${event}`;
+            const value = yearEventMap.get(key) || 0;
+            
+            if (cumulative) {
+                cumulativeSum += value;
+                y.push(cumulativeSum);
+            } else {
+                y.push(value);
+            }
+            x.push(year);
+        }
+        
+        return {
+            x,
+            y,
+            name: event,
+            type: 'bar'
+        };
+    });
+    
+    const layout = {
+        barmode: 'stack',
+        xaxis: { title: 'Year' },
+        yaxis: {
+            title: getMetricTitle(metric, cumulative)
+        },
+        legend: { title: { text: 'Event Type' } },
+        width: 800,
+        height: 500
+    };
+    
+    Plotly.newPlot('plotPlaceholder', traces, layout);
+}
+
+// Add event listeners for new controls
+function bindAdditionalUIEvents() {
+    // Map style toggle
+    const mapStyleSelect = document.getElementById('mapStyle');
+    if (mapStyleSelect) {
+        mapStyleSelect.addEventListener('change', updateFilters);
+    }
+    
+    // Cumulative checkbox
+    const cumulativeCheckbox = document.getElementById('cumulativeFilter');
+    if (cumulativeCheckbox) {
+        cumulativeCheckbox.addEventListener('change', updateFilters);
+    }
+    
+    // Metric type selector
+    const metricSelect = document.getElementById('metricType');
+    if (metricSelect) {
+        metricSelect.addEventListener('change', updateFilters);
+    }
 }
