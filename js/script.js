@@ -262,7 +262,7 @@ function createStateAnomalyMapPlotly() {
 
 // ==============================================
 function temporal_hist() {
-    fetch("../data/data.json")
+    fetch("/data/data.json")
         .then(response => response.json())
         .then(raw => {
             // Transform the nested object into a flat array
