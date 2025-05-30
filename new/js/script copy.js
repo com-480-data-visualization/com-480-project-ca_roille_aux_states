@@ -895,7 +895,7 @@ fetch('../milestone2/event_deaths_top_10.json') // Adjust path if needed
       .slice(0, 10);
 
     const eventTypes = top10.map(d => d.event_type);
-    const deaths = top10.map(d => d.cost); // Convert to billions
+    const deaths = top10.map(d => d.cost);
 
     // Create a plasma-like gradient using Plotly colors
     const plasmaColors = [
@@ -906,14 +906,14 @@ fetch('../milestone2/event_deaths_top_10.json') // Adjust path if needed
 
     const trace = {
       x: eventTypes,
-      y: deaths,
+      y: deaths.map(v => Math.round(v)),
       type: 'bar',
       marker: { color: plasmaColors },
-      text: deaths.map(v => `${v.toFixed(1)}`),
+      text: deaths.map(v => `${v.toFixed(0)}`),
       textposition: 'outside',
       hovertemplate:
         '<b>%{x}</b><br>' +
-        'Death: %{y:.1f}<extra></extra>',
+        'Death: %{y:.0f}<extra></extra>',
       cliponaxis: false,  // <-- prevents clipping at the top
     };
 

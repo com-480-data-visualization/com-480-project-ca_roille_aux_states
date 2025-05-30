@@ -159,10 +159,14 @@
                 <h2 class="plot-title">Total number of events over the years</h2>
                 <p class="plot-description">
                     A first insight on our data is to look at the number of events through the years. 
-                    It is very clear that there is more and more events trhough the years, however, this 
+                    It is very clear that there is more and more events as time passes. However, this 
                     is due, at least in some way, to the fact that the Storm Events Database has been recensing 
-                    more type of events. In particular, only tornadoes were counted in the first phase from 1950 
-                    to 1955. 
+                    more types of events. In particular, there are three phases in the recording of data. 
+                    The first one, going from 1950 until 1955, only tornadoes were counted and we, thus, obtain very few events.
+                    In 1956, it was decided to also incorporate thunderstorms, strong winds and hail. 
+                    Since 1966, 48 different event types are recorded to allow more interpetability and precision.
+                    As expected, the more types of event accounted, the more records there will be, 
+                    but, even within the phases, we can see that the number of event increases.
                 </p>
             </div>
             <div id="plot1" class="plot-container">          
@@ -189,7 +193,9 @@
             <div class="text-section">
                 <h2 class="plot-title">Deadliest type of events</h2>
                 <p class="plot-description">
-                    This histogram highlight the deadliest type of events over all the years. 
+                    This histogram highlights the deadliest types of events. 
+                    It shows the total number of people that died because of specific types of incidents since the begining of measurements.
+                    From it, we can see that tornadoes are the deadliest form of events but this may be caused by the recording of only this kind of event as explained before.
                 </p>
             </div>
             <div id="plot3" class="plot-container">
@@ -200,8 +206,9 @@
             <div class="text-section">
                 <h2 class="plot-title">Most costly type of events</h2>
                 <p class="plot-description">
-                    Climate models project continued warming across the United States,
-                    with some regions expected to see more dramatic changes than others.
+                    This histogram highlights the most costly types of events. 
+                    It shows the economic cost (in billions of $) of specific types of incidents since the begining of measurements.
+                    From it, we can see that tornadoes are, by far, the most economically challenging form of events but this may be caused by the recording of only this kind of event as explained before.
                 </p>
             </div>
             <div id="plot4" class="plot-container">
@@ -290,7 +297,8 @@
                     <div class="weather-multi-select" style="max-height: none; overflow-y: visible; padding: 0; border: none; background: transparent;">
                         <select class="weather-plot-type-select" id="plotType">
                             <option value="line">Line Plot</option>
-                            <option value="histogram">Histogram</option>
+                            <option value="bar">Bar Plot</option>
+                            <option value="pie">Pie Chart</option>
                             <option value="map_state">Map (by state)</option>
                             <option value="map_county">Map (by county)</option>
                         </select>
