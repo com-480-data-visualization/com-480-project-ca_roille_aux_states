@@ -26,3 +26,9 @@ Our report for M2 can be found [here](https://github.com/com-480-data-visualizat
 
 The website is accessible [here](https://com-480-data-visualization.github.io/com-480-project-ca_roille_aux_states/).
 
+## Milestone 3
+80% of the final grade
+
+Our final website is accessible [here](https://com-480-data-visualization.github.io/com-480-project-ca_roille_aux_states/).
+In this website we guide you through the [Strom Events Dataset](https://www.ncdc.noaa.gov/stormevents/details.jsp). As we can not detail everything by oursel we encourage anyone interested to use the interactive plotting feature to better understand the dataset. We 
+
