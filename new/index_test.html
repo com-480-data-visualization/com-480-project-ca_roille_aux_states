@@ -71,7 +71,7 @@
         of extreme weather events due to its size and diverse geographical and climatic conditions. But also 
         because of the availability of high-quality data on extreme weather events.Indeed, thanks to 
         the National Oceanic and Atmospheric Administration (NOAA), we have access to the Storm Events 
-        Database [2], which provides information on the occurrence of storms and other significant weather 
+        Database <a href="#References">[2]</a>, which provides information on the occurrence of storms and other significant weather 
         phenomena having sufficient intensity to cause loss of life, injuries, significant property damage,
         and/or disruption to commerce; Rare, unusual, weather phenomena that generate media attention, 
         such as snow flurries in South Florida or the San Diego coastal area; Other significant 
@@ -243,8 +243,8 @@
             <!-- Metrics Filter -->
             <div class="weather-filter-box">
                 <div class="weather-filter-header" onclick="toggleFilter('metrics')">
-                    <div class="weather-filter-label">What to Plot</div>
-                    <div class="weather-filter-toggle" id="metricsToggle">▼</div>
+                    <div class="weather-filter-label">Metric</div>
+                    <div class="weather-filter-toggle collapsed" id="metricsToggle">▼</div>
                 </div>
                 <div class="weather-filter-content collapsed" id="metricsContent">
                     <div class="weather-multi-select" style="max-height: none; overflow-y: visible; padding: 0; border: none; background: transparent;">
@@ -288,8 +288,7 @@
                         <select class="weather-plot-type-select" id="plotType">
                             <option value="line">Line Plot</option>
                             <option value="histogram">Histogram</option>
-                            <option value="map_state">Map (by state)</option>
-                            <option value="map_county">Map (by county)</option>
+                            <option value="pie">Pie Chart</option>
                         </select>
                     </div>
                 </div>
@@ -305,7 +304,6 @@
         <!-- Plot Container -->
         <div class="weather-plot-container" id="plotContainer">
             <div class="weather-plot-placeholder" id="plotPlaceholder">
-                Configure your filters and click "Update Plot" to display weather data visualization
             </div>
         </div>
     </div>
@@ -509,7 +507,8 @@
     <div class="text-box">
         <p>[1] United Nations. (n.d.). What is climate change? United Nations. 
             https://www.un.org/en/climatechange/what-is-climate-change </p>
-        <p>[2] hdhdhd</p> 
+        <p>[2] World Meteorological Organization. (2022, July 13). It’s warmer than average. 
+            But what is average? https://wmo.int/media/news/its-warmer-average-what-average</p> 
         [] U.S. Environmental Protection Agency. (2023, July 18). Weather and climate. Climate Change Indicators in the United States. https://www.epa.gov/climate-indicators/weather-climate <br>
         [3] National Academies of Sciences, Engineering, and Medicine. 2016. Attribution of Extreme Weather Events in the Context of Climate Change. Washington, DC: The National Academies Press. https://doi.org/10.17226/21852. <br>
         [] IPCC. (2021). Weather and climate extreme events in a changing climate (Chapter 11). In V. Masson-Delmotte, P. Zhai, A. Pirani, et al. (Eds.), Climate Change 2021: The Physical Science Basis. Contribution of Working Group I to the Sixth Assessment Report of the Intergovernmental Panel on Climate Change (pp. 1513–1766). Cambridge University Press. https://doi.org/10.1017/9781009157896.013 <br>

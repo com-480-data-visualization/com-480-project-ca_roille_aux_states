@@ -72,12 +72,11 @@ document.addEventListener('DOMContentLoaded', function () {
 function initApp() {
     bindUIEvents();
     loadAllData().then(() => {
-        createStateAnomalyMap();
-        //createCountySpikeMap();
-        toy_histo();
+        createStateAnomalyMapPlotly();
+        temporal_hist();
         setupCarousel();
         initializeFilters();
-        updateFilters(); // Initial plot update
+        updateFilters(); 
         initializeYearSlider();
         bindAdditionalUIEvents();
     });
@@ -155,7 +154,6 @@ async function loadAllData() {
         ] = await Promise.all([
             d3.json("../data/us-states-10m.json"),
             d3.json("../data/us-counties-10m.json"),
-            // d3.json("https://cdn.jsdelivr.net/npm/us-atlas@3/counties-10m.json"), 
             d3.json("../milestone2/state_data.json"),
             d3.json("../data/state_anomalies.json"),
             d3.json("../milestone2/state_event_counts.json").then(data => {
@@ -187,549 +185,199 @@ async function loadAllData() {
     }
 }
 
-// ========== Create Anomaly Map ==========
-function createStateAnomalyMap() {
-    console.log("Creating state anomaly map");
-
-    const width = 975;
-    const height = 610;
-
-    // Create tooltip div
-    const tooltip = d3.select("body").append("div")
-        .attr("class", "tooltip")
-        .style("opacity", 0)
-        .style("position", "absolute")
-        .style("background-color", "white")
-        .style("border", "1px solid #ddd")
-        .style("border-radius", "5px")
-        .style("padding", "10px")
-        .style("box-shadow", "0 0 10px rgba(0,0,0,0.15)")
-        .style("pointer-events", "none")
-        .style("font-family", "sans-serif")
-        .style("font-size", "14px");
-
-    const svg = d3.select("#anomaly-map-container")
-        .append("svg")
-        .attr("width", width)
-        .attr("height", height+100)
-        .attr("viewBox", [0, 0, width, height+300])
-        .attr("style", "width: 100%; height: auto;");
-
-    const projection = d3.geoAlbersUsa()
-        .translate([width / 2, height / 2])
-        .scale(1250);
-
-    const path = d3.geoPath().projection(projection);
-
-    const states = topojson.feature(stateTopo, stateTopo.objects.states).features;
-
-    const data = states.map(state => {
-        const stateName = state.properties.name;
-        // Check if we have data for this state
-        if (stateAnomaly[stateName]?.anomaly) {
-            const anomalyStr = stateAnomaly[stateName].anomaly;
-            const anomaly = parseFloat(anomalyStr.replace(/,/g, ""));
-            return { 
-                ...state, 
-                anomaly: isNaN(anomaly) ? 0 : anomaly, 
-                hasData: !isNaN(anomaly) 
-            };
-        } else {
-            // Mark states with no data
-            return { ...state, anomaly: 0, hasData: false };
-        }
-    });
-
-    // Filter out null values for calculating domain
-    const dataWithValues = data.filter(d => d.hasData);
-    const maxAnomaly = d3.max(dataWithValues, d => d.anomaly);
-    const minAnomaly = d3.min(dataWithValues, d => d.anomaly);
+function stateNameToCode(name) {
+    const states = {
+        "Alabama": "AL", "Alaska": "AK", "Arizona": "AZ", "Arkansas": "AR",
+        "California": "CA", "Colorado": "CO", "Connecticut": "CT", "Delaware": "DE",
+        "Florida": "FL", "Georgia": "GA", "Hawaii": "HI", "Idaho": "ID",
+        "Illinois": "IL", "Indiana": "IN", "Iowa": "IA", "Kansas": "KS",
+        "Kentucky": "KY", "Louisiana": "LA", "Maine": "ME", "Maryland": "MD",
+        "Massachusetts": "MA", "Michigan": "MI", "Minnesota": "MN", "Mississippi": "MS",
+        "Missouri": "MO", "Montana": "MT", "Nebraska": "NE", "Nevada": "NV",
+        "New Hampshire": "NH", "New Jersey": "NJ", "New Mexico": "NM", "New York": "NY",
+        "North Carolina": "NC", "North Dakota": "ND", "Ohio": "OH", "Oklahoma": "OK",
+        "Oregon": "OR", "Pennsylvania": "PA", "Rhode Island": "RI", "South Carolina": "SC",
+        "South Dakota": "SD", "Tennessee": "TN", "Texas": "TX", "Utah": "UT",
+        "Vermont": "VT", "Virginia": "VA", "Washington": "WA", "West Virginia": "WV",
+        "Wisconsin": "WI", "Wyoming": "WY"
+    };
+    return states[name];
+}
 
 
-    const colorScale = d3.scaleDiverging()
-        .domain([4, 0, -4])
-        .interpolator(d3.interpolateRdBu);
+function createStateAnomalyMapPlotly() {
+    console.log("Creating state anomaly map with Plotly");
 
-    /*
-    const color = d3.scaleSequential()
-        .domain([0, maxAnomaly]) // [low anomaly, high anomaly]
-        .interpolator(d3.interpolateReds)      // diverging color scale
-        .clamp(true);
-    */
-    svg.append("g")
-        .selectAll("path")
-        .data(data)
-        .join("path")
-        .attr("fill", d => colorScale(+d.anomaly))
-        .attr("d", path)
-        .append("title")
-        .text(d => `${d.properties.name}\nAnomaly: ${d.anomaly.toFixed(2)}°`);
+    // Prepare data arrays
+    const states = Object.keys(stateAnomaly);
+    const anomalies = [];
+    const stateCodes = [];
 
-    svg.append("g")
-        .selectAll("path")
-        .data(data)
-        .join("path")
-        .attr("fill", d => d.hasData ? colorScale(d.anomaly) : "#cccccc") // Grey for missing data
-        .attr("d", path)
-        .on("mouseover", function(event, d) {
-            tooltip.transition()
-                .duration(200)
-                .style("opacity", 0.9);
-                
-            // Different tooltip content based on data availability
-            if (d.hasData) {
-                tooltip.html(`<strong>${d.properties.name}</strong><br>Anomaly: ${d.anomaly.toFixed(2)}°`);
-            } else {
-                tooltip.html(`<strong>${d.properties.name}</strong><br>No data available`);
+    for (const [stateName, data] of Object.entries(stateAnomaly)) {
+        const value = parseFloat(data.anomaly.replace(/,/g, ""));
+        if (!isNaN(value)) {
+            const code = stateNameToCode(stateName);
+            if (code) {
+                anomalies.push(value);
+                stateCodes.push(code);
             }
-            
-            tooltip.style("left", (event.pageX + 10) + "px")
-                    .style("top", (event.pageY - 28) + "px");
-            
-            // Highlight the hovered state
-            d3.select(this)
-                .attr("stroke", "#000000")
-                .attr("stroke-width", 2);
-        })
-        .on("mouseout", function() {
-            tooltip.transition()
-                .duration(500)
-                .style("opacity", 0);
-            
-            // Make sure to explicitly set stroke to null or an empty string
-            d3.select(this)
-                .attr("stroke", null)
-                .attr("stroke-width", 0);  // Set to 0 instead of null
-        });
-        
+        }
+    }
 
-    // State boundaries
-    svg.append("path")
-        .datum(topojson.mesh(stateTopo, stateTopo.objects.states, (a, b) => a !== b))
-        .attr("fill", "none")
-        .attr("stroke", "#fff")
-        .attr("stroke-linejoin", "round")
-        .attr("d", path);
+    const trace = {
+        type: "choropleth",
+        locationmode: "USA-states",
+        locations: stateCodes,
+        z: anomalies,
+        colorscale: "RdBu",
+        zmin: -5.5,
+        zmax: 5.5,
+        colorbar: {
+            title: "Anomaly (°)",
+            tickvals: [-4, 0, 4],
+            ticktext: ["-4°", "0°", "°"]
+        },
+        marker: {
+            line: {
+                color: "white",
+                width: 1
+            }
+        }
+    };
 
-    // Legend
-    const legendWidth = 300;
-    const legendHeight = 10;
-    
-    const legendDomain = d3.range(-5.5, 5.6, 0.1);
+    const layout = {
+        geo: {
+            scope: "usa",
+            projection: {
+                type: "albers usa"
+            },
+            showlakes: true,
+            lakecolor: "rgb(255, 255, 255)"
+        },
+        margin: { t: 20, b: 20, l: 20, r: 20 }, // More balanced margins
+        autosize: true
+    };
 
-    const legendSvg = svg.append("g")
-        .attr("transform", `translate(${width - legendWidth - 50}, ${height-5})`);
-    
-
-    const legendScale = d3.scaleLinear()
-        .domain([-5.5, 5.5])
-        .range([0, legendWidth]);
-
-
-
-
-/*     const legendScale = d3.scaleLinear()
-        .domain([4, 0])
-        .range([0, legendWidth]); */
-
-    const axis = d3.axisBottom(legendScale)
-        .tickValues([-5.5, 0, 5.5])
-        .tickFormat(d => `${d.toFixed(1)}°`);
-
-    // Gradient
-    const defs = svg.append("defs");
-    const linearGradient = defs.append("linearGradient")
-        .attr("id", "legend-gradient");
-    
-    linearGradient.selectAll("stop")
-        .data(legendDomain)
-        .join("stop")
-        .attr("offset", d => `${legendScale(d) / legendWidth * 100}%`)
-        .attr("stop-color", d => colorScale(d));
-
-    /* linearGradient.selectAll("stop")
-        .data(d3.ticks(0, 1, 10))
-        .join("stop")
-        .attr("offset", d => `${d * 100}%`)
-        .attr("stop-color", d => colorScale(colorScale.domain()[0] + d * (colorScale.domain()[1] - colorScale.domain()[0])));
- */
-    legendSvg.append("rect")
-        .attr("width", legendWidth)
-        .attr("height", legendHeight)
-        .style("fill", "url(#legend-gradient)");
-
-    legendSvg.append("g")
-        .attr("transform", `translate(0, ${legendHeight})`)
-        .call(axis);
-
-        // Add "No Data" indicator to legend
-    legendSvg.append("rect")
-        .attr("x", -80)
-        .attr("y", -5)
-        .attr("width", 15)
-        .attr("height", 15)
-        .style("fill", "#cccccc");
-        
-    legendSvg.append("text")
-        .attr("x", -60)
-        .attr("y", 5)
-        .text("No data")
-        .style("font-size", "12px")
-        .style("alignment-baseline", "middle");
-
+    Plotly.newPlot("anomaly-map-container", [trace], layout, { responsive: true });
 }
 
 
 // ==============================================
-function toy_histo() {
-    d3.json("../data/data.json").then(raw => {
-        // Transform the nested object into a flat array
-        const fullData = Object.entries(raw.data).map(([year, d]) => ({
-            year: +String(year).slice(0, 4),
-            anomaly: +d.anomaly
-        }));
+function temporal_hist() {
+    fetch("../data/data.json")
+        .then(response => response.json())
+        .then(raw => {
+            // Transform the nested object into a flat array
+            const fullData = Object.entries(raw.data).map(([year, d]) => ({
+                year: +String(year).slice(0, 4),
+                anomaly: +d.anomaly
+            }));
 
-        const margin = {top: 60, right: 80, bottom: 60, left: 80};
-        const width = 975 - margin.left - margin.right;  // Match other maps width
-        const height = 450 - margin.bottom - margin.top;
-
-        // Create tooltip with consistent styling
-        const tooltip = d3.select("body").append("div")
-            .attr("class", "tooltip")
-            .style("opacity", 0)
-            .style("position", "absolute")
-            .style("background-color", "white")
-            .style("border", "1px solid #ddd")
-            .style("border-radius", "5px")
-            .style("padding", "10px")
-            .style("box-shadow", "0 0 10px rgba(0,0,0,0.15)")
-            .style("pointer-events", "none")
-            .style("font-family", "sans-serif")
-            .style("font-size", "14px");
-
-        const svg = d3.select("#histo-map-container")
-            .append("svg")
-            .attr("width", width + margin.left + margin.right)
-            .attr("height", height + margin.top + margin.bottom)
-            .attr("viewBox", [0, 0, width + margin.left + margin.right, height + margin.top + margin.bottom])
-            .attr("style", "width: 100%; height: auto; display: block; margin: 0 auto;")  // Center the SVG
-            .append("g")
-            .attr("transform", `translate(${margin.left},${margin.top})`);
-
-        // Scales
-        const xScale = d3.scaleLinear()
-            .domain(d3.extent(fullData, d => d.year))
-            .range([0, width]);
-
-        const yScale = d3.scaleLinear()
-            .domain([-2.5, 2.5])
-            .range([height, 0]);
-
-        // Use the same diverging color scale as the anomaly map
-        const colorScale = d3.scaleDiverging()
-            .domain([2, 0, -2])  // Adjusted domain for histogram data
-            .interpolator(d3.interpolateRdBu);
-
-        // Add horizontal grid lines with consistent styling
-        const yTicks = yScale.ticks(5);
-        svg.selectAll(".grid-line")
-            .data(yTicks)
-            .enter()
-            .append("line")
-            .attr("class", "grid-line")
-            .attr("x1", 0)
-            .attr("x2", width)
-            .attr("y1", d => yScale(d))
-            .attr("y2", d => yScale(d))
-            .style("stroke", "#ddd")  // Lighter grid lines
-            .style("stroke-width", "0.5")
-            .style("stroke-dasharray", "2,2");
-        
-        // Add baseline at y = 0 with consistent styling
-        svg.append("line")
-            .attr("class", "baseline")
-            .attr("x1", 0)
-            .attr("x2", width)
-            .attr("y1", yScale(0))
-            .attr("y2", yScale(0))
-            .style("stroke", "#333")  // Darker baseline
-            .style("stroke-width", "2");
-
-        // Create bars
-        const barWidth = width / fullData.length * 0.8;
-        
-        svg.selectAll(".bar")
-            .data(fullData)
-            .enter()
-            .append("rect")
-            .attr("class", "bar")
-            .attr("x", d => xScale(d.year) - barWidth/2)
-            .attr("y", d => d.anomaly >= 0 ? yScale(d.anomaly) : yScale(0))
-            .attr("width", barWidth)
-            .attr("height", d => Math.abs(yScale(d.anomaly) - yScale(0)))
-            .attr("fill", d => colorScale(d.anomaly))
-            .attr("stroke", "white")  // Add white stroke like state boundaries
-            .attr("stroke-width", 0.25)
-            .style("cursor", "pointer")  // Add cursor pointer for consistency
-            .on("mouseover", function(event, d) {
-                // Highlight bar on hover
-                d3.select(this)
-                    .attr("stroke-width", 1);
-                
-                tooltip.transition()
-                    .duration(200)
-                    .style("opacity", 0.9);
-                tooltip.html(`<strong>Year: ${d.year}</strong><br/>Anomaly: ${d.anomaly > 0 ? '+' : ''}${d.anomaly.toFixed(2)}°F`)
-                    .style("left", (event.pageX + 10) + "px")
-                    .style("top", (event.pageY - 28) + "px");
-            })
-            .on("mouseout", function(d) {
-                // Remove highlight
-                d3.select(this)
-                    .attr("stroke-width", 0.25);
-                
-                tooltip.transition()
-                    .duration(500)
-                    .style("opacity", 0);
-            });
-
-        // Add axes with consistent styling
-        const xAxis = d3.axisBottom(xScale)
-            .ticks(10)
-            //.tickValues([1895, 1950, 2000])
-            .tickFormat(d => String(d).slice(0, 4));
+            // Prepare data for Plotly
+            const years = fullData.map(d => d.year);
+            const anomalies = fullData.map(d => d.anomaly);
             
-        const yAxis = d3.axisLeft(yScale)
-            .ticks(5)
-            .tickFormat(d => d > 0 ? `+${d}°F` : `${d}°F`);
-
-        svg.append("g")
-            .attr("class", "axis")
-            .attr("transform", `translate(0,${height})`)
-            .call(xAxis)
-            .selectAll("text")
-            .style("fill", "black")  // Consistent with other maps
-            .style("font-size", "14px")
-            .style("font-family", "sans-serif");
-
-        svg.append("g")
-            .attr("class", "axis")
-            .call(yAxis)
-            .selectAll("text")
-            .style("fill", "black")
-            .style("font-size", "14px")
-            .style("font-family", "sans-serif");
-
-        // Style axis lines consistently
-        svg.selectAll(".axis path, .axis line")
-            .style("stroke", "black")
-            .style("stroke-width", "1");
-
-        // Add right y-axis with Celsius (consistent with other maps)
-        const yAxisRight = d3.axisRight(yScale)
-            .ticks(5)
-            .tickFormat(d => {
-                const celsius = (d * 5/9).toFixed(1);
-                return celsius > 0 ? `+${celsius}°C` : `${celsius}°C`;
+            // Create color array based on anomaly values
+            // Using RdBu colorscale (red-blue diverging)
+            const colors = anomalies.map(anomaly => {
+                // Normalize anomaly to 0-1 range for colorscale
+                // Domain is roughly -2 to +2, but we'll clamp values
+                const normalized = Math.max(0, Math.min(1, (anomaly + 2) / 4));
+                return normalized;
             });
 
-        svg.append("g")
-            .attr("class", "axis")
-            .attr("transform", `translate(${width},0)`)
-            .call(yAxisRight)
-            .selectAll("text")
-            .style("fill", "black")
-            .style("font-size", "14px")
-            .style("font-family", "sans-serif");
+            // Prepare trace for Plotly
+            const trace = {
+                x: years,
+                y: anomalies,
+                type: 'bar',
+                name: 'Temperature Anomaly',
+                marker: {
+                    color: colors,
+                    colorscale: [
+                        [0, 'rgb(33, 102, 172)'],      // Dark red (hot)
+                        [0.25, 'rgb(103, 169, 207)'],  // Light red
+                        [0.5, 'rgb(247, 247, 247)'],  // White (neutral)
+                        [0.75, 'rgb(239, 138, 98)'], // Light blue
+                        [1, 'rgb(178, 24, 43)']      // Dark blue (cold)
+                    ],
+                    colorbar: {
+                        tickvals: [0, 0.25, 0.5, 0.75, 1],
+                        ticktext: ['-2.0°F', '-1.0°F', '0.0°F', '+1.0°F', '+2.0°F'],
+                        x: 1.02,  // FIXED: Moved inside plot area
+                        len: 0.6,          
+                        thickness: 15,     
+                        xpad: 5   // FIXED: Reduced padding
+                    },
+                    line: {
+                        color: 'white',
+                        width: 0.5
+                    }
+                },
+                hovertemplate: '<b>Year: %{x}</b><br>Anomaly: %{y:.2f}°F<extra></extra>'
+            };
 
-        // Add note about baseline with consistent styling, positioned above legend
-        svg.append("text")
-            .attr("class", "note")
-            .attr("x", width - 20)
-            .attr("y", height - 50)
-            .style("fill", "black")  // Consistent with legend text
-            .style("font-size", "12px")
-            .style("text-anchor", "end")
-            .style("font-family", "sans-serif")
-            .text("(relative to 1961-1990 average)");
+            const layout = {
+                xaxis: {
+                    title: 'Year',
+                    dtick: 10,
+                    tickangle: 0,
+                    showgrid: true,
+                    gridcolor: 'rgba(128, 128, 128, 0.2)',
+                    gridwidth: 1
+                },
+                yaxis: {
+                    title: 'Temperature Anomaly (°F)',
+                    tickformat: '+.1f',
+                    showgrid: true,
+                    gridcolor: 'rgba(128, 128, 128, 0.2)',
+                    gridwidth: 1,
+                    range: [-2.5, 2.5],
+                    zeroline: true,
+                    zerolinecolor: 'rgb(51, 51, 51)',
+                    zerolinewidth: 2
+                },
+                plot_bgcolor: 'white',
+                paper_bgcolor: 'white',
+                margin: { t: 30, b: 50, l: 70, r: 90 }, // Increased right margin from 80 to 100
+                autosize: true,
+                annotations: [
+                    {
+                        x: 1.1, // FIXED: Moved annotation inside
+                        y: 0.02,
+                        xref: 'paper',
+                        yref: 'paper',
+                        text: '(relative to 1961-1990 average)',
+                        showarrow: false,
+                        font: { size: 12, color: 'black' },
+                        xanchor: 'right',
+                        yanchor: 'bottom'
+                    }
+                ],
+                font: {
+                    family: 'sans-serif',
+                    size: 14,
+                    color: 'black'
+                }
+            };
 
-        // Add a legend positioned outside the chart area
-        const legendWidth = 300;
-        const legendHeight = 10;
-
-        // Position legend below the chart, similar to anomaly map
-        const legendSvg = svg.append("g")
-            .attr("transform", `translate(${width - legendWidth - 20}, ${height - 33})`);  // Position at top right
-
-        const legendScale = d3.scaleLinear()
-            .domain(colorScale.domain())
-            .range([0, legendWidth]);
-
-        const legendAxisScale = d3.scaleLinear()
-            .domain([-2, 2])  // left → right
-            .range([0, legendWidth]);
-
-        const axis = d3.axisBottom(legendAxisScale)
-            .ticks(2)
-            .tickFormat(d => `${d.toFixed(1)}°F`);
-
-        /* const axis = d3.axisBottom(legendScale)  // Use bottom axis like anomaly map
-            .ticks(3)
-            .tickFormat(d => `${(d).toFixed(1)}°F`);
- */
-        // Gradient for legend
-        const defs = svg.append("defs");
-        const linearGradient = defs.append("linearGradient")
-            .attr("id", "histo-legend-gradient")
-            .attr("x1", "100%")
-            .attr("x2", "0%")
-            .attr("y1", "0%")
-            .attr("y2", "0%");
-
-        // Create gradient stops
-        const gradientData = d3.range(0, 1.1, 0.1);
-        linearGradient.selectAll("stop")
-            .data(gradientData)
-            .enter()
-            .append("stop")
-            .attr("offset", d => `${d * 100}%`)
-            .attr("stop-color", d => {
-                const value = colorScale.domain()[0] + (d) * (colorScale.domain()[2] - colorScale.domain()[0]);
-                return colorScale(value);
-            });
-
-        legendSvg.append("rect")
-            .attr("width", legendWidth)
-            .attr("height", legendHeight)
-            .style("fill", "url(#histo-legend-gradient)")
-            .style("stroke", "black")
-            .style("stroke-width", 0.5);
-
-        legendSvg.append("g")
-            .attr("class", "axis")
-            .attr("transform", `translate(0, ${legendHeight})`)  // Position below legend bar
-            .call(axis)
-            .selectAll("text")
-            .style("fill", "black")
-            .style("font-size", "12px")
-            .style("font-family", "sans-serif");
-
-        // Style legend axis
-        legendSvg.selectAll(".axis path, .axis line")
-            .style("stroke", "black")
-            .style("stroke-width", "1");
-
-    });
+            // Render the plot
+            Plotly.newPlot('histo-map-container', [trace], layout);
+        })
+        .catch(error => console.error('Error loading or plotting data:', error));
 }
 
+// ENHANCED resize function
+function resizePlotlyCharts() {
+    const histoContainer = document.getElementById("histo-map-container");
+    const anomalyContainer = document.getElementById("anomaly-map-container");
 
-
-// ========== Create County Spike Map ==========
-function createCountySpikeMap() {
-    console.log("Creating county spike map");
-    const width = 975;
-    const height = 610;
-    
-    // Create SVG container
-    const svg = d3.select("#plot4")
-        .append("svg")
-        .attr("width", width)
-        .attr("height", height)
-        .attr("viewBox", [0, 0, width, height])
-        .attr("style", "width: 100%; height: auto;");
-    
-    // Setup projection
-    const projection = d3.geoAlbersUsa()
-        .translate([width / 2, height / 2])
-        .scale(1250);
-    
-    const path = d3.geoPath().projection(projection);
-    
-    // Extract features
-    const counties = topojson.feature(countyTopo, countyTopo.objects.counties).features;
-    const states = topojson.feature(countyTopo, countyTopo.objects.states).features;
-    
-    // Create map for lookup
-    const countyMap = new Map(counties.map(county => [county.id, county]));
-    
-    // Process the data to include geometry
-    const data = countyEventCounts.map(d => ({
-        ...d,
-        county: countyMap.get(d.fips)
-    }))
-    .filter(d => d.county) // Remove entries without matching geometry
-    .sort((a, b) => d3.descending(a.count, b.count));
-    
-    // Construct the length scale
-    const maxCount = d3.max(data, d => d.count);
-    const length = d3.scaleLinear([0, maxCount], [0, 75]); // Adjust max spike height as needed
-    
-    // Create the cartographic background layers
-    svg.append("path")
-        .datum(topojson.feature(countyTopo, countyTopo.objects.nation))
-        .attr("fill", "#ddd")
-        .attr("d", path);
-    
-    svg.append("path")
-        .datum(topojson.mesh(countyTopo, countyTopo.objects.states, (a, b) => a !== b))
-        .attr("fill", "none")
-        .attr("stroke", "white")
-        .attr("stroke-linejoin", "round")
-        .attr("d", path);
-    
-    // Helper function to create spike shape
-    function spike(length) {
-        const width = 5;
-        //(length, width = 7) => 
-        return `M${-width / 2},0L0,${-length}L${width / 2},0`
-        //return `M0,0L0,${-length}L${length/10},0Z`; // Simple triangular spike
+    if (histoContainer && histoContainer.offsetParent !== null) {
+        Plotly.Plots.resize(histoContainer);
     }
-    
-    // Helper function to get centroid
-    function centroid(feature) {
-        const [x, y] = path.centroid(feature);
-        return isNaN(x) || isNaN(y) ? [0, 0] : [x, y];
+    if (anomalyContainer && anomalyContainer.offsetParent !== null) {
+        Plotly.Plots.resize(anomalyContainer);
     }
-    
-    // Create the legend
-    const legend = svg.append("g")
-        .attr("fill", "#777")
-        .attr("transform", `translate(${width - 100}, ${height - 20})`)
-        .attr("text-anchor", "middle")
-        .style("font", "10px sans-serif")
-        .selectAll()
-        .data(length.ticks(4).slice(1))
-        .join("g")
-        .attr("transform", (d, i) => `translate(${20 * i},0)`);
-    
-    legend.append("path")
-        .attr("fill", "red")
-        .attr("fill-opacity", 0.5)
-        .attr("stroke", "red")
-        .attr("stroke-width", 0.5)
-        .attr("d", d => spike(length(d)));
-    
-    legend.append("text")
-        .attr("dy", "1em")
-        .text(length.tickFormat(4, "s"));
-    
-    // Add a spike for each county, with a title (tooltip)
-    const format = d3.format(",.0f");
-    svg.append("g")
-        .attr("fill", "red")
-        .attr("fill-opacity", 0.5)
-        .attr("stroke", "red")
-        .attr("stroke-width", 0.5)
-        .selectAll()
-        .data(data)
-        .join("path")
-        .attr("transform", d => `translate(${centroid(d.county)})`)
-        .attr("d", d => spike(length(d.count)))
-        .append("title")
-        .text(d => `${d.county.properties.name || "Unknown County"}, ${d.fips}
-Events: ${format(d.count)}`);
-    
-    return svg.node();
 }
 
 // ========== Count yearly Events plot =========

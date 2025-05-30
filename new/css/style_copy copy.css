@@ -140,7 +140,6 @@ body {
 
 /* ---------------------------------------------------------------------------------------------------- */
 /* CAROUSEL SECTION WITH 95VH HEIGHT ----------------------------------------------------------------- */
-
 .carousel-section {
     display: flex;
     flex-direction: row;
@@ -189,21 +188,22 @@ body {
     line-height: 1.5;
 }
 
-/* Map panel styling */
+/* Map panel styling - FIXED */
 .map-panel {
     flex: 70;
     position: relative;
     background-color: white;
     border-radius: 8px;
-    padding: 20px;
+    padding: 20px 10px 20px 20px; /* Reduced right padding, increased bottom for controls */
     height: 100%;
     box-sizing: border-box;
+    overflow: hidden; /* Prevent content from overflowing */
 }
 
 .map-content {
     display: none;
     width: 100%;
-    height: 100%;
+    height: calc(100% - 60px); /* Changed from -40px to -60px */
     justify-content: center;
     align-items: center;
 }
@@ -263,15 +263,18 @@ body {
     background-color: #333;
 }
 
+/* Container styling - FIXED */
 #anomaly-map-container,
-#spike-map-container,
 #histo-map-container {
     width: 100%;
     height: 100%;
     padding: 0;
+    margin: 0;
     box-sizing: border-box;
+    display: flex;          /* Add this */
+    justify-content: center; /* Add this */
+    align-items: center;     /* Add this */
 }
-
 /* ---------------------------------------------------------------------------------------------------- */
 /* GRID SECTION WITH 95VH HEIGHT AND CONSISTENT SPACING -------------------------------------------- */
 
@@ -496,25 +499,18 @@ body {
     padding: 8px 12px;
 }
 
-.left-icons a {
-    margin-right: 8px;
-}
-
-.center-text {
-    flex-grow: 1;
-    text-align: center;
-    font-weight: 500;
-}
-
-.right-photo img {
-    border-radius: 8px;
-    object-fit: cover;
+.storm-quote-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* Aligns the citation to the right */
 }
 
 .storm-quote {
     font-style: italic;
     display: block;
+    align-self: flex-start; /* Optional: keeps quote aligned left */
 }
+
 
 .citation-source {
     align-self: flex-end;
@@ -523,7 +519,68 @@ body {
     color: #555;
 }
 
-.grey-text-box {
+
+.storm-box {
+    border: 1px solid #ccc;
+    padding: 16px;
+    width: 300px;
+    font-family: Arial, sans-serif;
+}
+
+.team-box-title {
+    margin-bottom: 12px;
+    text-align: center;
+}
+
+.team-box {
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    flex: 1;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+}
+
+.team-box-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.team-boxes-container {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 2rem;
+    box-sizing: border-box;
+}
+
+.left-photo img {
+    object-fit: cover;
+    height: 200px;
+    width: 150px;
+    z-index: 10;
+    transform: translateZ(0);
+    object-fit: contain;
+}
+
+
+
+.right-icons a {
+    margin-left: 8px;
+}
+
+.center-text {
+    text-align: center;
+    font-weight: 500;
+}
+
+
+.text-box {
     background-color: white;
     border-radius: 8px;
     padding: 20px;
