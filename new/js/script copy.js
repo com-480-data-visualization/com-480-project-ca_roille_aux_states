@@ -11,7 +11,7 @@ let activeStateName = "";
 let countyEventCounts = [];
 let currentSlideIndex = 0;
 const totalSlides = 2;
-let typesByYearStates = {};
+let weatherEventsFullData = {};
 let statesFilter = [];
 let eventsFilter = [];
 
@@ -151,7 +151,7 @@ function goToSlide(index) {
 async function loadAllData() {
     try {
         [stateTopo, countyTopo, stateDetails, stateAnomaly, eventDataByState, tempDataByState,
-            countyEventCounts, typesByYearStates 
+            countyEventCounts, weatherEventsFullData 
         ] = await Promise.all([
             d3.json("../data/us-states-10m.json"),
             d3.json("../data/us-counties-10m.json"),
@@ -164,12 +164,12 @@ async function loadAllData() {
             }),
             d3.json("../milestone2/annual_avg_by_state.json"),
             d3.json("../data/county_counts.json"),
-            d3.json("../milestone2/types_by_year_states_with_totals.json")
+            d3.json("../milestone2/weather_events_full_information.json")
         ]);
 
-        const years = [...new Set(typesByYearStates.map(d => d.Year))];
-        statesFilter = [...new Set(typesByYearStates.map(d => d.State))];
-        eventsFilter = [...new Set(typesByYearStates.map(d => d.Event_Category))];
+        const years = [...new Set(weatherEventsFullData.map(d => d.Year))];
+        statesFilter = [...new Set(weatherEventsFullData.map(d => d.State))];
+        eventsFilter = [...new Set(weatherEventsFullData.map(d => d.Event_Category))];
 
         // Extract states and event types from the weatherData
         const firstYear = Math.min(...years);
@@ -1004,7 +1004,7 @@ fetch('../milestone2/event_deaths_top_10.json') // Adjust path if needed
 
 
 // Sample data - replace with your actual data
-const states = [
+/* onst states = [
     'Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 
     'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 
     'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan', 
@@ -1019,7 +1019,7 @@ const weatherEvents = [
     'Tornado', 'Thunderstorm Wind', 'Hail', 'Flash Flood', 'Flood', 'Winter Storm', 
     'Ice Storm', 'Blizzard', 'Heavy Snow', 'Heat', 'Drought', 'Wildfire', 'Hurricane', 
     'Lightning', 'High Wind', 'Extreme Cold', 'Avalanche', 'Dust Storm'
-];
+]; */
 
 const metrics = [
     'Event Count', 'Total Deaths', 'Total Damage ($)'
@@ -1082,6 +1082,7 @@ function getSelectedFilters() {
 
 
 function updateFilters() {
+    const filters = getSelectedFilters();
     // Add this at the beginning of updateFilters() function
     const yearSliderGroup = document.getElementById('yearSliderGroup');
     const mapStyleGroup = document.getElementById('mapStyleGroup');
@@ -1093,85 +1094,111 @@ function updateFilters() {
         if (yearSliderGroup) yearSliderGroup.style.display = 'none';
         if (mapStyleGroup) mapStyleGroup.style.display = 'none';
     }
-  const filters = getSelectedFilters();
 
-  const start = parseInt(filters.startYear);
-  const end = parseInt(filters.endYear);
-  const selectedYears = [];
-  for(let y = start; y <= end; y++) selectedYears.push(y);
-  
-  const selectedStates = filters.states;
-  const selectedEvents = filters.events;
+    const start = parseInt(filters.startYear);
+    const end = parseInt(filters.endYear);
+    const selectedYears = [];
+    for(let y = start; y <= end; y++) selectedYears.push(y);
+    
+    const selectedStates = filters.states;
+    const selectedEvents = filters.events;
 
-  // Assuming typesByYearStates is globally accessible
+  // Assuming weatherEventsFullData is globally accessible
   // If not, pass it as a parameter or get it from closure
 
-  const traces = selectedEvents.map(event => {
-    const x = [];
-    const y = [];
+    const plotType = filters.plotType;
+    let traces = [];
+    traces = selectedEvents.map(event => {
+        const x = [];
+        const y = [];
 
-    selectedYears.forEach(year => {
-      // Filter all matching entries for year, event, and selected states
-      const filteredData = typesByYearStates.filter(d =>
-        d.Year === year &&
-        d.Event_Category === event &&
-        selectedStates.includes(d.State)
-      );
+        selectedYears.forEach(year => {
+        // Filter all matching entries for year, event, and selected states
+        const filteredData = weatherEventsFullData.filter(d =>
+            d.Year === year &&
+            d.Event_Category === event &&
+            selectedStates.includes(d.State)
+        );
 
-      // Aggregate the counts
-      let valueKey;
-      switch (filters.metric) {
-        case 'death':
-            valueKey = 'Total_death';
-        break;
-        case 'economic':
-            valueKey = 'Total_damage';
-        break;
-        default:
-            valueKey = 'Count';
-        break;
+        // Aggregate the counts
+        let valueKey;
+        switch (filters.metric) {
+            case 'death':
+                valueKey = 'Total_death';
+            break;
+            case 'economic':
+                valueKey = 'Total_damage';
+            break;
+            default:
+                valueKey = 'count';
+            break;
+            }
+
+            const totalValue = filteredData.reduce((sum, d) => sum + (d[valueKey] || 0), 0);
+
+            x.push(year);
+            y.push(totalValue);
+        });
+
+        const trace = {
+            x,
+            y,
+            name: event
+        };
+
+        switch (plotType) {
+            case 'line':
+                trace.type = 'scatter';
+                trace.mode = 'lines+markers';
+                break;
+            case 'bar':
+                trace.type = 'bar';
+                break;
         }
 
-        const totalValue = filteredData.reduce((sum, d) => sum + (d[valueKey] || 0), 0);
-
-        x.push(year);
-        y.push(totalValue);
+        return trace;
     });
 
-    return {
-      x,
-      y,
-      name: event,
-      type: 'scatter',
-      mode: 'lines+markers'
-    };
-  });
+        /* return {
+        x,
+        y,
+        name: event,
+        type: 'scatter',
+        mode: 'lines+markers'
+        };
+    });
+    if (filters.plotType === 'bar') {
+        createBarPlot(filters);
+        return;
+    } */
 
-  Plotly.newPlot('plotPlaceholder', traces, {
-    /*title: 'Weather Events Over Time',*/
-    width: 800,
-    height: 500,
-    xaxis: { title: 'Year' },
-    yaxis: {
-        title: {
-            count: 'Event Count',
-            death: 'Total Deaths',
-            economic: 'Total Damage ($)'
-        }[filters.metric],
-        tickformat: filters.plotType === 'proportion' ? ',.0%' : ''
-    },
-    legend: { title: { text: 'Event Type' } }
-  });
+    Plotly.newPlot('plotPlaceholder', traces, {
+        /*title: 'Weather Events Over Time',*/
+        width: 800,
+        height: 500,
+        xaxis: { title: 'Year' },
+        yaxis: {
+            title: {
+                count: 'Event Count',
+                death: 'Total Deaths',
+                economic: 'Total Damage ($)'
+            }[filters.metric],
+            tickformat: filters.plotType === 'proportion' ? ',.0%' : ''
+        },
+        barmode: plotType === 'bar' ? 'stack' : undefined,
+        legend: { title: { text: 'Event Type' } }
+    });
+    console.log('Filters:', filters);
 
-  // Update info box
+  /* // Update info box
   const plotInfo = document.getElementById('plotInfo');
-  plotInfo.textContent = `${filters.plotType.charAt(0).toUpperCase() + filters.plotType.slice(1)} | ${filters.states.length} States | ${filters.events.length} Events | ${filters.startYear}-${filters.endYear}`;
+  plotInfo.textContent = `${filters.plotType.charAt(0).toUpperCase() + filters.plotType.slice(1)} | ${filters.states.length} States | ${filters.events.length} Events | ${filters.startYear}-${filters.endYear}`; */
 }
 
 function setDefaultSelections() {
     // Select all states by default
     const stateCheckboxes = document.querySelectorAll('#statesFilter input[type="checkbox"]');
-    stateCheckboxes.forEach(cb => cb.checked = true);
+    stateCheckboxes.forEach(cb => cb.checked = cb.value === 'ALABAMA');
     
     // Select only Tornado by default
     const eventCheckboxes = document.querySelectorAll('#eventsFilter input[type="checkbox"]');
@@ -1482,7 +1509,7 @@ function getSelectedFilters() {
 }
 
 // Enhanced createHistogram function for stacked bars by event type
-function createHistogram(filters) {
+function createBarPlot(filters) {
     const data = processWeatherData(filters);
     const { events, startYear, endYear, metric, cumulative } = filters;
     
