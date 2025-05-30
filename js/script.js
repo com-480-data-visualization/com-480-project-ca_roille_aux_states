@@ -363,7 +363,7 @@ function temporal_hist() {
 }
 
 // ========== Count yearly Events plot =========
-fetch('../milestone2/events_by_year.json')
+fetch('/data/events_by_year.json')
   .then(response => response.json())
   .then(data => {
     const years = Object.keys(data).sort();
@@ -457,7 +457,7 @@ fetch('../milestone2/events_by_year.json')
 
 // ========== Event types bar plot =========
 
-fetch('../milestone2/combined_proportion_count.json')
+fetch('/data/combined_proportion_count.json')
   .then(response => response.json())
   .then(data => {
     const years = Object.keys(data).sort();
@@ -514,7 +514,7 @@ fetch('../milestone2/combined_proportion_count.json')
   .catch(error => console.error('Error loading or plotting data:', error));
 
 
-fetch('../milestone2/event_deaths_top_10.json') 
+fetch('/data/event_deaths_top_10.json') 
   .then(response => response.json())
   .then(data => {
     // Sort data descending by cost and take top 10
@@ -570,7 +570,7 @@ fetch('../milestone2/event_deaths_top_10.json')
   })
   .catch(error => console.error('Error loading or plotting damage data:', error));
 
-  fetch('../milestone2/event_costs_top_10.json') 
+  fetch('/data/event_costs_top_10.json') 
   .then(response => response.json())
   .then(data => {
     // Sort data descending by cost and take top 10
