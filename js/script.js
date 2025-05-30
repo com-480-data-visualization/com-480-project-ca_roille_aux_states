@@ -150,17 +150,17 @@ async function loadAllData() {
         [stateTopo, countyTopo, stateDetails, stateAnomaly, eventDataByState, tempDataByState,
             countyEventCounts, weatherEventsFullData 
         ] = await Promise.all([
-            d3.json("/data/us-states-10m.json"),
-            d3.json("/data/us-counties-10m.json"),
-            d3.json("/data/state_data.json"),
-            d3.json("/data/state_anomalies.json"),
-            d3.json("/data/state_event_counts.json").then(data => {
+            d3.json("./data/us-states-10m.json"),
+            d3.json("./data/us-counties-10m.json"),
+            d3.json("./data/state_data.json"),
+            d3.json("./data/state_anomalies.json"),
+            d3.json("./data/state_event_counts.json").then(data => {
                 globalMax = Math.max(...Object.values(data).map(arr => d3.max(arr, d => d.count)));
                 return data;
             }),
-            d3.json("/data/annual_avg_by_state.json"),
-            d3.json("/data/county_counts.json"),
-            d3.json("/data/weather_events_full_information.json")
+            d3.json("./data/annual_avg_by_state.json"),
+            d3.json("./data/county_counts.json"),
+            d3.json("./data/weather_events_full_information.json")
         ]);
 
         const years = [...new Set(weatherEventsFullData.map(d => d.Year))];
@@ -262,7 +262,7 @@ function createStateAnomalyMapPlotly() {
 
 // ==============================================
 function temporal_hist() {
-    fetch("/data/data.json")
+    fetch("./data/data.json")
         .then(response => response.json())
         .then(raw => {
             // Transform the nested object into a flat array
@@ -363,7 +363,7 @@ function temporal_hist() {
 }
 
 // ========== Count yearly Events plot =========
-fetch('/data/events_by_year.json')
+fetch('./data/events_by_year.json')
   .then(response => response.json())
   .then(data => {
     const years = Object.keys(data).sort();
@@ -457,7 +457,7 @@ fetch('/data/events_by_year.json')
 
 // ========== Event types bar plot =========
 
-fetch('/data/combined_proportion_count.json')
+fetch('./data/combined_proportion_count.json')
   .then(response => response.json())
   .then(data => {
     const years = Object.keys(data).sort();
@@ -514,7 +514,7 @@ fetch('/data/combined_proportion_count.json')
   .catch(error => console.error('Error loading or plotting data:', error));
 
 
-fetch('/data/event_deaths_top_10.json') 
+fetch('./data/event_deaths_top_10.json') 
   .then(response => response.json())
   .then(data => {
     // Sort data descending by cost and take top 10
@@ -570,7 +570,7 @@ fetch('/data/event_deaths_top_10.json')
   })
   .catch(error => console.error('Error loading or plotting damage data:', error));
 
-  fetch('/data/event_costs_top_10.json') 
+  fetch('./data/event_costs_top_10.json') 
   .then(response => response.json())
   .then(data => {
     // Sort data descending by cost and take top 10
