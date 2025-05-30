@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (dotNav && heroSection && dots.length > 0) {
         let lastScrollY = window.scrollY;
-        let currentState = 'out'; // Track current fade state to prevent flicker
+        let currentState = 'out'; 
 
         const setTransitionDelays = (direction, action) => {
             const count = dots.length;
@@ -72,13 +72,12 @@ document.addEventListener('DOMContentLoaded', function () {
 function initApp() {
     bindUIEvents();
     loadAllData().then(() => {
-        createStateAnomalyMapPlotly();
         temporal_hist();
+        createStateAnomalyMapPlotly();
         setupCarousel();
         initializeFilters();
         updateFilters(); 
         initializeYearSlider();
-        bindAdditionalUIEvents();
     });
 
 }
@@ -104,7 +103,6 @@ function bindUIEvents() {
         });
     });
 
-    bindAdditionalUIEvents()
 }
 
 // ========== Carousel Navigation ==========
@@ -254,7 +252,7 @@ function createStateAnomalyMapPlotly() {
             showlakes: true,
             lakecolor: "rgb(255, 255, 255)"
         },
-        margin: { t: 20, b: 20, l: 20, r: 20 }, // More balanced margins
+        margin: { t: 20, b: 20, l: 20, r: 20 },
         autosize: true
     };
 
@@ -278,10 +276,7 @@ function temporal_hist() {
             const anomalies = fullData.map(d => d.anomaly);
             
             // Create color array based on anomaly values
-            // Using RdBu colorscale (red-blue diverging)
             const colors = anomalies.map(anomaly => {
-                // Normalize anomaly to 0-1 range for colorscale
-                // Domain is roughly -2 to +2, but we'll clamp values
                 const normalized = Math.max(0, Math.min(1, (anomaly + 2) / 4));
                 return normalized;
             });
@@ -304,10 +299,10 @@ function temporal_hist() {
                     colorbar: {
                         tickvals: [0, 0.25, 0.5, 0.75, 1],
                         ticktext: ['-2.0°F', '-1.0°F', '0.0°F', '+1.0°F', '+2.0°F'],
-                        x: 1.02,  // FIXED: Moved inside plot area
+                        x: 1.02,  
                         len: 0.6,          
                         thickness: 15,     
-                        xpad: 5   // FIXED: Reduced padding
+                        xpad: 5   
                     },
                     line: {
                         color: 'white',
@@ -339,11 +334,11 @@ function temporal_hist() {
                 },
                 plot_bgcolor: 'white',
                 paper_bgcolor: 'white',
-                margin: { t: 30, b: 50, l: 70, r: 90 }, // Increased right margin from 80 to 100
+                margin: { t: 30, b: 50, l: 70, r: 90 }, 
                 autosize: true,
                 annotations: [
                     {
-                        x: 1.1, // FIXED: Moved annotation inside
+                        x: 1.1, 
                         y: 0.02,
                         xref: 'paper',
                         yref: 'paper',
@@ -361,23 +356,10 @@ function temporal_hist() {
                 }
             };
 
-            // Render the plot
+            
             Plotly.newPlot('histo-map-container', [trace], layout);
         })
         .catch(error => console.error('Error loading or plotting data:', error));
-}
-
-// ENHANCED resize function
-function resizePlotlyCharts() {
-    const histoContainer = document.getElementById("histo-map-container");
-    const anomalyContainer = document.getElementById("anomaly-map-container");
-
-    if (histoContainer && histoContainer.offsetParent !== null) {
-        Plotly.Plots.resize(histoContainer);
-    }
-    if (anomalyContainer && anomalyContainer.offsetParent !== null) {
-        Plotly.Plots.resize(anomalyContainer);
-    }
 }
 
 // ========== Count yearly Events plot =========
@@ -388,7 +370,7 @@ fetch('../milestone2/events_by_year.json')
     const eventCounts  = years.map(year => data[year]);
     const yearsNum = years.map(y => +y);
 
-    // Prepare traces for Plotly inside the fetch callback
+    // Prepare traces for Plotly 
     const trace = {
       x: yearsNum,
       y: eventCounts,
@@ -437,27 +419,27 @@ fetch('../milestone2/events_by_year.json')
             y: Math.max(...eventCounts)*1.1,
             text: 'Phase 1:<br>Tornadoes only',
             showarrow: false,
-            arrowhead: 1,     // Arrow style
-            ax: 0,            // Horizontal offset from text to arrow base
-            ay: -30           // Vertical offset: negative is arrow pointing down
+            arrowhead: 1,     
+            ax: 0,            
+            ay: -30           
         },
         {
             x: 1977,
             y: Math.max(...eventCounts)*1.1,
             text: 'Phase 2:<br>Thunderstorms, Wind & Hail',
             showarrow: false,
-            arrowhead: 1,     // Arrow style
-            ax: 0,            // Horizontal offset from text to arrow base
-            ay: -30           // Vertical offset: negative is arrow pointing down
+            arrowhead: 1,     
+            ax: 0,            
+            ay: -30           
         },
         {
             x: 2010,
             y: Math.max(...eventCounts)*1.1,
             text: 'Phase 3:<br>48 event types',
             showarrow: false,
-            arrowhead: 1,     // Arrow style
-            ax: 0,            // Horizontal offset from text to arrow base
-            ay: -30           // Vertical offset: negative is arrow pointing down
+            arrowhead: 1,     
+            ax: 0,            
+            ay: -30           
         }
       ],
       margin: { t: 50, b: 80, l: 60, r: 30 },
@@ -516,9 +498,8 @@ fetch('../milestone2/combined_proportion_count.json')
       xaxis: { 
         title: 'Year', 
         tickangle: -45,
-        dtick: 5,               // Ticks every 5 years
-        //tickvals: yearsNum,     // Ensure ticks correspond to the years
-        tickformat: 'd'         // Format ticks as integer
+        dtick: 5,               
+        tickformat: 'd'         
       },
       yaxis: { title: 'Proportion of Total Events', tickformat: ',.0%' },
       legend: { title: { text: 'Event Type' } },
@@ -533,7 +514,7 @@ fetch('../milestone2/combined_proportion_count.json')
   .catch(error => console.error('Error loading or plotting data:', error));
 
 
-fetch('../milestone2/event_deaths_top_10.json') // Adjust path if needed
+fetch('../milestone2/event_deaths_top_10.json') 
   .then(response => response.json())
   .then(data => {
     // Sort data descending by cost and take top 10
@@ -562,16 +543,15 @@ fetch('../milestone2/event_deaths_top_10.json') // Adjust path if needed
       hovertemplate:
         '<b>%{x}</b><br>' +
         'Death: %{y:.0f}<extra></extra>',
-      cliponaxis: false,  // <-- prevents clipping at the top
+      cliponaxis: false,  
     };
 
     const layout = {
-      //title: 'Top 10 Most Damaging Storm Event Types (1950–2020)',
       xaxis: {
         title: 'Event Type',
         tickangle: -25,
         tickfont: {
-            size: 10   // <-- reduce this number to make labels smaller
+            size: 10   
         }
       },
       yaxis: {
@@ -590,7 +570,7 @@ fetch('../milestone2/event_deaths_top_10.json') // Adjust path if needed
   })
   .catch(error => console.error('Error loading or plotting damage data:', error));
 
-  fetch('../milestone2/event_costs_top_10.json') // Adjust path if needed
+  fetch('../milestone2/event_costs_top_10.json') 
   .then(response => response.json())
   .then(data => {
     // Sort data descending by cost and take top 10
@@ -600,7 +580,7 @@ fetch('../milestone2/event_deaths_top_10.json') // Adjust path if needed
       .slice(0, 10);
 
     const eventTypes = top10.map(d => d.event_type);
-    const costsBillions = top10.map(d => d.cost / 1e9); // Convert to billions
+    const costsBillions = top10.map(d => d.cost / 1e9); 
 
     // Create a plasma-like gradient using Plotly colors
     const plasmaColors = [
@@ -619,16 +599,15 @@ fetch('../milestone2/event_deaths_top_10.json') // Adjust path if needed
       hovertemplate:
         '<b>%{x}</b><br>' +
         'Damage: $%{y:.1f}B<extra></extra>',
-      cliponaxis: false,  // <-- prevents clipping at the top
+      cliponaxis: false,  
     };
 
     const layout = {
-      //title: 'Top 10 Most Damaging Storm Event Types (1950–2020)',
       xaxis: {
         title: 'Event Type',
         tickangle: -25,
         tickfont: {
-            size: 10   // <-- reduce this number to make labels smaller
+            size: 10   
         }
       },
       yaxis: {
@@ -648,26 +627,7 @@ fetch('../milestone2/event_deaths_top_10.json') // Adjust path if needed
   .catch(error => console.error('Error loading or plotting damage data:', error));
 
 
-//////////////////////////////////////////////////////////
-
-
-// Sample data - replace with your actual data
-/* onst states = [
-    'Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 
-    'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 
-    'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan', 
-    'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 
-    'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota', 'Ohio', 
-    'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina', 'South Dakota', 
-    'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington', 'West Virginia', 
-    'Wisconsin', 'Wyoming'
-];
-
-const weatherEvents = [
-    'Tornado', 'Thunderstorm Wind', 'Hail', 'Flash Flood', 'Flood', 'Winter Storm', 
-    'Ice Storm', 'Blizzard', 'Heavy Snow', 'Heat', 'Drought', 'Wildfire', 'Hurricane', 
-    'Lightning', 'High Wind', 'Extreme Cold', 'Avalanche', 'Dust Storm'
-]; */
+// ========== Cusomizable plot =========
 
 const metrics = [
     'Event Count', 'Total Deaths', 'Total Damage ($)'
@@ -734,7 +694,6 @@ function getSelectedFilters() {
 
 function updateFilters() {
     const filters = getSelectedFilters();
-    // Add this at the beginning of updateFilters() function
     const yearSliderGroup = document.getElementById('yearSliderGroup');
     const mapStyleGroup = document.getElementById('mapStyleGroup');
 
@@ -762,9 +721,6 @@ function updateFilters() {
     const selectedStates = filters.states;
     const selectedEvents = filters.events;
 
-  // Assuming weatherEventsFullData is globally accessible
-  // If not, pass it as a parameter or get it from closure
-
     const plotType = filters.plotType;
     let traces = [];
 
@@ -788,7 +744,7 @@ function updateFilters() {
             });
 
             return { event, total };
-        }).filter(d => d.total > 0); // Remove any with zero count
+        }).filter(d => d.total > 0); 
 
         traces.push({
             type: 'pie',
@@ -872,27 +828,10 @@ function updateFilters() {
 
     Plotly.newPlot('plotPlaceholder', traces, layout);
 
-    /* Plotly.newPlot('plotPlaceholder', traces, {
-        title: 'Weather Events Over Time',
-        width: 800,
-        height: 500,
-        xaxis: { title: 'Year' },
-        yaxis: {
-            title: {
-                count: 'Event Count',
-                death: 'Total Deaths',
-                economic: 'Total Damage ($)'
-            }[filters.metric],
-            tickformat: filters.plotType === 'proportion' ? ',.0%' : ''
-        },
-        barmode: plotType === 'bar' ? 'stack' : undefined,
-        legend: { title: { text: 'Event Type' } }
-    }); */
+    
     console.log('Filters:', filters);
 
-  /* // Update info box
-  const plotInfo = document.getElementById('plotInfo');
-  plotInfo.textContent = `${filters.plotType.charAt(0).toUpperCase() + filters.plotType.slice(1)} | ${filters.states.length} States | ${filters.events.length} Events | ${filters.startYear}-${filters.endYear}`; */
+  
 }
 
 function setDefaultSelections() {
@@ -965,193 +904,6 @@ function resetToDefaults() {
     document.getElementById('plotPlaceholder').innerHTML = 'Filters reset to defaults. Click "Update Plot" to display visualization.';
 }
 
-// ========== Additional Functions to Add to Your Existing Code ==========
-
-// Add this function to initialize year slider for maps
-function initializeYearSlider() {
-    const yearSlider = document.getElementById('mapYearSlider');
-    const yearDisplay = document.getElementById('mapYearDisplay');
-    
-    if (yearSlider && weatherEventsFullData.length > 0) {
-        const years = [...new Set(weatherEventsFullData.map(d => d.Year))].sort();
-        yearSlider.min = years[0];
-        yearSlider.max = years[years.length - 1];
-        yearSlider.value = years[years.length - 1]; // Default to latest year
-        
-        if (yearDisplay) {
-            yearDisplay.textContent = yearSlider.value;
-        }
-        
-        yearSlider.addEventListener('input', function() {
-            if (yearDisplay) {
-                yearDisplay.textContent = this.value;
-            }
-            updateFilters(); // Update the plot when year changes
-        });
-    }
-}
-
-// Modified loadAllData function - add this call after loading data
-// Add this line in your existing loadAllData function after all data is loaded:
-// initializeYearSlider();
-
-// Enhanced createCountyMap function with spike/choropleth toggle
-function createCountyMap(filters) {
-    const data = processWeatherData(filters);
-    const countyAggregated = aggregateByCounty(data, filters.metric);
-    const useSpikes = document.getElementById('mapStyle')?.value === 'spikes';
-    
-    // Clear existing plot
-    document.getElementById('plotPlaceholder').innerHTML = '';
-    
-    const width = 975;
-    const height = 610;
-    
-    const svg = d3.select("#plotPlaceholder")
-        .append("svg")
-        .attr("width", width)
-        .attr("height", height)
-        .attr("viewBox", [0, 0, width, height])
-        .attr("style", "width: 100%; height: auto;");
-    
-    const projection = d3.geoAlbersUsa()
-        .translate([width / 2, height / 2])
-        .scale(1250);
-    
-    const path = d3.geoPath().projection(projection);
-    
-    const counties = topojson.feature(countyTopo, countyTopo.objects.counties).features;
-    const states = topojson.feature(countyTopo, countyTopo.objects.states).features;
-    
-    // Create tooltip
-    const tooltip = d3.select("body").append("div")
-        .attr("class", "tooltip")
-        .style("opacity", 0)
-        .style("position", "absolute")
-        .style("background-color", "white")
-        .style("border", "1px solid #ddd")
-        .style("border-radius", "5px")
-        .style("padding", "10px")
-        .style("box-shadow", "0 0 10px rgba(0,0,0,0.15)")
-        .style("pointer-events", "none")
-        .style("font-family", "sans-serif")
-        .style("font-size", "14px");
-    
-    // Create base map
-    svg.append("path")
-        .datum(topojson.feature(countyTopo, countyTopo.objects.nation))
-        .attr("fill", "#f0f0f0")
-        .attr("d", path);
-    
-    if (useSpikes) {
-        // Create spike map
-        const values = Array.from(countyAggregated.values()).map(d => d.value);
-        const maxValue = d3.max(values) || 1;
-        const lengthScale = d3.scaleLinear([0, maxValue], [0, 50]);
-        
-        function spike(length) {
-            const width = 3;
-            return `M${-width / 2},0L0,${-length}L${width / 2},0`;
-        }
-        
-        function centroid(feature) {
-            const [x, y] = path.centroid(feature);
-            return isNaN(x) || isNaN(y) ? [0, 0] : [x, y];
-        }
-        
-        // Add spikes
-        svg.append("g")
-            .attr("fill", "red")
-            .attr("fill-opacity", 0.7)
-            .attr("stroke", "red")
-            .attr("stroke-width", 0.5)
-            .selectAll("path")
-            .data(Array.from(countyAggregated.values()).filter(d => d.value > 0))
-            .join("path")
-            .attr("transform", d => {
-                const county = counties.find(c => c.id === d.fips);
-                return county ? `translate(${centroid(county)})` : `translate(0,0)`;
-            })
-            .attr("d", d => spike(lengthScale(d.value)))
-            .on("mouseover", function(event, d) {
-                tooltip.transition().duration(200).style("opacity", 0.9);
-                tooltip.html(`<strong>${d.county}, ${d.state}</strong><br>${getMetricTitle(filters.metric)}: ${formatValue(d.value, filters.metric)}`)
-                    .style("left", (event.pageX + 10) + "px")
-                    .style("top", (event.pageY - 28) + "px");
-            })
-            .on("mouseout", function() {
-                tooltip.transition().duration(500).style("opacity", 0);
-            });
-            
-    } else {
-        // Create choropleth map
-        const values = Array.from(countyAggregated.values()).map(d => d.value);
-        const colorScale = d3.scaleSequential()
-            .domain([0, d3.max(values)])
-            .interpolator(d3.interpolateBlues);
-        
-        svg.append("g")
-            .selectAll("path")
-            .data(counties)
-            .join("path")
-            .attr("fill", d => {
-                const countyData = countyAggregated.get(d.id);
-                return countyData && countyData.value > 0 ? colorScale(countyData.value) : "#f0f0f0";
-            })
-            .attr("d", path)
-            .on("mouseover", function(event, d) {
-                const countyData = countyAggregated.get(d.id);
-                if (countyData) {
-                    tooltip.transition().duration(200).style("opacity", 0.9);
-                    tooltip.html(`<strong>${countyData.county}, ${countyData.state}</strong><br>${getMetricTitle(filters.metric)}: ${formatValue(countyData.value, filters.metric)}`)
-                        .style("left", (event.pageX + 10) + "px")
-                        .style("top", (event.pageY - 28) + "px");
-                    
-                    d3.select(this).attr("stroke", "#000").attr("stroke-width", 2);
-                }
-            })
-            .on("mouseout", function() {
-                tooltip.transition().duration(500).style("opacity", 0);
-                d3.select(this).attr("stroke", null).attr("stroke-width", 0);
-            });
-    }
-    
-    // Add state boundaries
-    svg.append("path")
-        .datum(topojson.mesh(countyTopo, countyTopo.objects.states, (a, b) => a !== b))
-        .attr("fill", "none")
-        .attr("stroke", "#333")
-        .attr("stroke-width", 0.5)
-        .attr("stroke-linejoin", "round")
-        .attr("d", path);
-}
-
-// Enhanced aggregateByCounty function to handle FIPS correctly
-function aggregateByCounty(data, metric) {
-    const countyMap = new Map();
-    
-    data.forEach(d => {
-        // Ensure FIPS codes are properly formatted (5 digits total)
-        const stateFips = d.State_FIPS.toString().padStart(2, '0');
-        const countyFips = d.County_FIPS.toString().padStart(5, '0');
-        const countyKey = countyFips; // Use full 5-digit FIPS
-        const value = getMetricValue(d, metric);
-        
-        if (!countyMap.has(countyKey)) {
-            countyMap.set(countyKey, {
-                fips: countyKey,
-                state: d.State,
-                county: d.County,
-                value: 0
-            });
-        }
-        const existing = countyMap.get(countyKey);
-        existing.value += value;
-        countyMap.set(countyKey, existing);
-    });
-    
-    return countyMap;
-}
 
 // Enhanced processWeatherData function
 function processWeatherData(filters) {
@@ -1267,23 +1019,3 @@ function createBarPlot(filters) {
     Plotly.newPlot('plotPlaceholder', traces, layout);
 }
 
-// Add event listeners for new controls
-function bindAdditionalUIEvents() {
-    // Map style toggle
-    const mapStyleSelect = document.getElementById('mapStyle');
-    if (mapStyleSelect) {
-        mapStyleSelect.addEventListener('change', updateFilters);
-    }
-    
-    // Cumulative checkbox
-    const cumulativeCheckbox = document.getElementById('cumulativeFilter');
-    if (cumulativeCheckbox) {
-        cumulativeCheckbox.addEventListener('change', updateFilters);
-    }
-    
-    // Metric type selector
-    const metricSelect = document.getElementById('metricType');
-    if (metricSelect) {
-        metricSelect.addEventListener('change', updateFilters);
-    }
-}
