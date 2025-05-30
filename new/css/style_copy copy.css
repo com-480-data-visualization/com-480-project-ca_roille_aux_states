@@ -1,5 +1,4 @@
-/* BODY ----------------------------------------------------------------------------------------------- */
-/* Ensure body has no unexpected margins */
+/* GENERAL -------------------------------------------------------------------------------------------- */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
@@ -7,10 +6,18 @@ body {
     color: #333;
     overflow-x: hidden;
 }
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
 /* ---------------------------------------------------------------------------------------------------- */
 /* TITLE PAGE WITH ARROWS ----------------------------------------------------------------------------- */
 
-/* Hero section - full screen title page */
 .hero-section {
     position: relative;
     width: 100%;
@@ -28,8 +35,8 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover; /* This is key */
-    z-index: -2; /* Put it behind the placeholder background */
+    object-fit: cover; 
+    z-index: -2; 
 }
 
 .placeholder-background {
@@ -45,7 +52,6 @@ body {
     z-index: 1;
     padding: 2rem;
     max-width: 1000px;
-    /* background-color: white */
     border-radius: 10px;
 }
 
@@ -61,8 +67,8 @@ body {
   width: 30px;
   height: 8px;
   background-color: white;
-  margin: 0 auto 0.5rem auto; /* center and add spacing below */
-  border-radius: 4px; /* make it rounded */
+  margin: 0 auto 0.5rem auto; 
+  border-radius: 4px; 
 }
 
 .hero-content h3 {
@@ -86,9 +92,9 @@ body {
 .scroll-arrows {
     display: flex;
     justify-content: center;
-    margin: -20px auto 0 auto;  /* Adjust this to move arrow closer/further from the title */
+    margin: -20px auto 0 auto;  
     width: fit-content;
-    padding-top: 1rem; /* Optional: adds space above if needed */
+    padding-top: 1rem; 
 }
 
 .scroll-arrows:hover .arrows path {
@@ -113,7 +119,7 @@ body {
 }
 
 /* ---------------------------------------------------------------------------------------------------- */
-/* FIRST SECTION -------------------------------------------------------------------------------------- */
+/* CHAPTER TITLE -------------------------------------------------------------------------------------- */
 
 .chapter-title {
     font-size: 3em;
@@ -131,15 +137,15 @@ body {
     content: "";
     position: absolute;
     top: 55%;
-    left: 103%; /* place after the text */
+    left: 103%;
     height: 6px;
-    width: 100vw; /* Fixed shorter width */
+    width: 100vw; 
     background: white;
     z-index: 100;
 }
 
 /* ---------------------------------------------------------------------------------------------------- */
-/* CAROUSEL SECTION WITH 95VH HEIGHT ----------------------------------------------------------------- */
+/* CAROUSEL SECTION ----------------------------------------------------------------------------------- */
 .carousel-section {
     display: flex;
     flex-direction: row;
@@ -147,14 +153,13 @@ body {
     gap: 2rem;
     margin-bottom: 1rem;
     align-items: stretch;
-    height: 95vh; /* Consistent height */
+    height: 95vh; 
     box-sizing: border-box;
-    max-width: 100vw; /* Prevent overflow */
+    max-width: 100vw;
     position: relative;
     z-index: 1;
 }
 
-/* Text panel styling */
 .text-content-panel {
     flex: 30;
     position: relative;
@@ -188,22 +193,21 @@ body {
     line-height: 1.5;
 }
 
-/* Map panel styling - FIXED */
 .map-panel {
     flex: 70;
     position: relative;
     background-color: white;
     border-radius: 8px;
-    padding: 20px 10px 20px 20px; /* Reduced right padding, increased bottom for controls */
+    padding: 20px 10px 20px 20px; 
     height: 100%;
     box-sizing: border-box;
-    overflow: hidden; /* Prevent content from overflowing */
+    overflow: hidden; 
 }
 
 .map-content {
     display: none;
     width: 100%;
-    height: calc(100% - 60px); /* Changed from -40px to -60px */
+    height: calc(100% - 60px); 
     justify-content: center;
     align-items: center;
 }
@@ -213,7 +217,6 @@ body {
     display: flex;
 }
 
-/* Carousel controls */
 .carousel-controls {
     position: absolute;
     bottom: 20px;
@@ -263,7 +266,6 @@ body {
     background-color: #333;
 }
 
-/* Container styling - FIXED */
 #anomaly-map-container,
 #histo-map-container {
     width: 100%;
@@ -271,12 +273,12 @@ body {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    display: flex;          /* Add this */
-    justify-content: center; /* Add this */
-    align-items: center;     /* Add this */
+    display: flex;          
+    justify-content: center; 
+    align-items: center;     
 }
 /* ---------------------------------------------------------------------------------------------------- */
-/* GRID SECTION WITH 95VH HEIGHT AND CONSISTENT SPACING -------------------------------------------- */
+/* GRID SECTION --------------------------------------------------------------------------------------- */
 
 .grid-section {
     display: grid;
@@ -284,14 +286,13 @@ body {
     grid-template-rows: 1fr 1fr;
     gap: 2rem;
     padding: 2rem;
-    /* height: 195vh; /* Consistent height */
     box-sizing: border-box;
-    margin: 0; /* Remove all margins */
-    max-width: 100vw; /* Prevent overflow */
-    width: 100%; /* Ensure full width usage */
+    margin: 0; 
+    max-width: 100vw; 
+    width: 100%; 
     position: relative;
     z-index: 1;
-    clear: both; /* Clear any floating elements */
+    clear: both; 
 }
 
 .grid-item {
@@ -300,7 +301,7 @@ body {
     padding: 0;
     gap: 1rem;
     box-sizing: border-box;
-    min-width: 0; /* Prevent flex items from overflowing */
+    min-width: 0;
 }
 
 .text-section {
@@ -322,30 +323,28 @@ body {
 .grid-item {
     display: flex;
     flex-direction: column;
-    /* ... */
 }
 
-.plot-container { /* e.g., #plot1 */
+.plot-container { 
     background-color: white;
     border-radius: 8px;
     border: 1px solid #e0e0e0;
     padding: 15px;
-    flex: 1; /* Takes available vertical space in .grid-item */
+    flex: 1; 
     box-sizing: border-box;
     display: flex;
-    /* flex-direction: column; /* Only needed if plot-container has multiple children to stack */
-    justify-content: center; /* Centers child horizontally if child is narrower */
-    align-items: center; /* Centers child vertically if child is shorter */
+    justify-content: center; 
+    align-items: center; 
     position: relative;
     height: 600px;
 }
 
-.plot-container > * { /* Targets the div Plotly creates inside .plot-container */
+.plot-container > * { 
     max-width: 100%;
     max-height: 100%;
-    object-fit: contain; /* Mostly for img/video, but harmless here */
-    width: 100%; /* Makes Plotly div fill width of .plot-container's content box */
-    height: 100%; /* Makes Plotly div fill height of .plot-container's content box */
+    object-fit: contain; 
+    width: 100%; 
+    height: 100%; 
     box-sizing: border-box;
 }
 
@@ -355,7 +354,7 @@ body {
     font-size: 20px;
     margin-top: 0;
     margin-bottom: 10px;
-    position: static; /* Changed from absolute positioning */
+    position: static; 
 }
 
 .plot-description {
@@ -365,23 +364,22 @@ body {
 }
 
 /* ---------------------------------------------------------------------------------------------------- */
-/* STATIC SECTION WITH 95VH HEIGHT ------------------------------------------------------------------- */
+/* STATIC SECTION ------------------------------------------------------------------------------------- */
 
 .static-section {
     display: flex;
     flex-direction: row;
     gap: 2rem;
     align-items: stretch;
-    max-width: none; /* Remove max-width restriction */
+    max-width: none; 
     margin: 0;
     padding: 2rem;
-    height: 95vh; /* Consistent height */
+    height: 95vh; 
     box-sizing: border-box;
     position: relative;
     z-index: 1;
 }
 
-/* Text panel styling - on the left */
 .text-panel2 {
     flex: 40;
     position: relative;
@@ -408,7 +406,6 @@ body {
     text-align: justify;
 }
 
-/* Map panel styling - on the right */
 .map-panel2 {
     flex: 60;
     position: relative;
@@ -427,11 +424,9 @@ body {
     max-height: 90%;
     height: auto;
     border-radius: 6px;
-    /*box-shadow: 0 4px 8px rgba(0,0,0,0.1);*/
     object-fit: contain;
 }
 
-/* Placeholder for when image doesn't load */
 .map-placeholder {
     width: 100%;
     height: 100%;
@@ -457,15 +452,12 @@ body {
     }
 }
 
-/* Make sure no parent containers have unexpected padding */
-* {
-    box-sizing: border-box;
-}
+/* ---------------------------------------------------------------------------------------------------- */
+/* STORM FREQUENCY SECTION AND TEAM SECTION ----------------------------------------------------------- */
 
-/* Storm Frequency Section Styling */
+
 .storm-frequency-section {
     padding: 2rem 0;
-    /*margin-bottom: 1rem;*/
     width: 100%;
     display: block;
     position: relative;
@@ -510,13 +502,13 @@ body {
 .storm-quote-group {
     display: flex;
     flex-direction: column;
-    align-items: flex-end; /* Aligns the citation to the right */
+    align-items: flex-end; 
 }
 
 .storm-quote {
     font-style: italic;
     display: block;
-    align-self: flex-start; /* Optional: keeps quote aligned left */
+    align-self: flex-start; 
 }
 
 
@@ -603,7 +595,8 @@ body {
     
 }
 
-/* Dot navigation styling */
+/* ---------------------------------------------------------------------------------------------------- */
+/* DOT NAVIGATION ------------------------------------------------------------------------------------- */
 .dot-navigation {
     position: fixed;
     top: 50%;
@@ -674,15 +667,12 @@ body {
     opacity: 1;
 }
 
-html {
-    scroll-behavior: smooth;
-}
 
-.full-height {
-    height: 100vh;
-}
 
-/* LOGO */
+/* ---------------------------------------------------------------------------------------------------- */
+/* LOGO ----------------------------------------------------------------------------------------------- */
+
+
 img {
   margin: 10px;
   vertical-align: middle;
@@ -693,11 +683,12 @@ img {
   transform: scale(1.1);
 }
 
-/* FILTER BOX -------------------------------------------------------------------------------------------- */
+/* ---------------------------------------------------------------------------------------------------- */
+/* FILTER BOX ----------------------------------------------------------------------------------------- */
 
 .weather-dashboard-container {
-    max-width: calc(100vw - 4rem); /* Prevent overflow, account for padding */
-    margin: 2rem 2rem 2rem 2rem; /* Increased top margin to push it down */
+    max-width: calc(100vw - 4rem); 
+    margin: 2rem 2rem 2rem 2rem;
     background: rgba(255, 255, 255, 0.95);
     border-radius: 20px;
     padding: 30px;
@@ -705,7 +696,7 @@ img {
     backdrop-filter: blur(10px);
     box-sizing: border-box;
     position: relative;
-    z-index: 50; /* High z-index but below titles */
+    z-index: 50; 
     clear: both;
 }
 
