@@ -150,17 +150,17 @@ async function loadAllData() {
         [stateTopo, countyTopo, stateDetails, stateAnomaly, eventDataByState, tempDataByState,
             countyEventCounts, weatherEventsFullData 
         ] = await Promise.all([
-            d3.json("../data/us-states-10m.json"),
-            d3.json("../data/us-counties-10m.json"),
-            d3.json("../milestone2/state_data.json"),
-            d3.json("../data/state_anomalies.json"),
-            d3.json("../milestone2/state_event_counts.json").then(data => {
+            d3.json("/data/us-states-10m.json"),
+            d3.json("/data/us-counties-10m.json"),
+            d3.json("/data/state_data.json"),
+            d3.json("/data/state_anomalies.json"),
+            d3.json("/data/state_event_counts.json").then(data => {
                 globalMax = Math.max(...Object.values(data).map(arr => d3.max(arr, d => d.count)));
                 return data;
             }),
-            d3.json("../milestone2/annual_avg_by_state.json"),
-            d3.json("../data/county_counts.json"),
-            d3.json("../milestone2/weather_events_full_information.json")
+            d3.json("/data/annual_avg_by_state.json"),
+            d3.json("/data/county_counts.json"),
+            d3.json("/data/weather_events_full_information.json")
         ]);
 
         const years = [...new Set(weatherEventsFullData.map(d => d.Year))];
